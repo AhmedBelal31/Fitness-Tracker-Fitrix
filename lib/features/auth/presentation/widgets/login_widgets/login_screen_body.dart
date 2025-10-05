@@ -1,23 +1,25 @@
 import 'package:fitrix/core/routing/navigation_helper.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/common_ui/widgets/custom_button.dart';
-import '../../../../core/common_ui/widgets/custom_checkbox.dart';
-import '../../../../core/common_ui/widgets/custom_text_field.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
-import '../cubits/login/login_cubit.dart';
-import '../widgets/login/animated_fitness_icon.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../../../../../core/common_ui/widgets/custom_button.dart';
+import '../../../../../core/common_ui/widgets/custom_checkbox.dart';
+import '../../../../../core/common_ui/widgets/custom_text_field.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/theming/app_colors.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../cubits/login/login_cubit.dart';
+import 'animated_fitness_icon.dart';
+
+class LoginScreenBody extends StatefulWidget {
+  const LoginScreenBody({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenBody> createState() => _LoginScreenBodyState();
 }
 
-class _LoginScreenState extends State<LoginScreen>
+class _LoginScreenBodyState extends State<LoginScreenBody>
     with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
@@ -95,8 +97,8 @@ class _LoginScreenState extends State<LoginScreen>
         _passwordController.text,
       );
 
-      // Navigate to home screen after successful login
-      // context.pushNamedAndRemoveUntil(Routes.homeScreen, (route) => false);
+      // Navigate to home screen after successful login_widgets
+      context.pushNamedAndRemoveUntil(Routes.hostScreen, (route) => false);
     }
   }
 
@@ -106,59 +108,56 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginCubit(),
-      child: Scaffold(
-        backgroundColor: ColorsManager.scaffoldBackground,
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: ColorsManager.appBackgroundGradient,
-          ),
-          child: SafeArea(
-            child: AnimatedBuilder(
-              animation: _animationController,
-              builder: (context, child) {
-                return FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: SlideTransition(
-                    position: _slideAnimation,
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            const SizedBox(height: 40),
+    return Scaffold(
+      backgroundColor: ColorsManager.scaffoldBackground,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: ColorsManager.appBackgroundGradient,
+        ),
+        child: SafeArea(
+          child: AnimatedBuilder(
+            animation: _animationController,
+            builder: (context, child) {
+              return FadeTransition(
+                opacity: _fadeAnimation,
+                child: SlideTransition(
+                  position: _slideAnimation,
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          const SizedBox(height: 40),
 
-                            // Logo and welcome section
-                            _buildHeader(),
+                          // Logo and welcome section
+                          _buildHeader(),
 
-                            const SizedBox(height: 48),
+                          const SizedBox(height: 48),
 
-                            // Login form
-                            _buildLoginForm(),
+                          // Login form
+                          _buildLoginForm(),
 
-                            const SizedBox(height: 32),
+                          const SizedBox(height: 32),
 
-                            // Login button
-                            _buildLoginButton(),
+                          // Login button
+                          _buildLoginButton(),
 
-                            const SizedBox(height: 24),
+                          const SizedBox(height: 24),
 
-                            // Forgot password link
-                            _buildForgotPasswordLink(),
+                          // Forgot password link
+                          _buildForgotPasswordLink(),
 
-                            // Sign up link
-                            _buildSignUpLink(),
-                          ],
-                        ),
+                          // Sign up link
+                          _buildSignUpLink(),
+                        ],
                       ),
                     ),
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),

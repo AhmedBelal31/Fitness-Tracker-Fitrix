@@ -520,7 +520,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading_participants": MessageLookupByLibrary.simpleMessage(
       "Loading participants...",
     ),
-    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "login_widgets": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "logout_confirmation_message": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to logout?",

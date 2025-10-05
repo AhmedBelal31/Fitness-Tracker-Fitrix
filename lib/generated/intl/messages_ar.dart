@@ -484,7 +484,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading_participants": MessageLookupByLibrary.simpleMessage(
       "جارٍ تحميل المشاركين...",
     ),
-    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "login_widgets": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "logout_confirmation_message": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد من أنك تريد تسجيل الخروج؟",

@@ -111,7 +111,7 @@ class S {
 
   /// `Login`
   String get login {
-    return Intl.message('Login', name: 'login', desc: '', args: []);
+    return Intl.message('Login', name: 'login_widgets', desc: '', args: []);
   }
 
   /// `Continue with Google`

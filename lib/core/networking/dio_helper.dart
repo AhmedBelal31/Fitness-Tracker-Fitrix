@@ -1,3 +1,4 @@
+import 'dart:developer' as dev;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -13,9 +14,22 @@ class ApiService {
           baseUrl: ApiConstants.apiBaseUrl,
           connectTimeout: const Duration(seconds: 120),
           receiveTimeout: const Duration(seconds: 120),
-          headers: {"Content-Type": "application/json"},
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          // Add this to get more detailed error information
+          validateStatus: (status) {
+            // Accept all status codes to handle them manually
+            return status != null && status < 500;
+          },
         ),
       ) {
+    dev.log(
+      '🔧 ApiService initialized with baseUrl: ${ApiConstants.apiBaseUrl}',
+      name: 'ApiService',
+    );
+
     _dio.interceptors.addAll([
       AuthInterceptor(_dio),
       PrettyDioLogger(
@@ -36,13 +50,26 @@ class ApiService {
     Map<String, dynamic>? queryParams,
     Map<String, String>? headers,
     CancelToken? cancelToken,
-  }) {
-    return _dio.get(
-      endpoint,
-      queryParameters: queryParams,
-      options: Options(headers: headers),
-      cancelToken: cancelToken,
-    );
+  }) async {
+    try {
+      dev.log(
+        '📤 GET Request: ${_dio.options.baseUrl}$endpoint',
+        name: 'ApiService',
+      );
+
+      return await _dio.get(
+        endpoint,
+        queryParameters: queryParams,
+        options: Options(headers: headers),
+        cancelToken: cancelToken,
+      );
+    } on DioException catch (e) {
+      dev.log(
+        '❌ GET Request Error: ${e.type} - ${e.message}',
+        name: 'ApiService',
+      );
+      rethrow;
+    }
   }
 
   Future<Response> postRequest(
@@ -51,18 +78,39 @@ class ApiService {
     Map<String, dynamic>? queryParams,
     Map<String, String>? headers,
     CancelToken? cancelToken,
-  }) {
-    return _dio.post(
-      endpoint,
-      data: data,
-      queryParameters: queryParams,
-      options: Options(
-        headers: headers,
-        followRedirects: false,
-        validateStatus: (status) => status! < 500,
-      ),
-      cancelToken: cancelToken,
-    );
+  }) async {
+    try {
+      dev.log(
+        '📤 POST Request: ${_dio.options.baseUrl}$endpoint',
+        name: 'ApiService',
+      );
+      dev.log('📦 Request Data: $data', name: 'ApiService');
+
+      final response = await _dio.post(
+        endpoint,
+        data: data,
+        queryParameters: queryParams,
+        options: Options(
+          headers: headers,
+          followRedirects: false,
+          validateStatus: (status) => status != null && status < 500,
+        ),
+        cancelToken: cancelToken,
+      );
+
+      dev.log('📥 POST Response: ${response.statusCode}', name: 'ApiService');
+      return response;
+    } on DioException catch (e) {
+      dev.log('❌ POST Request DioException', name: 'ApiService');
+      dev.log('Type: ${e.type}', name: 'ApiService');
+      dev.log('Message: ${e.message}', name: 'ApiService');
+      dev.log('Error: ${e.error}', name: 'ApiService');
+      dev.log('URL: ${e.requestOptions.uri}', name: 'ApiService');
+      rethrow;
+    } catch (e) {
+      dev.log('❌ POST Request Unknown Error: $e', name: 'ApiService');
+      rethrow;
+    }
   }
 
   Future<Response> postRequestWithFormData(
@@ -77,7 +125,7 @@ class ApiService {
       options: Options(
         headers: {'Content-Type': 'multipart/form-data', ...?headers},
         followRedirects: false,
-        validateStatus: (status) => status! < 500,
+        validateStatus: (status) => status != null && status < 500,
       ),
       cancelToken: cancelToken,
     );

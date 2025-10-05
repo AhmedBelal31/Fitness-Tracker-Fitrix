@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../../../domain/repositories/auth_repository.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(const LoginState());
+  final AuthRepository _authRepository;
+  LoginCubit(this._authRepository) : super(const LoginState());
 
   void toggleRememberMe() {
     emit(state.copyWith(rememberMe: !state.rememberMe));
@@ -27,7 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
     // For now, just complete the loading
     emit(state.copyWith(isLoading: false));
 
-    // Here you would typically navigate to home or handle login result
+    // Here you would typically navigate to home or handle login_widgets result
     print('Login attempted with: $email');
   }
 }

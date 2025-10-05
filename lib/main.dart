@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/get_it.dart';
+import 'core/helpers/app_prefs.dart';
 import 'core/helpers/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 import 'fitrix_app.dart';
@@ -16,7 +17,7 @@ void main() async {
   setupServiceLocator();
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
-  // await Prefs.init();
+  await Prefs.init();
   // await Hive.initFlutter();
 
   // final firebaseNotificationsService = di<NotificationService>();
