@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/get_it.dart';
 import 'core/helpers/app_prefs.dart';
 import 'core/helpers/bloc_observer.dart';
+import 'core/networking/token_manager.dart';
 import 'core/routing/app_router.dart';
 import 'fitrix_app.dart';
 
@@ -33,7 +34,7 @@ void main() async {
   //   log("🔥 Token on app start: $token");
   // }
   // log("❌${Prefs.getData(key: Constants.userToken)}");
-
+  await TokenManager.instance.init();
   runApp(
     DevicePreview(
       // enabled: kDebugMode,

@@ -78,6 +78,7 @@ class ApiService {
     Map<String, dynamic>? queryParams,
     Map<String, String>? headers,
     CancelToken? cancelToken,
+    Options? extraOptions, // extra Dio options to merge or override
   }) async {
     try {
       dev.log(
@@ -86,15 +87,34 @@ class ApiService {
       );
       dev.log('📦 Request Data: $data', name: 'ApiService');
 
+      Options options = Options(
+        headers: headers,
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      );
+
+      // Merge extraOptions if provided
+      if (extraOptions != null) {
+        options = options.copyWith(
+          headers: {...?options.headers, ...?extraOptions.headers},
+          contentType: extraOptions.contentType ?? options.contentType,
+          responseType: extraOptions.responseType ?? options.responseType,
+          followRedirects:
+              extraOptions.followRedirects ?? options.followRedirects,
+          validateStatus: extraOptions.validateStatus ?? options.validateStatus,
+          receiveTimeout: extraOptions.receiveTimeout ?? options.receiveTimeout,
+          sendTimeout: extraOptions.sendTimeout ?? options.sendTimeout,
+          extra: {...?options.extra, ...?extraOptions.extra},
+          method: extraOptions.method ?? options.method,
+          listFormat: extraOptions.listFormat ?? options.listFormat,
+        );
+      }
+
       final response = await _dio.post(
         endpoint,
         data: data,
         queryParameters: queryParams,
-        options: Options(
-          headers: headers,
-          followRedirects: false,
-          validateStatus: (status) => status != null && status < 500,
-        ),
+        options: options,
         cancelToken: cancelToken,
       );
 

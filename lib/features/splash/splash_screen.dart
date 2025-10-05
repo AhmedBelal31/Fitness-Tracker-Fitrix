@@ -1,8 +1,21 @@
+import 'package:fitrix/core/routing/navigation_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../core/networking/dio_helper.dart';
+import '../../core/routing/routes.dart';
 import '../../core/theming/app_colors.dart';
+import '../../core/theming/styles.dart';
+import '../auth/domain/repositories/auth_repository_impl.dart';
+import '../auth/presentation/cubits/auth_check/auth_check_cubit.dart';
+import '../profile/presentation/screens/complete_profile_screen.dart';
 import '../auth/presentation/screens/login_screen.dart';
+import '../auth/presentation/widgets/login_widgets/animated_fitness_icon.dart';
+import '../host/presentation/screens/host_screen.dart';
 import 'splash_screen_body.dart';
+// lib/features/auth/presentation/pages/splash_screen.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,11 +38,13 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _backgroundAnimation;
   late Animation<double> _exitFadeAnimation;
 
+  bool _hasNavigated = false;
+  String? _navigationRoute;
+
   @override
   void initState() {
     super.initState();
     _initializeAnimations();
-    _startAnimationSequence();
   }
 
   void _initializeAnimations() {
@@ -113,19 +128,40 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Wait for all animations to complete
     await Future.delayed(const Duration(milliseconds: 1500));
-
-    // Start exit animation and navigate
-    _exitController.forward();
-    await Future.delayed(const Duration(milliseconds: 300));
-
-    _navigateToLogin();
   }
 
-  void _navigateToLogin() {
+  void _onAuthCheckComplete(String route) {
+    if (_hasNavigated) return;
+
+    _navigationRoute = route;
+
+    // Start exit animation and navigate
+    _exitController.forward().then((_) {
+      if (mounted && !_hasNavigated) {
+        _navigateTo(route);
+      }
+    });
+  }
+
+  void _navigateTo(String route) {
+    if (_hasNavigated || !mounted) return;
+
+    _hasNavigated = true;
+
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const LoginScreen(),
+        pageBuilder: (context, animation, secondaryAnimation) {
+          // Determine which screen to navigate to
+          switch (route) {
+            case Routes.hostScreen:
+              return const HostScreen();
+            case Routes.completeProfileScreen:
+              return const CompleteProfileScreen();
+            case Routes.loginScreen:
+            default:
+              return const LoginScreen();
+          }
+        },
         transitionDuration: const Duration(milliseconds: 800),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           // Slide in from bottom with fade
@@ -162,20 +198,123 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorsManager.scaffoldBackground,
-      body: SplashScreenBody(
-        backgroundController: _backgroundController,
-        logoController: _logoController,
-        textController: _textController,
-        exitController: _exitController,
-        exitFadeAnimation: _exitFadeAnimation,
-        backgroundAnimation: _backgroundAnimation,
-        logoFadeAnimation: _logoFadeAnimation,
-        logoScaleAnimation: _logoScaleAnimation,
-        textSlideAnimation: _textSlideAnimation,
-        textFadeAnimation: _textFadeAnimation,
+    return BlocProvider(
+      create: (context) =>
+          AuthCheckCubit(AuthRepositoryImpl(ApiService()))..checkAuthStatus(),
+      child: BlocListener<AuthCheckCubit, AuthCheckState>(
+        listener: (context, state) async {
+          // Wait for animations to complete before navigating
+          if (state is AuthCheckAuthenticated) {
+            // Ensure animations have started
+            await _startAnimationSequence();
+            _onAuthCheckComplete(Routes.hostScreen);
+          } else if (state is AuthCheckNeedsProfileCompletion) {
+            await _startAnimationSequence();
+            _onAuthCheckComplete(Routes.completeProfileScreen);
+          } else if (state is AuthCheckUnauthenticated) {
+            await _startAnimationSequence();
+            _onAuthCheckComplete(Routes.loginScreen);
+          }
+        },
+        child: Scaffold(
+          backgroundColor: ColorsManager.scaffoldBackground,
+          body: SplashScreenBody(
+            backgroundController: _backgroundController,
+            logoController: _logoController,
+            textController: _textController,
+            exitController: _exitController,
+            exitFadeAnimation: _exitFadeAnimation,
+            backgroundAnimation: _backgroundAnimation,
+            logoFadeAnimation: _logoFadeAnimation,
+            logoScaleAnimation: _logoScaleAnimation,
+            textSlideAnimation: _textSlideAnimation,
+            textFadeAnimation: _textFadeAnimation,
+          ),
+        ),
       ),
     );
   }
 }
+
+// lib/features/auth/presentation/pages/splash_screen.dart
+// lib/features/auth/presentation/pages/splash_screen.dart
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+
+// class SplashScreen extends StatelessWidget {
+//   const SplashScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (context) =>
+//           AuthCheckCubit(AuthRepositoryImpl(ApiService()))..checkAuthStatus(),
+//       child: Scaffold(
+//         backgroundColor: ColorsManager.scaffoldBackground,
+//         body: Container(
+//           decoration: const BoxDecoration(
+//             gradient: ColorsManager.appBackgroundGradient,
+//           ),
+//           child: BlocListener<AuthCheckCubit, AuthCheckState>(
+//             listener: (context, state) {
+//               if (state is AuthCheckAuthenticated) {
+//                 // User is authenticated and has profile - go to home
+//                 Future.delayed(const Duration(milliseconds: 500), () {
+//                   if (context.mounted) {
+//                     context.pushReplacementNamed(Routes.hostScreen);
+//                   }
+//                 });
+//               } else if (state is AuthCheckNeedsProfileCompletion) {
+//                 // User is authenticated but needs to complete profile
+//                 Future.delayed(const Duration(milliseconds: 500), () {
+//                   if (context.mounted) {
+//                     context.pushReplacementNamed(Routes.completeProfileScreen);
+//                   }
+//                 });
+//               } else if (state is AuthCheckUnauthenticated) {
+//                 // User is not authenticated - go to login
+//                 Future.delayed(const Duration(milliseconds: 500), () {
+//                   if (context.mounted) {
+//                     context.pushReplacementNamed(Routes.loginScreen);
+//                   }
+//                 });
+//               }
+//             },
+//             child: Center(
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   const PulsingFitnessIcon(size: 120),
+//                   const SizedBox(height: 32),
+//                   Text(
+//                     'FITRIX',
+//                     style: TextStyles.headline1.copyWith(
+//                       fontSize: 32,
+//                       letterSpacing: 4,
+//                     ),
+//                   ),
+//                   const SizedBox(height: 8),
+//                   Text(
+//                     'Your Fitness Journey Starts Here',
+//                     style: TextStyles.subtitle2,
+//                   ),
+//                   const SizedBox(height: 48),
+//                   BlocBuilder<AuthCheckCubit, AuthCheckState>(
+//                     builder: (context, state) {
+//                       if (state is AuthCheckLoading) {
+//                         return const CircularProgressIndicator(
+//                           color: ColorsManager.primaryGreen,
+//                         );
+//                       }
+//                       return const SizedBox.shrink();
+//                     },
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

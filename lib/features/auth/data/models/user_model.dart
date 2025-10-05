@@ -23,6 +23,18 @@ class UserModel extends Equatable {
 
   // From JSON
   factory UserModel.fromJson(Map<String, dynamic> json) {
+    // Extract role safely as string from int or string JSON value
+    String roleString;
+    final roleJson = json['role'];
+    if (roleJson is int) {
+      // convert to string, or map to role names if needed
+      roleString = roleJson.toString();
+    } else if (roleJson is String) {
+      roleString = roleJson;
+    } else {
+      roleString = 'user';
+    }
+
     return UserModel(
       id: json['id'] as String?,
       userName:
@@ -30,7 +42,7 @@ class UserModel extends Equatable {
       email: json['email'] as String? ?? '',
       phoneNumber:
           json['phoneNumber'] as String? ?? json['phone'] as String? ?? '',
-      role: json['role'] as String? ?? 'user',
+      role: roleString,
       token: json['token'] as String?,
       createdAt: json['createdAt'] != null
           ? DateTime.tryParse(json['createdAt'] as String)

@@ -1,3 +1,6 @@
+import 'package:fitrix/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:fitrix/features/host/presentation/screens/host_screen.dart';
+import 'package:fitrix/features/profile/presentation/screens/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
@@ -19,6 +22,15 @@ class AppRouter {
         break;
       case Routes.registerScreen:
         screen = const RegisterScreen();
+        break;
+      case Routes.forgotPasswordScreen:
+        screen = const ForgotPasswordScreen();
+        break;
+      case Routes.completeProfileScreen:
+        screen = const CompleteProfileScreen();
+        break;
+      case Routes.hostScreen:
+        screen = const HostScreen();
         break;
       default:
         screen = const ErrorScreen();

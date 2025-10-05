@@ -163,6 +163,8 @@ class ColorsManager {
   static const Color advancedLevel = Color(0xFFFF7675);
   static const Color expertLevel = Color(0xFF6C5CE7);
 
+  static const Color buttonDisabledBackground = Color(0xFF444444);
+
   // 🎯 Helper Methods
   static Color withOpacity(Color color, double opacity) {
     return color.withOpacity(opacity);

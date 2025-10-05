@@ -1,4 +1,3 @@
-// lib/features/auth/presentation/widgets/register_animation_mixin.dart
 import 'package:flutter/material.dart';
 
 mixin RegisterAnimationMixin<T extends StatefulWidget>
