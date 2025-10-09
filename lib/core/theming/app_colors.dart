@@ -185,4 +185,10 @@ class ColorsManager {
     final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
     return hslDark.toColor();
   }
+
+  // Light theme colors (ADD THESE)
+  static const Color lightScaffoldBackground = Color(0xFFF5F5F5);
+  static const Color lightCardBackground = Color(0xFFFFFFFF);
+  static const Color lightPrimaryText = Color(0xFF1A1A1A);
+  static const Color lightSecondaryText = Color(0xFF6B7280);
 }

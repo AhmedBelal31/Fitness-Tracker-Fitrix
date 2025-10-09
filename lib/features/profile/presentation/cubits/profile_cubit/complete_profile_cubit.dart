@@ -2,7 +2,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/complete_profile_params.dart';
 import '../../../domain/profile_repository.dart';
-import 'profile_state.dart';
+import 'complete_profile_state.dart';
 
 class CompleteProfileCubit extends Cubit<CompleteProfileState> {
   final ProfileRepository _repository;

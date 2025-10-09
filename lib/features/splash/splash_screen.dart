@@ -1,6 +1,7 @@
 import 'package:fitrix/core/routing/navigation_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../core/helpers/constants.dart';
 import '../../core/networking/dio_helper.dart';
 import '../../core/routing/routes.dart';
 import '../../core/theming/app_colors.dart';
@@ -10,7 +11,7 @@ import '../auth/presentation/cubits/auth_check/auth_check_cubit.dart';
 import '../profile/presentation/screens/complete_profile_screen.dart';
 import '../auth/presentation/screens/login_screen.dart';
 import '../auth/presentation/widgets/login_widgets/animated_fitness_icon.dart';
-import '../host/presentation/screens/host_screen.dart';
+import '../host/presentation/screens/user_host_screen.dart';
 import 'splash_screen_body.dart';
 // lib/features/auth/presentation/pages/splash_screen.dart
 import 'package:flutter/material.dart';
@@ -153,8 +154,8 @@ class _SplashScreenState extends State<SplashScreen>
         pageBuilder: (context, animation, secondaryAnimation) {
           // Determine which screen to navigate to
           switch (route) {
-            case Routes.hostScreen:
-              return const HostScreen();
+            case Routes.userHostScreen:
+              return UserHostScreen();
             case Routes.completeProfileScreen:
               return const CompleteProfileScreen();
             case Routes.loginScreen:
@@ -207,7 +208,11 @@ class _SplashScreenState extends State<SplashScreen>
           if (state is AuthCheckAuthenticated) {
             // Ensure animations have started
             await _startAnimationSequence();
-            _onAuthCheckComplete(Routes.hostScreen);
+            _onAuthCheckComplete(
+              Constants.isUser
+                  ? Routes.userHostScreen
+                  : Routes.trainerHostScreen,
+            );
           } else if (state is AuthCheckNeedsProfileCompletion) {
             await _startAnimationSequence();
             _onAuthCheckComplete(Routes.completeProfileScreen);

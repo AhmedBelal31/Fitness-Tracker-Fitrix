@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/get_it.dart';
-import '../cubits/profile_cubit/profile_cubit.dart';
+import '../cubits/profile_cubit/complete_profile_cubit.dart';
 import '../widgets/complete_profile_widgets/complete_profile_screen_body.dart';
 
 class CompleteProfileScreen extends StatelessWidget {

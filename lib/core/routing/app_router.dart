@@ -1,5 +1,8 @@
 import 'package:fitrix/features/auth/presentation/screens/forgot_password_screen.dart';
-import 'package:fitrix/features/host/presentation/screens/host_screen.dart';
+import 'package:fitrix/features/home/presentation/screens/trainer_home_screen.dart';
+import 'package:fitrix/features/home/presentation/screens/user_home_screen.dart';
+import 'package:fitrix/features/host/presentation/screens/trainer_host_screen.dart';
+import 'package:fitrix/features/host/presentation/screens/user_host_screen.dart';
 import 'package:fitrix/features/profile/presentation/screens/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
@@ -29,8 +32,16 @@ class AppRouter {
       case Routes.completeProfileScreen:
         screen = const CompleteProfileScreen();
         break;
-      case Routes.hostScreen:
-        screen = const HostScreen();
+      case Routes.userHostScreen:
+        screen = UserHostScreen();
+      case Routes.trainerHostScreen:
+        screen = TrainerHostScreen();
+        break;
+
+      case Routes.userHomeScreen:
+        screen = UserHomeScreen();
+      case Routes.trainerHomeScreen:
+        screen = TrainerHomeScreen();
         break;
       default:
         screen = const ErrorScreen();

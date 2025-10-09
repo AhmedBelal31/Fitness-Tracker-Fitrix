@@ -20,814 +20,326 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
-  static String m0(pageNumber) => "تم حفظ الصفحة ${pageNumber} بنجاح";
-
-  static String m1(itemName) => "هل أنت متأكد من أنك تريد حذف \"${itemName}\"؟";
-
-  static String m2(min, max) => "أدخل رقم الصفحة (${min} - ${max})";
-
-  static String m3(challengeTitle) =>
-      "هل أنت متأكد من أنك تريد الانضمام إلى تحدي \"${challengeTitle}\"؟";
-
-  static String m4(challengeTitle) =>
-      "هل أنت متأكد أنك تريد مغادرة ${challengeTitle}؟";
-
-  static String m5(current, total) => "صفحة ${current} من ${total}";
-
-  static String m6(totalPages) =>
-      "رقم الصفحة المدخل أكبر من عدد الصفحات المتاحة (${totalPages})";
-
-  static String m7(error) => "فشل في تحميل ملف PDF: ${error}";
-
-  static String m8(pageNumber) => "محفوظة: صفحة ${pageNumber}";
-
-  static String m9(link) => "شارك التحدي معاك 💪\n${link}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "Time": MessageLookupByLibrary.simpleMessage("الوقت"),
-    "account": MessageLookupByLibrary.simpleMessage("حسابي"),
-    "account_created_successfully": MessageLookupByLibrary.simpleMessage(
-      "🎉يلا بينا نكمّل! حسابك جاهز، فاضل بس شوية حاجات بسيطة.",
+    "about": MessageLookupByLibrary.simpleMessage("حول"),
+    "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+    "achievements": MessageLookupByLibrary.simpleMessage("الإنجازات"),
+    "active_trainees": MessageLookupByLibrary.simpleMessage(
+      "المتدربين النشطين",
     ),
-    "achievement": MessageLookupByLibrary.simpleMessage("الانجازات"),
-    "achievement_unlocked": MessageLookupByLibrary.simpleMessage(
-      "إنجازات محققة",
+    "add_first_trainee": MessageLookupByLibrary.simpleMessage(
+      "أضف أول متدرب لك للبدء",
     ),
-    "achiever_user": MessageLookupByLibrary.simpleMessage("مستخدم أتشيڤر"),
-    "activities_help_you": MessageLookupByLibrary.simpleMessage(
-      "حاجات ممكن تساعدك 💙",
-    ),
-    "add_motivational_quote": MessageLookupByLibrary.simpleMessage(
-      "إضافة اقتباس ملهم",
-    ),
-    "add_new_challenge": MessageLookupByLibrary.simpleMessage(
-      "اضافة تحدي جديد",
-    ),
-    "add_quote": MessageLookupByLibrary.simpleMessage("إضافة اقتباس جديد"),
+    "add_trainee": MessageLookupByLibrary.simpleMessage("إضافة متدرب"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
-    "amount": MessageLookupByLibrary.simpleMessage("الكمية"),
-    "april": MessageLookupByLibrary.simpleMessage("أبريل"),
-    "asr": MessageLookupByLibrary.simpleMessage("العصر"),
-    "august": MessageLookupByLibrary.simpleMessage("أغسطس"),
-    "azkar": MessageLookupByLibrary.simpleMessage("الأذكار"),
-    "back_to_home": MessageLookupByLibrary.simpleMessage("العودة للرئيسية"),
-    "back_to_last_page": MessageLookupByLibrary.simpleMessage(
-      "العودة للصفحة الأخيرة",
-    ),
-    "bad": MessageLookupByLibrary.simpleMessage("سيئ"),
-    "bad_mood_message_1": MessageLookupByLibrary.simpleMessage(
-      "مش عارف إيه اللي مضايقك، بس أنا هنا لو عايز تتكلم 🤗",
-    ),
-    "bad_mood_message_2": MessageLookupByLibrary.simpleMessage(
-      "اليوم صعب؟ خلاص، بكرة هيبقى أحسن إن شاء الله 💙",
-    ),
-    "bad_mood_message_3": MessageLookupByLibrary.simpleMessage(
-      "حاسس إنك مش تمام؟ عادي كلنا بنمر بأيام زي دي",
-    ),
-    "bad_mood_message_4": MessageLookupByLibrary.simpleMessage(
-      "مش لازم تكون كويس طول الوقت، أحياناً نحتاج نحس بالحزن",
-    ),
-    "bad_mood_message_5": MessageLookupByLibrary.simpleMessage(
-      "هي مجرد يوم وحش، مش حياة وحشة كلها 🌅",
-    ),
-    "bad_mood_message_6": MessageLookupByLibrary.simpleMessage(
-      "عايز نتكلم شوية؟ أو عايز مساحة لوحدك؟",
-    ),
-    "bad_mood_message_7": MessageLookupByLibrary.simpleMessage(
-      "اعرف إن الوقت ده صعب عليك، بس إنت أقوى من كده 💪",
-    ),
-    "badge": MessageLookupByLibrary.simpleMessage("الشارة"),
-    "best_achiever": MessageLookupByLibrary.simpleMessage("أفضل منجز"),
-    "birth_date_question": MessageLookupByLibrary.simpleMessage(
-      "ما تاريخ الميلاد؟",
-    ),
-    "book": MessageLookupByLibrary.simpleMessage("كتاب"),
-    "book_completed": MessageLookupByLibrary.simpleMessage("كتاب مكتمل"),
-    "book_finished_successfully": MessageLookupByLibrary.simpleMessage(
-      "لقد أنهيت الكتاب بنجاح",
-    ),
-    "bookmark_saved": m0,
-    "call_someone": MessageLookupByLibrary.simpleMessage("اتكلم مع حد قريب"),
-    "call_someone_desc": MessageLookupByLibrary.simpleMessage("صديق أو أهلك"),
-    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
-    "cannot_set_future_prayer": MessageLookupByLibrary.simpleMessage(
-      "لا يمكنك تعيين حالة الصلاة ليوم لم يأتِ بعد.",
-    ),
-    "cannot_view_future_day": MessageLookupByLibrary.simpleMessage(
-      "لا يمكن عرض صلوات يوم لم يأتِ بعد",
-    ),
-    "categories_update_success": MessageLookupByLibrary.simpleMessage(
-      "تم تحديث قائمة الفئات بنجاح ✅",
-    ),
-    "category_challenges_badge": MessageLookupByLibrary.simpleMessage(
-      "شارة فئات التحديات",
-    ),
-    "challenge_created_successfully": MessageLookupByLibrary.simpleMessage(
-      "تم انشاء التحدي بنجاح",
-    ),
-    "challenges": MessageLookupByLibrary.simpleMessage("التحديات"),
-    "challenges_badge": MessageLookupByLibrary.simpleMessage("شارة التحديات"),
-    "challenges_badges": MessageLookupByLibrary.simpleMessage("شارات التحديات"),
-    "change_photo": MessageLookupByLibrary.simpleMessage(
-      "تغيير الصورة الشخصية",
-    ),
+    "app_name": MessageLookupByLibrary.simpleMessage("فيتريكس"),
+    "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
+    "arms": MessageLookupByLibrary.simpleMessage("الذراعين"),
+    "avg_duration": MessageLookupByLibrary.simpleMessage("متوسط المدة"),
+    "body_fat": MessageLookupByLibrary.simpleMessage("دهون الجسم"),
+    "body_progress": MessageLookupByLibrary.simpleMessage("تقدم الجسم"),
+    "change_photo": MessageLookupByLibrary.simpleMessage("تغيير الصورة"),
     "change_your_password": MessageLookupByLibrary.simpleMessage(
       "تغيير كلمة المرور",
     ),
-    "choose_a_motivational_quote": MessageLookupByLibrary.simpleMessage(
-      "اختر اقتباسًا تحفيزيًا",
-    ),
+    "chest": MessageLookupByLibrary.simpleMessage("الصدر"),
     "choose_from_gallery": MessageLookupByLibrary.simpleMessage(
-      "اختر صورة من المعرض",
+      "اختر من المعرض",
     ),
-    "choose_watching_method": MessageLookupByLibrary.simpleMessage(
-      "اختر طريقة المشاهدة",
-    ),
-    "choose_what_you_like": MessageLookupByLibrary.simpleMessage(
-      "اختار اللي يعجبك 💛",
-    ),
-    "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
-    "completed_successfully": MessageLookupByLibrary.simpleMessage(
-      "خلصت كل حاجة؟ إنت كده واحد مننا بجد!😍",
-    ),
+    "cm": MessageLookupByLibrary.simpleMessage("سم"),
+    "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
+    "completion": MessageLookupByLibrary.simpleMessage("الإنجاز"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور الجديدة",
     ),
-    "congratulations": MessageLookupByLibrary.simpleMessage("🎉 مبروك! 🎉"),
-    "congratulations_all_challenges_completed":
-        MessageLookupByLibrary.simpleMessage(
-          "🎉 مبروك! تم إنجاز جميع التحديات!",
-        ),
-    "congratulations_message": MessageLookupByLibrary.simpleMessage(
-      "لقد أكملت قراءة الكتاب بنجاح",
-    ),
-    "congratulations_title": MessageLookupByLibrary.simpleMessage("تهنئة! 🎉"),
+    "contact_support": MessageLookupByLibrary.simpleMessage("الاتصال بالدعم"),
     "contact_us_help": MessageLookupByLibrary.simpleMessage(
-      "أو يمكنك التواصل معنا للمساعدة",
+      "تحتاج مساعدة؟ اتصل بفريق الدعم الخاص بنا.",
     ),
     "continue_with_apple": MessageLookupByLibrary.simpleMessage(
-      "سجّل دخولك عبر Apple",
+      "المتابعة باستخدام أبل",
     ),
     "continue_with_facebook": MessageLookupByLibrary.simpleMessage(
-      "سجّل دخولك عبر Facebook",
+      "المتابعة باستخدام فيسبوك",
     ),
     "continue_with_google": MessageLookupByLibrary.simpleMessage(
-      "سجّل دخولك عبر Google",
+      "المتابعة باستخدام جوجل",
     ),
     "continuex": MessageLookupByLibrary.simpleMessage("متابعة"),
-    "countdown": MessageLookupByLibrary.simpleMessage("العد التنازلي"),
-    "courses": MessageLookupByLibrary.simpleMessage("دورات تعليمية"),
-    "create_zikr": MessageLookupByLibrary.simpleMessage("أنشئ ذكرك الخاص"),
-    "daily_challenges": MessageLookupByLibrary.simpleMessage("تحديات اليوم"),
-    "daily_completion_message_1": MessageLookupByLibrary.simpleMessage(
-      "لقد أنجزت جميع تحدياتك اليوم! استمر في هذا الإنجاز الرائع 💪✨",
-    ),
-    "daily_completion_message_2": MessageLookupByLibrary.simpleMessage(
-      "جميع التحديات مكتملة! أنت محارب حقيقي 🏆",
-    ),
-    "daily_completion_message_3": MessageLookupByLibrary.simpleMessage(
-      "100% مكتمل! هذا ما أسميه التفوق 🚀",
-    ),
-    "daily_completion_title_1": MessageLookupByLibrary.simpleMessage(
-      "🎉 مبروك! يوم مثالي!",
-    ),
-    "daily_completion_title_2": MessageLookupByLibrary.simpleMessage(
-      "🌟 إنجاز رائع!",
-    ),
-    "daily_completion_title_3": MessageLookupByLibrary.simpleMessage(
-      "🔥 يوم مليء بالإنجاز!",
-    ),
-    "daily_notification_time": MessageLookupByLibrary.simpleMessage(
-      "وقت الإشعار اليومي",
-    ),
-    "daily_notifications": MessageLookupByLibrary.simpleMessage(
-      "الإشعارات اليومية",
-    ),
-    "daily_progress": MessageLookupByLibrary.simpleMessage("التقدم اليومي"),
-    "daily_reading_challenge": MessageLookupByLibrary.simpleMessage(
-      "تحدي القراءة اليومي",
-    ),
-    "date_of_birth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
-    "day": MessageLookupByLibrary.simpleMessage("اليوم"),
-    "days": MessageLookupByLibrary.simpleMessage("يوم"),
-    "days_badge": MessageLookupByLibrary.simpleMessage("شارات الأيام"),
-    "december": MessageLookupByLibrary.simpleMessage("ديسمبر"),
-    "deep_breathing": MessageLookupByLibrary.simpleMessage("تنفس عميق"),
-    "deep_breathing_desc": MessageLookupByLibrary.simpleMessage(
-      "5 دقايق تنفس هادي",
-    ),
-    "default_achiever": MessageLookupByLibrary.simpleMessage("متحدٍ جديد"),
-    "delete": MessageLookupByLibrary.simpleMessage("احذف"),
-    "delete_confirmation": MessageLookupByLibrary.simpleMessage("تأكيد الحذف"),
-    "delete_confirmation_message": m1,
-    "develop_your_self": MessageLookupByLibrary.simpleMessage("طور نفسك"),
-    "dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "create_workout": MessageLookupByLibrary.simpleMessage("إنشاء تمرين"),
+    "current_weight": MessageLookupByLibrary.simpleMessage("الوزن الحالي"),
+    "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "didnt_receive_code": MessageLookupByLibrary.simpleMessage(
-      "لم يصلك الرمز؟",
+      "لم تتلق رمزًا.",
     ),
-    "done": MessageLookupByLibrary.simpleMessage("تم"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
-      "ليس لديك حساب بعد؟",
+      "ليس لديك حساب؟",
     ),
-    "edit_challenge_not_allowed": MessageLookupByLibrary.simpleMessage(
-      "لا يمكن تعديل التحدي إلا في يومه الحالي",
-    ),
-    "edit_notification": MessageLookupByLibrary.simpleMessage("تعديل الإشعار"),
-    "edit_your_message": MessageLookupByLibrary.simpleMessage("عدل رسالتك"),
+    "duration": MessageLookupByLibrary.simpleMessage("المدة"),
     "edit_your_profile": MessageLookupByLibrary.simpleMessage(
-      "تعديل ملفي الشخصي",
+      "تعديل الملف الشخصي",
     ),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
-    "end_of_book": MessageLookupByLibrary.simpleMessage("نهاية الكتاب"),
-    "enter_amount": MessageLookupByLibrary.simpleMessage("أدخل الكمية"),
     "enter_code": MessageLookupByLibrary.simpleMessage("أدخل الرمز"),
-    "enter_custom_time": MessageLookupByLibrary.simpleMessage("أدخل وقت مخصص"),
-    "enter_hours": MessageLookupByLibrary.simpleMessage("أدخل عدد الساعات"),
-    "enter_minutes": MessageLookupByLibrary.simpleMessage("أدخل عدد الدقائق"),
     "enter_new_password": MessageLookupByLibrary.simpleMessage(
-      "أدخل كلمة مرور جديدة",
-    ),
-    "enter_other_number": MessageLookupByLibrary.simpleMessage(
-      "أدخل رقماً آخر",
-    ),
-    "enter_page_number": m2,
-    "enter_time_duration": MessageLookupByLibrary.simpleMessage(
-      "أدخل مدة الوقت",
+      "أدخل كلمة المرور الجديدة",
     ),
     "enter_your_email_to_receive_reset_code":
         MessageLookupByLibrary.simpleMessage(
-          "أدخل بريدك الإلكتروني لنرسل لك رمز إعادة التعيين",
+          "أدخل بريدك الإلكتروني لتلقي رمز إعادة التعيين",
         ),
     "enter_your_new_password": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور الجديدة",
     ),
-    "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "error_400": MessageLookupByLibrary.simpleMessage(
-      "الإيميل اللي دخلته مش موجود، جرب إيميل تاني.",
+      "طلب غير صالح - الطلب غير صحيح أو لا يمكن معالجته",
     ),
     "error_401": MessageLookupByLibrary.simpleMessage(
-      "البريد الإلكتروني أو كلمة المرور التي أدخلتها غير صحيحة. يرجى المحاولة مرة أخرى.",
+      "غير مصرح - يرجى تسجيل الدخول للمتابعة",
     ),
     "error_401_403": MessageLookupByLibrary.simpleMessage(
-      "يبدو أنك غير مسجل، سجل دخولك وجرب تاني.",
+      "محظور - ليس لديك إذن للوصول إلى هذا المورد",
     ),
+    "error_403": MessageLookupByLibrary.simpleMessage("محظور - تم رفض الوصول"),
     "error_404": MessageLookupByLibrary.simpleMessage(
-      "الحاجة اللي بتدور عليها مش موجودة، حاول لاحقًا.",
+      "غير موجود - المورد المطلوب غير موجود",
     ),
     "error_405": MessageLookupByLibrary.simpleMessage(
-      "فيه مشكلة في الطلب، حاول كمان شوية.",
+      "الطريقة غير مسموح بها - طريقة الطلب غير مدعومة",
     ),
     "error_406": MessageLookupByLibrary.simpleMessage(
-      "فيه حاجة مش متوافقة، جرب مرة تانية.",
+      "غير مقبول - لا يمكن للخادم إنتاج استجابة تطابق الطلب",
     ),
     "error_408": MessageLookupByLibrary.simpleMessage(
-      "الطلب أخد وقت طويل، جرب كمان شوية.",
+      "انتهت مهلة الطلب - استغرق الطلب وقتاً طويلاً في المعالجة",
     ),
     "error_409": MessageLookupByLibrary.simpleMessage(
-      "فيه تعارض في البيانات، جرب تاني بعد لحظات.",
+      "تعارض - الطلب يتعارض مع الحالة الحالية للخادم",
     ),
     "error_410": MessageLookupByLibrary.simpleMessage(
-      "المحتوى اللي بتدور عليه مش متاح دلوقتي.",
+      "لم يعد متاحاً - المورد المطلوب لم يعد متاحاً",
     ),
     "error_411": MessageLookupByLibrary.simpleMessage(
-      "فيه بيانات ناقصة، جرب تضيف كل المطلوب.",
+      "طول المحتوى مطلوب - رأس طول المحتوى مفقود",
     ),
     "error_412": MessageLookupByLibrary.simpleMessage(
-      "فيه حاجة مش متوافقة مع الشروط، جرب تاني.",
+      "فشل الشرط المسبق - فشل واحد أو أكثر من الشروط في الطلب",
     ),
     "error_413": MessageLookupByLibrary.simpleMessage(
-      "البيانات اللي دخلتها كبيرة جدًا، حاول تقلل حجمها.",
+      "الحمولة كبيرة جداً - الطلب أكبر مما يمكن للخادم معالجته",
     ),
     "error_414": MessageLookupByLibrary.simpleMessage(
-      "اللينك اللي استخدمته طويل جدًا، جرب لينك أقصر.",
+      "عنوان URI طويل جداً - عنوان URI للطلب طويل جداً",
     ),
     "error_415": MessageLookupByLibrary.simpleMessage(
-      "فيه مشكلة في الملف اللي رفعته، جرب صيغة مختلفة.",
+      "نوع الوسائط غير مدعوم - نوع الوسائط غير مدعوم",
     ),
     "error_422": MessageLookupByLibrary.simpleMessage(
-      "البيانات مش واضحة، تأكد منها وجرب تاني.",
+      "كيان لا يمكن معالجته - الطلب صحيح لكن يحتوي على بيانات غير صالحة",
     ),
     "error_429": MessageLookupByLibrary.simpleMessage(
-      "انت طلبت كتير في وقت قليل، جرب كمان شوية.",
+      "طلبات كثيرة جداً - لقد أرسلت طلبات كثيرة جداً في وقت معين",
     ),
     "error_500": MessageLookupByLibrary.simpleMessage(
-      "فيه مشكلة عندنا، حاول لاحقًا.",
+      "خطأ داخلي في الخادم - حدث خطأ ما في الخادم",
     ),
     "error_501": MessageLookupByLibrary.simpleMessage(
-      "الميزة دي مش متاحة دلوقتي، حاول لاحقًا.",
+      "غير منفذ - الخادم لا يدعم هذه الوظيفة",
     ),
     "error_502": MessageLookupByLibrary.simpleMessage(
-      "فيه مشكلة في الاتصال بالسيرفر، جرب كمان شوية.",
+      "بوابة سيئة - استجابة غير صالحة من الخادم الأولي",
     ),
     "error_503": MessageLookupByLibrary.simpleMessage(
-      "الخدمة مش متاحة دلوقتي، حاول لاحقًا.",
+      "الخدمة غير متاحة - الخادم غير قادر مؤقتاً على معالجة الطلب",
     ),
     "error_504": MessageLookupByLibrary.simpleMessage(
-      "الاتصال أخد وقت طويل، حاول تاني.",
+      "انتهت مهلة البوابة - فشل الخادم الأولي في الاستجابة في الوقت المناسب",
     ),
     "error_505": MessageLookupByLibrary.simpleMessage(
-      "الطلب اللي بعته مش مدعوم، جرب طريقة تانية.",
+      "إصدار HTTP غير مدعوم - إصدار HTTP غير مدعوم",
+    ),
+    "error_cancelled": MessageLookupByLibrary.simpleMessage(
+      "تم إلغاء الطلب - تم إلغاء الطلب",
+    ),
+    "error_connection": MessageLookupByLibrary.simpleMessage(
+      "خطأ في الاتصال - غير قادر على الاتصال بالخادم",
+    ),
+    "error_loading_data": MessageLookupByLibrary.simpleMessage(
+      "خطأ في تحميل البيانات",
+    ),
+    "error_network": MessageLookupByLibrary.simpleMessage(
+      "خطأ في الشبكة - يرجى التحقق من اتصال الإنترنت",
+    ),
+    "error_timeout": MessageLookupByLibrary.simpleMessage(
+      "انتهت مهلة الاتصال - استغرق الطلب وقتاً طويلاً",
     ),
     "error_unexpected": MessageLookupByLibrary.simpleMessage(
-      "حصلت مشكلة غير متوقعة، حاول لاحقًا.",
+      "خطأ غير متوقع - حدث شيء غير متوقع",
     ),
-    "every": MessageLookupByLibrary.simpleMessage("كل"),
-    "every_day": MessageLookupByLibrary.simpleMessage("كل يوم"),
-    "failed_to_load_data": MessageLookupByLibrary.simpleMessage(
-      "فشل تحميل البيانات",
-    ),
-    "failed_to_load_interests": MessageLookupByLibrary.simpleMessage(
-      "فشل في تحميل الاهتمامات",
-    ),
-    "failed_to_load_questions": MessageLookupByLibrary.simpleMessage(
-      "فشل تحميل الاسئلة",
-    ),
+    "exercises": MessageLookupByLibrary.simpleMessage("التمارين"),
     "failed_to_update_profile": MessageLookupByLibrary.simpleMessage(
-      "حدث خطأ أثناء تحديث الملف الشخصي",
+      "فشل تحديث الملف الشخصي",
     ),
-    "fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
-    "february": MessageLookupByLibrary.simpleMessage("فبراير"),
+    "filter": MessageLookupByLibrary.simpleMessage("تصفية"),
     "finish": MessageLookupByLibrary.simpleMessage("إنهاء"),
     "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
-    "follow": MessageLookupByLibrary.simpleMessage("متابعة"),
-    "followers": MessageLookupByLibrary.simpleMessage("المتابعون"),
-    "followers_list": MessageLookupByLibrary.simpleMessage("قائمة المتابعين"),
-    "following": MessageLookupByLibrary.simpleMessage("تتابع"),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
-    "fri": MessageLookupByLibrary.simpleMessage("جمعة"),
-    "friday": MessageLookupByLibrary.simpleMessage("الجمعة"),
-    "gender": MessageLookupByLibrary.simpleMessage("النوع"),
-    "go": MessageLookupByLibrary.simpleMessage("اذهب"),
-    "go_to_page": MessageLookupByLibrary.simpleMessage("الذهاب إلى صفحة"),
-    "goal_achieved_message": MessageLookupByLibrary.simpleMessage(
-      "استمر وحقق المزيد من الإنجازات!",
-    ),
-    "goal_achieved_title": MessageLookupByLibrary.simpleMessage(
-      "🎉 مبروك! وصلت لهدفك!",
-    ),
-    "goal_message_1": MessageLookupByLibrary.simpleMessage(
-      "🎉 مبروك! خلصت التحدي بنجاح!",
-    ),
-    "goal_message_10": MessageLookupByLibrary.simpleMessage(
-      "📈 تقدّم مستمر! كمل كده.",
-    ),
-    "goal_message_2": MessageLookupByLibrary.simpleMessage(
-      "🔥 شغل جامد! تحدي خلص.",
-    ),
-    "goal_message_3": MessageLookupByLibrary.simpleMessage(
-      "👏 برافو! التحدي اتقفل.",
-    ),
-    "goal_message_4": MessageLookupByLibrary.simpleMessage(
-      "🚀 ممتاز! خطوة جديدة لقدام.",
-    ),
-    "goal_message_5": MessageLookupByLibrary.simpleMessage(
-      "💪 قوة وعزيمة! التحدي خلص.",
-    ),
-    "goal_message_6": MessageLookupByLibrary.simpleMessage(
-      "✨ رائع، خلصت التحدي بكل نجاح.",
-    ),
-    "goal_message_7": MessageLookupByLibrary.simpleMessage(
-      "🌟 شاطر! تحدي جديد وراك.",
-    ),
-    "goal_message_8": MessageLookupByLibrary.simpleMessage(
-      "🥳 هايل، خلصت التحدي!",
-    ),
-    "goal_message_9": MessageLookupByLibrary.simpleMessage(
-      "🏆 إنجاز جديد! التحدي خلص.",
-    ),
-    "goal_title_1": MessageLookupByLibrary.simpleMessage("🎉 مبروك!"),
-    "goal_title_10": MessageLookupByLibrary.simpleMessage("📈 تقدّم!"),
-    "goal_title_2": MessageLookupByLibrary.simpleMessage("🔥 هايل!"),
-    "goal_title_3": MessageLookupByLibrary.simpleMessage("👏 برافو!"),
-    "goal_title_4": MessageLookupByLibrary.simpleMessage("🚀 عظيم!"),
-    "goal_title_5": MessageLookupByLibrary.simpleMessage("💪 قوي!"),
-    "goal_title_6": MessageLookupByLibrary.simpleMessage("✨ ممتاز!"),
-    "goal_title_7": MessageLookupByLibrary.simpleMessage("🌟 رائع!"),
-    "goal_title_8": MessageLookupByLibrary.simpleMessage("🥳 جميل!"),
-    "goal_title_9": MessageLookupByLibrary.simpleMessage("🏆 بطل!"),
-    "good": MessageLookupByLibrary.simpleMessage("جيد"),
-    "good_progress_keep_going": MessageLookupByLibrary.simpleMessage(
-      "تقدم جيد! استمر 💪",
-    ),
-    "got_it": MessageLookupByLibrary.simpleMessage("فهمت"),
-    "great": MessageLookupByLibrary.simpleMessage("رائع"),
-    "great_achievement": MessageLookupByLibrary.simpleMessage("إنجاز رائع!"),
-    "great_your_todays_plan_almost_done": MessageLookupByLibrary.simpleMessage(
-      "رائع! أوشكت على إنهاء خطتك لليوم",
-    ),
-    "helpful_suggestions": MessageLookupByLibrary.simpleMessage(
-      "اقتراحات تخليك أحسن",
-    ),
-    "hope_you_enjoyed_reading": MessageLookupByLibrary.simpleMessage(
-      "نأمل أن تكون قد استمتعت بالقراءة\nوحصلت على فائدة كبيرة",
-    ),
-    "hour_suffix": MessageLookupByLibrary.simpleMessage("س"),
-    "hours": MessageLookupByLibrary.simpleMessage("ساعات"),
-    "how_are_you_feeling_today": MessageLookupByLibrary.simpleMessage(
-      "كيف تشعر اليوم؟",
-    ),
-    "how_often_do_you_want_to_do_it": MessageLookupByLibrary.simpleMessage(
-      "كم مرة تريد أن تفعل ذلك؟",
-    ),
-    "im_here_for_you": MessageLookupByLibrary.simpleMessage("أنا معاك ❤️"),
-    "image_uploaded_successfully": MessageLookupByLibrary.simpleMessage(
-      "تم حفظ الصور بنجاح",
-    ),
-    "in_app": MessageLookupByLibrary.simpleMessage("داخل التطبيق"),
-    "in_jamaah": MessageLookupByLibrary.simpleMessage("في جماعة"),
-    "interests": MessageLookupByLibrary.simpleMessage("الاهتمامات"),
-    "invalidAction": MessageLookupByLibrary.simpleMessage("إجراء غير صالح"),
-    "invalid_amount": MessageLookupByLibrary.simpleMessage("الكمية غير صالحة"),
-    "invalid_time_duration": MessageLookupByLibrary.simpleMessage(
-      "مدة وقت غير صحيحة",
-    ),
-    "isha": MessageLookupByLibrary.simpleMessage("العشاء"),
-    "january": MessageLookupByLibrary.simpleMessage("يناير"),
-    "join_challenge": MessageLookupByLibrary.simpleMessage("انضم إلى التحدي"),
-    "join_challenge_confirmation_message": m3,
-    "join_challenge_confirmation_title": MessageLookupByLibrary.simpleMessage(
-      "انضمام للتحدي",
-    ),
-    "join_now": MessageLookupByLibrary.simpleMessage("انضم الآن"),
-    "join_team": MessageLookupByLibrary.simpleMessage("انضم إلى الفريق"),
-    "join_them": MessageLookupByLibrary.simpleMessage("انضم إليهم"),
-    "joining": MessageLookupByLibrary.simpleMessage("جاري الانضمام..."),
-    "july": MessageLookupByLibrary.simpleMessage("يوليو"),
-    "june": MessageLookupByLibrary.simpleMessage("يونيو"),
-    "knowledge_gained": MessageLookupByLibrary.simpleMessage("معرفة مكتسبة"),
+    "goals": MessageLookupByLibrary.simpleMessage("الأهداف"),
+    "help_support": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
+    "hips": MessageLookupByLibrary.simpleMessage("الأرداف"),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "in_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "kg": MessageLookupByLibrary.simpleMessage("كجم"),
     "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
-    "last_name": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
-    "last_saved_page": MessageLookupByLibrary.simpleMessage("آخر صفحة محفوظة"),
-    "last_week_progress": MessageLookupByLibrary.simpleMessage(
-      "تقدم الأسبوع الماضي",
-    ),
-    "late": MessageLookupByLibrary.simpleMessage("متأخر"),
-    "leave_challenge": MessageLookupByLibrary.simpleMessage("مغادرة التحدي"),
-    "leave_challenge_confirmation_message": m4,
-    "leave_challenge_confirmation_title": MessageLookupByLibrary.simpleMessage(
-      "مغادرة التحدي",
-    ),
-    "leave_now": MessageLookupByLibrary.simpleMessage("غادر الآن"),
-    "leaving": MessageLookupByLibrary.simpleMessage("جاري المغادرة..."),
-    "lesson": MessageLookupByLibrary.simpleMessage("درس"),
-    "let_us_know_about_yourself": MessageLookupByLibrary.simpleMessage(
-      "دعنا نتعرف عليك",
-    ),
-    "like": MessageLookupByLibrary.simpleMessage("إعجاب"),
-    "likes": MessageLookupByLibrary.simpleMessage("الإعجابات"),
-    "listen_music": MessageLookupByLibrary.simpleMessage("اسمع موسيقى"),
-    "listen_music_desc": MessageLookupByLibrary.simpleMessage("أغنية بتحبها"),
-    "loading": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
-    "loading_participants": MessageLookupByLibrary.simpleMessage(
-      "جارٍ تحميل المشاركين...",
-    ),
-    "login_widgets": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "last_name": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
+    "last_workout": MessageLookupByLibrary.simpleMessage("آخر تمرين"),
+    "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل..."),
+    "log_measurement": MessageLookupByLibrary.simpleMessage("تسجيل القياس"),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-    "logout_confirmation_message": MessageLookupByLibrary.simpleMessage(
-      "هل أنت متأكد من أنك تريد تسجيل الخروج؟",
-    ),
-    "maghrib": MessageLookupByLibrary.simpleMessage("المغرب"),
-    "male": MessageLookupByLibrary.simpleMessage("ذكر"),
-    "march": MessageLookupByLibrary.simpleMessage("مارس"),
-    "may": MessageLookupByLibrary.simpleMessage("مايو"),
-    "min_suffix": MessageLookupByLibrary.simpleMessage("د"),
-    "minutes": MessageLookupByLibrary.simpleMessage("دقائق"),
-    "missed": MessageLookupByLibrary.simpleMessage("فاتتني"),
-    "mon": MessageLookupByLibrary.simpleMessage("إثنين"),
-    "monday": MessageLookupByLibrary.simpleMessage("الاثنين"),
-    "mood_not_detected": MessageLookupByLibrary.simpleMessage(
-      "لم أتمكن من تحديد الحالة المزاجية للمستخدم.",
-    ),
-    "mood_save_failed": MessageLookupByLibrary.simpleMessage(
-      "فشل في حفظ الحالة المزاجية للمستخدم.",
-    ),
+    "manage_trainees": MessageLookupByLibrary.simpleMessage("إدارة المتدربين"),
+    "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
+    "member_since": MessageLookupByLibrary.simpleMessage("عضو منذ"),
+    "minutes": MessageLookupByLibrary.simpleMessage("دقيقة"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
-    "motivational_join_challenges": MessageLookupByLibrary.simpleMessage(
-      "جاهز للتحدي القادم؟ \n💪 ارجع وشارك التحديات الآن!",
-    ),
-    "my_challenges": MessageLookupByLibrary.simpleMessage("تحدياتي"),
-    "need_personal_space": MessageLookupByLibrary.simpleMessage(
-      "عايز مساحة لوحدي",
-    ),
-    "new_password": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
-    "next": MessageLookupByLibrary.simpleMessage("التالي"),
-    "nice_start_continue_your_challenges": MessageLookupByLibrary.simpleMessage(
-      "بداية جيدة! أكمل تحدياتك 🔥",
-    ),
-    "no": MessageLookupByLibrary.simpleMessage("لا"),
-    "no_challenge_images_subtitle": MessageLookupByLibrary.simpleMessage(
-      "اضغط على زر + لإضافة صور التحدي الخاصة بك.",
-    ),
-    "no_challenge_images_title": MessageLookupByLibrary.simpleMessage(
-      "لا توجد صور بعد! 😊",
-    ),
-    "no_challenges_available_for_this_category":
-        MessageLookupByLibrary.simpleMessage("لا توجد تحديات متاحة لهذه الفئة"),
-    "no_challenges_for_now": MessageLookupByLibrary.simpleMessage(
-      "لا توجد تحديات لهذا اليوم",
-    ),
-    "no_challenges_today": MessageLookupByLibrary.simpleMessage(
-      "لا توجد تحديات لهذا اليوم بعد! أضف أو انضم 😊",
-    ),
-    "no_courses_available_for_this_category":
-        MessageLookupByLibrary.simpleMessage("لا توجد كورسات لهذه الفئة"),
+    "muscle_mass": MessageLookupByLibrary.simpleMessage("الكتلة العضلية"),
+    "my_progress": MessageLookupByLibrary.simpleMessage("تقدمي"),
+    "my_trainees": MessageLookupByLibrary.simpleMessage("المتدربين الخاصين بي"),
+    "my_workouts": MessageLookupByLibrary.simpleMessage("تماريني"),
+    "new_password": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "no_data_available": MessageLookupByLibrary.simpleMessage(
       "لا توجد بيانات متاحة",
     ),
-    "no_followers_subtitle": MessageLookupByLibrary.simpleMessage(
-      "أضف مستخدمين لرؤية نشاطهم وصورهم.",
+    "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد أرقام قياسية شخصية بعد",
     ),
-    "no_followers_title": MessageLookupByLibrary.simpleMessage(
-      "لا يوجد متابعين بعد! 😊",
+    "no_progress_data": MessageLookupByLibrary.simpleMessage(
+      "لا توجد بيانات تقدم متاحة",
     ),
-    "no_interests_found": MessageLookupByLibrary.simpleMessage(
-      "لم يتم العثور على اهتمامات",
+    "no_recent_workouts": MessageLookupByLibrary.simpleMessage(
+      "لا توجد تمارين حديثة",
     ),
-    "no_more_quotes_available": MessageLookupByLibrary.simpleMessage(
-      "لا توجد اقتباسات أخرى حاليًا",
+    "no_trainees_yet": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد متدربين بعد",
     ),
-    "no_participants_found": MessageLookupByLibrary.simpleMessage(
-      "لا يوجد مشاركين في هذا التحدي حتى الآن",
+    "no_workouts_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على تمارين",
     ),
-    "no_questions_found": MessageLookupByLibrary.simpleMessage(
-      "لم يتم العثور على اسئلة",
-    ),
-    "no_search_results": MessageLookupByLibrary.simpleMessage(
-      "لا توجد نتائج للبحث",
-    ),
-    "not_available": MessageLookupByLibrary.simpleMessage("غير متاح"),
     "not_found_description": MessageLookupByLibrary.simpleMessage(
-      "عذراً، لا يمكننا العثور على الصفحة التي تبحث عنها.\nارجع إلى الصفحة الرئيسية.",
+      "الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يرجى التحقق من عنوان URL أو العودة إلى الصفحة الرئيسية.",
     ),
     "not_found_subtitle": MessageLookupByLibrary.simpleMessage(
       "الصفحة غير موجودة",
     ),
-    "not_prayed": MessageLookupByLibrary.simpleMessage("لم أصلي"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
-    "notifications_quotes": MessageLookupByLibrary.simpleMessage(
-      "اقتباسات ملهمة للإشعارات",
-    ),
-    "november": MessageLookupByLibrary.simpleMessage("نوفمبر"),
-    "october": MessageLookupByLibrary.simpleMessage("أكتوبر"),
-    "off": MessageLookupByLibrary.simpleMessage("إيقاف"),
-    "ok": MessageLookupByLibrary.simpleMessage("نعم"),
-    "on": MessageLookupByLibrary.simpleMessage("تشغيل"),
-    "on_time": MessageLookupByLibrary.simpleMessage("في الوقت"),
-    "oops_title": MessageLookupByLibrary.simpleMessage("أوووبس!"),
-    "open_in_youtube": MessageLookupByLibrary.simpleMessage("فتح على يوتيوب"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
-    "page_indicator": m5,
-    "page_number": MessageLookupByLibrary.simpleMessage("رقم الصفحة"),
-    "page_number_exceeds_total": m6,
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "password_must_be_at_least_8_characters":
         MessageLookupByLibrary.simpleMessage(
-          "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
+          "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
         ),
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
-      "كلمتا المرور غير متطابقتين",
+      "كلمات المرور غير متطابقة",
     ),
-    "pdf_load_error": m7,
-    "playback_speed": MessageLookupByLibrary.simpleMessage("سرعة التشغيل"),
+    "personal_information": MessageLookupByLibrary.simpleMessage(
+      "المعلومات الشخصية",
+    ),
+    "personal_records": MessageLookupByLibrary.simpleMessage(
+      "الأرقام القياسية الشخصية",
+    ),
+    "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "please_confirm_your_password": MessageLookupByLibrary.simpleMessage(
-      "يرجى تأكيد كلمة المرور",
+      "الرجاء تأكيد كلمة المرور",
     ),
     "please_enter_code_sent_to_your_email":
         MessageLookupByLibrary.simpleMessage(
-          "أدخل الرمز الذي أرسلناه إلى بريدك الإلكتروني",
+          "الرجاء إدخال الرمز المرسل إلى بريدك الإلكتروني",
         ),
     "please_enter_email": MessageLookupByLibrary.simpleMessage(
-      "من فضلك أدخل بريدك الإلكتروني",
+      "الرجاء إدخال البريد الإلكتروني",
     ),
     "please_enter_password": MessageLookupByLibrary.simpleMessage(
-      "يرجى إدخال كلمة المرور",
+      "الرجاء إدخال كلمة المرور",
     ),
     "please_enter_valid_email": MessageLookupByLibrary.simpleMessage(
-      "يبدو أن البريد الإلكتروني غير صحيح، حاول مرة أخرى",
-    ),
-    "please_enter_your_challenge_name": MessageLookupByLibrary.simpleMessage(
-      "ادخل اسم التحدي الخاص بك",
+      "الرجاء إدخال بريد إلكتروني صالح",
     ),
     "please_enter_your_first_name": MessageLookupByLibrary.simpleMessage(
-      "أدخل اسمك الأول",
+      "الرجاء إدخال الاسم الأول",
     ),
     "please_enter_your_last_name": MessageLookupByLibrary.simpleMessage(
-      "أدخل اسمك الأخير",
+      "الرجاء إدخال اسم العائلة",
     ),
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
-      "أدخل كلمة المرور الخاصة بك",
+      "الرجاء إدخال كلمة المرور",
     ),
-    "please_select_birth_date": MessageLookupByLibrary.simpleMessage(
-      "من فضلك اختر تاريخ الميلاد",
-    ),
-    "please_select_gender": MessageLookupByLibrary.simpleMessage(
-      "من فضلك اختر النوع",
-    ),
-    "prayed": MessageLookupByLibrary.simpleMessage("صلّيت"),
-    "prayer_times": MessageLookupByLibrary.simpleMessage("مواقيت الصلاة"),
-    "prayer_tracking": MessageLookupByLibrary.simpleMessage("تتبع الصلاة"),
-    "profile": MessageLookupByLibrary.simpleMessage("ملفي الشخصي"),
+    "privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
-      "تم تحديث الملف الشخصي بنجاح!",
+      "تم تحديث الملف الشخصي بنجاح",
     ),
-    "push_notification_every_day": MessageLookupByLibrary.simpleMessage(
-      "إشعار يومي لتذكيرك بأهدافك",
-    ),
-    "quality": MessageLookupByLibrary.simpleMessage("الجودة"),
-    "quotes": MessageLookupByLibrary.simpleMessage("الاقتباسات"),
-    "quran_reading": MessageLookupByLibrary.simpleMessage("قراءة القرآن"),
-    "rate_app": MessageLookupByLibrary.simpleMessage("قيّم التطبيق"),
-    "read_another_book": MessageLookupByLibrary.simpleMessage(
-      "اقرأ كتاباً آخر",
-    ),
-    "recommended_for_you": MessageLookupByLibrary.simpleMessage("مقترح لك"),
+    "progress": MessageLookupByLibrary.simpleMessage("التقدم"),
+    "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
+    "rate": MessageLookupByLibrary.simpleMessage("المعدل"),
+    "rate_app": MessageLookupByLibrary.simpleMessage("تقييم التطبيق"),
+    "recent_workouts": MessageLookupByLibrary.simpleMessage("التمارين الأخيرة"),
     "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),
-    "repeat": MessageLookupByLibrary.simpleMessage("تكرار"),
     "resend": MessageLookupByLibrary.simpleMessage("إعادة الإرسال"),
-    "reset": MessageLookupByLibrary.simpleMessage("إعادة تعيين"),
-    "reset_confirmation_content": MessageLookupByLibrary.simpleMessage(
-      "هل أنت متأكد أنك تريد تصفير كل الأذكار؟",
-    ),
-    "reset_confirmation_title": MessageLookupByLibrary.simpleMessage(
-      "تأكيد إعادة التصفير",
-    ),
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
-    "return_to_home": MessageLookupByLibrary.simpleMessage("العودة للرئيسية"),
-    "review": MessageLookupByLibrary.simpleMessage("أضف مراجعة"),
-    "sat": MessageLookupByLibrary.simpleMessage("سبت"),
-    "saturday": MessageLookupByLibrary.simpleMessage("السبت"),
-    "save": MessageLookupByLibrary.simpleMessage("حفظ"),
-    "saved_page": m8,
-    "saving_progress": MessageLookupByLibrary.simpleMessage(
-      "جاري حفظ التقدم...",
-    ),
-    "search_in_challenges": MessageLookupByLibrary.simpleMessage(
-      "ابحث في التحديات",
-    ),
-    "select": MessageLookupByLibrary.simpleMessage("اختر..."),
-    "select_at_least_two_interest": MessageLookupByLibrary.simpleMessage(
-      "اختر على الأقل اهتمامين",
-    ),
-    "select_time": MessageLookupByLibrary.simpleMessage("اختر الوقت"),
-    "select_time_duration": MessageLookupByLibrary.simpleMessage(
-      "حدد مدة الوقت",
-    ),
-    "september": MessageLookupByLibrary.simpleMessage("سبتمبر"),
-    "session_expired": MessageLookupByLibrary.simpleMessage(
-      "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى.",
-    ),
+    "review": MessageLookupByLibrary.simpleMessage("مراجعة"),
+    "schedule_session": MessageLookupByLibrary.simpleMessage("جدولة جلسة"),
+    "sets": MessageLookupByLibrary.simpleMessage("المجموعات"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
-    "share_challenge_subject": MessageLookupByLibrary.simpleMessage("التحدي"),
-    "share_challenge_text": m9,
-    "show_suggestions": MessageLookupByLibrary.simpleMessage("عرض الاقتراحات"),
-    "sign_up": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
-    "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
-    "some_thing_went_wrong": MessageLookupByLibrary.simpleMessage(
-      "حدث شيء غير صحيح",
+    "sign_up": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "some_thing_went_wrong": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
+    "start_tracking": MessageLookupByLibrary.simpleMessage(
+      "ابدأ في تتبع تمارينك",
     ),
-    "something_went_wrong": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
-    "space_message_1": MessageLookupByLibrary.simpleMessage(
-      "تمام، خد الوقت اللي إنت محتاجه. أنا هبقى هنا لما تبقى جاهز 🤗",
-    ),
-    "space_message_2": MessageLookupByLibrary.simpleMessage(
-      "مفيش مشكلة، أحياناً إحنا محتاجين نبقى لوحدينا شوية. اعتني بنفسك ❤️",
-    ),
-    "space_message_3": MessageLookupByLibrary.simpleMessage(
-      "إنت عارف نفسك أكتر من أي حد. خد راحتك وإرجعلي لما تحس إنك عايز 🌸",
-    ),
-    "space_message_4": MessageLookupByLibrary.simpleMessage(
-      "المساحة الشخصية مهمة. استغلها في حاجة تحبها أو بس استرخي 💙",
-    ),
-    "specific_days_month": MessageLookupByLibrary.simpleMessage(
-      "أيام محددة في الشهر",
-    ),
-    "specific_days_week": MessageLookupByLibrary.simpleMessage(
-      "أيام محددة في الأسبوع",
-    ),
-    "specific_days_year": MessageLookupByLibrary.simpleMessage(
-      "أيام محددة في السنة",
-    ),
-    "start_your_daily_challenges": MessageLookupByLibrary.simpleMessage(
-      "ابدأ تحدياتك اليومية! 🚀",
-    ),
-    "stay": MessageLookupByLibrary.simpleMessage("البقاء"),
-    "stopwatch": MessageLookupByLibrary.simpleMessage("ساعة التوقيف"),
-    "success": MessageLookupByLibrary.simpleMessage("نجح"),
-    "sun": MessageLookupByLibrary.simpleMessage("أحد"),
-    "sunday": MessageLookupByLibrary.simpleMessage("الأحد"),
-    "sunrise": MessageLookupByLibrary.simpleMessage("الشروق"),
-    "surprised": MessageLookupByLibrary.simpleMessage("مندهش"),
-    "take_a_picture": MessageLookupByLibrary.simpleMessage("التقاط صورة جديدة"),
-    "take_walk": MessageLookupByLibrary.simpleMessage("اتمشى شوية"),
-    "take_walk_desc": MessageLookupByLibrary.simpleMessage("حتى لو 10 دقايق"),
-    "task": MessageLookupByLibrary.simpleMessage("المهمة"),
-    "thank_you": MessageLookupByLibrary.simpleMessage("شكراً"),
-    "there_is_no_categories": MessageLookupByLibrary.simpleMessage(
-      "لا توجد فئات",
-    ),
-    "this_email_is_not_associated_with_your_account":
-        MessageLookupByLibrary.simpleMessage(
-          "هذا البريد الإلكتروني ليس مرتبط بحسابك",
-        ),
-    "this_week_progress": MessageLookupByLibrary.simpleMessage(
-      "تقدم هذا الأسبوع",
-    ),
-    "thu": MessageLookupByLibrary.simpleMessage("خميس"),
-    "thursday": MessageLookupByLibrary.simpleMessage("الخميس"),
-    "time": MessageLookupByLibrary.simpleMessage("وقت"),
-    "timeline_header": MessageLookupByLibrary.simpleMessage("أنشطة الأصدقاء"),
-    "too_late_to_edit_prayer": MessageLookupByLibrary.simpleMessage(
-      "مرّ وقت طويل ولا يمكنك تعديل هذه الصلاة",
-    ),
-    "total_pages": MessageLookupByLibrary.simpleMessage("عدد الصفحات"),
-    "tue": MessageLookupByLibrary.simpleMessage("ثلاثاء"),
-    "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
-    "type_your_motivational_quote": MessageLookupByLibrary.simpleMessage(
-      "اكتب اقتباسك التحفيزي هنا...",
-    ),
-    "unexpected_error_occurred": MessageLookupByLibrary.simpleMessage(
-      "حدث خطأ ما",
-    ),
-    "unmarked": MessageLookupByLibrary.simpleMessage("غير محددة"),
+    "start_workout": MessageLookupByLibrary.simpleMessage("بدء التمرين"),
+    "statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
+    "take_a_picture": MessageLookupByLibrary.simpleMessage("التقط صورة"),
+    "terms_conditions": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+    "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
+    "thighs": MessageLookupByLibrary.simpleMessage("الفخذين"),
+    "this_month": MessageLookupByLibrary.simpleMessage("هذا الشهر"),
+    "this_week": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
+    "today": MessageLookupByLibrary.simpleMessage("اليوم"),
+    "today_stats": MessageLookupByLibrary.simpleMessage("إحصائيات اليوم"),
+    "total_workouts": MessageLookupByLibrary.simpleMessage("إجمالي التمارين"),
+    "trainees": MessageLookupByLibrary.simpleMessage("المتدربين"),
+    "trainer": MessageLookupByLibrary.simpleMessage("مدرب"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
-    "update_user_info_failed": MessageLookupByLibrary.simpleMessage(
-      "فشل في تحديث بيانات المستخدم",
-    ),
-    "updated_successfully": MessageLookupByLibrary.simpleMessage(
-      "تم التحديث بنجاح",
-    ),
-    "upload_your_photo": MessageLookupByLibrary.simpleMessage("ارفع صورتك"),
+    "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
     "verify_your_identity": MessageLookupByLibrary.simpleMessage(
-      "تحقق من هويتك",
+      "التحقق من هويتك",
     ),
-    "video": MessageLookupByLibrary.simpleMessage("ڤيديو"),
-    "video_settings": MessageLookupByLibrary.simpleMessage("إعدادات الفيديو"),
+    "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
     "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
-    "view_all_challenges": MessageLookupByLibrary.simpleMessage(
-      "عرض جميع التحديات",
+    "view_all_trainees": MessageLookupByLibrary.simpleMessage(
+      "عرض جميع المتدربين",
     ),
-    "view_all_courses": MessageLookupByLibrary.simpleMessage(
-      "عرض جميع الدورات",
+    "view_all_workouts": MessageLookupByLibrary.simpleMessage(
+      "عرض جميع التمارين",
     ),
-    "view_all_progress": MessageLookupByLibrary.simpleMessage(
-      "عرض جميع التقدمات",
-    ),
-    "view_challenges": MessageLookupByLibrary.simpleMessage("استعرض التحديات"),
-    "volume": MessageLookupByLibrary.simpleMessage("الصوت"),
-    "watch_in_app_or_youtube": MessageLookupByLibrary.simpleMessage(
-      "هل تود مشاهدة الفيديو داخل التطبيق أو على يوتيوب؟",
-    ),
+    "waist": MessageLookupByLibrary.simpleMessage("الخصر"),
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
-      "تم إرسال بريد إلكتروني إلى",
+      "لقد أرسلنا بريدًا إلكترونيًا إلى",
     ),
-    "wed": MessageLookupByLibrary.simpleMessage("أربعاء"),
-    "wednesday": MessageLookupByLibrary.simpleMessage("الأربعاء"),
-    "weekly_average_subtitle": MessageLookupByLibrary.simpleMessage(
-      "إنتاجيتك هذا الأسبوع",
+    "weight_change": MessageLookupByLibrary.simpleMessage("تغيير الوزن"),
+    "weight_progress": MessageLookupByLibrary.simpleMessage("تقدم الوزن"),
+    "welcome": MessageLookupByLibrary.simpleMessage("مرحباً"),
+    "welcome_back": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
+    "welcome_trainer": MessageLookupByLibrary.simpleMessage(
+      "مرحباً أيها المدرب!",
     ),
-    "weekly_average_title": MessageLookupByLibrary.simpleMessage(
-      "متوسط الأسبوع",
-    ),
-    "weekly_label_high": MessageLookupByLibrary.simpleMessage("منتج"),
-    "weekly_label_low": MessageLookupByLibrary.simpleMessage("تحتاج تحسين"),
-    "weekly_label_medium": MessageLookupByLibrary.simpleMessage("في تحسن"),
-    "weekly_label_super": MessageLookupByLibrary.simpleMessage("منتج جدًا"),
-    "well_done": MessageLookupByLibrary.simpleMessage("أحسنت! 🎉"),
-    "what_are_you_interested_in": MessageLookupByLibrary.simpleMessage(
-      "بماذا أنت مهتم؟",
-    ),
-    "wisdom_achieved": MessageLookupByLibrary.simpleMessage("حكمة محققة"),
-    "write_feelings": MessageLookupByLibrary.simpleMessage("اكتب مشاعرك"),
-    "write_feelings_desc": MessageLookupByLibrary.simpleMessage(
-      "على ورقة أو في التليفون",
-    ),
-    "x": MessageLookupByLibrary.simpleMessage("x"),
-    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
-    "your_challenge_name": MessageLookupByLibrary.simpleMessage(
-      "اسم التحدي الخاص بك",
-    ),
-    "your_challenge_type": MessageLookupByLibrary.simpleMessage(
-      "نوع التحدي الخاص بك",
-    ),
-    "your_mood_today": MessageLookupByLibrary.simpleMessage("مزاجك اليوم"),
-    "your_plan_will_create_now": MessageLookupByLibrary.simpleMessage(
-      "سيتم إنشاء خطتك الآن",
-    ),
-    "youtube": MessageLookupByLibrary.simpleMessage("يوتيوب"),
-    "zikr_reset_successfully": MessageLookupByLibrary.simpleMessage(
-      " تم إعادة التهيئة بنجاح",
-    ),
-    "zikr_save_error": MessageLookupByLibrary.simpleMessage(
-      " حدث خطأ أثناء الحفظ، حاول مرة أخرى",
-    ),
-    "zikr_saved_successfully": MessageLookupByLibrary.simpleMessage(
-      " تم حفظ الأذكار بنجاح",
-    ),
+    "workout_history": MessageLookupByLibrary.simpleMessage("سجل التمارين"),
+    "workouts": MessageLookupByLibrary.simpleMessage("التمارين"),
+    "x": MessageLookupByLibrary.simpleMessage(""),
   };
 }

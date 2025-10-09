@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common_ui/widgets/custom_button.dart';
 import '../../../../../core/common_ui/widgets/custom_text_field.dart';
+import '../../../../../core/helpers/constants.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../auth/presentation/widgets/login_widgets/animated_fitness_icon.dart';
 import '../../../data/models/complete_profile_params.dart';
-import '../../cubits/profile_cubit/profile_cubit.dart';
-import '../../cubits/profile_cubit/profile_state.dart';
+import '../../cubits/profile_cubit/complete_profile_cubit.dart';
+import '../../cubits/profile_cubit/complete_profile_state.dart';
 import 'gender_selector.dart';
 
 class CompleteProfileScreenBody extends StatefulWidget {
@@ -112,9 +113,12 @@ class _CompleteProfileScreenBodyState extends State<CompleteProfileScreenBody>
           );
           Future.delayed(const Duration(milliseconds: 500), () {
             if (context.mounted) {
-              Navigator.of(
-                context,
-              ).pushNamedAndRemoveUntil(Routes.hostScreen, (route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                Constants.isUser
+                    ? Routes.userHostScreen
+                    : Routes.trainerHostScreen,
+                (route) => false,
+              );
             }
           });
         } else if (state.errorMessage != null) {

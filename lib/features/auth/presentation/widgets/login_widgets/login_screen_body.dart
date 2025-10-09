@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common_ui/widgets/custom_button.dart';
 import '../../../../../core/common_ui/widgets/custom_checkbox.dart';
 import '../../../../../core/common_ui/widgets/custom_text_field.dart';
+import '../../../../../core/helpers/constants.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/styles.dart';
@@ -145,7 +146,11 @@ class _LoginScreenBodyState extends State<LoginScreenBody>
 
                 Future.delayed(const Duration(milliseconds: 500), () {
                   if (context.mounted) {
-                    context.pushReplacementNamed(Routes.hostScreen);
+                    context.pushReplacementNamed(
+                      Constants.isUser
+                          ? Routes.userHostScreen
+                          : Routes.trainerHostScreen,
+                    );
                   }
                 });
               } else if (state.shouldNavigateToCompleteProfile) {

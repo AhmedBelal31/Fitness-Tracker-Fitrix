@@ -25,7 +25,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       // Make POST request to register endpoint
       final response = await _apiService.postRequest(
-        ApiConstants.register,
+        ApiEndpoints.register,
         data: params.toJson(),
       );
 
@@ -145,7 +145,7 @@ class AuthRepositoryImpl implements AuthRepository {
       dev.log('📦 Request data: ${params.toJson()}', name: 'AuthRepository');
 
       final response = await _apiService.postRequest(
-        ApiConstants.login,
+        ApiEndpoints.login,
         data: params.toJson(),
       );
 
@@ -220,8 +220,8 @@ class AuthRepositoryImpl implements AuthRepository {
         );
       }
 
-      final response = await _apiService.getRequest(
-        ApiConstants.getProfile,
+      final response = await _apiService.get(
+        ApiEndpoints.getProfile,
         queryParams: {'pageSize': 1, 'page': 1},
       );
 
@@ -273,7 +273,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, void>> logout() async {
     try {
-      final response = await _apiService.postRequest(ApiConstants.logout);
+      final response = await _apiService.postRequest(ApiEndpoints.logout);
 
       if (response.statusCode == 200 || response.statusCode == 204) {
         return const Right(null);
@@ -290,7 +290,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, UserModel>> getCurrentUser() async {
     try {
-      final response = await _apiService.getRequest(ApiConstants.currentUser);
+      final response = await _apiService.get(ApiEndpoints.currentUser);
 
       if (response.statusCode == 200) {
         final data = response.data;
@@ -313,7 +313,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, void>> forgotPassword(String email) async {
     try {
       final response = await _apiService.postRequest(
-        ApiConstants.forgotPassword,
+        ApiEndpoints.forgotPassword,
         data: {"email": email},
       );
       if (response.statusCode == 200) {

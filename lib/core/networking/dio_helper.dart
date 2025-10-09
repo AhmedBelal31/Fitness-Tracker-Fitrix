@@ -11,7 +11,7 @@ class ApiService {
   ApiService()
     : _dio = Dio(
         BaseOptions(
-          baseUrl: ApiConstants.apiBaseUrl,
+          baseUrl: ApiEndpoints.apiBaseUrl,
           connectTimeout: const Duration(seconds: 120),
           receiveTimeout: const Duration(seconds: 120),
           headers: {
@@ -26,7 +26,7 @@ class ApiService {
         ),
       ) {
     dev.log(
-      '🔧 ApiService initialized with baseUrl: ${ApiConstants.apiBaseUrl}',
+      '🔧 ApiService initialized with baseUrl: ${ApiEndpoints.apiBaseUrl}',
       name: 'ApiService',
     );
 
@@ -45,7 +45,7 @@ class ApiService {
     ]);
   }
 
-  Future<Response> getRequest(
+  Future<Response> get(
     String endpoint, {
     Map<String, dynamic>? queryParams,
     Map<String, String>? headers,

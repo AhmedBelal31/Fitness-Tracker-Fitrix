@@ -17,7 +17,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
   ) async {
     try {
       final response = await _apiService.postRequestWithFormData(
-        ApiConstants.completeProfile,
+        ApiEndpoints.completeProfile,
         params.toFormData(),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
