@@ -1,4 +1,6 @@
 import 'dart:developer' as dev;
+import 'package:dio/dio.dart';
+import 'package:fitrix/core/networking/api_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../../core/networking/error/failures.dart';
@@ -33,22 +35,64 @@ class AuthCheckCubit extends Cubit<AuthCheckState> {
 
       dev.log('✅ Token found, checking expiry...', name: 'AuthCheckCubit');
 
-      // Check if token is expired
+      // Check expiry (using NTP now inside TokenManager)
       final isExpired = await _tokenManager.isTokenExpired();
 
       if (isExpired) {
-        dev.log(
-          '⏰ Token is expired - clearing and redirecting to login',
-          name: 'AuthCheckCubit',
-        );
-        await _tokenManager.clearTokens();
-        emit(AuthCheckUnauthenticated());
-        return;
+        dev.log('⏰ Token expired - trying refresh...', name: 'AuthCheckCubit');
+
+        final refreshToken = await _tokenManager.getRefreshToken();
+        final expiredAccessToken = await _tokenManager.getAccessToken();
+
+        if (refreshToken != null &&
+            refreshToken.isNotEmpty &&
+            expiredAccessToken != null) {
+          try {
+            final dio = Dio();
+            final response = await dio.post(
+              '${ApiEndpoints.apiBaseUrl}${ApiEndpoints.refreshToken}',
+              data: {
+                "refreshToken": refreshToken,
+                "expiredAccessToken": expiredAccessToken,
+              },
+            );
+
+            final data = response.data;
+            final newAccessToken = data['accessToken'] ?? data['access_token'];
+            final newRefreshToken = data['refreshToken'] ?? refreshToken;
+            final expiresOnUtc = DateTime.parse(data['expiresOnUtc']);
+
+            if (newAccessToken != null) {
+              await _tokenManager.saveTokens(
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+                expiresOnUtc: expiresOnUtc,
+              );
+
+              dev.log(
+                '✅ Token refreshed successfully - continue session',
+                name: 'AuthCheckCubit',
+              );
+            } else {
+              throw Exception('No new token in response');
+            }
+          } catch (e) {
+            dev.log('❌ Refresh token failed: $e', name: 'AuthCheckCubit');
+            await _tokenManager.clearTokens();
+            emit(AuthCheckUnauthenticated());
+            return;
+          }
+        } else {
+          dev.log('⚠️ No refresh token found', name: 'AuthCheckCubit');
+          await _tokenManager.clearTokens();
+          emit(AuthCheckUnauthenticated());
+          return;
+        }
       }
 
-      dev.log('✅ Token is valid, fetching profile...', name: 'AuthCheckCubit');
+      // ✅ If we reach here → Token is valid (refreshed or not), fetch profile
+      dev.log('✅ Token valid, fetching profile...', name: 'AuthCheckCubit');
 
-      // Token exists and is valid - fetch profile
       final profileResult = await _authRepository.getProfile();
 
       profileResult.fold(

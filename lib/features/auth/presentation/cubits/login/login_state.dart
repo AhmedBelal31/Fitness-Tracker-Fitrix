@@ -7,7 +7,7 @@ class LoginState extends Equatable {
   final String? savedEmail;
   final String? errorMessage;
   final LoginResponseModel? loginResponse;
-  final UserModel? userProfile;
+  final LoginProfileModel? userProfile;
   final bool needsProfileCompletion;
 
   const LoginState({
@@ -36,7 +36,7 @@ class LoginState extends Equatable {
     String? savedEmail,
     String? errorMessage,
     LoginResponseModel? loginResponse,
-    UserModel? userProfile,
+    LoginProfileModel? userProfile,
     bool? needsProfileCompletion,
   }) {
     return LoginState(

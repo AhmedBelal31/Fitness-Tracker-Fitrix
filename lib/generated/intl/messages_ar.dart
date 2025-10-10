@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("حول"),
+    "abs": MessageLookupByLibrary.simpleMessage("البطن"),
     "account": MessageLookupByLibrary.simpleMessage("الحساب"),
     "achievements": MessageLookupByLibrary.simpleMessage("الإنجازات"),
     "active_trainees": MessageLookupByLibrary.simpleMessage(
@@ -31,22 +32,66 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_first_trainee": MessageLookupByLibrary.simpleMessage(
       "أضف أول متدرب لك للبدء",
     ),
+    "add_to_workout": MessageLookupByLibrary.simpleMessage("إضافة للتمرين"),
     "add_trainee": MessageLookupByLibrary.simpleMessage("إضافة متدرب"),
+    "added_to_workout": MessageLookupByLibrary.simpleMessage(
+      "تمت الإضافة للتمرين",
+    ),
+    "advanced": MessageLookupByLibrary.simpleMessage("متقدم"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "app_name": MessageLookupByLibrary.simpleMessage("فيتريكس"),
     "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
+    "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
     "arms": MessageLookupByLibrary.simpleMessage("الذراعين"),
+    "arms_description": MessageLookupByLibrary.simpleMessage(
+      "تمارين العضلة ذات الرأسين والعضلة ذات الثلاث رؤوس",
+    ),
     "avg_duration": MessageLookupByLibrary.simpleMessage("متوسط المدة"),
+    "back": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "back_description": MessageLookupByLibrary.simpleMessage(
+      "بناء ظهر قوي وعريض",
+    ),
+    "barbell": MessageLookupByLibrary.simpleMessage("البار"),
+    "barbell_curls": MessageLookupByLibrary.simpleMessage("تمرين الباي بالبار"),
+    "barbell_curls_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين العضلة ذات الرأسين الكلاسيكي بالبار.",
+    ),
+    "barbell_rows": MessageLookupByLibrary.simpleMessage("سحب البار"),
+    "barbell_rows_description": MessageLookupByLibrary.simpleMessage(
+      "بناء ظهر سميك بالانحناء والسحب. اسحب البار للصدر السفلي.",
+    ),
+    "beginner": MessageLookupByLibrary.simpleMessage("مبتدئ"),
+    "bench_press": MessageLookupByLibrary.simpleMessage("ضغط البنش"),
+    "bench_press_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين مركب كلاسيكي لتطوير الصدر. استلق على البنش واضغط البار للأعلى.",
+    ),
+    "biceps": MessageLookupByLibrary.simpleMessage("الباي"),
     "body_fat": MessageLookupByLibrary.simpleMessage("دهون الجسم"),
     "body_progress": MessageLookupByLibrary.simpleMessage("تقدم الجسم"),
+    "bodyweight": MessageLookupByLibrary.simpleMessage("وزن الجسم"),
+    "cable_flyes": MessageLookupByLibrary.simpleMessage("فتح الكابل"),
+    "cable_flyes_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين عزل للصدر. استخدم الكابل لجمع اليدين أمام الجسم.",
+    ),
+    "cable_machine": MessageLookupByLibrary.simpleMessage("جهاز الكابل"),
+    "calf_raises": MessageLookupByLibrary.simpleMessage("رفع السمانة"),
+    "calf_raises_description": MessageLookupByLibrary.simpleMessage(
+      "بناء عضلات السمانة برفع الكعبين.",
+    ),
+    "calves": MessageLookupByLibrary.simpleMessage("السمانة"),
+    "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
     "change_photo": MessageLookupByLibrary.simpleMessage("تغيير الصورة"),
     "change_your_password": MessageLookupByLibrary.simpleMessage(
       "تغيير كلمة المرور",
     ),
     "chest": MessageLookupByLibrary.simpleMessage("الصدر"),
+    "chest_description": MessageLookupByLibrary.simpleMessage(
+      "تمارين الصدر لقوة الجزء العلوي من الجسم",
+    ),
     "choose_from_gallery": MessageLookupByLibrary.simpleMessage(
       "اختر من المعرض",
     ),
+    "clear": MessageLookupByLibrary.simpleMessage("مسح"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
     "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
     "completion": MessageLookupByLibrary.simpleMessage("الإنجاز"),
@@ -67,16 +112,58 @@ class MessageLookup extends MessageLookupByLibrary {
       "المتابعة باستخدام جوجل",
     ),
     "continuex": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "core": MessageLookupByLibrary.simpleMessage("البطن"),
+    "core_description": MessageLookupByLibrary.simpleMessage(
+      "تقوية عضلات البطن والجذع",
+    ),
+    "create": MessageLookupByLibrary.simpleMessage("إنشاء"),
+    "create_custom": MessageLookupByLibrary.simpleMessage("إنشاء مخصص"),
+    "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
+      "إنشاء تمرين مخصص",
+    ),
     "create_workout": MessageLookupByLibrary.simpleMessage("إنشاء تمرين"),
+    "create_your_first_exercise": MessageLookupByLibrary.simpleMessage(
+      "أنشئ تمرينك الأول",
+    ),
+    "create_your_own_exercises": MessageLookupByLibrary.simpleMessage(
+      "أنشئ تماريك الخاصة لتخصيص تدريباتك",
+    ),
+    "crunches": MessageLookupByLibrary.simpleMessage("تمرين البطن"),
+    "crunches_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين البطن الكلاسيكي. لف الجزء العلوي من الجسم نحو الركبتين.",
+    ),
     "current_weight": MessageLookupByLibrary.simpleMessage("الوزن الحالي"),
+    "custom": MessageLookupByLibrary.simpleMessage("مخصص"),
+    "deadlift": MessageLookupByLibrary.simpleMessage("الرفعة الميتة"),
+    "deadlift_description": MessageLookupByLibrary.simpleMessage(
+      "ملك تمارين الظهر. ارفع البار من الأرض لوضع الوقوف.",
+    ),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+    "delete_exercise": MessageLookupByLibrary.simpleMessage("حذف التمرين"),
+    "delete_exercise_confirmation": MessageLookupByLibrary.simpleMessage(
+      "حذف التمرين؟",
+    ),
+    "delete_exercise_message": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من حذف هذا التمرين؟",
+    ),
+    "description": MessageLookupByLibrary.simpleMessage("الوصف"),
     "didnt_receive_code": MessageLookupByLibrary.simpleMessage(
       "لم تتلق رمزًا.",
     ),
+    "difficulty": MessageLookupByLibrary.simpleMessage("الصعوبة"),
+    "done": MessageLookupByLibrary.simpleMessage("تم"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟",
     ),
+    "dumbbell_flyes": MessageLookupByLibrary.simpleMessage("فتح الدمبل"),
+    "dumbbell_flyes_description": MessageLookupByLibrary.simpleMessage(
+      "شد عضلات الصدر بفتح الدمبل على البنش المسطح.",
+    ),
+    "dumbbells": MessageLookupByLibrary.simpleMessage("الدمبل"),
     "duration": MessageLookupByLibrary.simpleMessage("المدة"),
+    "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+    "edit_exercise": MessageLookupByLibrary.simpleMessage("تعديل التمرين"),
     "edit_your_profile": MessageLookupByLibrary.simpleMessage(
       "تعديل الملف الشخصي",
     ),
@@ -92,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enter_your_new_password": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور الجديدة",
     ),
+    "equipment": MessageLookupByLibrary.simpleMessage("المعدات"),
     "error_400": MessageLookupByLibrary.simpleMessage(
       "طلب غير صالح - الطلب غير صحيح أو لا يمكن معالجته",
     ),
@@ -177,6 +265,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_unexpected": MessageLookupByLibrary.simpleMessage(
       "خطأ غير متوقع - حدث شيء غير متوقع",
     ),
+    "exercise_created_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم إنشاء التمرين بنجاح",
+    ),
+    "exercise_deleted": MessageLookupByLibrary.simpleMessage("تم حذف التمرين"),
+    "exercise_name": MessageLookupByLibrary.simpleMessage("اسم التمرين"),
     "exercises": MessageLookupByLibrary.simpleMessage("التمارين"),
     "failed_to_update_profile": MessageLookupByLibrary.simpleMessage(
       "فشل تحديث الملف الشخصي",
@@ -184,34 +277,119 @@ class MessageLookup extends MessageLookupByLibrary {
     "filter": MessageLookupByLibrary.simpleMessage("تصفية"),
     "finish": MessageLookupByLibrary.simpleMessage("إنهاء"),
     "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+    "forearms": MessageLookupByLibrary.simpleMessage("الساعد"),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
+    "front_delts": MessageLookupByLibrary.simpleMessage("أمام الكتف"),
+    "front_raises": MessageLookupByLibrary.simpleMessage("رفع أمامي"),
+    "front_raises_description": MessageLookupByLibrary.simpleMessage(
+      "ارفع الدمبل للأمام للتركيز على الجزء الأمامي من الكتف.",
+    ),
+    "glutes": MessageLookupByLibrary.simpleMessage("المؤخرة"),
     "goals": MessageLookupByLibrary.simpleMessage("الأهداف"),
+    "hammer_curls": MessageLookupByLibrary.simpleMessage("تمرين المطرقة"),
+    "hammer_curls_description": MessageLookupByLibrary.simpleMessage(
+      "لف الدمبل بقبضة محايدة لعضلة البراكياليس.",
+    ),
+    "hamstrings": MessageLookupByLibrary.simpleMessage("الفخذ الخلفي"),
     "help_support": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
     "hips": MessageLookupByLibrary.simpleMessage("الأرداف"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "in_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "incline_dumbbell_press": MessageLookupByLibrary.simpleMessage(
+      "ضغط دمبل مائل",
+    ),
+    "incline_dumbbell_press_description": MessageLookupByLibrary.simpleMessage(
+      "استهدف الصدر العلوي بزاوية مائلة. اضغط الدمبل للأعلى من البنش المائل.",
+    ),
+    "intermediate": MessageLookupByLibrary.simpleMessage("متوسط"),
     "kg": MessageLookupByLibrary.simpleMessage("كجم"),
     "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
     "last_name": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "last_workout": MessageLookupByLibrary.simpleMessage("آخر تمرين"),
+    "lat_pulldown": MessageLookupByLibrary.simpleMessage("سحب اللات"),
+    "lat_pulldown_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين كابل للعضلات الجانبية. اسحب البار للصدر العلوي.",
+    ),
+    "lateral_raises": MessageLookupByLibrary.simpleMessage("رفع جانبي"),
+    "lateral_raises_description": MessageLookupByLibrary.simpleMessage(
+      "ارفع الدمبل للجانبين لعرض الأكتاف.",
+    ),
+    "lats": MessageLookupByLibrary.simpleMessage("عضلات الظهر الجانبية"),
+    "leg_curls": MessageLookupByLibrary.simpleMessage("تمديد الأرجل الخلفي"),
+    "leg_curls_description": MessageLookupByLibrary.simpleMessage(
+      "عزل عضلات الفخذ الخلفية بجهاز الليج كيرل.",
+    ),
+    "leg_press": MessageLookupByLibrary.simpleMessage("ضغط الأرجل"),
+    "leg_press_description": MessageLookupByLibrary.simpleMessage(
+      "ادفع الوزن للأعلى بالأرجل على جهاز ضغط الأرجل.",
+    ),
+    "leg_raises": MessageLookupByLibrary.simpleMessage("رفع الأرجل"),
+    "leg_raises_description": MessageLookupByLibrary.simpleMessage(
+      "ارفع الأرجل لتطوير عضلات البطن السفلية.",
+    ),
+    "legs": MessageLookupByLibrary.simpleMessage("الأرجل"),
+    "legs_description": MessageLookupByLibrary.simpleMessage(
+      "يوم الأرجل لقوة الجزء السفلي",
+    ),
     "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل..."),
+    "log": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "log_measurement": MessageLookupByLibrary.simpleMessage("تسجيل القياس"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "lower_abs": MessageLookupByLibrary.simpleMessage("أسفل البطن"),
+    "lower_back": MessageLookupByLibrary.simpleMessage("أسفل الظهر"),
+    "machine": MessageLookupByLibrary.simpleMessage("آلة"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("إدارة المتدربين"),
     "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
     "member_since": MessageLookupByLibrary.simpleMessage("عضو منذ"),
     "minutes": MessageLookupByLibrary.simpleMessage("دقيقة"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
+    "most_popular": MessageLookupByLibrary.simpleMessage("الأكثر شعبية"),
+    "motivational_quote_1": MessageLookupByLibrary.simpleMessage(
+      "ادفع نفسك، لأن لا أحد سيفعل ذلك من أجلك 💪",
+    ),
+    "motivational_quote_2": MessageLookupByLibrary.simpleMessage(
+      "الأشياء العظيمة لا تأتي أبداً من مناطق الراحة 🔥",
+    ),
+    "motivational_quote_3": MessageLookupByLibrary.simpleMessage(
+      "التمرين السيء الوحيد هو الذي لم يحدث ⚡",
+    ),
+    "motivational_quote_4": MessageLookupByLibrary.simpleMessage(
+      "جسمك يستطيع تحمل أي شيء تقريباً. عقلك هو الذي يحتاج إلى الإقناع 🧠",
+    ),
+    "motivational_quote_5": MessageLookupByLibrary.simpleMessage(
+      "النجاح يبدأ بالانضباط الذاتي 🎯",
+    ),
+    "motivational_quote_6": MessageLookupByLibrary.simpleMessage(
+      "تدرب بجنون أو ابق كما أنت 🏋️",
+    ),
+    "motivational_quote_7": MessageLookupByLibrary.simpleMessage(
+      "حدك الوحيد هو أنت 🚀",
+    ),
+    "motivational_quote_8": MessageLookupByLibrary.simpleMessage(
+      "لا تتمنى ذلك، بل اعمل من أجله 💯",
+    ),
     "muscle_mass": MessageLookupByLibrary.simpleMessage("الكتلة العضلية"),
+    "my_custom_exercises": MessageLookupByLibrary.simpleMessage(
+      "تماريني المخصصة",
+    ),
     "my_progress": MessageLookupByLibrary.simpleMessage("تقدمي"),
     "my_trainees": MessageLookupByLibrary.simpleMessage("المتدربين الخاصين بي"),
     "my_workouts": MessageLookupByLibrary.simpleMessage("تماريني"),
+    "name_a_z": MessageLookupByLibrary.simpleMessage("الاسم (أ-ي)"),
     "new_password": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
+    "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "no_custom_exercises_yet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد تمارين مخصصة بعد",
+    ),
     "no_data_available": MessageLookupByLibrary.simpleMessage(
       "لا توجد بيانات متاحة",
+    ),
+    "no_exercises_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على تمارين",
     ),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "لا توجد أرقام قياسية شخصية بعد",
@@ -235,7 +413,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "الصفحة غير موجودة",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "obliques": MessageLookupByLibrary.simpleMessage("البطن الجانبية"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
+    "overhead_press": MessageLookupByLibrary.simpleMessage("ضغط الكتف"),
+    "overhead_press_description": MessageLookupByLibrary.simpleMessage(
+      "اضغط البار للأعلى فوق الرأس لتطوير الأكتاف.",
+    ),
+    "overhead_tricep_extension": MessageLookupByLibrary.simpleMessage(
+      "تمديد الترايسبس فوق الرأس",
+    ),
+    "overhead_tricep_extension_description":
+        MessageLookupByLibrary.simpleMessage(
+          "مدد الدمبل فوق الرأس لعزل الترايسبس.",
+        ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "password_must_be_at_least_8_characters":
         MessageLookupByLibrary.simpleMessage(
@@ -251,6 +441,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "الأرقام القياسية الشخصية",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "planks": MessageLookupByLibrary.simpleMessage("البلانك"),
+    "planks_description": MessageLookupByLibrary.simpleMessage(
+      "حافظ على وضع البلانك لقوة الجذع.",
+    ),
     "please_confirm_your_password": MessageLookupByLibrary.simpleMessage(
       "الرجاء تأكيد كلمة المرور",
     ),
@@ -276,34 +470,75 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "الرجاء إدخال كلمة المرور",
     ),
+    "previous": MessageLookupByLibrary.simpleMessage("السابق"),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "تم تحديث الملف الشخصي بنجاح",
     ),
     "progress": MessageLookupByLibrary.simpleMessage("التقدم"),
+    "pull_up_bar": MessageLookupByLibrary.simpleMessage("عقلة"),
+    "pull_ups": MessageLookupByLibrary.simpleMessage("العقلة"),
+    "pull_ups_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين بوزن الجسم لتطوير عضلات الظهر. اسحب نفسك للأعلى للعقلة.",
+    ),
+    "push_ups": MessageLookupByLibrary.simpleMessage("تمرين الضغط"),
+    "push_ups_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين صدر بوزن الجسم. اخفض الجسم للأرض وادفع للأعلى.",
+    ),
+    "quads": MessageLookupByLibrary.simpleMessage("الفخذ الأمامي"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
     "rate": MessageLookupByLibrary.simpleMessage("المعدل"),
     "rate_app": MessageLookupByLibrary.simpleMessage("تقييم التطبيق"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("التمارين الأخيرة"),
     "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resend": MessageLookupByLibrary.simpleMessage("إعادة الإرسال"),
+    "reset": MessageLookupByLibrary.simpleMessage("إعادة تعيين"),
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "review": MessageLookupByLibrary.simpleMessage("مراجعة"),
+    "romanian_deadlift": MessageLookupByLibrary.simpleMessage(
+      "الرفعة الرومانية",
+    ),
+    "romanian_deadlift_description": MessageLookupByLibrary.simpleMessage(
+      "استهدف عضلات الفخذ الخلفية بحركة الرفعة الميتة بأرجل مستقيمة.",
+    ),
+    "russian_twists": MessageLookupByLibrary.simpleMessage("اللف الروسي"),
+    "russian_twists_description": MessageLookupByLibrary.simpleMessage(
+      "قم بتدوير الجذع من جانب لآخر للعضلات الجانبية.",
+    ),
+    "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "schedule_session": MessageLookupByLibrary.simpleMessage("جدولة جلسة"),
+    "search": MessageLookupByLibrary.simpleMessage("بحث"),
+    "search_exercises": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن التمارين...",
+    ),
+    "section": MessageLookupByLibrary.simpleMessage("القسم"),
+    "select": MessageLookupByLibrary.simpleMessage("اختيار"),
     "sets": MessageLookupByLibrary.simpleMessage("المجموعات"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "shoulders": MessageLookupByLibrary.simpleMessage("الأكتاف"),
+    "shoulders_description": MessageLookupByLibrary.simpleMessage(
+      "تمارين الكتف للحصول على التحديد",
+    ),
+    "side_delts": MessageLookupByLibrary.simpleMessage("جوانب الكتف"),
     "sign_up": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "some_thing_went_wrong": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
+    "sort": MessageLookupByLibrary.simpleMessage("ترتيب"),
+    "sort_by": MessageLookupByLibrary.simpleMessage("ترتيب حسب"),
+    "squats": MessageLookupByLibrary.simpleMessage("السكوات"),
+    "squats_description": MessageLookupByLibrary.simpleMessage(
+      "ملك تمارين الأرجل. اخفض الجسم مع البار على الأكتاف.",
+    ),
     "start_tracking": MessageLookupByLibrary.simpleMessage(
       "ابدأ في تتبع تمارينك",
     ),
     "start_workout": MessageLookupByLibrary.simpleMessage("بدء التمرين"),
     "statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
     "take_a_picture": MessageLookupByLibrary.simpleMessage("التقط صورة"),
+    "target_muscles": MessageLookupByLibrary.simpleMessage("العضلات المستهدفة"),
     "terms_conditions": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
     "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "thighs": MessageLookupByLibrary.simpleMessage("الفخذين"),
@@ -314,7 +549,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "total_workouts": MessageLookupByLibrary.simpleMessage("إجمالي التمارين"),
     "trainees": MessageLookupByLibrary.simpleMessage("المتدربين"),
     "trainer": MessageLookupByLibrary.simpleMessage("مدرب"),
+    "tricep_dips": MessageLookupByLibrary.simpleMessage("غطس الترايسبس"),
+    "tricep_dips_description": MessageLookupByLibrary.simpleMessage(
+      "تمرين بوزن الجسم للعضلة ذات الثلاث رؤوس.",
+    ),
+    "triceps": MessageLookupByLibrary.simpleMessage("الترايسبس"),
+    "try_adjusting_search": MessageLookupByLibrary.simpleMessage(
+      "حاول تعديل البحث أو الفلتر",
+    ),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
+    "upper_chest": MessageLookupByLibrary.simpleMessage("الصدر العلوي"),
     "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
     "verify_your_identity": MessageLookupByLibrary.simpleMessage(
       "التحقق من هويتك",
@@ -339,7 +583,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "مرحباً أيها المدرب!",
     ),
     "workout_history": MessageLookupByLibrary.simpleMessage("سجل التمارين"),
+    "workout_sections": MessageLookupByLibrary.simpleMessage("أقسام التمارين"),
     "workouts": MessageLookupByLibrary.simpleMessage("التمارين"),
     "x": MessageLookupByLibrary.simpleMessage(""),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
   };
 }

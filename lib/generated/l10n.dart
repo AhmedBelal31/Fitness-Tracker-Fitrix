@@ -1429,6 +1429,1061 @@ class S {
     );
   }
 
+  /// `Workout Sections`
+  String get workout_sections {
+    return Intl.message(
+      'Workout Sections',
+      name: 'workout_sections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom`
+  String get custom {
+    return Intl.message('Custom', name: 'custom', desc: '', args: []);
+  }
+
+  /// `Log`
+  String get log {
+    return Intl.message('Log', name: 'log', desc: '', args: []);
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message('Back', name: 'back', desc: '', args: []);
+  }
+
+  /// `Legs`
+  String get legs {
+    return Intl.message('Legs', name: 'legs', desc: '', args: []);
+  }
+
+  /// `Shoulders`
+  String get shoulders {
+    return Intl.message('Shoulders', name: 'shoulders', desc: '', args: []);
+  }
+
+  /// `Core`
+  String get core {
+    return Intl.message('Core', name: 'core', desc: '', args: []);
+  }
+
+  /// `Chest exercises for upper body strength`
+  String get chest_description {
+    return Intl.message(
+      'Chest exercises for upper body strength',
+      name: 'chest_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Build a strong and wide back`
+  String get back_description {
+    return Intl.message(
+      'Build a strong and wide back',
+      name: 'back_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg day for lower body power`
+  String get legs_description {
+    return Intl.message(
+      'Leg day for lower body power',
+      name: 'legs_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shoulder exercises for definition`
+  String get shoulders_description {
+    return Intl.message(
+      'Shoulder exercises for definition',
+      name: 'shoulders_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Biceps and triceps exercises`
+  String get arms_description {
+    return Intl.message(
+      'Biceps and triceps exercises',
+      name: 'arms_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Strengthen your core and abs`
+  String get core_description {
+    return Intl.message(
+      'Strengthen your core and abs',
+      name: 'core_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search exercises...`
+  String get search_exercises {
+    return Intl.message(
+      'Search exercises...',
+      name: 'search_exercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Beginner`
+  String get beginner {
+    return Intl.message('Beginner', name: 'beginner', desc: '', args: []);
+  }
+
+  /// `Intermediate`
+  String get intermediate {
+    return Intl.message(
+      'Intermediate',
+      name: 'intermediate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advanced`
+  String get advanced {
+    return Intl.message('Advanced', name: 'advanced', desc: '', args: []);
+  }
+
+  /// `Sort By`
+  String get sort_by {
+    return Intl.message('Sort By', name: 'sort_by', desc: '', args: []);
+  }
+
+  /// `Name (A-Z)`
+  String get name_a_z {
+    return Intl.message('Name (A-Z)', name: 'name_a_z', desc: '', args: []);
+  }
+
+  /// `Difficulty`
+  String get difficulty {
+    return Intl.message('Difficulty', name: 'difficulty', desc: '', args: []);
+  }
+
+  /// `Most Popular`
+  String get most_popular {
+    return Intl.message(
+      'Most Popular',
+      name: 'most_popular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No exercises found`
+  String get no_exercises_found {
+    return Intl.message(
+      'No exercises found',
+      name: 'no_exercises_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try adjusting your search or filter`
+  String get try_adjusting_search {
+    return Intl.message(
+      'Try adjusting your search or filter',
+      name: 'try_adjusting_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Custom`
+  String get create_custom {
+    return Intl.message(
+      'Create Custom',
+      name: 'create_custom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target Muscles`
+  String get target_muscles {
+    return Intl.message(
+      'Target Muscles',
+      name: 'target_muscles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to Workout`
+  String get add_to_workout {
+    return Intl.message(
+      'Add to Workout',
+      name: 'add_to_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Added to workout`
+  String get added_to_workout {
+    return Intl.message(
+      'Added to workout',
+      name: 'added_to_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message('Description', name: 'description', desc: '', args: []);
+  }
+
+  /// `My Custom Exercises`
+  String get my_custom_exercises {
+    return Intl.message(
+      'My Custom Exercises',
+      name: 'my_custom_exercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Custom Exercises Yet`
+  String get no_custom_exercises_yet {
+    return Intl.message(
+      'No Custom Exercises Yet',
+      name: 'no_custom_exercises_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create your own exercises to personalize your workouts`
+  String get create_your_own_exercises {
+    return Intl.message(
+      'Create your own exercises to personalize your workouts',
+      name: 'create_your_own_exercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Your First Exercise`
+  String get create_your_first_exercise {
+    return Intl.message(
+      'Create Your First Exercise',
+      name: 'create_your_first_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Custom Exercise`
+  String get create_custom_exercise {
+    return Intl.message(
+      'Create Custom Exercise',
+      name: 'create_custom_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Exercise`
+  String get edit_exercise {
+    return Intl.message(
+      'Edit Exercise',
+      name: 'edit_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Exercise`
+  String get delete_exercise {
+    return Intl.message(
+      'Delete Exercise',
+      name: 'delete_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise Name`
+  String get exercise_name {
+    return Intl.message(
+      'Exercise Name',
+      name: 'exercise_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Section`
+  String get section {
+    return Intl.message('Section', name: 'section', desc: '', args: []);
+  }
+
+  /// `Exercise created successfully`
+  String get exercise_created_successfully {
+    return Intl.message(
+      'Exercise created successfully',
+      name: 'exercise_created_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Exercise?`
+  String get delete_exercise_confirmation {
+    return Intl.message(
+      'Delete Exercise?',
+      name: 'delete_exercise_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this exercise?`
+  String get delete_exercise_message {
+    return Intl.message(
+      'Are you sure you want to delete this exercise?',
+      name: 'delete_exercise_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise deleted`
+  String get exercise_deleted {
+    return Intl.message(
+      'Exercise deleted',
+      name: 'exercise_deleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Equipment`
+  String get equipment {
+    return Intl.message('Equipment', name: 'equipment', desc: '', args: []);
+  }
+
+  /// `Barbell`
+  String get barbell {
+    return Intl.message('Barbell', name: 'barbell', desc: '', args: []);
+  }
+
+  /// `Dumbbells`
+  String get dumbbells {
+    return Intl.message('Dumbbells', name: 'dumbbells', desc: '', args: []);
+  }
+
+  /// `Cable Machine`
+  String get cable_machine {
+    return Intl.message(
+      'Cable Machine',
+      name: 'cable_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bodyweight`
+  String get bodyweight {
+    return Intl.message('Bodyweight', name: 'bodyweight', desc: '', args: []);
+  }
+
+  /// `Machine`
+  String get machine {
+    return Intl.message('Machine', name: 'machine', desc: '', args: []);
+  }
+
+  /// `Pull-up Bar`
+  String get pull_up_bar {
+    return Intl.message('Pull-up Bar', name: 'pull_up_bar', desc: '', args: []);
+  }
+
+  /// `Bench Press`
+  String get bench_press {
+    return Intl.message('Bench Press', name: 'bench_press', desc: '', args: []);
+  }
+
+  /// `Classic compound exercise for chest development. Lie on bench and press barbell up.`
+  String get bench_press_description {
+    return Intl.message(
+      'Classic compound exercise for chest development. Lie on bench and press barbell up.',
+      name: 'bench_press_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incline Dumbbell Press`
+  String get incline_dumbbell_press {
+    return Intl.message(
+      'Incline Dumbbell Press',
+      name: 'incline_dumbbell_press',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target upper chest with incline angle. Press dumbbells upward from incline bench.`
+  String get incline_dumbbell_press_description {
+    return Intl.message(
+      'Target upper chest with incline angle. Press dumbbells upward from incline bench.',
+      name: 'incline_dumbbell_press_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cable Flyes`
+  String get cable_flyes {
+    return Intl.message('Cable Flyes', name: 'cable_flyes', desc: '', args: []);
+  }
+
+  /// `Isolation exercise for chest. Use cables to bring hands together in front.`
+  String get cable_flyes_description {
+    return Intl.message(
+      'Isolation exercise for chest. Use cables to bring hands together in front.',
+      name: 'cable_flyes_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Push-ups`
+  String get push_ups {
+    return Intl.message('Push-ups', name: 'push_ups', desc: '', args: []);
+  }
+
+  /// `Bodyweight chest exercise. Lower body to ground and push back up.`
+  String get push_ups_description {
+    return Intl.message(
+      'Bodyweight chest exercise. Lower body to ground and push back up.',
+      name: 'push_ups_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dumbbell Flyes`
+  String get dumbbell_flyes {
+    return Intl.message(
+      'Dumbbell Flyes',
+      name: 'dumbbell_flyes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stretch chest muscles with dumbbell flyes on flat bench.`
+  String get dumbbell_flyes_description {
+    return Intl.message(
+      'Stretch chest muscles with dumbbell flyes on flat bench.',
+      name: 'dumbbell_flyes_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deadlift`
+  String get deadlift {
+    return Intl.message('Deadlift', name: 'deadlift', desc: '', args: []);
+  }
+
+  /// `King of back exercises. Lift barbell from ground to standing position.`
+  String get deadlift_description {
+    return Intl.message(
+      'King of back exercises. Lift barbell from ground to standing position.',
+      name: 'deadlift_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pull-ups`
+  String get pull_ups {
+    return Intl.message('Pull-ups', name: 'pull_ups', desc: '', args: []);
+  }
+
+  /// `Bodyweight exercise for lat development. Pull yourself up to bar.`
+  String get pull_ups_description {
+    return Intl.message(
+      'Bodyweight exercise for lat development. Pull yourself up to bar.',
+      name: 'pull_ups_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Barbell Rows`
+  String get barbell_rows {
+    return Intl.message(
+      'Barbell Rows',
+      name: 'barbell_rows',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Build thick back with bent-over rows. Pull barbell to lower chest.`
+  String get barbell_rows_description {
+    return Intl.message(
+      'Build thick back with bent-over rows. Pull barbell to lower chest.',
+      name: 'barbell_rows_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lat Pulldown`
+  String get lat_pulldown {
+    return Intl.message(
+      'Lat Pulldown',
+      name: 'lat_pulldown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cable exercise for lats. Pull bar down to upper chest.`
+  String get lat_pulldown_description {
+    return Intl.message(
+      'Cable exercise for lats. Pull bar down to upper chest.',
+      name: 'lat_pulldown_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Squats`
+  String get squats {
+    return Intl.message('Squats', name: 'squats', desc: '', args: []);
+  }
+
+  /// `King of leg exercises. Lower body with barbell on shoulders.`
+  String get squats_description {
+    return Intl.message(
+      'King of leg exercises. Lower body with barbell on shoulders.',
+      name: 'squats_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg Press`
+  String get leg_press {
+    return Intl.message('Leg Press', name: 'leg_press', desc: '', args: []);
+  }
+
+  /// `Push weight up with legs on leg press machine.`
+  String get leg_press_description {
+    return Intl.message(
+      'Push weight up with legs on leg press machine.',
+      name: 'leg_press_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Romanian Deadlift`
+  String get romanian_deadlift {
+    return Intl.message(
+      'Romanian Deadlift',
+      name: 'romanian_deadlift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target hamstrings with straight-leg deadlift motion.`
+  String get romanian_deadlift_description {
+    return Intl.message(
+      'Target hamstrings with straight-leg deadlift motion.',
+      name: 'romanian_deadlift_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg Curls`
+  String get leg_curls {
+    return Intl.message('Leg Curls', name: 'leg_curls', desc: '', args: []);
+  }
+
+  /// `Isolate hamstrings with leg curl machine.`
+  String get leg_curls_description {
+    return Intl.message(
+      'Isolate hamstrings with leg curl machine.',
+      name: 'leg_curls_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calf Raises`
+  String get calf_raises {
+    return Intl.message('Calf Raises', name: 'calf_raises', desc: '', args: []);
+  }
+
+  /// `Build calf muscles by raising heels.`
+  String get calf_raises_description {
+    return Intl.message(
+      'Build calf muscles by raising heels.',
+      name: 'calf_raises_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overhead Press`
+  String get overhead_press {
+    return Intl.message(
+      'Overhead Press',
+      name: 'overhead_press',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Press barbell overhead for shoulder development.`
+  String get overhead_press_description {
+    return Intl.message(
+      'Press barbell overhead for shoulder development.',
+      name: 'overhead_press_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lateral Raises`
+  String get lateral_raises {
+    return Intl.message(
+      'Lateral Raises',
+      name: 'lateral_raises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Raise dumbbells to sides for shoulder width.`
+  String get lateral_raises_description {
+    return Intl.message(
+      'Raise dumbbells to sides for shoulder width.',
+      name: 'lateral_raises_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Front Raises`
+  String get front_raises {
+    return Intl.message(
+      'Front Raises',
+      name: 'front_raises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Raise dumbbells in front for front deltoid focus.`
+  String get front_raises_description {
+    return Intl.message(
+      'Raise dumbbells in front for front deltoid focus.',
+      name: 'front_raises_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Barbell Curls`
+  String get barbell_curls {
+    return Intl.message(
+      'Barbell Curls',
+      name: 'barbell_curls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Classic bicep exercise with barbell.`
+  String get barbell_curls_description {
+    return Intl.message(
+      'Classic bicep exercise with barbell.',
+      name: 'barbell_curls_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tricep Dips`
+  String get tricep_dips {
+    return Intl.message('Tricep Dips', name: 'tricep_dips', desc: '', args: []);
+  }
+
+  /// `Bodyweight exercise for triceps.`
+  String get tricep_dips_description {
+    return Intl.message(
+      'Bodyweight exercise for triceps.',
+      name: 'tricep_dips_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hammer Curls`
+  String get hammer_curls {
+    return Intl.message(
+      'Hammer Curls',
+      name: 'hammer_curls',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Curl dumbbells with neutral grip for brachialis.`
+  String get hammer_curls_description {
+    return Intl.message(
+      'Curl dumbbells with neutral grip for brachialis.',
+      name: 'hammer_curls_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overhead Tricep Extension`
+  String get overhead_tricep_extension {
+    return Intl.message(
+      'Overhead Tricep Extension',
+      name: 'overhead_tricep_extension',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extend dumbbell overhead for tricep isolation.`
+  String get overhead_tricep_extension_description {
+    return Intl.message(
+      'Extend dumbbell overhead for tricep isolation.',
+      name: 'overhead_tricep_extension_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Planks`
+  String get planks {
+    return Intl.message('Planks', name: 'planks', desc: '', args: []);
+  }
+
+  /// `Hold body in plank position for core strength.`
+  String get planks_description {
+    return Intl.message(
+      'Hold body in plank position for core strength.',
+      name: 'planks_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crunches`
+  String get crunches {
+    return Intl.message('Crunches', name: 'crunches', desc: '', args: []);
+  }
+
+  /// `Classic ab exercise. Curl upper body towards knees.`
+  String get crunches_description {
+    return Intl.message(
+      'Classic ab exercise. Curl upper body towards knees.',
+      name: 'crunches_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Russian Twists`
+  String get russian_twists {
+    return Intl.message(
+      'Russian Twists',
+      name: 'russian_twists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rotate torso side to side for obliques.`
+  String get russian_twists_description {
+    return Intl.message(
+      'Rotate torso side to side for obliques.',
+      name: 'russian_twists_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg Raises`
+  String get leg_raises {
+    return Intl.message('Leg Raises', name: 'leg_raises', desc: '', args: []);
+  }
+
+  /// `Raise legs for lower ab development.`
+  String get leg_raises_description {
+    return Intl.message(
+      'Raise legs for lower ab development.',
+      name: 'leg_raises_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upper Chest`
+  String get upper_chest {
+    return Intl.message('Upper Chest', name: 'upper_chest', desc: '', args: []);
+  }
+
+  /// `Triceps`
+  String get triceps {
+    return Intl.message('Triceps', name: 'triceps', desc: '', args: []);
+  }
+
+  /// `Lats`
+  String get lats {
+    return Intl.message('Lats', name: 'lats', desc: '', args: []);
+  }
+
+  /// `Biceps`
+  String get biceps {
+    return Intl.message('Biceps', name: 'biceps', desc: '', args: []);
+  }
+
+  /// `Lower Back`
+  String get lower_back {
+    return Intl.message('Lower Back', name: 'lower_back', desc: '', args: []);
+  }
+
+  /// `Glutes`
+  String get glutes {
+    return Intl.message('Glutes', name: 'glutes', desc: '', args: []);
+  }
+
+  /// `Hamstrings`
+  String get hamstrings {
+    return Intl.message('Hamstrings', name: 'hamstrings', desc: '', args: []);
+  }
+
+  /// `Quads`
+  String get quads {
+    return Intl.message('Quads', name: 'quads', desc: '', args: []);
+  }
+
+  /// `Side Delts`
+  String get side_delts {
+    return Intl.message('Side Delts', name: 'side_delts', desc: '', args: []);
+  }
+
+  /// `Front Delts`
+  String get front_delts {
+    return Intl.message('Front Delts', name: 'front_delts', desc: '', args: []);
+  }
+
+  /// `Forearms`
+  String get forearms {
+    return Intl.message('Forearms', name: 'forearms', desc: '', args: []);
+  }
+
+  /// `Abs`
+  String get abs {
+    return Intl.message('Abs', name: 'abs', desc: '', args: []);
+  }
+
+  /// `Obliques`
+  String get obliques {
+    return Intl.message('Obliques', name: 'obliques', desc: '', args: []);
+  }
+
+  /// `Lower Abs`
+  String get lower_abs {
+    return Intl.message('Lower Abs', name: 'lower_abs', desc: '', args: []);
+  }
+
+  /// `Calves`
+  String get calves {
+    return Intl.message('Calves', name: 'calves', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message('Create', name: 'create', desc: '', args: []);
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message('Edit', name: 'edit', desc: '', args: []);
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message('Yes', name: 'yes', desc: '', args: []);
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message('No', name: 'no', desc: '', args: []);
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message('Done', name: 'done', desc: '', args: []);
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message('Next', name: 'next', desc: '', args: []);
+  }
+
+  /// `Previous`
+  String get previous {
+    return Intl.message('Previous', name: 'previous', desc: '', args: []);
+  }
+
+  /// `Select`
+  String get select {
+    return Intl.message('Select', name: 'select', desc: '', args: []);
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
+
+  /// `Sort`
+  String get sort {
+    return Intl.message('Sort', name: 'sort', desc: '', args: []);
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message('Apply', name: 'apply', desc: '', args: []);
+  }
+
+  /// `Clear`
+  String get clear {
+    return Intl.message('Clear', name: 'clear', desc: '', args: []);
+  }
+
+  /// `Reset`
+  String get reset {
+    return Intl.message('Reset', name: 'reset', desc: '', args: []);
+  }
+
+  /// `Push yourself, because no one else is going to do it for you 💪`
+  String get motivational_quote_1 {
+    return Intl.message(
+      'Push yourself, because no one else is going to do it for you 💪',
+      name: 'motivational_quote_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Great things never come from comfort zones 🔥`
+  String get motivational_quote_2 {
+    return Intl.message(
+      'Great things never come from comfort zones 🔥',
+      name: 'motivational_quote_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The only bad workout is the one that didn't happen ⚡`
+  String get motivational_quote_3 {
+    return Intl.message(
+      'The only bad workout is the one that didn\'t happen ⚡',
+      name: 'motivational_quote_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your body can stand almost anything. It's your mind that needs convincing 🧠`
+  String get motivational_quote_4 {
+    return Intl.message(
+      'Your body can stand almost anything. It\'s your mind that needs convincing 🧠',
+      name: 'motivational_quote_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success starts with self-discipline 🎯`
+  String get motivational_quote_5 {
+    return Intl.message(
+      'Success starts with self-discipline 🎯',
+      name: 'motivational_quote_5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Train insane or remain the same 🏋️`
+  String get motivational_quote_6 {
+    return Intl.message(
+      'Train insane or remain the same 🏋️',
+      name: 'motivational_quote_6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your only limit is you 🚀`
+  String get motivational_quote_7 {
+    return Intl.message(
+      'Your only limit is you 🚀',
+      name: 'motivational_quote_7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't wish for it, work for it 💯`
+  String get motivational_quote_8 {
+    return Intl.message(
+      'Don\'t wish for it, work for it 💯',
+      name: 'motivational_quote_8',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// ``
   String get x {
     return Intl.message('', name: 'x', desc: '', args: []);

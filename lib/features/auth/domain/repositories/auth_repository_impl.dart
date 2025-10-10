@@ -161,9 +161,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
         // Save tokens
         await _tokenManager.saveTokens(
-          accessToken: loginResponse.accessToken,
-          refreshToken: loginResponse.refreshToken,
-          expiresOnUtc: loginResponse.expiresOnUtc,
+          accessToken: loginResponse.token.accessToken,
+          refreshToken: loginResponse.token.refreshToken,
+          expiresOnUtc: loginResponse.token.expiresOnUtc,
         );
 
         dev.log('✅ Login successful, tokens saved', name: 'AuthRepository');
@@ -225,10 +225,10 @@ class AuthRepositoryImpl implements AuthRepository {
         queryParams: {'pageSize': 1, 'page': 1},
       );
 
-      dev.log(
-        '✅ Profile response: ${response.statusCode}',
-        name: 'AuthRepository',
-      );
+      // dev.log(
+      //   '✅ Profile response: ${response.statusCode}',
+      //   name: 'AuthRepository',
+      // );
 
       if (response.statusCode == 200) {
         final data = response.data;

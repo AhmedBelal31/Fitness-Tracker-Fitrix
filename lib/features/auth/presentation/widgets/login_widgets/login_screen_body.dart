@@ -136,7 +136,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody>
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'Welcome back, ${state.userProfile?.userName ?? "User"}!',
+                      'Welcome back, ${state.userProfile?.firstName ?? "User"}!',
                     ),
                     backgroundColor: ColorsManager.primaryGreen,
                     behavior: SnackBarBehavior.floating,

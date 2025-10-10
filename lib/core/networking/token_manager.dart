@@ -1,3 +1,4 @@
+import 'package:ntp/ntp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as dev;
 
@@ -87,12 +88,20 @@ class TokenManager {
       return true;
     }
 
-    // Convert expiry from UTC to local time for comparison
-    final now = DateTime.now().toUtc();
+    // Get accurate server time instead of local
+    DateTime now;
+    try {
+      now = await NTP.now();
+    } catch (e) {
+      dev.log(
+        '⚠️ Failed to get NTP time, fallback to device time',
+        name: 'TokenManager',
+      );
+      now = DateTime.now().toUtc();
+    }
 
-    // Consider token expired 5 minutes before actual expiry
+    // Subtract 5 mins as buffer
     final expiryWithBuffer = expiry.subtract(const Duration(minutes: 5));
-
     final isExpired = now.isAfter(expiryWithBuffer);
 
     dev.log(

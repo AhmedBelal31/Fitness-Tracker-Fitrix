@@ -16,4 +16,7 @@ class Routes {
 
   static const String settingsScreen = 'settingsScreen';
   static const String forgotPasswordScreen = 'ForgotPasswordScreen';
+
+  static const String sectionExercises = 'sectionExercises';
+  static const String customExercises = 'customExercises';
 }
