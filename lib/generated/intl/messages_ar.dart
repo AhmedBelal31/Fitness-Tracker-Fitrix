@@ -30,8 +30,26 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("حول"),
+    "aboutTitle": MessageLookupByLibrary.simpleMessage("حول فيتريكس"),
     "abs": MessageLookupByLibrary.simpleMessage("البطن"),
+    "acceptableUse": MessageLookupByLibrary.simpleMessage("الاستخدام المقبول"),
+    "acceptableUseText": MessageLookupByLibrary.simpleMessage(
+      "توافق على استخدام فيتريكس فقط لأغراض قانونية. توافق على عدم:",
+    ),
+    "acceptanceOfTerms": MessageLookupByLibrary.simpleMessage("قبول الشروط"),
+    "acceptanceOfTermsText": MessageLookupByLibrary.simpleMessage(
+      "من خلال الوصول إلى فيتريكس واستخدامه، فإنك تقبل وتوافق على الالتزام بشروط وأحكام هذه الاتفاقية. إذا كنت لا توافق على هذه الشروط، يرجى عدم استخدام تطبيقنا.",
+    ),
+    "accessDataItem": MessageLookupByLibrary.simpleMessage(
+      "الوصول إلى بياناتك الشخصية",
+    ),
     "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+    "accountActivitiesItem": MessageLookupByLibrary.simpleMessage(
+      "جميع الأنشطة التي تحدث تحت حسابك",
+    ),
+    "accurateInfoItem": MessageLookupByLibrary.simpleMessage(
+      "تقديم معلومات دقيقة وكاملة",
+    ),
     "achievements": MessageLookupByLibrary.simpleMessage("الإنجازات"),
     "active_trainees": MessageLookupByLibrary.simpleMessage(
       "المتدربين النشطين",
@@ -49,7 +67,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟ ",
     ),
+    "appDescription": MessageLookupByLibrary.simpleMessage(
+      "فيتريكس هو رفيقك الشامل للياقة البدنية المصمم لمساعدتك على تحقيق أهدافك الصحية واللياقة البدنية. تتبع التمارين، راقب التقدم، وابق متحمساً في رحلة لياقتك البدنية.",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("فيتريكس"),
+    "appSettings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
     "appTagline": MessageLookupByLibrary.simpleMessage(
       "كن لائقاً. غيّر مستقبلك",
     ),
@@ -84,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "body_fat": MessageLookupByLibrary.simpleMessage("دهون الجسم"),
     "body_progress": MessageLookupByLibrary.simpleMessage("تقدم الجسم"),
     "bodyweight": MessageLookupByLibrary.simpleMessage("وزن الجسم"),
+    "buildNumber": MessageLookupByLibrary.simpleMessage("رقم البناء"),
     "cable_flyes": MessageLookupByLibrary.simpleMessage("فتح الكابل"),
     "cable_flyes_description": MessageLookupByLibrary.simpleMessage(
       "تمرين عزل للصدر. استخدم الكابل لجمع اليدين أمام الجسم.",
@@ -93,11 +116,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "calf_raises_description": MessageLookupByLibrary.simpleMessage(
       "بناء عضلات السمانة برفع الكعبين.",
     ),
+    "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "calves": MessageLookupByLibrary.simpleMessage("السمانة"),
-    "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "changeYourPassword": MessageLookupByLibrary.simpleMessage(
+      "تغيير كلمة المرور",
+    ),
     "change_photo": MessageLookupByLibrary.simpleMessage("تغيير الصورة"),
     "change_your_password": MessageLookupByLibrary.simpleMessage(
       "تغيير كلمة المرور",
+    ),
+    "changesToTerms": MessageLookupByLibrary.simpleMessage(
+      "التغييرات على الشروط",
+    ),
+    "changesToTermsText": MessageLookupByLibrary.simpleMessage(
+      "قد نقوم بتعديل هذه الشروط في أي وقت. يشكل الاستخدام المستمر لفيتريكس بعد التغييرات قبولاً للشروط المعدلة.",
     ),
     "checkMuscleMassEntered": MessageLookupByLibrary.simpleMessage(
       "يرجى التحقق من الكتلة العضلية المدخلة",
@@ -115,6 +148,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "clear": MessageLookupByLibrary.simpleMessage("مسح"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
+    "commercialUseItem": MessageLookupByLibrary.simpleMessage(
+      "استخدام التطبيق لأغراض تجارية بدون إذن",
+    ),
     "completeProfile": MessageLookupByLibrary.simpleMessage(
       "إكمال الملف الشخصي",
     ),
@@ -128,6 +164,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "completion": MessageLookupByLibrary.simpleMessage("الإنجاز"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور الجديدة",
+    ),
+    "consultProviderItem": MessageLookupByLibrary.simpleMessage(
+      "استشر مقدم رعاية صحية قبل بدء أي برنامج للياقة",
+    ),
+    "contactSupport": MessageLookupByLibrary.simpleMessage("اتصل بالدعم"),
+    "contactSupportTitle": MessageLookupByLibrary.simpleMessage("اتصل بالدعم"),
+    "contactUsSection": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+    "contactUsText": MessageLookupByLibrary.simpleMessage(
+      "إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه، يرجى الاتصال بنا على appfitrix@gmail.com",
     ),
     "contact_support": MessageLookupByLibrary.simpleMessage("الاتصال بالدعم"),
     "contact_us_help": MessageLookupByLibrary.simpleMessage(
@@ -146,6 +191,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "core": MessageLookupByLibrary.simpleMessage("البطن"),
     "core_description": MessageLookupByLibrary.simpleMessage(
       "تقوية عضلات البطن والجذع",
+    ),
+    "correctDataItem": MessageLookupByLibrary.simpleMessage(
+      "تصحيح البيانات غير الدقيقة",
     ),
     "create": MessageLookupByLibrary.simpleMessage("إنشاء"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
@@ -170,11 +218,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "current_weight": MessageLookupByLibrary.simpleMessage("الوزن الحالي"),
     "custom": MessageLookupByLibrary.simpleMessage("مخصص"),
+    "dataSecurity": MessageLookupByLibrary.simpleMessage("أمن البيانات"),
+    "dataSecurityText": MessageLookupByLibrary.simpleMessage(
+      "نطبق تدابير أمنية مناسبة لحماية معلوماتك الشخصية. يتم تشفير بياناتك وتخزينها بشكل آمن على خوادمنا. لا نشارك معلوماتك الشخصية مع أطراف ثالثة بدون موافقتك.",
+    ),
     "deadlift": MessageLookupByLibrary.simpleMessage("الرفعة الميتة"),
     "deadlift_description": MessageLookupByLibrary.simpleMessage(
       "ملك تمارين الظهر. ارفع البار من الأرض لوضع الوقوف.",
     ),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "deleteDataItem": MessageLookupByLibrary.simpleMessage("طلب حذف بياناتك"),
     "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "delete_exercise": MessageLookupByLibrary.simpleMessage("حذف التمرين"),
     "delete_exercise_confirmation": MessageLookupByLibrary.simpleMessage(
@@ -184,6 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل أنت متأكد من حذف هذا التمرين؟",
     ),
     "description": MessageLookupByLibrary.simpleMessage("الوصف"),
+    "developer": MessageLookupByLibrary.simpleMessage("المطور"),
     "didnt_receive_code": MessageLookupByLibrary.simpleMessage(
       "لم تتلق رمزًا.",
     ),
@@ -344,8 +398,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "exercise_deleted": MessageLookupByLibrary.simpleMessage("تم حذف التمرين"),
     "exercise_name": MessageLookupByLibrary.simpleMessage("اسم التمرين"),
     "exercises": MessageLookupByLibrary.simpleMessage("التمارين"),
+    "exportDataItem": MessageLookupByLibrary.simpleMessage("تصدير بياناتك"),
     "failed_to_update_profile": MessageLookupByLibrary.simpleMessage(
       "فشل تحديث الملف الشخصي",
+    ),
+    "faqResetPassword": MessageLookupByLibrary.simpleMessage(
+      "كيف أقوم بإعادة تعيين كلمة المرور؟",
+    ),
+    "faqResetPasswordAnswer": MessageLookupByLibrary.simpleMessage(
+      "انتقل إلى شاشة تسجيل الدخول واضغط على \'نسيت كلمة المرور\'. اتبع التعليمات المرسلة إلى بريدك الإلكتروني.",
+    ),
+    "faqSyncData": MessageLookupByLibrary.simpleMessage(
+      "هل يمكنني مزامنة البيانات عبر الأجهزة؟",
+    ),
+    "faqSyncDataAnswer": MessageLookupByLibrary.simpleMessage(
+      "نعم، يتم مزامنة بياناتك تلقائياً عند تسجيل الدخول بنفس الحساب.",
+    ),
+    "faqTrackWorkouts": MessageLookupByLibrary.simpleMessage(
+      "كيف أتتبع تمريناتي؟",
+    ),
+    "faqTrackWorkoutsAnswer": MessageLookupByLibrary.simpleMessage(
+      "انتقل إلى قسم التمارين واضغط على زر \'+\' لإنشاء جلسة تمرين جديدة.",
     ),
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "filter": MessageLookupByLibrary.simpleMessage("تصفية"),
@@ -355,6 +428,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "الاسم الأول مطلوب",
     ),
     "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+    "fitrixTeam": MessageLookupByLibrary.simpleMessage("فريق فيتريكس"),
+    "followUs": MessageLookupByLibrary.simpleMessage("تابعنا"),
     "forearms": MessageLookupByLibrary.simpleMessage("الساعد"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -365,6 +440,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
+    ),
+    "frequentlyAskedQuestions": MessageLookupByLibrary.simpleMessage(
+      "الأسئلة الشائعة",
     ),
     "front_delts": MessageLookupByLibrary.simpleMessage("أمام الكتف"),
     "front_raises": MessageLookupByLibrary.simpleMessage("رفع أمامي"),
@@ -379,17 +457,57 @@ class MessageLookup extends MessageLookupByLibrary {
       "لف الدمبل بقبضة محايدة لعضلة البراكياليس.",
     ),
     "hamstrings": MessageLookupByLibrary.simpleMessage("الفخذ الخلفي"),
+    "harassUsersItem": MessageLookupByLibrary.simpleMessage(
+      "مضايقة أو إيذاء المستخدمين الآخرين",
+    ),
+    "healthDataItem": MessageLookupByLibrary.simpleMessage(
+      "بيانات الصحة واللياقة (الوزن، قياسات الجسم، سجل التمارين)",
+    ),
+    "healthDisclaimer": MessageLookupByLibrary.simpleMessage(
+      "إخلاء المسؤولية الصحية",
+    ),
+    "healthDisclaimerText": MessageLookupByLibrary.simpleMessage(
+      "تم تصميم فيتريكس لمساعدتك في تتبع تقدمك في اللياقة البدنية. ومع ذلك:",
+    ),
+    "helpSupport": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
     "help_support": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
     "hips": MessageLookupByLibrary.simpleMessage("الأرداف"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "howCanWeHelp": MessageLookupByLibrary.simpleMessage("كيف يمكننا مساعدتك؟"),
+    "howWeUseInfo": MessageLookupByLibrary.simpleMessage("كيف نستخدم معلوماتك"),
+    "howWeUseInfoText": MessageLookupByLibrary.simpleMessage(
+      "نستخدم المعلومات التي نجمعها من أجل:",
+    ),
+    "improveServicesItem": MessageLookupByLibrary.simpleMessage(
+      "تحسين تطبيقنا وخدماتنا",
+    ),
     "in_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "inappropriateContentItem": MessageLookupByLibrary.simpleMessage(
+      "تحميل أو مشاركة محتوى غير لائق",
+    ),
     "incline_dumbbell_press": MessageLookupByLibrary.simpleMessage(
       "ضغط دمبل مائل",
     ),
     "incline_dumbbell_press_description": MessageLookupByLibrary.simpleMessage(
       "استهدف الصدر العلوي بزاوية مائلة. اضغط الدمبل للأعلى من البنش المائل.",
     ),
+    "informationWeCollect": MessageLookupByLibrary.simpleMessage(
+      "المعلومات التي نجمعها",
+    ),
+    "informationWeCollectText": MessageLookupByLibrary.simpleMessage(
+      "نجمع المعلومات التي تقدمها لنا مباشرة، بما في ذلك:",
+    ),
+    "intellectualProperty": MessageLookupByLibrary.simpleMessage(
+      "الملكية الفكرية",
+    ),
+    "intellectualPropertyText": MessageLookupByLibrary.simpleMessage(
+      "جميع المحتويات والميزات ووظائف فيتريكس مملوكة لنا ومحمية بموجب قوانين حقوق النشر والعلامات التجارية وقوانين الملكية الفكرية الأخرى. لا يجوز لك نسخ أو تعديل أو توزيع أي جزء من تطبيقنا بدون إذن.",
+    ),
     "intermediate": MessageLookupByLibrary.simpleMessage("متوسط"),
+    "introduction": MessageLookupByLibrary.simpleMessage("المقدمة"),
+    "introductionText": MessageLookupByLibrary.simpleMessage(
+      "مرحباً بك في فيتريكس. نحن ملتزمون بحماية معلوماتك الشخصية وحقك في الخصوصية. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها ومشاركتها عند استخدام تطبيق تتبع اللياقة البدنية الخاص بنا.",
+    ),
     "invalidEgyptianPhone": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال رقم هاتف مصري صحيح (مثال: 01012345678)",
     ),
@@ -405,6 +523,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "lastNameRequired": MessageLookupByLibrary.simpleMessage(
       "اسم العائلة مطلوب",
     ),
+    "lastUpdated": MessageLookupByLibrary.simpleMessage("آخر تحديث"),
+    "lastUpdatedDate": MessageLookupByLibrary.simpleMessage("أكتوبر 2025"),
     "last_name": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "last_workout": MessageLookupByLibrary.simpleMessage("آخر تمرين"),
     "lat_pulldown": MessageLookupByLibrary.simpleMessage("سحب اللات"),
@@ -428,6 +548,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "leg_raises_description": MessageLookupByLibrary.simpleMessage(
       "ارفع الأرجل لتطوير عضلات البطن السفلية.",
     ),
+    "legalContact": MessageLookupByLibrary.simpleMessage(
+      "للأسئلة حول هذه الشروط، اتصل بنا على appfitrix@gmail.com",
+    ),
     "legs": MessageLookupByLibrary.simpleMessage("الأرجل"),
     "legs_description": MessageLookupByLibrary.simpleMessage(
       "يوم الأرجل لقوة الجزء السفلي",
@@ -435,14 +558,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل..."),
     "log": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "log_measurement": MessageLookupByLibrary.simpleMessage("تسجيل القياس"),
+    "loggedOutSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الخروج بنجاح",
+    ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    ),
+    "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "lower_abs": MessageLookupByLibrary.simpleMessage("أسفل البطن"),
     "lower_back": MessageLookupByLibrary.simpleMessage("أسفل الظهر"),
     "machine": MessageLookupByLibrary.simpleMessage("آلة"),
+    "maintainCredentialsItem": MessageLookupByLibrary.simpleMessage(
+      "الحفاظ على سرية بيانات اعتماد حسابك",
+    ),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("إدارة المتدربين"),
     "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
+    "memberSince": MessageLookupByLibrary.simpleMessage("عضو منذ"),
     "member_since": MessageLookupByLibrary.simpleMessage("عضو منذ"),
     "minutes": MessageLookupByLibrary.simpleMessage("دقيقة"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
@@ -509,9 +643,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_workouts_found": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على تمارين",
     ),
-    "normalUser": MessageLookupByLibrary.simpleMessage("مستخدم عادي"),
+    "normalUser": MessageLookupByLibrary.simpleMessage("مستخدم"),
     "normalUserDesc": MessageLookupByLibrary.simpleMessage(
       "تتبع التمارين والتقدم",
+    ),
+    "notLiableItem": MessageLookupByLibrary.simpleMessage(
+      "نحن غير مسؤولين عن أي إصابات أو مشاكل صحية",
+    ),
+    "notMedicalAdviceItem": MessageLookupByLibrary.simpleMessage(
+      "نحن لسنا بديلاً عن المشورة الطبية المهنية",
     ),
     "not_found_description": MessageLookupByLibrary.simpleMessage(
       "الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يرجى التحقق من عنوان URL أو العودة إلى الصفحة الرئيسية.",
@@ -521,6 +661,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "obliques": MessageLookupByLibrary.simpleMessage("البطن الجانبية"),
+    "optOutItem": MessageLookupByLibrary.simpleMessage(
+      "إلغاء الاشتراك في الرسائل التسويقية",
+    ),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
     "overhead_press": MessageLookupByLibrary.simpleMessage("ضغط الكتف"),
     "overhead_press_description": MessageLookupByLibrary.simpleMessage(
@@ -550,11 +693,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
       "كلمات المرور غير متطابقة",
     ),
+    "personalFitnessCompanion": MessageLookupByLibrary.simpleMessage(
+      "رفيقك الشخصي للياقة البدنية",
+    ),
+    "personalInformation": MessageLookupByLibrary.simpleMessage(
+      "المعلومات الشخصية",
+    ),
+    "personalInformationItem": MessageLookupByLibrary.simpleMessage(
+      "المعلومات الشخصية (الاسم، البريد الإلكتروني، رقم الهاتف)",
+    ),
     "personal_information": MessageLookupByLibrary.simpleMessage(
       "المعلومات الشخصية",
     ),
     "personal_records": MessageLookupByLibrary.simpleMessage(
       "الأرقام القياسية الشخصية",
+    ),
+    "personalizeExperienceItem": MessageLookupByLibrary.simpleMessage(
+      "تخصيص تجربة اللياقة الخاصة بك",
     ),
     "phoneExactLength": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون رقم الهاتف 11 رقماً",
@@ -592,13 +747,23 @@ class MessageLookup extends MessageLookupByLibrary {
       "الرجاء إدخال كلمة المرور",
     ),
     "previous": MessageLookupByLibrary.simpleMessage("السابق"),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+    "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
+      "سياسة الخصوصية",
+    ),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profileCompletedWelcome": m0,
+    "profileInformationItem": MessageLookupByLibrary.simpleMessage(
+      "معلومات الملف الشخصي (العمر، الجنس، أهداف اللياقة)",
+    ),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "تم تحديث الملف الشخصي بنجاح",
     ),
     "progress": MessageLookupByLibrary.simpleMessage("التقدم"),
+    "provideServicesItem": MessageLookupByLibrary.simpleMessage(
+      "تقديم وصيانة خدماتنا",
+    ),
     "pull_up_bar": MessageLookupByLibrary.simpleMessage("عقلة"),
     "pull_ups": MessageLookupByLibrary.simpleMessage("العقلة"),
     "pull_ups_description": MessageLookupByLibrary.simpleMessage(
@@ -611,6 +776,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "quads": MessageLookupByLibrary.simpleMessage("الفخذ الأمامي"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("إجراءات سريعة"),
     "rate": MessageLookupByLibrary.simpleMessage("المعدل"),
+    "rateApp": MessageLookupByLibrary.simpleMessage("قيم التطبيق"),
     "rate_app": MessageLookupByLibrary.simpleMessage("تقييم التطبيق"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("التمارين الأخيرة"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
@@ -627,6 +793,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "review": MessageLookupByLibrary.simpleMessage("مراجعة"),
+    "role": MessageLookupByLibrary.simpleMessage("الدور"),
     "romanian_deadlift": MessageLookupByLibrary.simpleMessage(
       "الرفعة الرومانية",
     ),
@@ -649,6 +816,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر ذكر أو أنثى",
     ),
     "selectYourRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),
+    "sendEmail": MessageLookupByLibrary.simpleMessage("إرسال بريد إلكتروني"),
+    "sendMessage": MessageLookupByLibrary.simpleMessage("إرسال رسالة"),
+    "sendNotificationsItem": MessageLookupByLibrary.simpleMessage(
+      "إرسال الإشعارات والتحديثات",
+    ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط الاستعادة",
     ),
@@ -657,6 +829,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "setupFitnessJourney": MessageLookupByLibrary.simpleMessage(
       "لنبدأ إعداد رحلتك الرياضية",
     ),
+    "shareApp": MessageLookupByLibrary.simpleMessage("شارك التطبيق"),
     "shoulders": MessageLookupByLibrary.simpleMessage("الأكتاف"),
     "shoulders_description": MessageLookupByLibrary.simpleMessage(
       "تمارين الكتف للحصول على التحديد",
@@ -679,8 +852,19 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "start_workout": MessageLookupByLibrary.simpleMessage("بدء التمرين"),
     "statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
+    "supportTeamReady": MessageLookupByLibrary.simpleMessage(
+      "فريق الدعم لدينا هنا لمساعدتك",
+    ),
     "take_a_picture": MessageLookupByLibrary.simpleMessage("التقط صورة"),
     "target_muscles": MessageLookupByLibrary.simpleMessage("العضلات المستهدفة"),
+    "termination": MessageLookupByLibrary.simpleMessage("الإنهاء"),
+    "terminationText": MessageLookupByLibrary.simpleMessage(
+      "نحتفظ بالحق في تعليق أو إنهاء حسابك في أي وقت لانتهاك هذه الشروط أو لأي سبب آخر وفقاً لتقديرنا.",
+    ),
+    "termsConditions": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+    "termsConditionsTitle": MessageLookupByLibrary.simpleMessage(
+      "الشروط والأحكام",
+    ),
     "terms_conditions": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
     "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "thighs": MessageLookupByLibrary.simpleMessage("الفخذين"),
@@ -689,6 +873,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "today": MessageLookupByLibrary.simpleMessage("اليوم"),
     "today_stats": MessageLookupByLibrary.simpleMessage("إحصائيات اليوم"),
     "total_workouts": MessageLookupByLibrary.simpleMessage("إجمالي التمارين"),
+    "trackProgressItem": MessageLookupByLibrary.simpleMessage(
+      "تتبع تقدمك وإنجازاتك",
+    ),
     "trainees": MessageLookupByLibrary.simpleMessage("المتدربين"),
     "trainer": MessageLookupByLibrary.simpleMessage("مدرب"),
     "trainerDesc": MessageLookupByLibrary.simpleMessage("إنشاء وإدارة الخطط"),
@@ -703,9 +890,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "try_adjusting_search": MessageLookupByLibrary.simpleMessage(
       "حاول تعديل البحث أو الفلتر",
     ),
+    "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage(
+      "محاولة الوصول إلى مناطق غير مصرح بها",
+    ),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
+    "updateInfoItem": MessageLookupByLibrary.simpleMessage(
+      "تحديث معلوماتك حسب الحاجة",
+    ),
     "upper_chest": MessageLookupByLibrary.simpleMessage("الصدر العلوي"),
+    "usageDataItem": MessageLookupByLibrary.simpleMessage(
+      "بيانات الاستخدام (تفاعلات التطبيق، التفضيلات)",
+    ),
+    "useAtRiskItem": MessageLookupByLibrary.simpleMessage(
+      "استخدم التطبيق على مسؤوليتك الخاصة",
+    ),
     "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
+    "userAccount": MessageLookupByLibrary.simpleMessage("حساب المستخدم"),
+    "userAccountText": MessageLookupByLibrary.simpleMessage(
+      "لاستخدام ميزات معينة في فيتريكس، يجب عليك إنشاء حساب. أنت مسؤول عن:",
+    ),
     "username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
     "usernameMinLength": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون اسم المستخدم 3 أحرف على الأقل",
@@ -724,10 +927,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "view_all_workouts": MessageLookupByLibrary.simpleMessage(
       "عرض جميع التمارين",
     ),
+    "violateLawsItem": MessageLookupByLibrary.simpleMessage(
+      "انتهاك أي قوانين أو لوائح سارية",
+    ),
+    "visitWebsite": MessageLookupByLibrary.simpleMessage("زيارة الموقع"),
     "waist": MessageLookupByLibrary.simpleMessage("الخصر"),
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا بريدًا إلكترونيًا إلى",
     ),
+    "website": MessageLookupByLibrary.simpleMessage("الموقع الإلكتروني"),
     "weightKg": MessageLookupByLibrary.simpleMessage("الوزن (كجم)"),
     "weightRequired": MessageLookupByLibrary.simpleMessage("الوزن مطلوب"),
     "weight_change": MessageLookupByLibrary.simpleMessage("تغيير الوزن"),
@@ -739,10 +947,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_trainer": MessageLookupByLibrary.simpleMessage(
       "مرحباً أيها المدرب!",
     ),
+    "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
     "workout_history": MessageLookupByLibrary.simpleMessage("سجل التمارين"),
     "workout_sections": MessageLookupByLibrary.simpleMessage("أقسام التمارين"),
     "workouts": MessageLookupByLibrary.simpleMessage("التمارين"),
     "x": MessageLookupByLibrary.simpleMessage(""),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
+    "yourRights": MessageLookupByLibrary.simpleMessage("حقوقك"),
+    "yourRightsText": MessageLookupByLibrary.simpleMessage("لديك الحق في:"),
   };
 }

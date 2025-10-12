@@ -11,6 +11,10 @@ import '../../features/auth/presentation/screens/register_screen.dart';
 import '../../features/exercises/data/models/section_model.dart';
 import '../../features/exercises/presentation/screens/custom_exercises_screen.dart';
 import '../../features/exercises/presentation/screens/section_exercises_screen.dart';
+import '../../features/profile/presentation/screens/about_screen.dart';
+import '../../features/profile/presentation/screens/contact_support_screen.dart';
+import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
+import '../../features/profile/presentation/screens/terms_conditions_screen.dart';
 import 'export_routes.dart';
 
 class AppRouter {
@@ -56,6 +60,18 @@ class AppRouter {
 
       case Routes.customExercises:
         return MaterialPageRoute(builder: (_) => const CustomExercisesScreen());
+
+      case Routes.privacyPolicyScreen:
+        return MaterialPageRoute(builder: (_) => const PrivacyPolicyScreen());
+
+      case Routes.termsConditionsScreen:
+        return MaterialPageRoute(builder: (_) => const TermsConditionsScreen());
+
+      case Routes.contactSupportScreen:
+        return MaterialPageRoute(builder: (_) => const ContactSupportScreen());
+
+      case Routes.aboutScreen:
+        return MaterialPageRoute(builder: (_) => const AboutScreen());
 
       default:
         screen = const ErrorScreen();

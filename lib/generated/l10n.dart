@@ -54,9 +54,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Email Address`
+  /// `Email`
   String get email {
-    return Intl.message('Email Address', name: 'email', desc: '', args: []);
+    return Intl.message('Email', name: 'email', desc: '', args: []);
   }
 
   /// `Password`
@@ -409,9 +409,9 @@ class S {
     return Intl.message('Languages', name: 'languages', desc: '', args: []);
   }
 
-  /// `PROFILE`
+  /// `Profile`
   String get profile {
-    return Intl.message('PROFILE', name: 'profile', desc: '', args: []);
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 
   /// `Change Photo`
@@ -2779,9 +2779,9 @@ class S {
     );
   }
 
-  /// `Normal User`
+  /// `User`
   String get normalUser {
-    return Intl.message('Normal User', name: 'normalUser', desc: '', args: []);
+    return Intl.message('User', name: 'normalUser', desc: '', args: []);
   }
 
   /// `Track workouts & progress`
@@ -3139,6 +3139,891 @@ class S {
     return Intl.message(
       'Enter your muscle mass in kg (optional)',
       name: 'enterMuscleMass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information`
+  String get personalInformation {
+    return Intl.message(
+      'Personal Information',
+      name: 'personalInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Settings`
+  String get appSettings {
+    return Intl.message(
+      'App Settings',
+      name: 'appSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help & Support`
+  String get helpSupport {
+    return Intl.message(
+      'Help & Support',
+      name: 'helpSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Member Since`
+  String get memberSince {
+    return Intl.message(
+      'Member Since',
+      name: 'memberSince',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Role`
+  String get role {
+    return Intl.message('Role', name: 'role', desc: '', args: []);
+  }
+
+  /// `Change Your Password`
+  String get changeYourPassword {
+    return Intl.message(
+      'Change Your Password',
+      name: 'changeYourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms & Conditions`
+  String get termsConditions {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'termsConditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Support`
+  String get contactSupport {
+    return Intl.message(
+      'Contact Support',
+      name: 'contactSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logoutConfirmTitle {
+    return Intl.message(
+      'Logout',
+      name: 'logoutConfirmTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to logout?`
+  String get logoutConfirmMessage {
+    return Intl.message(
+      'Are you sure you want to logout?',
+      name: 'logoutConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logged out successfully`
+  String get loggedOutSuccess {
+    return Intl.message(
+      'Logged out successfully',
+      name: 'loggedOutSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicyTitle {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms & Conditions`
+  String get termsConditionsTitle {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'termsConditionsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Support`
+  String get contactSupportTitle {
+    return Intl.message(
+      'Contact Support',
+      name: 'contactSupportTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Fitrix`
+  String get aboutTitle {
+    return Intl.message('About Fitrix', name: 'aboutTitle', desc: '', args: []);
+  }
+
+  /// `Last Updated`
+  String get lastUpdated {
+    return Intl.message(
+      'Last Updated',
+      name: 'lastUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Email`
+  String get sendEmail {
+    return Intl.message('Send Email', name: 'sendEmail', desc: '', args: []);
+  }
+
+  /// `Call Us`
+  String get callUs {
+    return Intl.message('Call Us', name: 'callUs', desc: '', args: []);
+  }
+
+  /// `WhatsApp`
+  String get whatsapp {
+    return Intl.message('WhatsApp', name: 'whatsapp', desc: '', args: []);
+  }
+
+  /// `Send Message`
+  String get sendMessage {
+    return Intl.message(
+      'Send Message',
+      name: 'sendMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Build Number`
+  String get buildNumber {
+    return Intl.message(
+      'Build Number',
+      name: 'buildNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Developer`
+  String get developer {
+    return Intl.message('Developer', name: 'developer', desc: '', args: []);
+  }
+
+  /// `Website`
+  String get website {
+    return Intl.message('Website', name: 'website', desc: '', args: []);
+  }
+
+  /// `Visit Website`
+  String get visitWebsite {
+    return Intl.message(
+      'Visit Website',
+      name: 'visitWebsite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow Us`
+  String get followUs {
+    return Intl.message('Follow Us', name: 'followUs', desc: '', args: []);
+  }
+
+  /// `Rate App`
+  String get rateApp {
+    return Intl.message('Rate App', name: 'rateApp', desc: '', args: []);
+  }
+
+  /// `Share App`
+  String get shareApp {
+    return Intl.message('Share App', name: 'shareApp', desc: '', args: []);
+  }
+
+  /// `Introduction`
+  String get introduction {
+    return Intl.message(
+      'Introduction',
+      name: 'introduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to Fitrix. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and share your information when you use our fitness tracking application.`
+  String get introductionText {
+    return Intl.message(
+      'Welcome to Fitrix. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and share your information when you use our fitness tracking application.',
+      name: 'introductionText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information We Collect`
+  String get informationWeCollect {
+    return Intl.message(
+      'Information We Collect',
+      name: 'informationWeCollect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We collect information that you provide directly to us, including:`
+  String get informationWeCollectText {
+    return Intl.message(
+      'We collect information that you provide directly to us, including:',
+      name: 'informationWeCollectText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal information (name, email, phone number)`
+  String get personalInformationItem {
+    return Intl.message(
+      'Personal information (name, email, phone number)',
+      name: 'personalInformationItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile information (age, gender, fitness goals)`
+  String get profileInformationItem {
+    return Intl.message(
+      'Profile information (age, gender, fitness goals)',
+      name: 'profileInformationItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health and fitness data (weight, body measurements, workout history)`
+  String get healthDataItem {
+    return Intl.message(
+      'Health and fitness data (weight, body measurements, workout history)',
+      name: 'healthDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Usage data (app interactions, preferences)`
+  String get usageDataItem {
+    return Intl.message(
+      'Usage data (app interactions, preferences)',
+      name: 'usageDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How We Use Your Information`
+  String get howWeUseInfo {
+    return Intl.message(
+      'How We Use Your Information',
+      name: 'howWeUseInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We use the information we collect to:`
+  String get howWeUseInfoText {
+    return Intl.message(
+      'We use the information we collect to:',
+      name: 'howWeUseInfoText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provide and maintain our services`
+  String get provideServicesItem {
+    return Intl.message(
+      'Provide and maintain our services',
+      name: 'provideServicesItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personalize your fitness experience`
+  String get personalizeExperienceItem {
+    return Intl.message(
+      'Personalize your fitness experience',
+      name: 'personalizeExperienceItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track your progress and achievements`
+  String get trackProgressItem {
+    return Intl.message(
+      'Track your progress and achievements',
+      name: 'trackProgressItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send you notifications and updates`
+  String get sendNotificationsItem {
+    return Intl.message(
+      'Send you notifications and updates',
+      name: 'sendNotificationsItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Improve our app and services`
+  String get improveServicesItem {
+    return Intl.message(
+      'Improve our app and services',
+      name: 'improveServicesItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data Security`
+  String get dataSecurity {
+    return Intl.message(
+      'Data Security',
+      name: 'dataSecurity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We implement appropriate security measures to protect your personal information. Your data is encrypted and stored securely on our servers. We do not share your personal information with third parties without your consent.`
+  String get dataSecurityText {
+    return Intl.message(
+      'We implement appropriate security measures to protect your personal information. Your data is encrypted and stored securely on our servers. We do not share your personal information with third parties without your consent.',
+      name: 'dataSecurityText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Rights`
+  String get yourRights {
+    return Intl.message('Your Rights', name: 'yourRights', desc: '', args: []);
+  }
+
+  /// `You have the right to:`
+  String get yourRightsText {
+    return Intl.message(
+      'You have the right to:',
+      name: 'yourRightsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access your personal data`
+  String get accessDataItem {
+    return Intl.message(
+      'Access your personal data',
+      name: 'accessDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Correct inaccurate data`
+  String get correctDataItem {
+    return Intl.message(
+      'Correct inaccurate data',
+      name: 'correctDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request deletion of your data`
+  String get deleteDataItem {
+    return Intl.message(
+      'Request deletion of your data',
+      name: 'deleteDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opt-out of marketing communications`
+  String get optOutItem {
+    return Intl.message(
+      'Opt-out of marketing communications',
+      name: 'optOutItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export your data`
+  String get exportDataItem {
+    return Intl.message(
+      'Export your data',
+      name: 'exportDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get contactUsSection {
+    return Intl.message(
+      'Contact Us',
+      name: 'contactUsSection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you have any questions about this Privacy Policy, please contact us at appfitrix@gmail.com`
+  String get contactUsText {
+    return Intl.message(
+      'If you have any questions about this Privacy Policy, please contact us at appfitrix@gmail.com',
+      name: 'contactUsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Acceptance of Terms`
+  String get acceptanceOfTerms {
+    return Intl.message(
+      'Acceptance of Terms',
+      name: 'acceptanceOfTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By accessing and using Fitrix, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our application.`
+  String get acceptanceOfTermsText {
+    return Intl.message(
+      'By accessing and using Fitrix, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our application.',
+      name: 'acceptanceOfTermsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Account`
+  String get userAccount {
+    return Intl.message(
+      'User Account',
+      name: 'userAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To use certain features of Fitrix, you must create an account. You are responsible for:`
+  String get userAccountText {
+    return Intl.message(
+      'To use certain features of Fitrix, you must create an account. You are responsible for:',
+      name: 'userAccountText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintaining the confidentiality of your account credentials`
+  String get maintainCredentialsItem {
+    return Intl.message(
+      'Maintaining the confidentiality of your account credentials',
+      name: 'maintainCredentialsItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All activities that occur under your account`
+  String get accountActivitiesItem {
+    return Intl.message(
+      'All activities that occur under your account',
+      name: 'accountActivitiesItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Providing accurate and complete information`
+  String get accurateInfoItem {
+    return Intl.message(
+      'Providing accurate and complete information',
+      name: 'accurateInfoItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updating your information as needed`
+  String get updateInfoItem {
+    return Intl.message(
+      'Updating your information as needed',
+      name: 'updateInfoItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Acceptable Use`
+  String get acceptableUse {
+    return Intl.message(
+      'Acceptable Use',
+      name: 'acceptableUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You agree to use Fitrix only for lawful purposes. You agree not to:`
+  String get acceptableUseText {
+    return Intl.message(
+      'You agree to use Fitrix only for lawful purposes. You agree not to:',
+      name: 'acceptableUseText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload or share inappropriate content`
+  String get inappropriateContentItem {
+    return Intl.message(
+      'Upload or share inappropriate content',
+      name: 'inappropriateContentItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Harass or harm other users`
+  String get harassUsersItem {
+    return Intl.message(
+      'Harass or harm other users',
+      name: 'harassUsersItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attempt to access unauthorized areas`
+  String get unauthorizedAccessItem {
+    return Intl.message(
+      'Attempt to access unauthorized areas',
+      name: 'unauthorizedAccessItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use the app for commercial purposes without permission`
+  String get commercialUseItem {
+    return Intl.message(
+      'Use the app for commercial purposes without permission',
+      name: 'commercialUseItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Violate any applicable laws or regulations`
+  String get violateLawsItem {
+    return Intl.message(
+      'Violate any applicable laws or regulations',
+      name: 'violateLawsItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health Disclaimer`
+  String get healthDisclaimer {
+    return Intl.message(
+      'Health Disclaimer',
+      name: 'healthDisclaimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fitrix is designed to help you track your fitness progress. However:`
+  String get healthDisclaimerText {
+    return Intl.message(
+      'Fitrix is designed to help you track your fitness progress. However:',
+      name: 'healthDisclaimerText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are not a substitute for professional medical advice`
+  String get notMedicalAdviceItem {
+    return Intl.message(
+      'We are not a substitute for professional medical advice',
+      name: 'notMedicalAdviceItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult a healthcare provider before starting any fitness program`
+  String get consultProviderItem {
+    return Intl.message(
+      'Consult a healthcare provider before starting any fitness program',
+      name: 'consultProviderItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use the app at your own risk`
+  String get useAtRiskItem {
+    return Intl.message(
+      'Use the app at your own risk',
+      name: 'useAtRiskItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are not liable for any injuries or health issues`
+  String get notLiableItem {
+    return Intl.message(
+      'We are not liable for any injuries or health issues',
+      name: 'notLiableItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Intellectual Property`
+  String get intellectualProperty {
+    return Intl.message(
+      'Intellectual Property',
+      name: 'intellectualProperty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All content, features, and functionality of Fitrix are owned by us and are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, or distribute any part of our app without permission.`
+  String get intellectualPropertyText {
+    return Intl.message(
+      'All content, features, and functionality of Fitrix are owned by us and are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, or distribute any part of our app without permission.',
+      name: 'intellectualPropertyText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Termination`
+  String get termination {
+    return Intl.message('Termination', name: 'termination', desc: '', args: []);
+  }
+
+  /// `We reserve the right to suspend or terminate your account at any time for violating these terms or for any other reason at our discretion.`
+  String get terminationText {
+    return Intl.message(
+      'We reserve the right to suspend or terminate your account at any time for violating these terms or for any other reason at our discretion.',
+      name: 'terminationText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes to Terms`
+  String get changesToTerms {
+    return Intl.message(
+      'Changes to Terms',
+      name: 'changesToTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We may modify these terms at any time. Continued use of Fitrix after changes constitutes acceptance of the modified terms.`
+  String get changesToTermsText {
+    return Intl.message(
+      'We may modify these terms at any time. Continued use of Fitrix after changes constitutes acceptance of the modified terms.',
+      name: 'changesToTermsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For questions about these terms, contact us at appfitrix@gmail.com`
+  String get legalContact {
+    return Intl.message(
+      'For questions about these terms, contact us at appfitrix@gmail.com',
+      name: 'legalContact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How can we help you?`
+  String get howCanWeHelp {
+    return Intl.message(
+      'How can we help you?',
+      name: 'howCanWeHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our support team is here to assist you`
+  String get supportTeamReady {
+    return Intl.message(
+      'Our support team is here to assist you',
+      name: 'supportTeamReady',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequently Asked Questions`
+  String get frequentlyAskedQuestions {
+    return Intl.message(
+      'Frequently Asked Questions',
+      name: 'frequentlyAskedQuestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How do I reset my password?`
+  String get faqResetPassword {
+    return Intl.message(
+      'How do I reset my password?',
+      name: 'faqResetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to Login screen and tap 'Forgot Password'. Follow the instructions sent to your email.`
+  String get faqResetPasswordAnswer {
+    return Intl.message(
+      'Go to Login screen and tap \'Forgot Password\'. Follow the instructions sent to your email.',
+      name: 'faqResetPasswordAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can I sync data across devices?`
+  String get faqSyncData {
+    return Intl.message(
+      'Can I sync data across devices?',
+      name: 'faqSyncData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, your data is automatically synced when you log in with the same account.`
+  String get faqSyncDataAnswer {
+    return Intl.message(
+      'Yes, your data is automatically synced when you log in with the same account.',
+      name: 'faqSyncDataAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How do I track my workouts?`
+  String get faqTrackWorkouts {
+    return Intl.message(
+      'How do I track my workouts?',
+      name: 'faqTrackWorkouts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Navigate to the Workouts section and tap the '+' button to create a new workout session.`
+  String get faqTrackWorkoutsAnswer {
+    return Intl.message(
+      'Navigate to the Workouts section and tap the \'+\' button to create a new workout session.',
+      name: 'faqTrackWorkoutsAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Personal Fitness Companion`
+  String get personalFitnessCompanion {
+    return Intl.message(
+      'Your Personal Fitness Companion',
+      name: 'personalFitnessCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fitrix is your all-in-one fitness companion designed to help you achieve your health and fitness goals. Track workouts, monitor progress, and stay motivated on your fitness journey.`
+  String get appDescription {
+    return Intl.message(
+      'Fitrix is your all-in-one fitness companion designed to help you achieve your health and fitness goals. Track workouts, monitor progress, and stay motivated on your fitness journey.',
+      name: 'appDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fitrix Team`
+  String get fitrixTeam {
+    return Intl.message('Fitrix Team', name: 'fitrixTeam', desc: '', args: []);
+  }
+
+  /// `October 2025`
+  String get lastUpdatedDate {
+    return Intl.message(
+      'October 2025',
+      name: 'lastUpdatedDate',
       desc: '',
       args: [],
     );

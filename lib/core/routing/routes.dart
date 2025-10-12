@@ -19,4 +19,9 @@ class Routes {
 
   static const String sectionExercises = 'sectionExercises';
   static const String customExercises = 'customExercises';
+
+  static const String privacyPolicyScreen = '/privacy-policy';
+  static const String termsConditionsScreen = '/terms-conditions';
+  static const String contactSupportScreen = '/contact-support';
+  static const String aboutScreen = '/about';
 }

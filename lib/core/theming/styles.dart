@@ -1,4 +1,3 @@
-// utils/text_styles.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
@@ -15,6 +14,12 @@ class TextStyles {
     color: ColorsManager.primaryText,
     fontWeight: FontWeightHelper.bold,
     letterSpacing: 1.2,
+  );
+
+  static TextStyle get font16PrimaryTextSemiBold => TextStyle(
+    fontSize: 16.sp,
+    color: ColorsManager.primaryText,
+    fontWeight: FontWeightHelper.semiBold,
   );
 
   /// Medium headlines for screen titles

@@ -107,7 +107,6 @@ class LoginProfileModel extends Equatable {
     }
   }
 
-  // 👇 Check if profile has all required basic info
   bool get isProfileComplete {
     return firstName != null &&
         firstName!.isNotEmpty &&
@@ -116,7 +115,6 @@ class LoginProfileModel extends Equatable {
         gender != null;
   }
 
-  // 👇 Check if profile has body metrics
   bool get hasBodyMetrics {
     return lastWeightKg != null ||
         lastMuscleMassKg != null ||

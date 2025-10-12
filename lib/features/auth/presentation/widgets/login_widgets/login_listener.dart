@@ -1,7 +1,6 @@
 import 'dart:developer' as dev;
 import 'package:fitrix/core/routing/navigation_helper.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../generated/l10n.dart';
@@ -28,14 +27,14 @@ class LoginListener {
   ) {
     final userProfile = state.userProfile;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(l10n.welcomeBackUser(userProfile?.firstName ?? 'User')),
-        backgroundColor: ColorsManager.primaryGreen,
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     content: Text(l10n.welcomeBackUser(userProfile?.firstName ?? 'User')),
+    //     backgroundColor: ColorsManager.primaryGreen,
+    //     behavior: SnackBarBehavior.floating,
+    //     duration: const Duration(seconds: 2),
+    //   ),
+    // );
 
     Future.delayed(const Duration(milliseconds: 500), () {
       if (context.mounted) {
@@ -44,7 +43,7 @@ class LoginListener {
           '🎯 Navigating to ${userProfile?.roleString ?? "User"} home',
           name: 'LoginListener',
         );
-        context.pushReplacementNamed(route);
+        context.pushNamedAndRemoveUntil(route, (Route<dynamic> route) => false);
       }
     });
   }
