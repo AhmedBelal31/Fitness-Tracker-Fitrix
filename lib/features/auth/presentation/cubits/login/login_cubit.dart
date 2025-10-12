@@ -43,18 +43,14 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
-  // 👇 UPDATED: Toggle only affects current session, not saved permanently
   void toggleRememberMe() {
     final newValue = !state.rememberMe;
     emit(state.copyWith(rememberMe: newValue));
 
-    // 👇 DO NOT save to SharedPreferences - only session change
     dev.log(
       '🔄 Remember Me toggled to: $newValue (session only)',
       name: 'LoginCubit',
     );
-
-    // Clear saved email immediately if unchecked
     if (!newValue) {
       _tokenManager.clearSavedEmail();
       emit(state.copyWith(savedEmail: null));
@@ -86,14 +82,13 @@ class LoginCubit extends Cubit<LoginState> {
 
     final params = LoginParams(email: email, password: password);
 
-    // 👇 UPDATED: Mark session based on Remember Me state
     if (state.rememberMe) {
       await _tokenManager.saveEmail(email);
-      await _tokenManager.markSessionAsRemembered(); // 👈 Save session flag
+      await _tokenManager.markSessionAsRemembered();
       dev.log('💾 Session will persist on app restart', name: 'LoginCubit');
     } else {
       await _tokenManager.clearSavedEmail();
-      await _tokenManager.markSessionAsTemporary(); // 👈 Mark as temporary
+      await _tokenManager.markSessionAsTemporary();
       dev.log(
         '⏳ Session is temporary - will logout on app restart',
         name: 'LoginCubit',
@@ -199,16 +194,12 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> logout() async {
     dev.log('🚪 Logging out user', name: 'LoginCubit');
 
-    // Always clear profile from Hive
     await _hiveService.clearProfile();
 
-    // Clear tokens
     await _tokenManager.clearTokens();
 
-    // 👇 DO NOT clear email - keep it for next session if it was saved
     dev.log('💾 Email preserved for next session', name: 'LoginCubit');
 
-    // Reset state (remember me will default back to true on next login screen)
     emit(const LoginState());
   }
 
