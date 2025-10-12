@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../theming/app_colors.dart';
+import '../../theming/styles.dart';
 
 class CustomCheckbox extends StatelessWidget {
   final bool value;
-  final ValueChanged<bool?> onChanged;
+  final ValueChanged<bool?>? onChanged;
   final String label;
 
   const CustomCheckbox({
@@ -14,41 +16,45 @@ class CustomCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 20,
-          height: 20,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(
-              color: value ? const Color(0xFF48BB78) : Colors.grey.shade400,
-              width: 2,
-            ),
-            color: value ? const Color(0xFF48BB78) : Colors.transparent,
-          ),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(4),
-              onTap: () => onChanged(!value),
+    return InkWell(
+      onTap: onChanged != null ? () => onChanged!(!value) : null,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                color: value ? ColorsManager.primaryGreen : Colors.transparent,
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(
+                  color: value
+                      ? ColorsManager.primaryGreen
+                      : ColorsManager.lightText.withOpacity(0.3),
+                  width: 2,
+                ),
+              ),
               child: value
-                  ? const Icon(Icons.check, size: 16, color: Colors.white)
+                  ? const Icon(
+                      Icons.check,
+                      size: 16,
+                      color: ColorsManager.whiteText,
+                    )
                   : null,
             ),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: GestureDetector(
-            onTap: () => onChanged(!value),
-            child: Text(
+            const SizedBox(width: 12),
+            Text(
               label,
-              style: const TextStyle(fontSize: 14, color: Color(0xFF4A5568)),
+              style: TextStyles.font14Medium.copyWith(
+                color: ColorsManager.lightText,
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

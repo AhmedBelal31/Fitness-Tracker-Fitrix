@@ -163,6 +163,8 @@ class ColorsManager {
   static const Color advancedLevel = Color(0xFFFF7675);
   static const Color expertLevel = Color(0xFF6C5CE7);
 
+  static const Color buttonDisabledBackground = Color(0xFF444444);
+
   // 🎯 Helper Methods
   static Color withOpacity(Color color, double opacity) {
     return color.withOpacity(opacity);
@@ -183,4 +185,10 @@ class ColorsManager {
     final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
     return hslDark.toColor();
   }
+
+  // Light theme colors (ADD THESE)
+  static const Color lightScaffoldBackground = Color(0xFFF5F5F5);
+  static const Color lightCardBackground = Color(0xFFFFFFFF);
+  static const Color lightPrimaryText = Color(0xFF1A1A1A);
+  static const Color lightSecondaryText = Color(0xFF6B7280);
 }

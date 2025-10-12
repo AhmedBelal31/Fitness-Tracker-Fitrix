@@ -1,19 +1,20 @@
-// import '../../../features/login/domain/repos/auth_repo/auth_repo.dart';
-// import '../../../features/login/domain/repos/auth_repo/auth_repo_impl.dart';
-// import '../../../features/login/domain/repos/categories_repo/categories_repo.dart';
-// import '../../../features/login/domain/repos/questions_repo/questions_repo.dart';
-// import '../../../features/login/domain/repos/social_auth_repo/scoial_auth_repo.dart';
-// import '../../../features/login/presentation/cubit/auth_cubit.dart';
-// import '../get_it.dart';
-//
-// void setupAuthModule() {
-//   di.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(apiService: di()));
-//   di.registerFactory<AuthCubit>(
-//     () => AuthCubit(
-//       authRepo: di<AuthRepo>(),
-//       socialAuthRepo: di<SocialAuthRepo>(),
-//       categoriesRepo: di<CategoriesRepo>(),
-//       questionsRepo: di<QuestionsRepo>(),
-//     ),
-//   );
-// }
+import 'package:fitrix/core/networking/dio_helper.dart';
+import '../../../features/auth/domain/repositories/auth_repositories/auth_repository.dart';
+import '../../../features/auth/domain/repositories/auth_repositories/auth_repository_impl.dart';
+import '../../../features/auth/presentation/cubits/auth_check/auth_check_cubit.dart';
+import '../../../features/auth/presentation/cubits/forget_password/forgot_password_cubit.dart';
+import '../../../features/auth/presentation/cubits/login/login_cubit.dart';
+import '../../../features/auth/presentation/cubits/register/register_cubit.dart';
+import '../get_it.dart';
+
+void setupAuthModule() {
+  di.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(di<ApiService>()),
+  );
+  di.registerFactory<RegisterCubit>(() => RegisterCubit(di<AuthRepository>()));
+  di.registerFactory<LoginCubit>(() => LoginCubit(di<AuthRepository>()));
+  di.registerFactory<AuthCheckCubit>(() => AuthCheckCubit());
+  di.registerFactory<ForgotPasswordCubit>(
+    () => ForgotPasswordCubit(di<AuthRepository>()),
+  );
+}

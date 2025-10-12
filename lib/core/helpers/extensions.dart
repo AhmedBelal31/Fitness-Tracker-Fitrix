@@ -15,12 +15,12 @@ extension StringExtension on String? {
   bool isNullOrEmpty() => this == null || this == "";
 }
 
-extension NullableStringExtension on String? {
-  String orLocalizedNA(BuildContext context) {
-    final local = S.of(context);
-    return this.isNullOrEmpty() ? local.not_available : this!;
-  }
-}
+// extension NullableStringExtension on String? {
+//   String orLocalizedNA(BuildContext context) {
+//     final local = S.of(context);
+//     return this.isNullOrEmpty() ? local.not_available : this!;
+//   }
+// }
 
 extension DateFormatting on DateTime {
   String toApiFormat() {

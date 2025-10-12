@@ -24,21 +24,34 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDisabled = isLoading || onPressed == null;
+
     return Container(
       width: width ?? double.infinity,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: !isOutlined && onPressed != null
+        // Use gradient only when enabled (not loading and onPressed != null)
+        gradient: !isOutlined && !isDisabled
             ? ColorsManager.buttonGradient
             : null,
-        boxShadow: !isOutlined && onPressed != null
+
+        boxShadow: !isOutlined && !isDisabled
             ? ColorsManager.primaryShadow
+            : null,
+
+        // Add a solid background color when loading or disabled to prevent blank white area
+        color: isOutlined
+            ? Colors.transparent
+            : isDisabled
+            ? ColorsManager
+                  .buttonDisabledBackground // define this color (e.g. dark grey)
             : null,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          // Disable tap during loading
           onTap: isLoading ? null : onPressed,
           borderRadius: BorderRadius.circular(16),
           child: Container(

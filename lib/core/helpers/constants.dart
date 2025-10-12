@@ -1,21 +1,25 @@
 class Constants {
   Constants._();
 
-  static const String _baseUrl =
-      'https://achievers.codenesslab.com/dev_images/';
   static const bool isPremiumUser = false;
-  static const String fontRepubliko = 'Republiko';
+
+  // User Roles
+  static const int userRole = 1;
+  static const int trainerRole = 2;
+  // SharedPreferences Keys
   static const String isAlreadyLogin = 'isAlreadyLogin';
   static const String userToken = 'userToken';
   static const String refreshToken = 'refreshToken';
   static const String isRemembered = 'isRemembered';
-  static const String defaultBadgeImage =
-      '$_baseUrl/storage/01K2D28JREKBDT1TEGSYMRNZB6.png';
-  static const String defaultAzkarImage = '$_baseUrl/azkar.png';
-  static const String defaultChallengeTextImage =
-      '$_baseUrl/defaultChallengeTextImage.jpg';
-  static const String defaultChallengeImage =
-      '$_baseUrl/defaultChallengeImage.jpg';
-  static const defaultMaleImage = "$_baseUrl/defaultMaleImage.png";
-  static const defaultFemaleImage = "$_baseUrl/defaultFemaleImage.jpg";
+
+  // keys for TokenManager
+  static const String accessTokenKey = 'access_token';
+  static const String refreshTokenKey = 'refresh_token';
+  static const String tokenExpiryKey = 'token_expiry';
+  static const String savedEmailKey = 'saved_email';
+  static const String userIdKey = 'user_id';
+  static const String rememberMeKey = 'remember_me';
+  static const String userRoleKey = 'user_role';
+
+  static const bool rememberMeDefault = true;
 }

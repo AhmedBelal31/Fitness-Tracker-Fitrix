@@ -120,3 +120,7 @@ class ServerFailure extends Failure {
     }
   }
 }
+
+class ProfileNotFoundFailure extends Failure {
+  const ProfileNotFoundFailure(super.errorMessage);
+}
