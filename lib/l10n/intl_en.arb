@@ -315,6 +315,104 @@
   "motivational_quote_6": "Train insane or remain the same 🏋️",
   "motivational_quote_7": "Your only limit is you 🚀",
   "motivational_quote_8": "Don't wish for it, work for it 💯",
+  "welcomeBack": "Welcome Back!",
+  "signInToContinue": "Sign in to continue your fitness journey",
+  "emailAddress": "Email Address",
+  "enterYourEmail": "Enter your email",
 
+  "enterYourPassword": "Enter your password",
+  "rememberMe": "Remember me",
+  "signIn": "Sign In",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAccount": "Don't have an account? ",
+  "register": "Register",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email",
+  "passwordRequired": "Password is required",
+  "passwordMinLength": "Password must be at least 6 characters",
+  "welcomeBackUser": "Welcome back, {name}!",
+  "@welcomeBackUser": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "completeProfileMessage": "Please complete your profile to continue",
+  "appName": "FITRIX",
+  "appTagline": "FIT YOUR LIFE. FIX YOUR FUTURE",
+  "transformYourLife": "Transform Your Body, Transform Your Life",
+  "forgotPasswordTitle": "Forgot Password?",
+  "forgotPasswordSubtitle": "Enter your registered email and we'll send a reset link.",
+  "sendResetLink": "Send Reset Link",
+  "resetLinkSent": "A password reset link was sent to your email.",
+  "enterValidEmail": "Enter a valid email",
+
+  "createAccount": "Create Account",
+  "joinFitrix": "Join Fitrix and start your transformation",
+  "username": "Username",
+  "chooseUsername": "Choose a username",
+  "phoneNumber": "Phone Number",
+  "enterPhoneNumber": "Enter your phone number",
+  "createPassword": "Create a strong password",
+  "selectYourRole": "Select Your Role",
+  "normalUser": "Normal User",
+  "normalUserDesc": "Track workouts & progress",
+  "trainer": "Trainer",
+  "trainerDesc": "Create & manage plans",
+  "createAccountButton": "Create Account",
+  "alreadyHaveAccount": "Already have an account? ",
+  "login": "Login",
+  "registrationSuccess": "Registration successful! Welcome {username}",
+  "@registrationSuccess": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "dismiss": "Dismiss",
+  "usernameRequired": "Username is required",
+  "usernameMinLength": "Username must be at least 3 characters",
+  "phoneRequired": "Phone number is required",
+  "invalidEgyptianPhone": "Please enter a valid Egyptian phone number (e.g., 01012345678)",
+  "phoneExactLength": "Phone number must be 11 digits",
+  "passwordMinLength": "Password must be at least 8 characters",
+  "passwordComplexity": "Password must contain uppercase, lowercase and number",
+  "completeProfile": "Complete Profile",
+  "setupFitnessJourney": "Let's set up your fitness journey",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "weightKg": "Weight (kg)",
+  "bodyFatPercent": "Body Fat %",
+  "muscleMassKg": "Muscle Mass (kg)",
+  "completeProfileButton": "Complete Profile",
+  "profileCompletedWelcome": "Profile completed! Welcome to Fitrix, {name}!",
+  "@profileCompletedWelcome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "firstNameRequired": "First name is required",
+  "lastNameRequired": "Last name is required",
+  "genderRequired": "Gender is required",
+  "selectMaleOrFemale": "Select Male or Female",
+  "enterValidWeight": "Enter a valid weight in kg",
+  "checkWeightEntered": "Please check the weight entered",
+  "enterNumber": "Enter a number",
+  "enterRealisticBodyFat": "Enter realistic % fat (1-70)",
+  "enterValidMuscleMass": "Enter a valid muscle mass (kg)",
+  "checkMuscleMassEntered": "Please check muscle mass entered",
+  "male": "Male",
+  "female": "Female",
+
+  "weightRequired": "Weight is required",
+  "enterFirstName": "Enter your first name",
+  "enterLastName": "Enter your last name",
+  "enterWeight": "Enter your weight in kg",
+  "enterBodyFat": "Enter your body fat percentage (optional)",
+  "enterMuscleMass": "Enter your muscle mass in kg (optional)",
   "x":""
 }

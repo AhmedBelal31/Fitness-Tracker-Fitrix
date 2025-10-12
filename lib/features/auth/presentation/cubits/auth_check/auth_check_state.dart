@@ -12,7 +12,7 @@ class AuthCheckInitial extends AuthCheckState {}
 class AuthCheckLoading extends AuthCheckState {}
 
 class AuthCheckAuthenticated extends AuthCheckState {
-  final UserModel user;
+  final LoginProfileModel user;
 
   const AuthCheckAuthenticated(this.user);
 

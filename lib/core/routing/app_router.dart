@@ -4,7 +4,7 @@ import 'package:fitrix/features/home/presentation/screens/trainer_home_screen.da
 import 'package:fitrix/features/home/presentation/screens/user_home_screen.dart';
 import 'package:fitrix/features/host/presentation/screens/trainer_host_screen.dart';
 import 'package:fitrix/features/host/presentation/screens/user_host_screen.dart';
-import 'package:fitrix/features/profile/presentation/screens/complete_profile_screen.dart';
+import 'package:fitrix/features/auth/presentation/screens/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
@@ -60,6 +60,6 @@ class AppRouter {
       default:
         screen = const ErrorScreen();
     }
-    return PageTransitions.slideFromBottom(screen, settings: settings);
+    return PageTransitions.slideWithLocale(screen, settings: settings);
   }
 }

@@ -13,7 +13,7 @@ class LoginState extends Equatable {
   const LoginState({
     this.isLoading = false,
     this.isPasswordVisible = false,
-    this.rememberMe = false,
+    this.rememberMe = true,
     this.savedEmail,
     this.errorMessage,
     this.loginResponse,
@@ -25,8 +25,15 @@ class LoginState extends Equatable {
   bool get hasError => errorMessage != null;
   bool get isLoginSuccessful => loginResponse != null && !isLoading;
   bool get hasProfile => userProfile != null;
-  bool get shouldNavigateToHome => hasProfile && !needsProfileCompletion;
-  bool get shouldNavigateToCompleteProfile => needsProfileCompletion;
+
+  // Navigate to home only if profile exists AND is complete
+  bool get shouldNavigateToHome =>
+      hasProfile && !needsProfileCompletion && isLoginSuccessful;
+
+  // 👇 Navigate to complete profile if needed
+  bool get shouldNavigateToCompleteProfile =>
+      needsProfileCompletion && isLoginSuccessful;
+
   bool get hasSavedEmail => savedEmail != null && savedEmail!.isNotEmpty;
 
   LoginState copyWith({

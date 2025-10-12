@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class RegisterHeader extends StatelessWidget {
   const RegisterHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return Column(
       children: [
         _buildLogo(),
         const SizedBox(height: 24),
-        Text('Create Account', style: TextStyles.headline2),
+        Text(s.createAccount, style: TextStyles.headline2),
         const SizedBox(height: 8),
         Text(
-          'Join Fitrix and start your transformation',
+          s.joinFitrix,
           style: TextStyles.subtitle2,
           textAlign: TextAlign.center,
         ),

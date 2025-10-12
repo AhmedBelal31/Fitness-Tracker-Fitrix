@@ -94,9 +94,7 @@ class RegisterRoleOption extends StatelessWidget {
     return Text(
       label,
       style: TextStyles.font14Medium.copyWith(
-        color: isSelected
-            ? ColorsManager.primaryGreen
-            : ColorsManager.whiteText,
+        color: isSelected ? ColorsManager.primaryGreen : ColorsManager.grey800,
         fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
       ),
       textAlign: TextAlign.center,

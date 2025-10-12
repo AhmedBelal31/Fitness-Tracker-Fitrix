@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common_ui/widgets/custom_button.dart';
+import '../../../../../generated/l10n.dart';
 import '../../cubits/register/register_cubit.dart';
 import 'register_form_controller.dart';
 
@@ -16,10 +17,12 @@ class RegisterSubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) {
         return CustomButton(
-          text: 'Create Account',
+          text: s.createAccountButton,
           onPressed: state.isLoading ? null : () => _handleSubmit(context),
           isLoading: state.isLoading,
           icon: Icons.person_add,
@@ -32,12 +35,9 @@ class RegisterSubmitButton extends StatelessWidget {
     final cubit = context.read<RegisterCubit>();
     cubit.clearError();
 
-    // Validate form
     if (formKey.currentState?.validate() ?? false) {
-      // Get form data
       final formData = controller.getFormData();
 
-      // Call register
       cubit.register(
         userName: formData['userName'] as String,
         email: formData['email'] as String,

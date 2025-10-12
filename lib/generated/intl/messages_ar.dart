@@ -20,6 +20,13 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(name) =>
+      "تم إكمال الملف الشخصي! مرحباً بك في فيتريكس، ${name}!";
+
+  static String m1(username) => "تم التسجيل بنجاح! مرحباً ${username}";
+
+  static String m2(name) => "مرحباً بعودتك، ${name}!";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("حول"),
@@ -39,6 +46,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "advanced": MessageLookupByLibrary.simpleMessage("متقدم"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "لديك حساب بالفعل؟ ",
+    ),
+    "appName": MessageLookupByLibrary.simpleMessage("فيتريكس"),
+    "appTagline": MessageLookupByLibrary.simpleMessage(
+      "كن لائقاً. غيّر مستقبلك",
+    ),
     "app_name": MessageLookupByLibrary.simpleMessage("فيتريكس"),
     "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
     "apply": MessageLookupByLibrary.simpleMessage("تطبيق"),
@@ -66,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تمرين مركب كلاسيكي لتطوير الصدر. استلق على البنش واضغط البار للأعلى.",
     ),
     "biceps": MessageLookupByLibrary.simpleMessage("الباي"),
+    "bodyFatPercent": MessageLookupByLibrary.simpleMessage("نسبة الدهون %"),
     "body_fat": MessageLookupByLibrary.simpleMessage("دهون الجسم"),
     "body_progress": MessageLookupByLibrary.simpleMessage("تقدم الجسم"),
     "bodyweight": MessageLookupByLibrary.simpleMessage("وزن الجسم"),
@@ -84,15 +99,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_your_password": MessageLookupByLibrary.simpleMessage(
       "تغيير كلمة المرور",
     ),
+    "checkMuscleMassEntered": MessageLookupByLibrary.simpleMessage(
+      "يرجى التحقق من الكتلة العضلية المدخلة",
+    ),
+    "checkWeightEntered": MessageLookupByLibrary.simpleMessage(
+      "يرجى التحقق من الوزن المدخل",
+    ),
     "chest": MessageLookupByLibrary.simpleMessage("الصدر"),
     "chest_description": MessageLookupByLibrary.simpleMessage(
       "تمارين الصدر لقوة الجزء العلوي من الجسم",
     ),
+    "chooseUsername": MessageLookupByLibrary.simpleMessage("اختر اسم مستخدم"),
     "choose_from_gallery": MessageLookupByLibrary.simpleMessage(
       "اختر من المعرض",
     ),
     "clear": MessageLookupByLibrary.simpleMessage("مسح"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
+    "completeProfile": MessageLookupByLibrary.simpleMessage(
+      "إكمال الملف الشخصي",
+    ),
+    "completeProfileButton": MessageLookupByLibrary.simpleMessage(
+      "إكمال الملف الشخصي",
+    ),
+    "completeProfileMessage": MessageLookupByLibrary.simpleMessage(
+      "يرجى إكمال ملفك الشخصي للمتابعة",
+    ),
     "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
     "completion": MessageLookupByLibrary.simpleMessage("الإنجاز"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
@@ -117,6 +148,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "تقوية عضلات البطن والجذع",
     ),
     "create": MessageLookupByLibrary.simpleMessage("إنشاء"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "createAccountButton": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "createPassword": MessageLookupByLibrary.simpleMessage(
+      "أنشئ كلمة مرور قوية",
+    ),
     "create_custom": MessageLookupByLibrary.simpleMessage("إنشاء مخصص"),
     "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "إنشاء تمرين مخصص",
@@ -152,7 +188,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "لم تتلق رمزًا.",
     ),
     "difficulty": MessageLookupByLibrary.simpleMessage("الصعوبة"),
+    "dismiss": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "done": MessageLookupByLibrary.simpleMessage("تم"),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ "),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟",
     ),
@@ -168,6 +206,41 @@ class MessageLookup extends MessageLookupByLibrary {
       "تعديل الملف الشخصي",
     ),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "emailAddress": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "البريد الإلكتروني مطلوب",
+    ),
+    "enterBodyFat": MessageLookupByLibrary.simpleMessage(
+      "أدخل نسبة الدهون (اختياري)",
+    ),
+    "enterFirstName": MessageLookupByLibrary.simpleMessage("أدخل اسمك الأول"),
+    "enterLastName": MessageLookupByLibrary.simpleMessage("أدخل اسم العائلة"),
+    "enterMuscleMass": MessageLookupByLibrary.simpleMessage(
+      "أدخل الكتلة العضلية بالكيلوجرام (اختياري)",
+    ),
+    "enterNumber": MessageLookupByLibrary.simpleMessage("أدخل رقماً"),
+    "enterPhoneNumber": MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
+    "enterRealisticBodyFat": MessageLookupByLibrary.simpleMessage(
+      "أدخل نسبة دهون واقعية (1-70)",
+    ),
+    "enterValidEmail": MessageLookupByLibrary.simpleMessage(
+      "أدخل بريد إلكتروني صحيح",
+    ),
+    "enterValidMuscleMass": MessageLookupByLibrary.simpleMessage(
+      "أدخل كتلة عضلية صحيحة (كجم)",
+    ),
+    "enterValidWeight": MessageLookupByLibrary.simpleMessage(
+      "أدخل وزناً صحيحاً بالكيلوجرام",
+    ),
+    "enterWeight": MessageLookupByLibrary.simpleMessage(
+      "أدخل وزنك بالكيلوجرام",
+    ),
+    "enterYourEmail": MessageLookupByLibrary.simpleMessage(
+      "أدخل بريدك الإلكتروني",
+    ),
+    "enterYourPassword": MessageLookupByLibrary.simpleMessage(
+      "أدخل كلمة المرور",
+    ),
     "enter_code": MessageLookupByLibrary.simpleMessage("أدخل الرمز"),
     "enter_new_password": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور الجديدة",
@@ -274,10 +347,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "failed_to_update_profile": MessageLookupByLibrary.simpleMessage(
       "فشل تحديث الملف الشخصي",
     ),
+    "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "filter": MessageLookupByLibrary.simpleMessage("تصفية"),
     "finish": MessageLookupByLibrary.simpleMessage("إنهاء"),
+    "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+    "firstNameRequired": MessageLookupByLibrary.simpleMessage(
+      "الاسم الأول مطلوب",
+    ),
     "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "forearms": MessageLookupByLibrary.simpleMessage("الساعد"),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
+      "أدخل بريدك الإلكتروني المسجل وسنرسل لك رابط إعادة التعيين.",
+    ),
+    "forgotPasswordTitle": MessageLookupByLibrary.simpleMessage(
+      "نسيت كلمة المرور؟",
+    ),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
@@ -286,6 +371,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "front_raises_description": MessageLookupByLibrary.simpleMessage(
       "ارفع الدمبل للأمام للتركيز على الجزء الأمامي من الكتف.",
     ),
+    "genderRequired": MessageLookupByLibrary.simpleMessage("الجنس مطلوب"),
     "glutes": MessageLookupByLibrary.simpleMessage("المؤخرة"),
     "goals": MessageLookupByLibrary.simpleMessage("الأهداف"),
     "hammer_curls": MessageLookupByLibrary.simpleMessage("تمرين المطرقة"),
@@ -304,8 +390,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "استهدف الصدر العلوي بزاوية مائلة. اضغط الدمبل للأعلى من البنش المائل.",
     ),
     "intermediate": MessageLookupByLibrary.simpleMessage("متوسط"),
+    "invalidEgyptianPhone": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم هاتف مصري صحيح (مثال: 01012345678)",
+    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال بريد إلكتروني صحيح",
+    ),
+    "joinFitrix": MessageLookupByLibrary.simpleMessage(
+      "انضم إلى فيتريكس وابدأ رحلة التحول",
+    ),
     "kg": MessageLookupByLibrary.simpleMessage("كجم"),
     "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
+    "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
+    "lastNameRequired": MessageLookupByLibrary.simpleMessage(
+      "اسم العائلة مطلوب",
+    ),
     "last_name": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "last_workout": MessageLookupByLibrary.simpleMessage("آخر تمرين"),
     "lat_pulldown": MessageLookupByLibrary.simpleMessage("سحب اللات"),
@@ -341,6 +440,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lower_abs": MessageLookupByLibrary.simpleMessage("أسفل البطن"),
     "lower_back": MessageLookupByLibrary.simpleMessage("أسفل الظهر"),
     "machine": MessageLookupByLibrary.simpleMessage("آلة"),
+    "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("إدارة المتدربين"),
     "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
     "member_since": MessageLookupByLibrary.simpleMessage("عضو منذ"),
@@ -370,6 +470,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "motivational_quote_8": MessageLookupByLibrary.simpleMessage(
       "لا تتمنى ذلك، بل اعمل من أجله 💯",
+    ),
+    "muscleMassKg": MessageLookupByLibrary.simpleMessage(
+      "الكتلة العضلية (كجم)",
     ),
     "muscle_mass": MessageLookupByLibrary.simpleMessage("الكتلة العضلية"),
     "my_custom_exercises": MessageLookupByLibrary.simpleMessage(
@@ -406,6 +509,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_workouts_found": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على تمارين",
     ),
+    "normalUser": MessageLookupByLibrary.simpleMessage("مستخدم عادي"),
+    "normalUserDesc": MessageLookupByLibrary.simpleMessage(
+      "تتبع التمارين والتقدم",
+    ),
     "not_found_description": MessageLookupByLibrary.simpleMessage(
       "الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يرجى التحقق من عنوان URL أو العودة إلى الصفحة الرئيسية.",
     ),
@@ -427,6 +534,15 @@ class MessageLookup extends MessageLookupByLibrary {
           "مدد الدمبل فوق الرأس لعزل الترايسبس.",
         ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "passwordComplexity": MessageLookupByLibrary.simpleMessage(
+      "يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام",
+    ),
+    "passwordMinLength": MessageLookupByLibrary.simpleMessage(
+      "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+    ),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور مطلوبة",
+    ),
     "password_must_be_at_least_8_characters":
         MessageLookupByLibrary.simpleMessage(
           "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
@@ -440,6 +556,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "personal_records": MessageLookupByLibrary.simpleMessage(
       "الأرقام القياسية الشخصية",
     ),
+    "phoneExactLength": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يكون رقم الهاتف 11 رقماً",
+    ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneRequired": MessageLookupByLibrary.simpleMessage("رقم الهاتف مطلوب"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "planks": MessageLookupByLibrary.simpleMessage("البلانك"),
     "planks_description": MessageLookupByLibrary.simpleMessage(
@@ -473,6 +594,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "previous": MessageLookupByLibrary.simpleMessage("السابق"),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "profileCompletedWelcome": m0,
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
       "تم تحديث الملف الشخصي بنجاح",
     ),
@@ -491,9 +613,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "rate": MessageLookupByLibrary.simpleMessage("المعدل"),
     "rate_app": MessageLookupByLibrary.simpleMessage("تقييم التطبيق"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("التمارين الأخيرة"),
+    "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "registrationSuccess": m1,
+    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resend": MessageLookupByLibrary.simpleMessage("إعادة الإرسال"),
     "reset": MessageLookupByLibrary.simpleMessage("إعادة تعيين"),
+    "resetLinkSent": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.",
+    ),
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
@@ -517,13 +645,27 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "section": MessageLookupByLibrary.simpleMessage("القسم"),
     "select": MessageLookupByLibrary.simpleMessage("اختيار"),
+    "selectMaleOrFemale": MessageLookupByLibrary.simpleMessage(
+      "اختر ذكر أو أنثى",
+    ),
+    "selectYourRole": MessageLookupByLibrary.simpleMessage("اختر دورك"),
+    "sendResetLink": MessageLookupByLibrary.simpleMessage(
+      "إرسال رابط الاستعادة",
+    ),
     "sets": MessageLookupByLibrary.simpleMessage("المجموعات"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "setupFitnessJourney": MessageLookupByLibrary.simpleMessage(
+      "لنبدأ إعداد رحلتك الرياضية",
+    ),
     "shoulders": MessageLookupByLibrary.simpleMessage("الأكتاف"),
     "shoulders_description": MessageLookupByLibrary.simpleMessage(
       "تمارين الكتف للحصول على التحديد",
     ),
     "side_delts": MessageLookupByLibrary.simpleMessage("جوانب الكتف"),
+    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "signInToContinue": MessageLookupByLibrary.simpleMessage(
+      "سجل الدخول لمتابعة رحلتك الرياضية",
+    ),
     "sign_up": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "some_thing_went_wrong": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
     "sort": MessageLookupByLibrary.simpleMessage("ترتيب"),
@@ -549,6 +691,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "total_workouts": MessageLookupByLibrary.simpleMessage("إجمالي التمارين"),
     "trainees": MessageLookupByLibrary.simpleMessage("المتدربين"),
     "trainer": MessageLookupByLibrary.simpleMessage("مدرب"),
+    "trainerDesc": MessageLookupByLibrary.simpleMessage("إنشاء وإدارة الخطط"),
+    "transformYourLife": MessageLookupByLibrary.simpleMessage(
+      "حوّل جسمك، حوّل حياتك",
+    ),
     "tricep_dips": MessageLookupByLibrary.simpleMessage("غطس الترايسبس"),
     "tricep_dips_description": MessageLookupByLibrary.simpleMessage(
       "تمرين بوزن الجسم للعضلة ذات الثلاث رؤوس.",
@@ -560,6 +706,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "upper_chest": MessageLookupByLibrary.simpleMessage("الصدر العلوي"),
     "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
+    "username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+    "usernameMinLength": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يكون اسم المستخدم 3 أحرف على الأقل",
+    ),
+    "usernameRequired": MessageLookupByLibrary.simpleMessage(
+      "اسم المستخدم مطلوب",
+    ),
     "verify_your_identity": MessageLookupByLibrary.simpleMessage(
       "التحقق من هويتك",
     ),
@@ -575,9 +728,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا بريدًا إلكترونيًا إلى",
     ),
+    "weightKg": MessageLookupByLibrary.simpleMessage("الوزن (كجم)"),
+    "weightRequired": MessageLookupByLibrary.simpleMessage("الوزن مطلوب"),
     "weight_change": MessageLookupByLibrary.simpleMessage("تغيير الوزن"),
     "weight_progress": MessageLookupByLibrary.simpleMessage("تقدم الوزن"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحباً"),
+    "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك!"),
+    "welcomeBackUser": m2,
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
     "welcome_trainer": MessageLookupByLibrary.simpleMessage(
       "مرحباً أيها المدرب!",

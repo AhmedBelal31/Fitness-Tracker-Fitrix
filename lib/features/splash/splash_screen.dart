@@ -1,22 +1,17 @@
-import 'package:fitrix/core/routing/navigation_helper.dart';
+import 'package:fitrix/core/di/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../core/helpers/constants.dart';
-import '../../core/networking/dio_helper.dart';
+import '../../core/networking/token_manager.dart';
+import '../../core/routing/page_transitions.dart';
 import '../../core/routing/routes.dart';
 import '../../core/theming/app_colors.dart';
-import '../../core/theming/styles.dart';
-import '../auth/domain/repositories/auth_repository_impl.dart';
 import '../auth/presentation/cubits/auth_check/auth_check_cubit.dart';
-import '../profile/presentation/screens/complete_profile_screen.dart';
+import '../host/presentation/screens/trainer_host_screen.dart';
 import '../auth/presentation/screens/login_screen.dart';
-import '../auth/presentation/widgets/login_widgets/animated_fitness_icon.dart';
 import '../host/presentation/screens/user_host_screen.dart';
-import 'splash_screen_body.dart';
-// lib/features/auth/presentation/pages/splash_screen.dart
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'widgets/splash_screen_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:developer' as dev;
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -42,6 +37,8 @@ class _SplashScreenState extends State<SplashScreen>
   bool _hasNavigated = false;
   String? _navigationRoute;
 
+  final TokenManager _tokenManager = TokenManager.instance;
+
   @override
   void initState() {
     super.initState();
@@ -49,36 +46,30 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _initializeAnimations() {
-    // Logo animations
     _logoController = AnimationController(
       duration: const Duration(milliseconds: 1200),
       vsync: this,
     );
 
-    // Text animations
     _textController = AnimationController(
       duration: const Duration(milliseconds: 800),
       vsync: this,
     );
 
-    // Background animation
     _backgroundController = AnimationController(
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
 
-    // Exit animation
     _exitController = AnimationController(
       duration: const Duration(milliseconds: 600),
       vsync: this,
     );
 
-    // Logo scale with bounce effect
     _logoScaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _logoController, curve: Curves.elasticOut),
     );
 
-    // Logo fade in
     _logoFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _logoController,
@@ -86,7 +77,6 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
-    // Text slide up and fade in
     _textSlideAnimation =
         Tween<Offset>(begin: const Offset(0.0, 1.0), end: Offset.zero).animate(
           CurvedAnimation(parent: _textController, curve: Curves.easeOutCubic),
@@ -96,19 +86,16 @@ class _SplashScreenState extends State<SplashScreen>
       CurvedAnimation(parent: _textController, curve: Curves.easeInOut),
     );
 
-    // Background gradient animation
     _backgroundAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _backgroundController, curve: Curves.easeInOut),
     );
 
-    // Exit fade animation
     _exitFadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(
       CurvedAnimation(parent: _exitController, curve: Curves.easeInOut),
     );
   }
 
   Future<void> _startAnimationSequence() async {
-    // Set status bar style for light theme
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -116,18 +103,11 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
-    // Start background animation immediately
     _backgroundController.forward();
-
-    // Start logo animation after a short delay
     await Future.delayed(const Duration(milliseconds: 300));
     _logoController.forward();
-
-    // Start text animation when logo is halfway done
     await Future.delayed(const Duration(milliseconds: 600));
     _textController.forward();
-
-    // Wait for all animations to complete
     await Future.delayed(const Duration(milliseconds: 1500));
   }
 
@@ -136,7 +116,6 @@ class _SplashScreenState extends State<SplashScreen>
 
     _navigationRoute = route;
 
-    // Start exit animation and navigate
     _exitController.forward().then((_) {
       if (mounted && !_hasNavigated) {
         _navigateTo(route);
@@ -149,41 +128,23 @@ class _SplashScreenState extends State<SplashScreen>
 
     _hasNavigated = true;
 
+    Widget destinationScreen;
+    switch (route) {
+      case Routes.userHostScreen:
+        destinationScreen = UserHostScreen();
+        break;
+      case Routes.trainerHostScreen:
+        destinationScreen = TrainerHostScreen();
+        break;
+      case Routes.loginScreen:
+      default:
+        destinationScreen = const LoginScreen();
+    }
+
     Navigator.of(context).pushReplacement(
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) {
-          // Determine which screen to navigate to
-          switch (route) {
-            case Routes.userHostScreen:
-              return UserHostScreen();
-            case Routes.completeProfileScreen:
-              return const CompleteProfileScreen();
-            case Routes.loginScreen:
-            default:
-              return const LoginScreen();
-          }
-        },
-        transitionDuration: const Duration(milliseconds: 800),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          // Slide in from bottom with fade
-          const begin = Offset(0.0, 1.0);
-          const end = Offset.zero;
-          const curve = Curves.easeOutCubic;
-
-          var tween = Tween(
-            begin: begin,
-            end: end,
-          ).chain(CurveTween(curve: curve));
-
-          var fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(parent: animation, curve: Curves.easeInOut),
-          );
-
-          return SlideTransition(
-            position: animation.drive(tween),
-            child: FadeTransition(opacity: fadeAnimation, child: child),
-          );
-        },
+      PageTransitions.slideWithLocale(
+        destinationScreen,
+        settings: RouteSettings(name: route),
       ),
     );
   }
@@ -200,24 +161,47 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          AuthCheckCubit(AuthRepositoryImpl(ApiService()))..checkAuthStatus(),
+      create: (context) => di.get<AuthCheckCubit>()..checkAuthStatus(),
       child: BlocListener<AuthCheckCubit, AuthCheckState>(
         listener: (context, state) async {
-          // Wait for animations to complete before navigating
           if (state is AuthCheckAuthenticated) {
-            // Ensure animations have started
             await _startAnimationSequence();
-            _onAuthCheckComplete(
-              Constants.isUser
-                  ? Routes.userHostScreen
-                  : Routes.trainerHostScreen,
-            );
-          } else if (state is AuthCheckNeedsProfileCompletion) {
-            await _startAnimationSequence();
-            _onAuthCheckComplete(Routes.completeProfileScreen);
+
+            final userProfile = state.user;
+            final cachedRole = await _tokenManager.getUserRole();
+
+            if (cachedRole != userProfile.role) {
+              dev.log(
+                '⚠️ Role mismatch! Cached: $cachedRole, Profile: ${userProfile.role}',
+                name: 'SplashScreen',
+              );
+              if (userProfile.role != null) {
+                await _tokenManager.saveUserRole(userProfile.role!);
+              }
+            }
+
+            String route;
+            if (userProfile.role == 1) {
+              route = Routes.userHostScreen;
+              dev.log('🎯 Navigating to User home', name: 'SplashScreen');
+            } else if (userProfile.role == 2) {
+              route = Routes.trainerHostScreen;
+              dev.log('🎯 Navigating to Trainer home', name: 'SplashScreen');
+            } else {
+              route = Routes.userHostScreen;
+              dev.log(
+                '⚠️ Unknown role: ${userProfile.role}, defaulting to User home',
+                name: 'SplashScreen',
+              );
+            }
+
+            _onAuthCheckComplete(route);
           } else if (state is AuthCheckUnauthenticated) {
             await _startAnimationSequence();
+            dev.log(
+              '🔒 No authentication, navigating to login',
+              name: 'SplashScreen',
+            );
             _onAuthCheckComplete(Routes.loginScreen);
           }
         },
@@ -240,86 +224,3 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
-
-// lib/features/auth/presentation/pages/splash_screen.dart
-// lib/features/auth/presentation/pages/splash_screen.dart
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-
-// class SplashScreen extends StatelessWidget {
-//   const SplashScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) =>
-//           AuthCheckCubit(AuthRepositoryImpl(ApiService()))..checkAuthStatus(),
-//       child: Scaffold(
-//         backgroundColor: ColorsManager.scaffoldBackground,
-//         body: Container(
-//           decoration: const BoxDecoration(
-//             gradient: ColorsManager.appBackgroundGradient,
-//           ),
-//           child: BlocListener<AuthCheckCubit, AuthCheckState>(
-//             listener: (context, state) {
-//               if (state is AuthCheckAuthenticated) {
-//                 // User is authenticated and has profile - go to home
-//                 Future.delayed(const Duration(milliseconds: 500), () {
-//                   if (context.mounted) {
-//                     context.pushReplacementNamed(Routes.hostScreen);
-//                   }
-//                 });
-//               } else if (state is AuthCheckNeedsProfileCompletion) {
-//                 // User is authenticated but needs to complete profile
-//                 Future.delayed(const Duration(milliseconds: 500), () {
-//                   if (context.mounted) {
-//                     context.pushReplacementNamed(Routes.completeProfileScreen);
-//                   }
-//                 });
-//               } else if (state is AuthCheckUnauthenticated) {
-//                 // User is not authenticated - go to login
-//                 Future.delayed(const Duration(milliseconds: 500), () {
-//                   if (context.mounted) {
-//                     context.pushReplacementNamed(Routes.loginScreen);
-//                   }
-//                 });
-//               }
-//             },
-//             child: Center(
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   const PulsingFitnessIcon(size: 120),
-//                   const SizedBox(height: 32),
-//                   Text(
-//                     'FITRIX',
-//                     style: TextStyles.headline1.copyWith(
-//                       fontSize: 32,
-//                       letterSpacing: 4,
-//                     ),
-//                   ),
-//                   const SizedBox(height: 8),
-//                   Text(
-//                     'Your Fitness Journey Starts Here',
-//                     style: TextStyles.subtitle2,
-//                   ),
-//                   const SizedBox(height: 48),
-//                   BlocBuilder<AuthCheckCubit, AuthCheckState>(
-//                     builder: (context, state) {
-//                       if (state is AuthCheckLoading) {
-//                         return const CircularProgressIndicator(
-//                           color: ColorsManager.primaryGreen,
-//                         );
-//                       }
-//                       return const SizedBox.shrink();
-//                     },
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

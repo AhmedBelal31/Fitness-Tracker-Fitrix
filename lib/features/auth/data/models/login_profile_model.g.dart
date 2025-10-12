@@ -21,13 +21,18 @@ class LoginProfileModelAdapter extends TypeAdapter<LoginProfileModel> {
       lastName: fields[1] as String?,
       gender: fields[2] as int?,
       role: fields[3] as int?,
+      dateOfBirth: fields[4] as DateTime?,
+      heightCm: fields[5] as double?,
+      lastWeightKg: fields[6] as double?,
+      lastMuscleMassKg: fields[7] as double?,
+      lastBodyFatPercent: fields[8] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, LoginProfileModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.firstName)
       ..writeByte(1)
@@ -35,7 +40,17 @@ class LoginProfileModelAdapter extends TypeAdapter<LoginProfileModel> {
       ..writeByte(2)
       ..write(obj.gender)
       ..writeByte(3)
-      ..write(obj.role);
+      ..write(obj.role)
+      ..writeByte(4)
+      ..write(obj.dateOfBirth)
+      ..writeByte(5)
+      ..write(obj.heightCm)
+      ..writeByte(6)
+      ..write(obj.lastWeightKg)
+      ..writeByte(7)
+      ..write(obj.lastMuscleMassKg)
+      ..writeByte(8)
+      ..write(obj.lastBodyFatPercent);
   }
 
   @override

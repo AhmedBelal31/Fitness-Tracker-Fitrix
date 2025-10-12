@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 
-/// Gender radio selector (custom UI for row with 'Male', 'Female', 'Other' or as needed)
 class GenderSelector extends StatelessWidget {
   final String? selected;
   final ValueChanged<String> onChanged;
+
   const GenderSelector({
     super.key,
     required this.selected,
@@ -15,11 +15,14 @@ class GenderSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = S.of(context);
+
     return Row(
       children: [
-        _genderRadio(context, 'Male', 'Male', Icons.male),
+        _genderRadio(context, 'Male', locale.male, Icons.male),
         const SizedBox(width: 24),
-        _genderRadio(context, 'Female', 'Female', Icons.female),
+        // 👇 Pass English value "Female", display localized text
+        _genderRadio(context, 'Female', locale.female, Icons.female),
       ],
     );
   }
@@ -31,6 +34,7 @@ class GenderSelector extends StatelessWidget {
     IconData icon,
   ) {
     final isSelected = selected == value;
+
     return Expanded(
       child: GestureDetector(
         onTap: () => onChanged(value),
@@ -38,12 +42,12 @@ class GenderSelector extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
             color: isSelected
-                ? ColorsManager.primaryGreen.withOpacity(0.14)
+                ? ColorsManager.primaryGreen.withValues(alpha: 0.14)
                 : Colors.transparent,
             border: Border.all(
               color: isSelected
                   ? ColorsManager.primaryGreen
-                  : ColorsManager.lightText.withOpacity(0.2),
+                  : ColorsManager.lightText.withValues(alpha: 0.2),
               width: 2,
             ),
             borderRadius: BorderRadius.circular(14),

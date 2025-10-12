@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import 'register_role_option.dart';
+
+import 'package:flutter/material.dart';
 
 class RegisterRoleSelector extends StatefulWidget {
   final int selectedRole;
@@ -34,13 +37,15 @@ class _RegisterRoleSelectorState extends State<RegisterRoleSelector> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 4, bottom: 12),
           child: Text(
-            'Select Your Role',
+            s.selectYourRole,
             style: TextStyles.font16LightTextRegular.copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -51,9 +56,9 @@ class _RegisterRoleSelectorState extends State<RegisterRoleSelector> {
             Expanded(
               child: RegisterRoleOption(
                 role: 1,
-                label: 'Normal User',
+                label: s.normalUser,
                 icon: Icons.person_outline,
-                description: 'Track workouts & progress',
+                description: s.normalUserDesc,
                 isSelected: _selectedRole == 1,
                 onTap: () => _handleRoleSelection(1),
               ),
@@ -62,9 +67,9 @@ class _RegisterRoleSelectorState extends State<RegisterRoleSelector> {
             Expanded(
               child: RegisterRoleOption(
                 role: 2,
-                label: 'Trainer',
+                label: s.trainer,
                 icon: Icons.fitness_center_outlined,
-                description: 'Create & manage plans',
+                description: s.trainerDesc,
                 isSelected: _selectedRole == 2,
                 onTap: () => _handleRoleSelection(2),
               ),

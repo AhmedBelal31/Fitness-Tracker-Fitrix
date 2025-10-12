@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class RegisterLoginLink extends StatelessWidget {
   final bool isLoading;
@@ -13,17 +14,16 @@ class RegisterLoginLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Already have an account? ',
-          style: TextStyles.font16LightTextRegular,
-        ),
+        Text(s.alreadyHaveAccount, style: TextStyles.font16LightTextRegular),
         TextButton(
           onPressed: isLoading ? null : onPressed,
           child: Text(
-            'Login',
+            s.login,
             style: TextStyles.font16PrimaryGreenRegular.copyWith(
               fontWeight: FontWeight.w600,
             ),

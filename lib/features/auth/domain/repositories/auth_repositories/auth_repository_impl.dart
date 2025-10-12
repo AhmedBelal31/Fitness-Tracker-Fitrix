@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:fitrix/core/networking/token_manager.dart';
-import '../../../../core/networking/api_constants.dart';
-import '../../../../core/networking/dio_helper.dart';
-import '../../../../core/networking/error/error_response_model.dart';
-import '../../../../core/networking/error/failures.dart';
-import '../../data/models/login_params.dart';
-import '../../data/models/login_response_model.dart';
-import '../../data/models/register_params.dart';
-import '../../data/models/user_model.dart';
+import '../../../../../core/networking/api_constants.dart';
+import '../../../../../core/networking/dio_helper.dart';
+import '../../../../../core/networking/error/error_response_model.dart';
+import '../../../../../core/networking/error/failures.dart';
+import '../../../data/models/params/login_params.dart';
+import '../../../data/models/login_response_model.dart';
+import '../../../data/models/params/register_params.dart';
+import '../../../data/models/user_model.dart';
 import 'auth_repository.dart';
 import 'dart:developer' as dev;
 
@@ -206,109 +206,6 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, UserModel>> getProfile() async {
-    try {
-      dev.log('🚀 Fetching user profile', name: 'AuthRepository');
-
-      // Verify token exists before making request
-      final token = await _tokenManager.getAccessToken();
-      if (token == null || token.isEmpty) {
-        dev.log('❌ No access token found', name: 'AuthRepository');
-        return Left(
-          ServerFailure('Authentication required. Please login again.'),
-        );
-      }
-
-      final response = await _apiService.get(
-        ApiEndpoints.getProfile,
-        queryParams: {'pageSize': 1, 'page': 1},
-      );
-
-      // dev.log(
-      //   '✅ Profile response: ${response.statusCode}',
-      //   name: 'AuthRepository',
-      // );
-
-      if (response.statusCode == 200) {
-        final data = response.data;
-        final userData = data['data'] ?? data['user'] ?? data;
-        final user = UserModel.fromJson(userData as Map<String, dynamic>);
-
-        dev.log('✅ Profile fetched successfully', name: 'AuthRepository');
-        return Right(user);
-      } else if (response.statusCode == 404) {
-        // Profile not found - user needs to complete profile
-        dev.log('⚠️ Profile not found (404)', name: 'AuthRepository');
-        return Left(ProfileNotFoundFailure('User profile not found.'));
-      } else if (response.statusCode == 401) {
-        // Unauthorized - token invalid or expired
-        dev.log(
-          '❌ Unauthorized (401) - clearing tokens',
-          name: 'AuthRepository',
-        );
-        await _tokenManager.clearTokens();
-        return Left(ServerFailure('Session expired. Please login again.'));
-      } else {
-        return Left(_handleErrorResponse(response.statusCode, response.data));
-      }
-    } on DioException catch (e) {
-      if (e.response?.statusCode == 404) {
-        return Left(ProfileNotFoundFailure('User profile not found.'));
-      } else if (e.response?.statusCode == 401) {
-        await _tokenManager.clearTokens();
-        return Left(ServerFailure('Session expired. Please login again.'));
-      }
-      dev.log(
-        '❌ Profile DioException: ${e.type} - ${e.message}',
-        name: 'AuthRepository',
-      );
-      return Left(_handleDioException(e));
-    } catch (e) {
-      dev.log('❌ Profile Unexpected error: $e', name: 'AuthRepository');
-      return Left(ServerFailure('Unexpected error occurred: ${e.toString()}'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> logout() async {
-    try {
-      final response = await _apiService.postRequest(ApiEndpoints.logout);
-
-      if (response.statusCode == 200 || response.statusCode == 204) {
-        return const Right(null);
-      } else {
-        return Left(_handleErrorResponse(response.statusCode, response.data));
-      }
-    } on DioException catch (e) {
-      return Left(_handleDioException(e));
-    } catch (e) {
-      return Left(ServerFailure('Unexpected error occurred: ${e.toString()}'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, UserModel>> getCurrentUser() async {
-    try {
-      final response = await _apiService.get(ApiEndpoints.currentUser);
-
-      if (response.statusCode == 200) {
-        final data = response.data;
-        final userData = data['data'] ?? data['user'] ?? data;
-        final user = UserModel.fromJson(userData as Map<String, dynamic>);
-
-        return Right(user);
-      } else {
-        return Left(_handleErrorResponse(response.statusCode, response.data));
-      }
-    } on DioException catch (e) {
-      return Left(_handleDioException(e));
-    } catch (e) {
-      return Left(ServerFailure('Unexpected error occurred: ${e.toString()}'));
-    }
-  }
-
-  // In AuthRepositoryImpl:
   @override
   Future<Either<Failure, void>> forgotPassword(String email) async {
     try {

@@ -25,11 +25,6 @@ class ApiService {
           },
         ),
       ) {
-    dev.log(
-      '🔧 ApiService initialized with baseUrl: ${ApiEndpoints.apiBaseUrl}',
-      name: 'ApiService',
-    );
-
     _dio.interceptors.addAll([
       AuthInterceptor(_dio),
       PrettyDioLogger(
@@ -52,11 +47,6 @@ class ApiService {
     CancelToken? cancelToken,
   }) async {
     try {
-      dev.log(
-        '📤 GET Request: ${_dio.options.baseUrl}$endpoint',
-        name: 'ApiService',
-      );
-
       return await _dio.get(
         endpoint,
         queryParameters: queryParams,
@@ -64,10 +54,6 @@ class ApiService {
         cancelToken: cancelToken,
       );
     } on DioException catch (e) {
-      dev.log(
-        '❌ GET Request Error: ${e.type} - ${e.message}',
-        name: 'ApiService',
-      );
       rethrow;
     }
   }

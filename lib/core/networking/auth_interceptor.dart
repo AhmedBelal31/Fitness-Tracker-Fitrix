@@ -24,10 +24,6 @@ class AuthInterceptor extends Interceptor {
       if (token != null && token.isNotEmpty) {
         options.headers['Authorization'] = 'Bearer $token';
         dev.log('🔑 Added Bearer token to request', name: 'AuthInterceptor');
-        dev.log(
-          '🔑 Token: ${token.substring(0, 20)}...',
-          name: 'AuthInterceptor',
-        );
       } else {
         dev.log('⚠️ No token found', name: 'AuthInterceptor');
       }

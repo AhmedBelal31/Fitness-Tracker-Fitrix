@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../data/models/register_params.dart';
+import '../../../data/models/params/register_params.dart';
 import '../../../data/models/user_model.dart';
-import '../../../domain/repositories/auth_repository.dart';
+import '../../../domain/repositories/auth_repositories/auth_repository.dart';
 
 part 'register_state.dart';
 

@@ -2484,6 +2484,666 @@ class S {
     );
   }
 
+  /// `Welcome Back!`
+  String get welcomeBack {
+    return Intl.message(
+      'Welcome Back!',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in to continue your fitness journey`
+  String get signInToContinue {
+    return Intl.message(
+      'Sign in to continue your fitness journey',
+      name: 'signInToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Address`
+  String get emailAddress {
+    return Intl.message(
+      'Email Address',
+      name: 'emailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get enterYourEmail {
+    return Intl.message(
+      'Enter your email',
+      name: 'enterYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get enterYourPassword {
+    return Intl.message(
+      'Enter your password',
+      name: 'enterYourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember me`
+  String get rememberMe {
+    return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
+  }
+
+  /// `Sign In`
+  String get signIn {
+    return Intl.message('Sign In', name: 'signIn', desc: '', args: []);
+  }
+
+  /// `Forgot Password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account? `
+  String get dontHaveAccount {
+    return Intl.message(
+      'Don\'t have an account? ',
+      name: 'dontHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `Email is required`
+  String get emailRequired {
+    return Intl.message(
+      'Email is required',
+      name: 'emailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email`
+  String get invalidEmail {
+    return Intl.message(
+      'Please enter a valid email',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters`
+  String get passwordMinLength {
+    return Intl.message(
+      'Password must be at least 8 characters',
+      name: 'passwordMinLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back, {name}!`
+  String welcomeBackUser(String name) {
+    return Intl.message(
+      'Welcome back, $name!',
+      name: 'welcomeBackUser',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Please complete your profile to continue`
+  String get completeProfileMessage {
+    return Intl.message(
+      'Please complete your profile to continue',
+      name: 'completeProfileMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FITRIX`
+  String get appName {
+    return Intl.message('FITRIX', name: 'appName', desc: '', args: []);
+  }
+
+  /// `FIT YOUR LIFE. FIX YOUR FUTURE`
+  String get appTagline {
+    return Intl.message(
+      'FIT YOUR LIFE. FIX YOUR FUTURE',
+      name: 'appTagline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transform Your Body, Transform Your Life`
+  String get transformYourLife {
+    return Intl.message(
+      'Transform Your Body, Transform Your Life',
+      name: 'transformYourLife',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgotPasswordTitle {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgotPasswordTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your registered email and we'll send a reset link.`
+  String get forgotPasswordSubtitle {
+    return Intl.message(
+      'Enter your registered email and we\'ll send a reset link.',
+      name: 'forgotPasswordSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Reset Link`
+  String get sendResetLink {
+    return Intl.message(
+      'Send Reset Link',
+      name: 'sendResetLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A password reset link was sent to your email.`
+  String get resetLinkSent {
+    return Intl.message(
+      'A password reset link was sent to your email.',
+      name: 'resetLinkSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid email`
+  String get enterValidEmail {
+    return Intl.message(
+      'Enter a valid email',
+      name: 'enterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join Fitrix and start your transformation`
+  String get joinFitrix {
+    return Intl.message(
+      'Join Fitrix and start your transformation',
+      name: 'joinFitrix',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message('Username', name: 'username', desc: '', args: []);
+  }
+
+  /// `Choose a username`
+  String get chooseUsername {
+    return Intl.message(
+      'Choose a username',
+      name: 'chooseUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your phone number`
+  String get enterPhoneNumber {
+    return Intl.message(
+      'Enter your phone number',
+      name: 'enterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a strong password`
+  String get createPassword {
+    return Intl.message(
+      'Create a strong password',
+      name: 'createPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Your Role`
+  String get selectYourRole {
+    return Intl.message(
+      'Select Your Role',
+      name: 'selectYourRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Normal User`
+  String get normalUser {
+    return Intl.message('Normal User', name: 'normalUser', desc: '', args: []);
+  }
+
+  /// `Track workouts & progress`
+  String get normalUserDesc {
+    return Intl.message(
+      'Track workouts & progress',
+      name: 'normalUserDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create & manage plans`
+  String get trainerDesc {
+    return Intl.message(
+      'Create & manage plans',
+      name: 'trainerDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get createAccountButton {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccountButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? `
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration successful! Welcome {username}`
+  String registrationSuccess(String username) {
+    return Intl.message(
+      'Registration successful! Welcome $username',
+      name: 'registrationSuccess',
+      desc: '',
+      args: [username],
+    );
+  }
+
+  /// `Dismiss`
+  String get dismiss {
+    return Intl.message('Dismiss', name: 'dismiss', desc: '', args: []);
+  }
+
+  /// `Username is required`
+  String get usernameRequired {
+    return Intl.message(
+      'Username is required',
+      name: 'usernameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username must be at least 3 characters`
+  String get usernameMinLength {
+    return Intl.message(
+      'Username must be at least 3 characters',
+      name: 'usernameMinLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number is required`
+  String get phoneRequired {
+    return Intl.message(
+      'Phone number is required',
+      name: 'phoneRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid Egyptian phone number (e.g., 01012345678)`
+  String get invalidEgyptianPhone {
+    return Intl.message(
+      'Please enter a valid Egyptian phone number (e.g., 01012345678)',
+      name: 'invalidEgyptianPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number must be 11 digits`
+  String get phoneExactLength {
+    return Intl.message(
+      'Phone number must be 11 digits',
+      name: 'phoneExactLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain uppercase, lowercase and number`
+  String get passwordComplexity {
+    return Intl.message(
+      'Password must contain uppercase, lowercase and number',
+      name: 'passwordComplexity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete Profile`
+  String get completeProfile {
+    return Intl.message(
+      'Complete Profile',
+      name: 'completeProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's set up your fitness journey`
+  String get setupFitnessJourney {
+    return Intl.message(
+      'Let\'s set up your fitness journey',
+      name: 'setupFitnessJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get firstName {
+    return Intl.message('First Name', name: 'firstName', desc: '', args: []);
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
+  }
+
+  /// `Weight (kg)`
+  String get weightKg {
+    return Intl.message('Weight (kg)', name: 'weightKg', desc: '', args: []);
+  }
+
+  /// `Body Fat %`
+  String get bodyFatPercent {
+    return Intl.message(
+      'Body Fat %',
+      name: 'bodyFatPercent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muscle Mass (kg)`
+  String get muscleMassKg {
+    return Intl.message(
+      'Muscle Mass (kg)',
+      name: 'muscleMassKg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete Profile`
+  String get completeProfileButton {
+    return Intl.message(
+      'Complete Profile',
+      name: 'completeProfileButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile completed! Welcome to Fitrix, {name}!`
+  String profileCompletedWelcome(String name) {
+    return Intl.message(
+      'Profile completed! Welcome to Fitrix, $name!',
+      name: 'profileCompletedWelcome',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `First name is required`
+  String get firstNameRequired {
+    return Intl.message(
+      'First name is required',
+      name: 'firstNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name is required`
+  String get lastNameRequired {
+    return Intl.message(
+      'Last name is required',
+      name: 'lastNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender is required`
+  String get genderRequired {
+    return Intl.message(
+      'Gender is required',
+      name: 'genderRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Male or Female`
+  String get selectMaleOrFemale {
+    return Intl.message(
+      'Select Male or Female',
+      name: 'selectMaleOrFemale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid weight in kg`
+  String get enterValidWeight {
+    return Intl.message(
+      'Enter a valid weight in kg',
+      name: 'enterValidWeight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check the weight entered`
+  String get checkWeightEntered {
+    return Intl.message(
+      'Please check the weight entered',
+      name: 'checkWeightEntered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a number`
+  String get enterNumber {
+    return Intl.message(
+      'Enter a number',
+      name: 'enterNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter realistic % fat (1-70)`
+  String get enterRealisticBodyFat {
+    return Intl.message(
+      'Enter realistic % fat (1-70)',
+      name: 'enterRealisticBodyFat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid muscle mass (kg)`
+  String get enterValidMuscleMass {
+    return Intl.message(
+      'Enter a valid muscle mass (kg)',
+      name: 'enterValidMuscleMass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check muscle mass entered`
+  String get checkMuscleMassEntered {
+    return Intl.message(
+      'Please check muscle mass entered',
+      name: 'checkMuscleMassEntered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message('Male', name: 'male', desc: '', args: []);
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message('Female', name: 'female', desc: '', args: []);
+  }
+
+  /// `Weight is required`
+  String get weightRequired {
+    return Intl.message(
+      'Weight is required',
+      name: 'weightRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your first name`
+  String get enterFirstName {
+    return Intl.message(
+      'Enter your first name',
+      name: 'enterFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your last name`
+  String get enterLastName {
+    return Intl.message(
+      'Enter your last name',
+      name: 'enterLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your weight in kg`
+  String get enterWeight {
+    return Intl.message(
+      'Enter your weight in kg',
+      name: 'enterWeight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your body fat percentage (optional)`
+  String get enterBodyFat {
+    return Intl.message(
+      'Enter your body fat percentage (optional)',
+      name: 'enterBodyFat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your muscle mass in kg (optional)`
+  String get enterMuscleMass {
+    return Intl.message(
+      'Enter your muscle mass in kg (optional)',
+      name: 'enterMuscleMass',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// ``
   String get x {
     return Intl.message('', name: 'x', desc: '', args: []);

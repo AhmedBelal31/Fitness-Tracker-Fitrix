@@ -24,17 +24,12 @@ class _RegisterAnimatedContentState extends State<RegisterAnimatedContent>
     return AnimatedBuilder(
       animation: animationController,
       builder: (context, child) {
-        return FadeTransition(
-          opacity: fadeAnimation,
-          child: SlideTransition(
-            position: slideAnimation,
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: RegisterFormContent(
-                isLoading: widget.isLoading,
-                onNavigateToLogin: widget.onNavigateToLogin,
-              ),
-            ),
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          physics: BouncingScrollPhysics(),
+          child: RegisterFormContent(
+            isLoading: widget.isLoading,
+            onNavigateToLogin: widget.onNavigateToLogin,
           ),
         );
       },

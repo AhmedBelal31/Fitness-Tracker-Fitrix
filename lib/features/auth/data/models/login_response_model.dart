@@ -4,20 +4,23 @@ import 'login_profile_model.dart';
 
 class LoginResponseModel extends Equatable {
   final TokenModel token;
-  final LoginProfileModel profile;
+  final LoginProfileModel? profile;
 
-  const LoginResponseModel({required this.token, required this.profile});
+  const LoginResponseModel({required this.token, this.profile});
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
     return LoginResponseModel(
       token: TokenModel.fromJson(json['token']),
-      profile: LoginProfileModel.fromJson(json['profile']),
+      // 👇 Handle missing profile (for new users)
+      profile: json['profile'] != null
+          ? LoginProfileModel.fromJson(json['profile'] as Map<String, dynamic>)
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() => {
     'token': token.toJson(),
-    'profile': profile.toJson(),
+    if (profile != null) 'profile': profile!.toJson(),
   };
 
   @override
