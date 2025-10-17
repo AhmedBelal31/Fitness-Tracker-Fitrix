@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/services/hive_service.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/styles.dart';
@@ -65,12 +66,14 @@ class UserProfileHeader extends StatelessWidget {
           Text("${"$firstName $lastName"} ", style: TextStyles.font24WhiteBold),
           SizedBox(height: 16.h),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.updateProfileScreen);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorsManager.whiteText,
               foregroundColor: ColorsManager.primaryGreen,
             ),
-            child: Text(s.edit_your_profile),
+            child: Text(s.edit_profile_and_measurements),
           ),
         ],
       ),

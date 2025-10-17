@@ -124,3 +124,23 @@ class ServerFailure extends Failure {
 class ProfileNotFoundFailure extends Failure {
   const ProfileNotFoundFailure(super.errorMessage);
 }
+
+class CacheFailure extends Failure {
+  const CacheFailure(super.message);
+}
+
+class NetworkFailure extends Failure {
+  const NetworkFailure(super.message);
+}
+
+class ValidationFailure extends Failure {
+  const ValidationFailure(super.message);
+}
+
+class UnauthorizedFailure extends Failure {
+  const UnauthorizedFailure(super.message);
+}
+
+class NotFoundFailure extends Failure {
+  const NotFoundFailure(super.message);
+}

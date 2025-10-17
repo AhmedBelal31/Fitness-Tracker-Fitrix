@@ -20,54 +20,57 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(name) => "Profile completed! Welcome to Fitrix, ${name}!";
+  static String m0(name) => "Welcome ${name}!";
 
-  static String m1(username) => "Registration successful! Welcome ${username}";
+  static String m1(username) => "Welcome ${username}!";
 
   static String m2(name) => "Welcome back, ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "X": MessageLookupByLibrary.simpleMessage("X"),
+    "ab_wheel": MessageLookupByLibrary.simpleMessage("Ab Wheel"),
     "about": MessageLookupByLibrary.simpleMessage("About"),
     "aboutTitle": MessageLookupByLibrary.simpleMessage("About Fitrix"),
     "abs": MessageLookupByLibrary.simpleMessage("Abs"),
     "acceptableUse": MessageLookupByLibrary.simpleMessage("Acceptable Use"),
-    "acceptableUseText": MessageLookupByLibrary.simpleMessage(
-      "You agree to use Fitrix only for lawful purposes. You agree not to:",
-    ),
+    "acceptableUseText": MessageLookupByLibrary.simpleMessage("Don\'t:"),
     "acceptanceOfTerms": MessageLookupByLibrary.simpleMessage(
-      "Acceptance of Terms",
+      "Terms Acceptance",
     ),
     "acceptanceOfTermsText": MessageLookupByLibrary.simpleMessage(
-      "By accessing and using Fitrix, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our application.",
+      "By using Fitrix, you agree to terms",
     ),
-    "accessDataItem": MessageLookupByLibrary.simpleMessage(
-      "Access your personal data",
-    ),
+    "accessDataItem": MessageLookupByLibrary.simpleMessage("Access data"),
     "account": MessageLookupByLibrary.simpleMessage("Account"),
     "accountActivitiesItem": MessageLookupByLibrary.simpleMessage(
-      "All activities that occur under your account",
+      "All activities",
     ),
-    "accurateInfoItem": MessageLookupByLibrary.simpleMessage(
-      "Providing accurate and complete information",
-    ),
+    "accurateInfoItem": MessageLookupByLibrary.simpleMessage("Accurate info"),
     "achievements": MessageLookupByLibrary.simpleMessage("Achievements"),
     "active_trainees": MessageLookupByLibrary.simpleMessage("Active Trainees"),
+    "add": MessageLookupByLibrary.simpleMessage("Add"),
+    "add_exercise": MessageLookupByLibrary.simpleMessage("Add Exercise"),
     "add_first_trainee": MessageLookupByLibrary.simpleMessage(
-      "Add your first trainee to get started",
+      "Add your first trainee",
     ),
+    "add_notes": MessageLookupByLibrary.simpleMessage("Notes"),
+    "add_set": MessageLookupByLibrary.simpleMessage("Add Set"),
     "add_to_workout": MessageLookupByLibrary.simpleMessage("Add to Workout"),
     "add_trainee": MessageLookupByLibrary.simpleMessage("Add Trainee"),
-    "added_to_workout": MessageLookupByLibrary.simpleMessage(
-      "Added to workout",
+    "add_workout_notes": MessageLookupByLibrary.simpleMessage("Add notes..."),
+    "added_to_workout": MessageLookupByLibrary.simpleMessage("Added!"),
+    "adding": MessageLookupByLibrary.simpleMessage("Adding..."),
+    "adjustable_bench": MessageLookupByLibrary.simpleMessage(
+      "Adjustable Bench",
     ),
     "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
-      "Already have an account? ",
+      "Have account? ",
     ),
     "appDescription": MessageLookupByLibrary.simpleMessage(
-      "Fitrix is your all-in-one fitness companion designed to help you achieve your health and fitness goals. Track workouts, monitor progress, and stay motivated on your fitness journey.",
+      "Track workouts, monitor progress",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("FITRIX"),
     "appSettings": MessageLookupByLibrary.simpleMessage("App Settings"),
@@ -77,103 +80,114 @@ class MessageLookup extends MessageLookupByLibrary {
     "app_name": MessageLookupByLibrary.simpleMessage("Fitrix"),
     "app_settings": MessageLookupByLibrary.simpleMessage("App Settings"),
     "apply": MessageLookupByLibrary.simpleMessage("Apply"),
+    "apply_order": MessageLookupByLibrary.simpleMessage("Apply"),
+    "are_you_sure": MessageLookupByLibrary.simpleMessage("Sure?"),
     "arms": MessageLookupByLibrary.simpleMessage("Arms"),
     "arms_description": MessageLookupByLibrary.simpleMessage(
-      "Biceps and triceps exercises",
+      "Biceps & triceps",
     ),
     "avg_duration": MessageLookupByLibrary.simpleMessage("Avg Duration"),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
     "back_description": MessageLookupByLibrary.simpleMessage(
-      "Build a strong and wide back",
+      "Strong wide back",
     ),
     "barbell": MessageLookupByLibrary.simpleMessage("Barbell"),
-    "barbell_curls": MessageLookupByLibrary.simpleMessage("Barbell Curls"),
+    "barbell_curls": MessageLookupByLibrary.simpleMessage("BB Curls"),
     "barbell_curls_description": MessageLookupByLibrary.simpleMessage(
-      "Classic bicep exercise with barbell.",
+      "Bicep mass",
     ),
-    "barbell_rows": MessageLookupByLibrary.simpleMessage("Barbell Rows"),
+    "barbell_rows": MessageLookupByLibrary.simpleMessage("BB Rows"),
     "barbell_rows_description": MessageLookupByLibrary.simpleMessage(
-      "Build thick back with bent-over rows. Pull barbell to lower chest.",
+      "Thick back",
     ),
+    "battle_ropes": MessageLookupByLibrary.simpleMessage("Battle Ropes"),
     "beginner": MessageLookupByLibrary.simpleMessage("Beginner"),
     "bench_press": MessageLookupByLibrary.simpleMessage("Bench Press"),
     "bench_press_description": MessageLookupByLibrary.simpleMessage(
-      "Classic compound exercise for chest development. Lie on bench and press barbell up.",
+      "Classic chest exercise",
     ),
     "biceps": MessageLookupByLibrary.simpleMessage("Biceps"),
     "bodyFatPercent": MessageLookupByLibrary.simpleMessage("Body Fat %"),
+    "bodyFatRequired": MessageLookupByLibrary.simpleMessage(
+      "Body fat required",
+    ),
     "body_fat": MessageLookupByLibrary.simpleMessage("Body Fat"),
+    "body_fat_goal": MessageLookupByLibrary.simpleMessage("Body Fat Goal (%)"),
+    "body_measurements_and_goals": MessageLookupByLibrary.simpleMessage(
+      "Measurements & Goals",
+    ),
     "body_progress": MessageLookupByLibrary.simpleMessage("Body Progress"),
     "bodyweight": MessageLookupByLibrary.simpleMessage("Bodyweight"),
-    "buildNumber": MessageLookupByLibrary.simpleMessage("Build Number"),
+    "brief_description_of_the_exercise": MessageLookupByLibrary.simpleMessage(
+      "Description",
+    ),
+    "buildNumber": MessageLookupByLibrary.simpleMessage("Build"),
     "cable_flyes": MessageLookupByLibrary.simpleMessage("Cable Flyes"),
     "cable_flyes_description": MessageLookupByLibrary.simpleMessage(
-      "Isolation exercise for chest. Use cables to bring hands together in front.",
+      "Chest isolation",
     ),
-    "cable_machine": MessageLookupByLibrary.simpleMessage("Cable Machine"),
+    "cable_machine": MessageLookupByLibrary.simpleMessage("Cable"),
     "calf_raises": MessageLookupByLibrary.simpleMessage("Calf Raises"),
     "calf_raises_description": MessageLookupByLibrary.simpleMessage(
-      "Build calf muscles by raising heels.",
+      "Calf building",
     ),
-    "callUs": MessageLookupByLibrary.simpleMessage("Call Us"),
+    "callUs": MessageLookupByLibrary.simpleMessage("Call"),
     "calves": MessageLookupByLibrary.simpleMessage("Calves"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cannot_add_to_completed_session": MessageLookupByLibrary.simpleMessage(
+      "Session completed",
+    ),
     "changeYourPassword": MessageLookupByLibrary.simpleMessage(
-      "Change Your Password",
+      "Change Password",
     ),
     "change_photo": MessageLookupByLibrary.simpleMessage("Change Photo"),
     "change_your_password": MessageLookupByLibrary.simpleMessage(
-      "Change Your Password",
+      "Change Password",
     ),
-    "changesToTerms": MessageLookupByLibrary.simpleMessage("Changes to Terms"),
+    "changesToTerms": MessageLookupByLibrary.simpleMessage("Term Changes"),
     "changesToTermsText": MessageLookupByLibrary.simpleMessage(
-      "We may modify these terms at any time. Continued use of Fitrix after changes constitutes acceptance of the modified terms.",
+      "We can modify terms",
     ),
+    "checkHeightEntered": MessageLookupByLibrary.simpleMessage("Check height"),
     "checkMuscleMassEntered": MessageLookupByLibrary.simpleMessage(
-      "Please check muscle mass entered",
+      "Check muscle",
     ),
-    "checkWeightEntered": MessageLookupByLibrary.simpleMessage(
-      "Please check the weight entered",
-    ),
+    "checkWeightEntered": MessageLookupByLibrary.simpleMessage("Check weight"),
     "chest": MessageLookupByLibrary.simpleMessage("Chest"),
     "chest_description": MessageLookupByLibrary.simpleMessage(
-      "Chest exercises for upper body strength",
+      "Upper body strength",
     ),
-    "chooseUsername": MessageLookupByLibrary.simpleMessage("Choose a username"),
-    "choose_from_gallery": MessageLookupByLibrary.simpleMessage(
-      "Choose from Gallery",
-    ),
+    "chest_press_machine": MessageLookupByLibrary.simpleMessage("Chest Press"),
+    "chooseUsername": MessageLookupByLibrary.simpleMessage("Choose username"),
+    "choose_from_gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "cm": MessageLookupByLibrary.simpleMessage("cm"),
-    "commercialUseItem": MessageLookupByLibrary.simpleMessage(
-      "Use the app for commercial purposes without permission",
-    ),
+    "commercialUseItem": MessageLookupByLibrary.simpleMessage("Commercial use"),
     "completeProfile": MessageLookupByLibrary.simpleMessage("Complete Profile"),
-    "completeProfileButton": MessageLookupByLibrary.simpleMessage(
-      "Complete Profile",
-    ),
+    "completeProfileButton": MessageLookupByLibrary.simpleMessage("Complete"),
     "completeProfileMessage": MessageLookupByLibrary.simpleMessage(
-      "Please complete your profile to continue",
+      "Complete profile to continue",
     ),
+    "complete_workout": MessageLookupByLibrary.simpleMessage("Complete"),
     "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "completion": MessageLookupByLibrary.simpleMessage("Completion"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "confirm_create_session": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
-      "Confirm New Password",
+      "Confirm Password",
     ),
     "consultProviderItem": MessageLookupByLibrary.simpleMessage(
-      "Consult a healthcare provider before starting any fitness program",
+      "Consult doctor",
     ),
-    "contactSupport": MessageLookupByLibrary.simpleMessage("Contact Support"),
-    "contactSupportTitle": MessageLookupByLibrary.simpleMessage(
-      "Contact Support",
-    ),
-    "contactUsSection": MessageLookupByLibrary.simpleMessage("Contact Us"),
+    "contactSupport": MessageLookupByLibrary.simpleMessage("Support"),
+    "contactSupportTitle": MessageLookupByLibrary.simpleMessage("Support"),
+    "contactUsSection": MessageLookupByLibrary.simpleMessage("Contact"),
     "contactUsText": MessageLookupByLibrary.simpleMessage(
-      "If you have any questions about this Privacy Policy, please contact us at appfitrix@gmail.com",
+      "Questions? Email appfitrix@gmail.com",
     ),
     "contact_support": MessageLookupByLibrary.simpleMessage("Contact Support"),
     "contact_us_help": MessageLookupByLibrary.simpleMessage(
-      "Need help? Contact our support team.",
+      "Need help? Contact support",
     ),
     "continue_with_apple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
@@ -186,63 +200,71 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continuex": MessageLookupByLibrary.simpleMessage("Continue"),
     "core": MessageLookupByLibrary.simpleMessage("Core"),
-    "core_description": MessageLookupByLibrary.simpleMessage(
-      "Strengthen your core and abs",
-    ),
-    "correctDataItem": MessageLookupByLibrary.simpleMessage(
-      "Correct inaccurate data",
-    ),
+    "core_description": MessageLookupByLibrary.simpleMessage("Core & abs"),
+    "correctDataItem": MessageLookupByLibrary.simpleMessage("Correct data"),
     "create": MessageLookupByLibrary.simpleMessage("Create"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "createAccountButton": MessageLookupByLibrary.simpleMessage(
       "Create Account",
     ),
-    "createPassword": MessageLookupByLibrary.simpleMessage(
-      "Create a strong password",
-    ),
+    "createPassword": MessageLookupByLibrary.simpleMessage("Create password"),
     "create_custom": MessageLookupByLibrary.simpleMessage("Create Custom"),
     "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
-      "Create Custom Exercise",
+      "Create Custom",
     ),
+    "create_new_session_to_start": MessageLookupByLibrary.simpleMessage(
+      "Create session",
+    ),
+    "create_new_workout": MessageLookupByLibrary.simpleMessage("New Workout?"),
+    "create_session": MessageLookupByLibrary.simpleMessage("Create"),
     "create_workout": MessageLookupByLibrary.simpleMessage("Create Workout"),
+    "create_workout_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Create session?",
+    ),
     "create_your_first_exercise": MessageLookupByLibrary.simpleMessage(
-      "Create Your First Exercise",
+      "Create First",
     ),
     "create_your_own_exercises": MessageLookupByLibrary.simpleMessage(
-      "Create your own exercises to personalize your workouts",
+      "Create your own",
     ),
     "crunches": MessageLookupByLibrary.simpleMessage("Crunches"),
-    "crunches_description": MessageLookupByLibrary.simpleMessage(
-      "Classic ab exercise. Curl upper body towards knees.",
+    "crunches_description": MessageLookupByLibrary.simpleMessage("Ab exercise"),
+    "current_body_fat": MessageLookupByLibrary.simpleMessage("Body Fat (%)"),
+    "current_measurements": MessageLookupByLibrary.simpleMessage("Current"),
+    "current_muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle (kg)"),
+    "current_weight": MessageLookupByLibrary.simpleMessage(
+      "Current Weight (kg)",
     ),
-    "current_weight": MessageLookupByLibrary.simpleMessage("Current Weight"),
     "custom": MessageLookupByLibrary.simpleMessage("Custom"),
-    "dataSecurity": MessageLookupByLibrary.simpleMessage("Data Security"),
+    "custom_equipment": MessageLookupByLibrary.simpleMessage(
+      "Custom Equipment",
+    ),
+    "dataSecurity": MessageLookupByLibrary.simpleMessage("Security"),
     "dataSecurityText": MessageLookupByLibrary.simpleMessage(
-      "We implement appropriate security measures to protect your personal information. Your data is encrypted and stored securely on our servers. We do not share your personal information with third parties without your consent.",
+      "Your data is encrypted",
     ),
     "deadlift": MessageLookupByLibrary.simpleMessage("Deadlift"),
     "deadlift_description": MessageLookupByLibrary.simpleMessage(
-      "King of back exercises. Lift barbell from ground to standing position.",
+      "King of back",
     ),
+    "decline_bench": MessageLookupByLibrary.simpleMessage("Decline Bench"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-    "deleteDataItem": MessageLookupByLibrary.simpleMessage(
-      "Request deletion of your data",
-    ),
+    "deleteDataItem": MessageLookupByLibrary.simpleMessage("Delete data"),
     "delete_account": MessageLookupByLibrary.simpleMessage("Delete Account"),
-    "delete_exercise": MessageLookupByLibrary.simpleMessage("Delete Exercise"),
+    "delete_exercise": MessageLookupByLibrary.simpleMessage("Delete"),
     "delete_exercise_confirmation": MessageLookupByLibrary.simpleMessage(
       "Delete Exercise?",
     ),
     "delete_exercise_message": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to delete this exercise?",
+      "Delete this exercise?",
     ),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "developer": MessageLookupByLibrary.simpleMessage("Developer"),
     "didnt_receive_code": MessageLookupByLibrary.simpleMessage(
-      "Didn\'t receive a code.",
+      "Didn\'t receive code?",
     ),
     "difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
+    "dip_station": MessageLookupByLibrary.simpleMessage("Dip Station"),
     "dismiss": MessageLookupByLibrary.simpleMessage("Dismiss"),
     "done": MessageLookupByLibrary.simpleMessage("Done"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -251,514 +273,458 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
-    "dumbbell_flyes": MessageLookupByLibrary.simpleMessage("Dumbbell Flyes"),
+    "drag_sections_instruction": MessageLookupByLibrary.simpleMessage(
+      "Drag to reorder",
+    ),
+    "dumbbell_flyes": MessageLookupByLibrary.simpleMessage("DB Flyes"),
     "dumbbell_flyes_description": MessageLookupByLibrary.simpleMessage(
-      "Stretch chest muscles with dumbbell flyes on flat bench.",
+      "Chest stretch",
     ),
     "dumbbells": MessageLookupByLibrary.simpleMessage("Dumbbells"),
     "duration": MessageLookupByLibrary.simpleMessage("Duration"),
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
-    "edit_exercise": MessageLookupByLibrary.simpleMessage("Edit Exercise"),
-    "edit_your_profile": MessageLookupByLibrary.simpleMessage(
-      "Edit Your Profile",
+    "edit_exercise": MessageLookupByLibrary.simpleMessage("Edit"),
+    "edit_profile_and_measurements": MessageLookupByLibrary.simpleMessage(
+      "Edit Profile & Measurements",
     ),
+    "edit_set": MessageLookupByLibrary.simpleMessage("Edit Set"),
+    "edit_your_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+    "eg_chest_press": MessageLookupByLibrary.simpleMessage("e.g., Chest Press"),
+    "elliptical_machine": MessageLookupByLibrary.simpleMessage("Elliptical"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
-    "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
-    "emailRequired": MessageLookupByLibrary.simpleMessage("Email is required"),
-    "enterBodyFat": MessageLookupByLibrary.simpleMessage(
-      "Enter your body fat percentage (optional)",
-    ),
-    "enterFirstName": MessageLookupByLibrary.simpleMessage(
-      "Enter your first name",
-    ),
-    "enterLastName": MessageLookupByLibrary.simpleMessage(
-      "Enter your last name",
-    ),
-    "enterMuscleMass": MessageLookupByLibrary.simpleMessage(
-      "Enter your muscle mass in kg (optional)",
-    ),
-    "enterNumber": MessageLookupByLibrary.simpleMessage("Enter a number"),
-    "enterPhoneNumber": MessageLookupByLibrary.simpleMessage(
-      "Enter your phone number",
-    ),
+    "emailAddress": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailRequired": MessageLookupByLibrary.simpleMessage("Email required"),
+    "enterBodyFat": MessageLookupByLibrary.simpleMessage("Body fat %"),
+    "enterFirstName": MessageLookupByLibrary.simpleMessage("First name"),
+    "enterHeight": MessageLookupByLibrary.simpleMessage("Height"),
+    "enterLastName": MessageLookupByLibrary.simpleMessage("Last name"),
+    "enterMuscleMass": MessageLookupByLibrary.simpleMessage("Muscle (kg)"),
+    "enterNumber": MessageLookupByLibrary.simpleMessage("Enter number"),
+    "enterPhoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
     "enterRealisticBodyFat": MessageLookupByLibrary.simpleMessage(
-      "Enter realistic % fat (1-70)",
+      "Body fat: 1-70%",
     ),
     "enterValidEmail": MessageLookupByLibrary.simpleMessage(
-      "Enter a valid email",
+      "Enter valid email",
     ),
+    "enterValidHeight": MessageLookupByLibrary.simpleMessage("Invalid height"),
     "enterValidMuscleMass": MessageLookupByLibrary.simpleMessage(
-      "Enter a valid muscle mass (kg)",
+      "Invalid muscle",
     ),
-    "enterValidWeight": MessageLookupByLibrary.simpleMessage(
-      "Enter a valid weight in kg",
-    ),
-    "enterWeight": MessageLookupByLibrary.simpleMessage(
-      "Enter your weight in kg",
-    ),
-    "enterYourEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
-    "enterYourPassword": MessageLookupByLibrary.simpleMessage(
-      "Enter your password",
-    ),
+    "enterValidWeight": MessageLookupByLibrary.simpleMessage("Invalid weight"),
+    "enterWeight": MessageLookupByLibrary.simpleMessage("Weight (kg)"),
+    "enterYourEmail": MessageLookupByLibrary.simpleMessage("Enter email"),
+    "enterYourPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
+    "enter_body_fat_goal": MessageLookupByLibrary.simpleMessage("Target fat"),
     "enter_code": MessageLookupByLibrary.simpleMessage("Enter Code"),
-    "enter_new_password": MessageLookupByLibrary.simpleMessage(
-      "Enter New Password",
+    "enter_muscle_mass_goal": MessageLookupByLibrary.simpleMessage(
+      "Target muscle",
     ),
+    "enter_new_password": MessageLookupByLibrary.simpleMessage("New password"),
+    "enter_weight_goal": MessageLookupByLibrary.simpleMessage("Target weight"),
     "enter_your_email_to_receive_reset_code":
-        MessageLookupByLibrary.simpleMessage(
-          "Enter Your Email To Receive Reset Code",
-        ),
+        MessageLookupByLibrary.simpleMessage("Enter email for reset code"),
+    "enter_your_equipment_name": MessageLookupByLibrary.simpleMessage(
+      "Equipment name",
+    ),
     "enter_your_new_password": MessageLookupByLibrary.simpleMessage(
-      "Enter your new password",
+      "Enter new password",
     ),
     "equipment": MessageLookupByLibrary.simpleMessage("Equipment"),
-    "error_400": MessageLookupByLibrary.simpleMessage(
-      "Bad Request - The request was invalid or cannot be processed",
-    ),
-    "error_401": MessageLookupByLibrary.simpleMessage(
-      "Unauthorized - Please login to continue",
-    ),
-    "error_401_403": MessageLookupByLibrary.simpleMessage(
-      "Forbidden - You don\'t have permission to access this resource",
-    ),
-    "error_403": MessageLookupByLibrary.simpleMessage(
-      "Forbidden - Access denied",
-    ),
-    "error_404": MessageLookupByLibrary.simpleMessage(
-      "Not Found - The requested resource was not found",
-    ),
-    "error_405": MessageLookupByLibrary.simpleMessage(
-      "Method Not Allowed - The request method is not supported",
-    ),
-    "error_406": MessageLookupByLibrary.simpleMessage(
-      "Not Acceptable - The server cannot produce a response matching the request",
-    ),
-    "error_408": MessageLookupByLibrary.simpleMessage(
-      "Request Timeout - The request took too long to process",
-    ),
-    "error_409": MessageLookupByLibrary.simpleMessage(
-      "Conflict - The request conflicts with the current state of the server",
-    ),
-    "error_410": MessageLookupByLibrary.simpleMessage(
-      "Gone - The requested resource is no longer available",
-    ),
-    "error_411": MessageLookupByLibrary.simpleMessage(
-      "Length Required - Content-Length header is missing",
-    ),
-    "error_412": MessageLookupByLibrary.simpleMessage(
-      "Precondition Failed - One or more conditions in the request failed",
-    ),
-    "error_413": MessageLookupByLibrary.simpleMessage(
-      "Payload Too Large - The request is larger than the server is willing to process",
-    ),
-    "error_414": MessageLookupByLibrary.simpleMessage(
-      "URI Too Long - The request URI is too long",
-    ),
-    "error_415": MessageLookupByLibrary.simpleMessage(
-      "Unsupported Media Type - The media type is not supported",
-    ),
-    "error_422": MessageLookupByLibrary.simpleMessage(
-      "Unprocessable Entity - The request was well-formed but contains invalid data",
-    ),
-    "error_429": MessageLookupByLibrary.simpleMessage(
-      "Too Many Requests - You have sent too many requests in a given time",
-    ),
-    "error_500": MessageLookupByLibrary.simpleMessage(
-      "Internal Server Error - Something went wrong on the server",
-    ),
-    "error_501": MessageLookupByLibrary.simpleMessage(
-      "Not Implemented - The server does not support this functionality",
-    ),
-    "error_502": MessageLookupByLibrary.simpleMessage(
-      "Bad Gateway - Invalid response from the upstream server",
-    ),
-    "error_503": MessageLookupByLibrary.simpleMessage(
-      "Service Unavailable - The server is temporarily unable to handle the request",
-    ),
-    "error_504": MessageLookupByLibrary.simpleMessage(
-      "Gateway Timeout - The upstream server failed to respond in time",
-    ),
-    "error_505": MessageLookupByLibrary.simpleMessage(
-      "HTTP Version Not Supported - The HTTP version is not supported",
-    ),
-    "error_cancelled": MessageLookupByLibrary.simpleMessage(
-      "Request Cancelled - The request was cancelled",
-    ),
+    "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "error_400": MessageLookupByLibrary.simpleMessage("Invalid request"),
+    "error_401": MessageLookupByLibrary.simpleMessage("Login required"),
+    "error_401_403": MessageLookupByLibrary.simpleMessage("Access denied"),
+    "error_403": MessageLookupByLibrary.simpleMessage("Forbidden"),
+    "error_404": MessageLookupByLibrary.simpleMessage("Not found"),
+    "error_405": MessageLookupByLibrary.simpleMessage("Method not allowed"),
+    "error_406": MessageLookupByLibrary.simpleMessage("Not acceptable"),
+    "error_408": MessageLookupByLibrary.simpleMessage("Request timeout"),
+    "error_409": MessageLookupByLibrary.simpleMessage("Conflict"),
+    "error_410": MessageLookupByLibrary.simpleMessage("Gone"),
+    "error_411": MessageLookupByLibrary.simpleMessage("Length required"),
+    "error_412": MessageLookupByLibrary.simpleMessage("Precondition failed"),
+    "error_413": MessageLookupByLibrary.simpleMessage("File too large"),
+    "error_414": MessageLookupByLibrary.simpleMessage("URL too long"),
+    "error_415": MessageLookupByLibrary.simpleMessage("Unsupported format"),
+    "error_422": MessageLookupByLibrary.simpleMessage("Invalid data"),
+    "error_429": MessageLookupByLibrary.simpleMessage("Too many requests"),
+    "error_500": MessageLookupByLibrary.simpleMessage("Server error"),
+    "error_501": MessageLookupByLibrary.simpleMessage("Not implemented"),
+    "error_502": MessageLookupByLibrary.simpleMessage("Bad gateway"),
+    "error_503": MessageLookupByLibrary.simpleMessage("Service unavailable"),
+    "error_504": MessageLookupByLibrary.simpleMessage("Gateway timeout"),
+    "error_505": MessageLookupByLibrary.simpleMessage("HTTP version error"),
+    "error_cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
     "error_connection": MessageLookupByLibrary.simpleMessage(
-      "Connection Error - Unable to connect to server",
+      "Connection error",
     ),
     "error_loading_data": MessageLookupByLibrary.simpleMessage(
       "Error loading data",
     ),
-    "error_network": MessageLookupByLibrary.simpleMessage(
-      "Network Error - Please check your internet connection",
-    ),
-    "error_timeout": MessageLookupByLibrary.simpleMessage(
-      "Connection Timeout - The request took too long",
-    ),
+    "error_network": MessageLookupByLibrary.simpleMessage("Network error"),
+    "error_timeout": MessageLookupByLibrary.simpleMessage("Timeout"),
     "error_unexpected": MessageLookupByLibrary.simpleMessage(
-      "Unexpected Error - Something unexpected happened",
+      "Unexpected error",
+    ),
+    "exercise_added_successfully": MessageLookupByLibrary.simpleMessage(
+      "Added!",
     ),
     "exercise_created_successfully": MessageLookupByLibrary.simpleMessage(
-      "Exercise created successfully",
+      "Created!",
     ),
-    "exercise_deleted": MessageLookupByLibrary.simpleMessage(
-      "Exercise deleted",
-    ),
+    "exercise_deleted": MessageLookupByLibrary.simpleMessage("Deleted"),
+    "exercise_details": MessageLookupByLibrary.simpleMessage("Details"),
     "exercise_name": MessageLookupByLibrary.simpleMessage("Exercise Name"),
     "exercises": MessageLookupByLibrary.simpleMessage("Exercises"),
-    "exportDataItem": MessageLookupByLibrary.simpleMessage("Export your data"),
+    "exercises_will_appear_here": MessageLookupByLibrary.simpleMessage(
+      "Exercises appear here",
+    ),
+    "exportDataItem": MessageLookupByLibrary.simpleMessage("Export data"),
+    "ez_bar": MessageLookupByLibrary.simpleMessage("EZ Bar"),
+    "failed_to_add_exercise": MessageLookupByLibrary.simpleMessage(
+      "Add failed",
+    ),
+    "failed_to_pick_image": MessageLookupByLibrary.simpleMessage(
+      "Image failed",
+    ),
     "failed_to_update_profile": MessageLookupByLibrary.simpleMessage(
-      "Failed to update profile",
+      "Update failed",
     ),
-    "faqResetPassword": MessageLookupByLibrary.simpleMessage(
-      "How do I reset my password?",
-    ),
+    "faqResetPassword": MessageLookupByLibrary.simpleMessage("Reset password?"),
     "faqResetPasswordAnswer": MessageLookupByLibrary.simpleMessage(
-      "Go to Login screen and tap \'Forgot Password\'. Follow the instructions sent to your email.",
+      "Tap \'Forgot Password\'",
     ),
-    "faqSyncData": MessageLookupByLibrary.simpleMessage(
-      "Can I sync data across devices?",
-    ),
-    "faqSyncDataAnswer": MessageLookupByLibrary.simpleMessage(
-      "Yes, your data is automatically synced when you log in with the same account.",
-    ),
-    "faqTrackWorkouts": MessageLookupByLibrary.simpleMessage(
-      "How do I track my workouts?",
-    ),
+    "faqSyncData": MessageLookupByLibrary.simpleMessage("Sync devices?"),
+    "faqSyncDataAnswer": MessageLookupByLibrary.simpleMessage("Auto synced"),
+    "faqTrackWorkouts": MessageLookupByLibrary.simpleMessage("Track workouts?"),
     "faqTrackWorkoutsAnswer": MessageLookupByLibrary.simpleMessage(
-      "Navigate to the Workouts section and tap the \'+\' button to create a new workout session.",
+      "Tap + button",
     ),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
-    "finish": MessageLookupByLibrary.simpleMessage("FINISH"),
+    "finish": MessageLookupByLibrary.simpleMessage("Finish"),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
     "firstNameRequired": MessageLookupByLibrary.simpleMessage(
-      "First name is required",
+      "First name required",
     ),
     "first_name": MessageLookupByLibrary.simpleMessage("First Name"),
+    "fitness_goals": MessageLookupByLibrary.simpleMessage("Goals"),
     "fitrixTeam": MessageLookupByLibrary.simpleMessage("Fitrix Team"),
+    "flat_bench": MessageLookupByLibrary.simpleMessage("Flat Bench"),
+    "foam_roller": MessageLookupByLibrary.simpleMessage("Foam Roller"),
     "followUs": MessageLookupByLibrary.simpleMessage("Follow Us"),
     "forearms": MessageLookupByLibrary.simpleMessage("Forearms"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
-      "Enter your registered email and we\'ll send a reset link.",
+      "Enter email for reset link",
     ),
     "forgotPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "Forgot Password?",
     ),
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot password?"),
-    "frequentlyAskedQuestions": MessageLookupByLibrary.simpleMessage(
-      "Frequently Asked Questions",
-    ),
+    "found": MessageLookupByLibrary.simpleMessage("found"),
+    "frequentlyAskedQuestions": MessageLookupByLibrary.simpleMessage("FAQ"),
     "front_delts": MessageLookupByLibrary.simpleMessage("Front Delts"),
     "front_raises": MessageLookupByLibrary.simpleMessage("Front Raises"),
     "front_raises_description": MessageLookupByLibrary.simpleMessage(
-      "Raise dumbbells in front for front deltoid focus.",
+      "Front delts",
     ),
-    "genderRequired": MessageLookupByLibrary.simpleMessage(
-      "Gender is required",
-    ),
+    "genderRequired": MessageLookupByLibrary.simpleMessage("Select gender"),
     "glutes": MessageLookupByLibrary.simpleMessage("Glutes"),
+    "goal": MessageLookupByLibrary.simpleMessage("Goal"),
+    "goal_body_fat": MessageLookupByLibrary.simpleMessage("Goal Fat (%)"),
+    "goal_muscle_mass": MessageLookupByLibrary.simpleMessage(
+      "Goal Muscle (kg)",
+    ),
+    "goal_weight": MessageLookupByLibrary.simpleMessage("Goal Weight (kg)"),
     "goals": MessageLookupByLibrary.simpleMessage("Goals"),
+    "gymnastic_rings": MessageLookupByLibrary.simpleMessage("Rings"),
+    "hack_squat_machine": MessageLookupByLibrary.simpleMessage("Hack Squat"),
     "hammer_curls": MessageLookupByLibrary.simpleMessage("Hammer Curls"),
     "hammer_curls_description": MessageLookupByLibrary.simpleMessage(
-      "Curl dumbbells with neutral grip for brachialis.",
+      "Brachialis",
     ),
     "hamstrings": MessageLookupByLibrary.simpleMessage("Hamstrings"),
-    "harassUsersItem": MessageLookupByLibrary.simpleMessage(
-      "Harass or harm other users",
-    ),
-    "healthDataItem": MessageLookupByLibrary.simpleMessage(
-      "Health and fitness data (weight, body measurements, workout history)",
-    ),
-    "healthDisclaimer": MessageLookupByLibrary.simpleMessage(
-      "Health Disclaimer",
-    ),
+    "harassUsersItem": MessageLookupByLibrary.simpleMessage("Harass users"),
+    "healthDataItem": MessageLookupByLibrary.simpleMessage("Health data"),
+    "healthDisclaimer": MessageLookupByLibrary.simpleMessage("Health Notice"),
     "healthDisclaimerText": MessageLookupByLibrary.simpleMessage(
-      "Fitrix is designed to help you track your fitness progress. However:",
+      "Fitrix tracks fitness but:",
     ),
+    "height": MessageLookupByLibrary.simpleMessage("Height (cm)"),
+    "heightRequired": MessageLookupByLibrary.simpleMessage("Height required"),
     "helpSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
     "help_support": MessageLookupByLibrary.simpleMessage("Help & Support"),
     "hips": MessageLookupByLibrary.simpleMessage("Hips"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
-    "howCanWeHelp": MessageLookupByLibrary.simpleMessage(
-      "How can we help you?",
-    ),
-    "howWeUseInfo": MessageLookupByLibrary.simpleMessage(
-      "How We Use Your Information",
-    ),
-    "howWeUseInfoText": MessageLookupByLibrary.simpleMessage(
-      "We use the information we collect to:",
-    ),
-    "improveServicesItem": MessageLookupByLibrary.simpleMessage(
-      "Improve our app and services",
-    ),
+    "howCanWeHelp": MessageLookupByLibrary.simpleMessage("How can we help?"),
+    "howWeUseInfo": MessageLookupByLibrary.simpleMessage("How We Use Data"),
+    "howWeUseInfoText": MessageLookupByLibrary.simpleMessage("We use data to:"),
+    "improveServicesItem": MessageLookupByLibrary.simpleMessage("Improve app"),
     "in_progress": MessageLookupByLibrary.simpleMessage("In Progress"),
     "inappropriateContentItem": MessageLookupByLibrary.simpleMessage(
-      "Upload or share inappropriate content",
+      "Post inappropriate content",
     ),
+    "incline_bench": MessageLookupByLibrary.simpleMessage("Incline Bench"),
     "incline_dumbbell_press": MessageLookupByLibrary.simpleMessage(
-      "Incline Dumbbell Press",
+      "Incline Press",
     ),
     "incline_dumbbell_press_description": MessageLookupByLibrary.simpleMessage(
-      "Target upper chest with incline angle. Press dumbbells upward from incline bench.",
+      "Upper chest focus",
     ),
     "informationWeCollect": MessageLookupByLibrary.simpleMessage(
-      "Information We Collect",
+      "Data We Collect",
     ),
     "informationWeCollectText": MessageLookupByLibrary.simpleMessage(
-      "We collect information that you provide directly to us, including:",
+      "We collect:",
     ),
-    "intellectualProperty": MessageLookupByLibrary.simpleMessage(
-      "Intellectual Property",
-    ),
+    "instructions": MessageLookupByLibrary.simpleMessage("Instructions"),
+    "intellectualProperty": MessageLookupByLibrary.simpleMessage("IP Rights"),
     "intellectualPropertyText": MessageLookupByLibrary.simpleMessage(
-      "All content, features, and functionality of Fitrix are owned by us and are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, or distribute any part of our app without permission.",
+      "All content owned by us",
     ),
     "intermediate": MessageLookupByLibrary.simpleMessage("Intermediate"),
     "introduction": MessageLookupByLibrary.simpleMessage("Introduction"),
     "introductionText": MessageLookupByLibrary.simpleMessage(
-      "Welcome to Fitrix. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and share your information when you use our fitness tracking application.",
+      "Welcome to Fitrix. We protect your privacy.",
     ),
     "invalidEgyptianPhone": MessageLookupByLibrary.simpleMessage(
-      "Please enter a valid Egyptian phone number (e.g., 01012345678)",
+      "Invalid phone",
     ),
-    "invalidEmail": MessageLookupByLibrary.simpleMessage(
-      "Please enter a valid email",
-    ),
-    "joinFitrix": MessageLookupByLibrary.simpleMessage(
-      "Join Fitrix and start your transformation",
-    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
+    "joinFitrix": MessageLookupByLibrary.simpleMessage("Join Fitrix"),
+    "kettlebell": MessageLookupByLibrary.simpleMessage("Kettlebell"),
     "kg": MessageLookupByLibrary.simpleMessage("kg"),
     "languages": MessageLookupByLibrary.simpleMessage("Languages"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
     "lastNameRequired": MessageLookupByLibrary.simpleMessage(
-      "Last name is required",
+      "Last name required",
     ),
-    "lastUpdated": MessageLookupByLibrary.simpleMessage("Last Updated"),
+    "lastUpdated": MessageLookupByLibrary.simpleMessage("Updated"),
     "lastUpdatedDate": MessageLookupByLibrary.simpleMessage("October 2025"),
     "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),
     "last_workout": MessageLookupByLibrary.simpleMessage("Last Workout"),
     "lat_pulldown": MessageLookupByLibrary.simpleMessage("Lat Pulldown"),
     "lat_pulldown_description": MessageLookupByLibrary.simpleMessage(
-      "Cable exercise for lats. Pull bar down to upper chest.",
+      "Cable lats",
+    ),
+    "lat_pulldown_machine": MessageLookupByLibrary.simpleMessage(
+      "Lat Pulldown",
     ),
     "lateral_raises": MessageLookupByLibrary.simpleMessage("Lateral Raises"),
     "lateral_raises_description": MessageLookupByLibrary.simpleMessage(
-      "Raise dumbbells to sides for shoulder width.",
+      "Shoulder width",
     ),
     "lats": MessageLookupByLibrary.simpleMessage("Lats"),
+    "leg_curl_machine": MessageLookupByLibrary.simpleMessage("Leg Curl"),
     "leg_curls": MessageLookupByLibrary.simpleMessage("Leg Curls"),
     "leg_curls_description": MessageLookupByLibrary.simpleMessage(
-      "Isolate hamstrings with leg curl machine.",
+      "Hamstring isolation",
+    ),
+    "leg_extension_machine": MessageLookupByLibrary.simpleMessage(
+      "Leg Extension",
     ),
     "leg_press": MessageLookupByLibrary.simpleMessage("Leg Press"),
-    "leg_press_description": MessageLookupByLibrary.simpleMessage(
-      "Push weight up with legs on leg press machine.",
-    ),
+    "leg_press_description": MessageLookupByLibrary.simpleMessage("Quad focus"),
+    "leg_press_machine": MessageLookupByLibrary.simpleMessage("Leg Press"),
     "leg_raises": MessageLookupByLibrary.simpleMessage("Leg Raises"),
-    "leg_raises_description": MessageLookupByLibrary.simpleMessage(
-      "Raise legs for lower ab development.",
-    ),
+    "leg_raises_description": MessageLookupByLibrary.simpleMessage("Lower abs"),
     "legalContact": MessageLookupByLibrary.simpleMessage(
-      "For questions about these terms, contact us at appfitrix@gmail.com",
+      "Questions? appfitrix@gmail.com",
     ),
     "legs": MessageLookupByLibrary.simpleMessage("Legs"),
     "legs_description": MessageLookupByLibrary.simpleMessage(
-      "Leg day for lower body power",
+      "Lower body power",
     ),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
     "log": MessageLookupByLibrary.simpleMessage("Log"),
     "log_measurement": MessageLookupByLibrary.simpleMessage("Log Measurement"),
-    "loggedOutSuccess": MessageLookupByLibrary.simpleMessage(
-      "Logged out successfully",
-    ),
+    "loggedOutSuccess": MessageLookupByLibrary.simpleMessage("Logged out"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to logout?",
-    ),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Logout?"),
     "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("Logout"),
     "lower_abs": MessageLookupByLibrary.simpleMessage("Lower Abs"),
     "lower_back": MessageLookupByLibrary.simpleMessage("Lower Back"),
     "machine": MessageLookupByLibrary.simpleMessage("Machine"),
     "maintainCredentialsItem": MessageLookupByLibrary.simpleMessage(
-      "Maintaining the confidentiality of your account credentials",
+      "Keep credentials safe",
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("Manage Trainees"),
     "measurements": MessageLookupByLibrary.simpleMessage("Measurements"),
+    "medicine_ball": MessageLookupByLibrary.simpleMessage("Medicine Ball"),
     "memberSince": MessageLookupByLibrary.simpleMessage("Member Since"),
     "member_since": MessageLookupByLibrary.simpleMessage("Member Since"),
-    "minutes": MessageLookupByLibrary.simpleMessage("Minutes"),
+    "minutes": MessageLookupByLibrary.simpleMessage("mins"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
-    "most_popular": MessageLookupByLibrary.simpleMessage("Most Popular"),
+    "most_popular": MessageLookupByLibrary.simpleMessage("Popular"),
     "motivational_quote_1": MessageLookupByLibrary.simpleMessage(
-      "Push yourself, because no one else is going to do it for you 💪",
+      "Push yourself! 💪",
     ),
     "motivational_quote_2": MessageLookupByLibrary.simpleMessage(
-      "Great things never come from comfort zones 🔥",
+      "Great things come from action 🔥",
     ),
     "motivational_quote_3": MessageLookupByLibrary.simpleMessage(
-      "The only bad workout is the one that didn\'t happen ⚡",
+      "No bad workout ⚡",
     ),
     "motivational_quote_4": MessageLookupByLibrary.simpleMessage(
-      "Your body can stand almost anything. It\'s your mind that needs convincing 🧠",
+      "Convince your mind 🧠",
     ),
     "motivational_quote_5": MessageLookupByLibrary.simpleMessage(
-      "Success starts with self-discipline 🎯",
+      "Self-discipline wins 🎯",
     ),
     "motivational_quote_6": MessageLookupByLibrary.simpleMessage(
-      "Train insane or remain the same 🏋️",
+      "Train hard 🏋️",
     ),
     "motivational_quote_7": MessageLookupByLibrary.simpleMessage(
-      "Your only limit is you 🚀",
+      "No limits 🚀",
     ),
     "motivational_quote_8": MessageLookupByLibrary.simpleMessage(
-      "Don\'t wish for it, work for it 💯",
+      "Work for it 💯",
     ),
     "muscleMassKg": MessageLookupByLibrary.simpleMessage("Muscle Mass (kg)"),
-    "muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle Mass"),
-    "my_custom_exercises": MessageLookupByLibrary.simpleMessage(
-      "My Custom Exercises",
+    "muscleMassRequired": MessageLookupByLibrary.simpleMessage(
+      "Muscle mass required",
     ),
+    "muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle Mass"),
+    "muscle_mass_goal": MessageLookupByLibrary.simpleMessage(
+      "Muscle Goal (kg)",
+    ),
+    "my_custom_exercises": MessageLookupByLibrary.simpleMessage("My Custom"),
     "my_progress": MessageLookupByLibrary.simpleMessage("My Progress"),
     "my_trainees": MessageLookupByLibrary.simpleMessage("My Trainees"),
     "my_workouts": MessageLookupByLibrary.simpleMessage("My Workouts"),
     "name_a_z": MessageLookupByLibrary.simpleMessage("Name (A-Z)"),
+    "network_error": MessageLookupByLibrary.simpleMessage("Network error"),
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
     "no_custom_exercises_yet": MessageLookupByLibrary.simpleMessage(
-      "No Custom Exercises Yet",
+      "No custom exercises",
     ),
-    "no_data_available": MessageLookupByLibrary.simpleMessage(
-      "No data available",
+    "no_data_available": MessageLookupByLibrary.simpleMessage("No data"),
+    "no_exercises_added": MessageLookupByLibrary.simpleMessage("No Exercises"),
+    "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
+      "No exercises",
     ),
-    "no_exercises_found": MessageLookupByLibrary.simpleMessage(
-      "No exercises found",
-    ),
+    "no_exercises_found": MessageLookupByLibrary.simpleMessage("No exercises"),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
-      "No personal records yet",
+      "No records yet",
     ),
     "no_progress_data": MessageLookupByLibrary.simpleMessage(
-      "No progress data available",
+      "No progress data",
     ),
     "no_recent_workouts": MessageLookupByLibrary.simpleMessage(
       "No recent workouts",
     ),
+    "no_sets_yet": MessageLookupByLibrary.simpleMessage("No sets"),
     "no_trainees_yet": MessageLookupByLibrary.simpleMessage("No trainees yet"),
+    "no_workout_sessions": MessageLookupByLibrary.simpleMessage("No Sessions"),
     "no_workouts_found": MessageLookupByLibrary.simpleMessage(
       "No workouts found",
     ),
+    "no_workouts_yet": MessageLookupByLibrary.simpleMessage("No Workouts"),
+    "none": MessageLookupByLibrary.simpleMessage("None"),
     "normalUser": MessageLookupByLibrary.simpleMessage("User"),
-    "normalUserDesc": MessageLookupByLibrary.simpleMessage(
-      "Track workouts & progress",
-    ),
-    "notLiableItem": MessageLookupByLibrary.simpleMessage(
-      "We are not liable for any injuries or health issues",
-    ),
+    "normalUserDesc": MessageLookupByLibrary.simpleMessage("Track workouts"),
+    "notLiableItem": MessageLookupByLibrary.simpleMessage("Not liable"),
     "notMedicalAdviceItem": MessageLookupByLibrary.simpleMessage(
-      "We are not a substitute for professional medical advice",
+      "Not medical advice",
     ),
     "not_found_description": MessageLookupByLibrary.simpleMessage(
-      "The page you are looking for doesn\'t exist or has been moved. Please check the URL or go back to the home page.",
+      "Page doesn\'t exist or moved",
     ),
     "not_found_subtitle": MessageLookupByLibrary.simpleMessage(
       "Page Not Found",
     ),
+    "not_started": MessageLookupByLibrary.simpleMessage("Not started"),
+    "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "obliques": MessageLookupByLibrary.simpleMessage("Obliques"),
-    "optOutItem": MessageLookupByLibrary.simpleMessage(
-      "Opt-out of marketing communications",
-    ),
+    "optOutItem": MessageLookupByLibrary.simpleMessage("Opt-out"),
+    "optional_notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "or": MessageLookupByLibrary.simpleMessage("OR"),
-    "overhead_press": MessageLookupByLibrary.simpleMessage("Overhead Press"),
+    "other_custom": MessageLookupByLibrary.simpleMessage("Other"),
+    "overhead_press": MessageLookupByLibrary.simpleMessage("OHP"),
     "overhead_press_description": MessageLookupByLibrary.simpleMessage(
-      "Press barbell overhead for shoulder development.",
+      "Shoulder mass",
     ),
     "overhead_tricep_extension": MessageLookupByLibrary.simpleMessage(
-      "Overhead Tricep Extension",
+      "Tricep Extension",
     ),
     "overhead_tricep_extension_description":
-        MessageLookupByLibrary.simpleMessage(
-          "Extend dumbbell overhead for tricep isolation.",
-        ),
+        MessageLookupByLibrary.simpleMessage("Tricep isolation"),
+    "parallettes": MessageLookupByLibrary.simpleMessage("Parallettes"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
-    "passwordComplexity": MessageLookupByLibrary.simpleMessage(
-      "Password must contain uppercase, lowercase and number",
-    ),
-    "passwordMinLength": MessageLookupByLibrary.simpleMessage(
-      "Password must be at least 8 characters",
-    ),
+    "passwordComplexity": MessageLookupByLibrary.simpleMessage("Weak password"),
+    "passwordMinLength": MessageLookupByLibrary.simpleMessage("Min 6 chars"),
     "passwordRequired": MessageLookupByLibrary.simpleMessage(
-      "Password is required",
+      "Password required",
     ),
     "password_must_be_at_least_8_characters":
-        MessageLookupByLibrary.simpleMessage(
-          "Password must be at least 8 characters",
-        ),
+        MessageLookupByLibrary.simpleMessage("Min 8 chars"),
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
-      "Passwords do not match",
+      "Passwords don\'t match",
     ),
+    "pec_deck_machine": MessageLookupByLibrary.simpleMessage("Pec Deck"),
     "personalFitnessCompanion": MessageLookupByLibrary.simpleMessage(
-      "Your Personal Fitness Companion",
+      "Your Fitness Companion",
     ),
     "personalInformation": MessageLookupByLibrary.simpleMessage(
-      "Personal Information",
+      "Personal Info",
     ),
     "personalInformationItem": MessageLookupByLibrary.simpleMessage(
-      "Personal information (name, email, phone number)",
+      "Personal info",
     ),
     "personal_information": MessageLookupByLibrary.simpleMessage(
-      "Personal Information",
+      "Personal Info",
     ),
     "personal_records": MessageLookupByLibrary.simpleMessage(
       "Personal Records",
     ),
     "personalizeExperienceItem": MessageLookupByLibrary.simpleMessage(
-      "Personalize your fitness experience",
+      "Personalize",
     ),
-    "phoneExactLength": MessageLookupByLibrary.simpleMessage(
-      "Phone number must be 11 digits",
-    ),
-    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
-    "phoneRequired": MessageLookupByLibrary.simpleMessage(
-      "Phone number is required",
-    ),
-    "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "phoneExactLength": MessageLookupByLibrary.simpleMessage("11 digits"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone"),
+    "phoneRequired": MessageLookupByLibrary.simpleMessage("Phone required"),
+    "phone_number": MessageLookupByLibrary.simpleMessage("Phone"),
     "planks": MessageLookupByLibrary.simpleMessage("Planks"),
-    "planks_description": MessageLookupByLibrary.simpleMessage(
-      "Hold body in plank position for core strength.",
-    ),
+    "planks_description": MessageLookupByLibrary.simpleMessage("Core strength"),
     "please_confirm_your_password": MessageLookupByLibrary.simpleMessage(
-      "Please confirm your password",
+      "Confirm password",
     ),
     "please_enter_code_sent_to_your_email":
-        MessageLookupByLibrary.simpleMessage(
-          "Please enter code sent to your email",
-        ),
-    "please_enter_email": MessageLookupByLibrary.simpleMessage(
-      "Please enter email",
+        MessageLookupByLibrary.simpleMessage("Enter code from email"),
+    "please_enter_custom_equipment_name": MessageLookupByLibrary.simpleMessage(
+      "Name required",
+    ),
+    "please_enter_email": MessageLookupByLibrary.simpleMessage("Enter email"),
+    "please_enter_exercise_name": MessageLookupByLibrary.simpleMessage(
+      "Name required",
     ),
     "please_enter_password": MessageLookupByLibrary.simpleMessage(
-      "Please enter password",
+      "Enter password",
     ),
+    "please_enter_reps": MessageLookupByLibrary.simpleMessage("Reps required"),
     "please_enter_valid_email": MessageLookupByLibrary.simpleMessage(
-      "Please enter a valid email address",
+      "Invalid email",
     ),
-    "please_enter_your_first_name": MessageLookupByLibrary.simpleMessage(
-      "Please enter your First Name",
+    "please_enter_valid_number": MessageLookupByLibrary.simpleMessage(
+      "Invalid number",
     ),
-    "please_enter_your_last_name": MessageLookupByLibrary.simpleMessage(
-      "Please enter your Last Name",
+    "please_enter_weight": MessageLookupByLibrary.simpleMessage(
+      "Weight required",
     ),
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
-      "Please enter your password",
+      "Enter password",
     ),
+    "plyo_box": MessageLookupByLibrary.simpleMessage("Plyo Box"),
+    "power_rack": MessageLookupByLibrary.simpleMessage("Power Rack"),
     "previous": MessageLookupByLibrary.simpleMessage("Previous"),
-    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy"),
     "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
       "Privacy Policy",
     ),
@@ -766,118 +732,147 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileCompletedWelcome": m0,
     "profileInformationItem": MessageLookupByLibrary.simpleMessage(
-      "Profile information (age, gender, fitness goals)",
+      "Profile data",
+    ),
+    "profileUpdatedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Profile updated!",
     ),
     "profile_updated_successfully": MessageLookupByLibrary.simpleMessage(
-      "Profile Updated Successfully",
+      "Profile updated!",
     ),
     "progress": MessageLookupByLibrary.simpleMessage("Progress"),
     "provideServicesItem": MessageLookupByLibrary.simpleMessage(
-      "Provide and maintain our services",
+      "Provide services",
     ),
+    "public_exercises": MessageLookupByLibrary.simpleMessage("Public"),
     "pull_up_bar": MessageLookupByLibrary.simpleMessage("Pull-up Bar"),
     "pull_ups": MessageLookupByLibrary.simpleMessage("Pull-ups"),
     "pull_ups_description": MessageLookupByLibrary.simpleMessage(
-      "Bodyweight exercise for lat development. Pull yourself up to bar.",
+      "Lat development",
     ),
     "push_ups": MessageLookupByLibrary.simpleMessage("Push-ups"),
     "push_ups_description": MessageLookupByLibrary.simpleMessage(
-      "Bodyweight chest exercise. Lower body to ground and push back up.",
+      "Bodyweight chest",
     ),
     "quads": MessageLookupByLibrary.simpleMessage("Quads"),
     "quick_actions": MessageLookupByLibrary.simpleMessage("Quick Actions"),
     "rate": MessageLookupByLibrary.simpleMessage("Rate"),
     "rateApp": MessageLookupByLibrary.simpleMessage("Rate App"),
-    "rate_app": MessageLookupByLibrary.simpleMessage("RATE APP"),
+    "rate_app": MessageLookupByLibrary.simpleMessage("Rate App"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("Recent Workouts"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registrationSuccess": m1,
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "reorder_sections": MessageLookupByLibrary.simpleMessage("Reorder"),
+    "reps": MessageLookupByLibrary.simpleMessage("Reps"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "reset": MessageLookupByLibrary.simpleMessage("Reset"),
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
-      "A password reset link was sent to your email.",
+      "Reset link sent to email",
     ),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "resistance_bands": MessageLookupByLibrary.simpleMessage("Bands"),
+    "rest_time_seconds": MessageLookupByLibrary.simpleMessage("Rest (sec)"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
-    "review": MessageLookupByLibrary.simpleMessage("REVIEW"),
+    "review": MessageLookupByLibrary.simpleMessage("Review"),
     "role": MessageLookupByLibrary.simpleMessage("Role"),
-    "romanian_deadlift": MessageLookupByLibrary.simpleMessage(
-      "Romanian Deadlift",
-    ),
+    "romanian_deadlift": MessageLookupByLibrary.simpleMessage("RDL"),
     "romanian_deadlift_description": MessageLookupByLibrary.simpleMessage(
-      "Target hamstrings with straight-leg deadlift motion.",
+      "Hamstring focus",
     ),
+    "rowing_machine": MessageLookupByLibrary.simpleMessage("Rowing"),
     "russian_twists": MessageLookupByLibrary.simpleMessage("Russian Twists"),
     "russian_twists_description": MessageLookupByLibrary.simpleMessage(
-      "Rotate torso side to side for obliques.",
+      "Obliques",
     ),
+    "sandbag": MessageLookupByLibrary.simpleMessage("Sandbag"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save"),
     "schedule_session": MessageLookupByLibrary.simpleMessage(
       "Schedule Session",
     ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
-    "search_exercises": MessageLookupByLibrary.simpleMessage(
-      "Search exercises...",
-    ),
+    "search_by_date": MessageLookupByLibrary.simpleMessage("Search date..."),
+    "search_exercises": MessageLookupByLibrary.simpleMessage("Search..."),
+    "search_results": MessageLookupByLibrary.simpleMessage("Results"),
+    "searching_for": MessageLookupByLibrary.simpleMessage("Searching"),
+    "seated_row_machine": MessageLookupByLibrary.simpleMessage("Seated Row"),
     "section": MessageLookupByLibrary.simpleMessage("Section"),
     "select": MessageLookupByLibrary.simpleMessage("Select"),
     "selectMaleOrFemale": MessageLookupByLibrary.simpleMessage(
-      "Select Male or Female",
+      "Male or Female",
     ),
-    "selectYourRole": MessageLookupByLibrary.simpleMessage("Select Your Role"),
-    "sendEmail": MessageLookupByLibrary.simpleMessage("Send Email"),
-    "sendMessage": MessageLookupByLibrary.simpleMessage("Send Message"),
+    "selectYourRole": MessageLookupByLibrary.simpleMessage("Select Role"),
+    "select_difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
+    "select_equipment": MessageLookupByLibrary.simpleMessage("Equipment"),
+    "select_workout": MessageLookupByLibrary.simpleMessage("Select Session"),
+    "select_workout_date": MessageLookupByLibrary.simpleMessage("Select Date"),
+    "sendEmail": MessageLookupByLibrary.simpleMessage("Email"),
+    "sendMessage": MessageLookupByLibrary.simpleMessage("Message"),
     "sendNotificationsItem": MessageLookupByLibrary.simpleMessage(
-      "Send you notifications and updates",
+      "Send updates",
     ),
-    "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
+    "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Link"),
+    "session_created": MessageLookupByLibrary.simpleMessage("Session created!"),
+    "sessions": MessageLookupByLibrary.simpleMessage("Sessions"),
+    "set": MessageLookupByLibrary.simpleMessage("Set"),
     "sets": MessageLookupByLibrary.simpleMessage("Sets"),
-    "settings": MessageLookupByLibrary.simpleMessage("SETTINGS"),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "setupFitnessJourney": MessageLookupByLibrary.simpleMessage(
-      "Let\'s set up your fitness journey",
+      "Setup fitness journey",
     ),
-    "shareApp": MessageLookupByLibrary.simpleMessage("Share App"),
+    "shareApp": MessageLookupByLibrary.simpleMessage("Share"),
+    "shoulder_press_machine": MessageLookupByLibrary.simpleMessage(
+      "Shoulder Press",
+    ),
     "shoulders": MessageLookupByLibrary.simpleMessage("Shoulders"),
     "shoulders_description": MessageLookupByLibrary.simpleMessage(
-      "Shoulder exercises for definition",
+      "Shoulder definition",
     ),
     "side_delts": MessageLookupByLibrary.simpleMessage("Side Delts"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signInToContinue": MessageLookupByLibrary.simpleMessage(
-      "Sign in to continue your fitness journey",
+      "Sign in to continue",
     ),
     "sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "slam_ball": MessageLookupByLibrary.simpleMessage("Slam Ball"),
+    "smith_machine": MessageLookupByLibrary.simpleMessage("Smith Machine"),
     "some_thing_went_wrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),
+    "something_went_wrong": MessageLookupByLibrary.simpleMessage("Error"),
     "sort": MessageLookupByLibrary.simpleMessage("Sort"),
     "sort_by": MessageLookupByLibrary.simpleMessage("Sort By"),
+    "squat_rack": MessageLookupByLibrary.simpleMessage("Squat Rack"),
     "squats": MessageLookupByLibrary.simpleMessage("Squats"),
-    "squats_description": MessageLookupByLibrary.simpleMessage(
-      "King of leg exercises. Lower body with barbell on shoulders.",
-    ),
-    "start_tracking": MessageLookupByLibrary.simpleMessage(
-      "Start tracking your workouts",
-    ),
+    "squats_description": MessageLookupByLibrary.simpleMessage("King of legs"),
+    "stability_ball": MessageLookupByLibrary.simpleMessage("Stability Ball"),
+    "stair_climber": MessageLookupByLibrary.simpleMessage("Stair Climber"),
+    "start_tracking": MessageLookupByLibrary.simpleMessage("Start tracking"),
     "start_workout": MessageLookupByLibrary.simpleMessage("Start Workout"),
-    "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
-    "supportTeamReady": MessageLookupByLibrary.simpleMessage(
-      "Our support team is here to assist you",
+    "start_your_fitness_journey": MessageLookupByLibrary.simpleMessage(
+      "Create first workout",
     ),
-    "take_a_picture": MessageLookupByLibrary.simpleMessage("Take a Picture"),
+    "stationary_bike": MessageLookupByLibrary.simpleMessage("Bike"),
+    "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
+    "step_by_step_instructions": MessageLookupByLibrary.simpleMessage("Steps"),
+    "success": MessageLookupByLibrary.simpleMessage("Success!"),
+    "supportTeamReady": MessageLookupByLibrary.simpleMessage(
+      "Support team ready",
+    ),
+    "suspension_trainer": MessageLookupByLibrary.simpleMessage("TRX"),
+    "take_a_picture": MessageLookupByLibrary.simpleMessage("Camera"),
+    "tap_add_to_start": MessageLookupByLibrary.simpleMessage("Tap + to add"),
+    "tap_to_add_exercise": MessageLookupByLibrary.simpleMessage("Tap to add"),
+    "tap_to_add_image": MessageLookupByLibrary.simpleMessage("Add image"),
     "target_muscles": MessageLookupByLibrary.simpleMessage("Target Muscles"),
     "termination": MessageLookupByLibrary.simpleMessage("Termination"),
     "terminationText": MessageLookupByLibrary.simpleMessage(
-      "We reserve the right to suspend or terminate your account at any time for violating these terms or for any other reason at our discretion.",
+      "We can suspend accounts",
     ),
-    "termsConditions": MessageLookupByLibrary.simpleMessage(
-      "Terms & Conditions",
-    ),
-    "termsConditionsTitle": MessageLookupByLibrary.simpleMessage(
-      "Terms & Conditions",
-    ),
+    "termsConditions": MessageLookupByLibrary.simpleMessage("Terms"),
+    "termsConditionsTitle": MessageLookupByLibrary.simpleMessage("Terms"),
     "terms_conditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),
@@ -887,77 +882,71 @@ class MessageLookup extends MessageLookupByLibrary {
     "this_week": MessageLookupByLibrary.simpleMessage("This Week"),
     "today": MessageLookupByLibrary.simpleMessage("Today"),
     "today_stats": MessageLookupByLibrary.simpleMessage("Today\'s Stats"),
+    "tomorrow": MessageLookupByLibrary.simpleMessage("Tomorrow"),
+    "total_sets": MessageLookupByLibrary.simpleMessage("Total Sets"),
     "total_workouts": MessageLookupByLibrary.simpleMessage("Total Workouts"),
-    "trackProgressItem": MessageLookupByLibrary.simpleMessage(
-      "Track your progress and achievements",
-    ),
+    "trackProgressItem": MessageLookupByLibrary.simpleMessage("Track progress"),
     "trainees": MessageLookupByLibrary.simpleMessage("Trainees"),
     "trainer": MessageLookupByLibrary.simpleMessage("Trainer"),
-    "trainerDesc": MessageLookupByLibrary.simpleMessage(
-      "Create & manage plans",
-    ),
+    "trainerDesc": MessageLookupByLibrary.simpleMessage("Manage plans"),
     "transformYourLife": MessageLookupByLibrary.simpleMessage(
       "Transform Your Body, Transform Your Life",
     ),
+    "treadmill": MessageLookupByLibrary.simpleMessage("Treadmill"),
     "tricep_dips": MessageLookupByLibrary.simpleMessage("Tricep Dips"),
     "tricep_dips_description": MessageLookupByLibrary.simpleMessage(
-      "Bodyweight exercise for triceps.",
+      "Tricep size",
     ),
     "triceps": MessageLookupByLibrary.simpleMessage("Triceps"),
     "try_adjusting_search": MessageLookupByLibrary.simpleMessage(
-      "Try adjusting your search or filter",
+      "Adjust search",
     ),
-    "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage(
-      "Attempt to access unauthorized areas",
+    "try_different_date": MessageLookupByLibrary.simpleMessage(
+      "Try other date",
     ),
+    "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage("Hack"),
+    "undo": MessageLookupByLibrary.simpleMessage("Undo"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
-    "updateInfoItem": MessageLookupByLibrary.simpleMessage(
-      "Updating your information as needed",
+    "updateInfoItem": MessageLookupByLibrary.simpleMessage("Update info"),
+    "updateProfile": MessageLookupByLibrary.simpleMessage("Update Profile"),
+    "updateYourProfileInformation": MessageLookupByLibrary.simpleMessage(
+      "Update profile info",
     ),
     "upper_chest": MessageLookupByLibrary.simpleMessage("Upper Chest"),
-    "usageDataItem": MessageLookupByLibrary.simpleMessage(
-      "Usage data (app interactions, preferences)",
-    ),
-    "useAtRiskItem": MessageLookupByLibrary.simpleMessage(
-      "Use the app at your own risk",
-    ),
+    "usageDataItem": MessageLookupByLibrary.simpleMessage("Usage data"),
+    "useAtRiskItem": MessageLookupByLibrary.simpleMessage("Use at risk"),
     "user": MessageLookupByLibrary.simpleMessage("User"),
-    "userAccount": MessageLookupByLibrary.simpleMessage("User Account"),
+    "userAccount": MessageLookupByLibrary.simpleMessage("Account"),
     "userAccountText": MessageLookupByLibrary.simpleMessage(
-      "To use certain features of Fitrix, you must create an account. You are responsible for:",
+      "You\'re responsible for:",
     ),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
-    "usernameMinLength": MessageLookupByLibrary.simpleMessage(
-      "Username must be at least 3 characters",
-    ),
+    "usernameMinLength": MessageLookupByLibrary.simpleMessage("Min 3 chars"),
     "usernameRequired": MessageLookupByLibrary.simpleMessage(
-      "Username is required",
+      "Username required",
     ),
     "verify_your_identity": MessageLookupByLibrary.simpleMessage(
-      "VERIFY YOUR IDENTITY",
+      "Verify Identity",
     ),
     "version": MessageLookupByLibrary.simpleMessage("Version"),
+    "view": MessageLookupByLibrary.simpleMessage("View"),
     "view_all": MessageLookupByLibrary.simpleMessage("View All"),
-    "view_all_trainees": MessageLookupByLibrary.simpleMessage(
-      "View All Trainees",
-    ),
-    "view_all_workouts": MessageLookupByLibrary.simpleMessage(
-      "View All Workouts",
-    ),
-    "violateLawsItem": MessageLookupByLibrary.simpleMessage(
-      "Violate any applicable laws or regulations",
-    ),
-    "visitWebsite": MessageLookupByLibrary.simpleMessage("Visit Website"),
+    "view_all_trainees": MessageLookupByLibrary.simpleMessage("View All"),
+    "view_all_workouts": MessageLookupByLibrary.simpleMessage("View All"),
+    "view_details": MessageLookupByLibrary.simpleMessage("View Details"),
+    "violateLawsItem": MessageLookupByLibrary.simpleMessage("Break laws"),
+    "visitWebsite": MessageLookupByLibrary.simpleMessage("Visit"),
     "waist": MessageLookupByLibrary.simpleMessage("Waist"),
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
-      "We\'ve sent an email to",
+      "Email sent to",
     ),
     "website": MessageLookupByLibrary.simpleMessage("Website"),
     "weightKg": MessageLookupByLibrary.simpleMessage("Weight (kg)"),
-    "weightRequired": MessageLookupByLibrary.simpleMessage(
-      "Weight is required",
-    ),
+    "weightRequired": MessageLookupByLibrary.simpleMessage("Weight required"),
     "weight_change": MessageLookupByLibrary.simpleMessage("Weight Change"),
+    "weight_goal": MessageLookupByLibrary.simpleMessage("Weight Goal (kg)"),
+    "weight_kg": MessageLookupByLibrary.simpleMessage("Weight (kg)"),
+    "weight_plates": MessageLookupByLibrary.simpleMessage("Weight Plates"),
     "weight_progress": MessageLookupByLibrary.simpleMessage("Weight Progress"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back!"),
@@ -965,16 +954,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "welcome_trainer": MessageLookupByLibrary.simpleMessage("Welcome Trainer!"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("WhatsApp"),
-    "workout_history": MessageLookupByLibrary.simpleMessage("Workout History"),
-    "workout_sections": MessageLookupByLibrary.simpleMessage(
-      "Workout Sections",
+    "workout_completed": MessageLookupByLibrary.simpleMessage("Completed!"),
+    "workout_completed_success": MessageLookupByLibrary.simpleMessage(
+      "Workout done!",
     ),
+    "workout_date": MessageLookupByLibrary.simpleMessage("Date"),
+    "workout_history": MessageLookupByLibrary.simpleMessage("History"),
+    "workout_not_found": MessageLookupByLibrary.simpleMessage("Not Found"),
+    "workout_sections": MessageLookupByLibrary.simpleMessage("Sections"),
+    "workout_session_created": MessageLookupByLibrary.simpleMessage(
+      "Session created!",
+    ),
+    "workout_started": MessageLookupByLibrary.simpleMessage("Started!"),
     "workouts": MessageLookupByLibrary.simpleMessage("Workouts"),
-    "x": MessageLookupByLibrary.simpleMessage(""),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "yourRights": MessageLookupByLibrary.simpleMessage("Your Rights"),
-    "yourRightsText": MessageLookupByLibrary.simpleMessage(
-      "You have the right to:",
-    ),
+    "yourRightsText": MessageLookupByLibrary.simpleMessage("You can:"),
   };
 }

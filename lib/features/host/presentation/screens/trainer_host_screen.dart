@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/screens/trainer_home_screen.dart';
 import '../../../trainees/presentation/screens/trainer_trainees_screen.dart';
-import '../../../workouts/presentation/screens/trainer_workouts_screen.dart';
+import '../../../workout/presentation/screens/trainer_workouts_screen.dart';
 import '../../../profile/presentation/screens/trainer_profile_screen.dart';
 
 //
@@ -72,7 +72,7 @@ import '../../../profile/presentation/screens/trainer_profile_screen.dart';
 //                 BottomNavigationBarItem(
 //                   icon: const Icon(Icons.fitness_center_outlined),
 //                   activeIcon: const Icon(Icons.fitness_center),
-//                   label: s.workouts,
+//                   label: s.workout,
 //                 ),
 //                 BottomNavigationBarItem(
 //                   icon: const Icon(Icons.person_outline),

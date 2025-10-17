@@ -1,4 +1,3 @@
-import 'dart:developer' as dev;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -40,85 +39,47 @@ class ApiService {
     ]);
   }
 
+  // ========== GET REQUEST ==========
   Future<Response> get(
     String endpoint, {
-    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
     CancelToken? cancelToken,
-  }) async {
-    try {
-      return await _dio.get(
-        endpoint,
-        queryParameters: queryParams,
-        options: Options(headers: headers),
-        cancelToken: cancelToken,
-      );
-    } on DioException catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<Response> postRequest(
-    String endpoint, {
-    dynamic data,
-    Map<String, dynamic>? queryParams,
-    Map<String, String>? headers,
-    CancelToken? cancelToken,
-    Options? extraOptions, // extra Dio options to merge or override
-  }) async {
-    try {
-      dev.log(
-        '📤 POST Request: ${_dio.options.baseUrl}$endpoint',
-        name: 'ApiService',
-      );
-      dev.log('📦 Request Data: $data', name: 'ApiService');
-
-      Options options = Options(
+  }) {
+    return _dio.get(
+      endpoint,
+      queryParameters: queryParameters,
+      options: Options(
         headers: headers,
         followRedirects: false,
         validateStatus: (status) => status != null && status < 500,
-      );
-
-      // Merge extraOptions if provided
-      if (extraOptions != null) {
-        options = options.copyWith(
-          headers: {...?options.headers, ...?extraOptions.headers},
-          contentType: extraOptions.contentType ?? options.contentType,
-          responseType: extraOptions.responseType ?? options.responseType,
-          followRedirects:
-              extraOptions.followRedirects ?? options.followRedirects,
-          validateStatus: extraOptions.validateStatus ?? options.validateStatus,
-          receiveTimeout: extraOptions.receiveTimeout ?? options.receiveTimeout,
-          sendTimeout: extraOptions.sendTimeout ?? options.sendTimeout,
-          extra: {...?options.extra, ...?extraOptions.extra},
-          method: extraOptions.method ?? options.method,
-          listFormat: extraOptions.listFormat ?? options.listFormat,
-        );
-      }
-
-      final response = await _dio.post(
-        endpoint,
-        data: data,
-        queryParameters: queryParams,
-        options: options,
-        cancelToken: cancelToken,
-      );
-
-      dev.log('📥 POST Response: ${response.statusCode}', name: 'ApiService');
-      return response;
-    } on DioException catch (e) {
-      dev.log('❌ POST Request DioException', name: 'ApiService');
-      dev.log('Type: ${e.type}', name: 'ApiService');
-      dev.log('Message: ${e.message}', name: 'ApiService');
-      dev.log('Error: ${e.error}', name: 'ApiService');
-      dev.log('URL: ${e.requestOptions.uri}', name: 'ApiService');
-      rethrow;
-    } catch (e) {
-      dev.log('❌ POST Request Unknown Error: $e', name: 'ApiService');
-      rethrow;
-    }
+      ),
+      cancelToken: cancelToken,
+    );
   }
 
+  // ========== POST REQUEST (JSON) ==========
+  Future<Response> postRequest(
+    String endpoint, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, String>? headers,
+    CancelToken? cancelToken,
+  }) {
+    return _dio.post(
+      endpoint,
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(
+        headers: {'Content-Type': 'application/json', ...?headers},
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+      cancelToken: cancelToken,
+    );
+  }
+
+  // ========== POST REQUEST (FormData) ==========
   Future<Response> postRequestWithFormData(
     String endpoint,
     FormData formData, {
@@ -137,51 +98,174 @@ class ApiService {
     );
   }
 
-  Future<Response> updateRequest(
+  // ========== PUT REQUEST (JSON) ==========
+  Future<Response> putRequest(
     String endpoint, {
     dynamic data,
-    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
     CancelToken? cancelToken,
   }) {
     return _dio.put(
       endpoint,
       data: data,
-      queryParameters: queryParams,
-      options: Options(headers: headers),
-      cancelToken: cancelToken,
-    );
-  }
-
-  Future<Response> updateRequestWithFormData(
-    String endpoint, {
-    dynamic data,
-    Map<String, dynamic>? queryParams,
-    Map<String, String>? headers,
-    CancelToken? cancelToken,
-  }) {
-    return _dio.put(
-      endpoint,
-      data: data,
-      queryParameters: queryParams,
+      queryParameters: queryParameters,
       options: Options(
-        headers: {'Content-Type': 'multipart/form-data', ...?headers},
+        headers: {'Content-Type': 'application/json', ...?headers},
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
       ),
       cancelToken: cancelToken,
     );
   }
 
+  // ========== PUT REQUEST (FormData) ==========
+  Future<Response> putRequestWithFormData(
+    String endpoint,
+    FormData formData, {
+    Map<String, String>? headers,
+    CancelToken? cancelToken,
+  }) {
+    return _dio.put(
+      endpoint,
+      data: formData,
+      options: Options(
+        headers: {'Content-Type': 'multipart/form-data', ...?headers},
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+      cancelToken: cancelToken,
+    );
+  }
+
+  // ========== PATCH REQUEST (JSON) ==========
+  Future<Response> patchRequest(
+    String endpoint, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, String>? headers,
+    CancelToken? cancelToken,
+  }) {
+    return _dio.patch(
+      endpoint,
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(
+        headers: {'Content-Type': 'application/json', ...?headers},
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+      cancelToken: cancelToken,
+    );
+  }
+  // core/networking/api_service.dart
+
+  // ========== PATCH REQUEST (URL Encoded) ==========
+  Future<Response> patchRequestWithUrlEncoded(
+    String endpoint, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, String>? headers,
+    CancelToken? cancelToken,
+  }) {
+    return _dio.patch(
+      endpoint,
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(
+        // ✅ Use application/x-www-form-urlencoded
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          ...?headers,
+        },
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+      cancelToken: cancelToken,
+    );
+  }
+
+  Future<Response> patchRequestWithFormData(
+    String endpoint,
+    FormData formData, {
+    Map<String, String>? headers,
+    CancelToken? cancelToken,
+  }) {
+    return _dio.patch(
+      endpoint,
+      data: formData,
+      options: Options(
+        headers: {'Content-Type': 'multipart/form-data', ...?headers},
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+      cancelToken: cancelToken,
+    );
+  }
+
+  // ========== DELETE REQUEST ==========
   Future<Response> deleteRequest(
     String endpoint, {
-    Map<String, dynamic>? queryParams,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
     CancelToken? cancelToken,
   }) {
     return _dio.delete(
       endpoint,
-      queryParameters: queryParams,
-      options: Options(headers: headers),
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(
+        headers: headers,
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
       cancelToken: cancelToken,
+    );
+  }
+
+  // ========== DOWNLOAD FILE ==========
+  Future<Response> downloadFile(
+    String endpoint,
+    String savePath, {
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) {
+    return _dio.download(
+      endpoint,
+      savePath,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  // ========== UPLOAD FILE ==========
+  Future<Response> uploadFile(
+    String endpoint,
+    String filePath, {
+    String fileKey =
+        'file', // 👈 Remove the ? (make it non-nullable with default value)
+    Map<String, dynamic>? additionalData,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+  }) async {
+    final formData = FormData.fromMap({
+      fileKey: await MultipartFile.fromFile(filePath),
+      if (additionalData != null) ...additionalData,
+    });
+
+    return _dio.post(
+      endpoint,
+      data: formData,
+      options: Options(
+        headers: {'Content-Type': 'multipart/form-data'},
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
     );
   }
 }

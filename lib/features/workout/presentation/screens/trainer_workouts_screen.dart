@@ -20,7 +20,7 @@ class _TrainerWorkoutsScreenState extends State<TrainerWorkoutsScreen> {
   Widget build(BuildContext context) {
     final s = S.of(context);
 
-    // Mock workouts from all trainees
+    // Mock workout from all trainees
     final workouts = MockData.getMockUserDashboard().recentWorkouts ?? [];
 
     return Scaffold(

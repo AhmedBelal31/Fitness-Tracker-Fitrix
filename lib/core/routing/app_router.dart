@@ -6,15 +6,24 @@ import 'package:fitrix/features/host/presentation/screens/trainer_host_screen.da
 import 'package:fitrix/features/host/presentation/screens/user_host_screen.dart';
 import 'package:fitrix/features/auth/presentation/screens/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
+import '../../features/exercises/data/models/exercise_model.dart';
 import '../../features/exercises/data/models/section_model.dart';
+import '../../features/exercises/presentation/cubit/custom_exercises_cubit.dart';
+import '../../features/exercises/presentation/cubit/exercises_cubit.dart';
+import '../../features/exercises/presentation/screens/create_custom_exercise_screen.dart';
 import '../../features/exercises/presentation/screens/custom_exercises_screen.dart';
+import '../../features/exercises/presentation/screens/exercise_details_screen.dart';
 import '../../features/exercises/presentation/screens/section_exercises_screen.dart';
 import '../../features/profile/presentation/screens/about_screen.dart';
 import '../../features/profile/presentation/screens/contact_support_screen.dart';
 import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
 import '../../features/profile/presentation/screens/terms_conditions_screen.dart';
+import '../../features/profile/presentation/screens/update_profile.dart';
+import '../../features/workout/presentation/cubit/workouts_cubit.dart';
+import '../../features/workout/presentation/screens/workout_details_screen.dart';
 import 'export_routes.dart';
 
 class AppRouter {
@@ -52,10 +61,82 @@ class AppRouter {
         screen = TrainerHomeScreen();
         break;
 
+      // ========== SECTION EXERCISES SCREEN ==========
+      // case Routes.sectionExercises:
+      //   final section = settings.arguments as SectionModel;
+      //   return MaterialPageRoute(
+      //     builder: (_) => BlocProvider(
+      //       create: (context) => di.get<ExercisesCubit>(),
+      //       child: SectionExercisesScreen(
+      //         sectionId: section.id,
+      //         sectionName: section.name,
+      //       ),
+      //     ),
+      //   );
+      // In your routes configuration
       case Routes.sectionExercises:
-        final section = settings.arguments as SectionModel;
+        final args = settings.arguments;
+
+        if (args is Map<String, dynamic>) {
+          // ✅ Coming from workout with context
+          final section = args['section'];
+          final workoutId = args['workoutId'] as String?;
+          final workoutsCubit = args['workoutsCubit'] as WorkoutsCubit?;
+
+          return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(
+              providers: [
+                // ✅ Always provide ExercisesCubit
+                BlocProvider(create: (_) => di.get<ExercisesCubit>()),
+                // ✅ Provide existing WorkoutsCubit if available
+                if (workoutsCubit != null)
+                  BlocProvider.value(value: workoutsCubit),
+              ],
+              child: SectionExercisesScreen(
+                sectionId: section.id,
+                sectionName: section.name,
+                workoutId: workoutId,
+              ),
+            ),
+          );
+        } else {
+          // ✅ Coming from home screen (no workout context)
+          final section = args as dynamic;
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (_) => di.get<ExercisesCubit>(),
+              child: SectionExercisesScreen(
+                sectionId: section.id,
+                sectionName: section.name,
+              ),
+            ),
+          );
+        }
+
+      // ========== EXERCISE DETAILS SCREEN ==========
+      case Routes.exerciseDetails:
+        final exercise = settings.arguments as ExerciseModel;
         return MaterialPageRoute(
-          builder: (_) => SectionExercisesScreen(section: section),
+          builder: (_) => ExerciseDetailsScreen(exercise: exercise),
+        );
+
+      // ========== CUSTOM EXERCISES SCREEN ==========
+      case Routes.customExercises:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => di.get<CustomExercisesCubit>(),
+            child: const CustomExercisesScreen(),
+          ),
+        );
+
+      // ========== CREATE CUSTOM EXERCISE SCREEN ==========
+      case Routes.createCustomExercise:
+        final sectionId = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => di.get<CustomExercisesCubit>(),
+            child: CreateCustomExerciseScreen(sectionId: sectionId),
+          ),
         );
 
       case Routes.customExercises:
@@ -72,6 +153,15 @@ class AppRouter {
 
       case Routes.aboutScreen:
         return MaterialPageRoute(builder: (_) => const AboutScreen());
+
+      case Routes.updateProfileScreen:
+        return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
+
+      case Routes.workoutDetails:
+        final workoutId = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => WorkoutDetailsScreen(workoutId: workoutId),
+        );
 
       default:
         screen = const ErrorScreen();

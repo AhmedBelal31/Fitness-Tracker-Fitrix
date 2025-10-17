@@ -6,6 +6,7 @@ import '../../../../../core/networking/dio_helper.dart';
 import '../../../../../core/networking/error/failures.dart';
 import '../../../data/models/login_profile_model.dart';
 import '../../../data/models/params/complete_profile_params.dart';
+import '../../../data/models/params/update_profile_params.dart';
 import 'profile_repository.dart';
 
 class ProfileRepositoryImpl implements ProfileRepository {
@@ -69,6 +70,190 @@ class ProfileRepositoryImpl implements ProfileRepository {
     } catch (e) {
       dev.log(
         '❌ Unexpected error during profile completion: $e',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LoginProfileModel>> getProfile() async {
+    try {
+      dev.log('📤 Fetching user profile', name: 'ProfileRepository');
+
+      final response = await _apiService.get(ApiEndpoints.getProfile);
+
+      if (response.statusCode == 200) {
+        dev.log('✅ Profile retrieved successfully', name: 'ProfileRepository');
+
+        final profileData = response.data;
+
+        if (profileData == null) {
+          dev.log('⚠️ No profile data in response', name: 'ProfileRepository');
+          return Left(ServerFailure('No profile data received'));
+        }
+
+        try {
+          final profileModel = LoginProfileModel.fromJson(profileData);
+
+          dev.log(
+            '✅ Profile parsed: ${profileModel.firstName} ${profileModel.lastName}',
+            name: 'ProfileRepository',
+          );
+
+          return Right(profileModel);
+        } catch (e) {
+          dev.log(
+            '❌ Failed to parse profile data: $e',
+            name: 'ProfileRepository',
+          );
+          return Left(ServerFailure('Failed to parse profile data: $e'));
+        }
+      } else {
+        dev.log(
+          '❌ Profile retrieval failed: ${response.statusCode}',
+          name: 'ProfileRepository',
+        );
+        return Left(
+          ServerFailure.fromResponse(response.statusCode, response.data),
+        );
+      }
+    } on DioException catch (e) {
+      dev.log(
+        '❌ DioException during profile retrieval: ${e.message}',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      dev.log(
+        '❌ Unexpected error during profile retrieval: $e',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  // @override
+  // Future<Either<Failure, LoginProfileModel>> updateProfile(
+  //   UpdateProfileParams params,
+  // ) async {
+  //   try {
+  //     dev.log('📤 Sending update profile request', name: 'ProfileRepository');
+  //
+  //     final response = await _apiService.putRequestWithFormData(
+  //       ApiEndpoints.updateProfile,
+  //       params.toFormData(),
+  //     );
+  //
+  //     if (response.statusCode == 200) {
+  //       dev.log('✅ Profile update successful', name: 'ProfileRepository');
+  //
+  //       final profileData = response.data;
+  //
+  //       if (profileData == null) {
+  //         dev.log('⚠️ No profile data in response', name: 'ProfileRepository');
+  //         return Left(ServerFailure('No profile data received'));
+  //       }
+  //
+  //       try {
+  //         final profileModel = LoginProfileModel.fromJson(profileData);
+  //
+  //         dev.log(
+  //           '✅ Updated profile parsed: ${profileModel.firstName} ${profileModel.lastName}',
+  //           name: 'ProfileRepository',
+  //         );
+  //
+  //         return Right(profileModel);
+  //       } catch (e) {
+  //         dev.log(
+  //           '❌ Failed to parse profile data: $e',
+  //           name: 'ProfileRepository',
+  //         );
+  //         return Left(ServerFailure('Failed to parse profile data: $e'));
+  //       }
+  //     } else {
+  //       dev.log(
+  //         '❌ Profile update failed: ${response.statusCode}',
+  //         name: 'ProfileRepository',
+  //       );
+  //       return Left(
+  //         ServerFailure.fromResponse(response.statusCode, response.data),
+  //       );
+  //     }
+  //   } on DioException catch (e) {
+  //     dev.log(
+  //       '❌ DioException during profile update: ${e.message}',
+  //       name: 'ProfileRepository',
+  //     );
+  //     return Left(ServerFailure.fromDioException(e));
+  //   } catch (e) {
+  //     dev.log(
+  //       '❌ Unexpected error during profile update: $e',
+  //       name: 'ProfileRepository',
+  //     );
+  //     return Left(ServerFailure(e.toString()));
+  //   }
+  // }
+  @override
+  Future<Either<Failure, LoginProfileModel>> updateProfile(
+    UpdateProfileParams params,
+  ) async {
+    try {
+      dev.log(
+        '📤 Sending update profile request (PATCH with URL encoded data)',
+        name: 'ProfileRepository',
+      );
+
+      // ✅ Use patchRequest with URL encoded data
+      final response = await _apiService.patchRequestWithUrlEncoded(
+        ApiEndpoints.updateProfile,
+        data: params.toMap(), // ✅ Send as Map, not FormData
+      );
+
+      if (response.statusCode == 200) {
+        dev.log('✅ Profile update successful', name: 'ProfileRepository');
+
+        final profileData = response.data;
+
+        if (profileData == null) {
+          dev.log('⚠️ No profile data in response', name: 'ProfileRepository');
+          return Left(ServerFailure('No profile data received'));
+        }
+
+        try {
+          final profileModel = LoginProfileModel.fromJson(profileData);
+
+          dev.log(
+            '✅ Updated profile parsed: ${profileModel.firstName} ${profileModel.lastName}',
+            name: 'ProfileRepository',
+          );
+
+          return Right(profileModel);
+        } catch (e) {
+          dev.log(
+            '❌ Failed to parse profile data: $e',
+            name: 'ProfileRepository',
+          );
+          return Left(ServerFailure('Failed to parse profile data: $e'));
+        }
+      } else {
+        dev.log(
+          '❌ Profile update failed: ${response.statusCode}',
+          name: 'ProfileRepository',
+        );
+        return Left(
+          ServerFailure.fromResponse(response.statusCode, response.data),
+        );
+      }
+    } on DioException catch (e) {
+      dev.log(
+        '❌ DioException during profile update: ${e.message}',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      dev.log(
+        '❌ Unexpected error during profile update: $e',
         name: 'ProfileRepository',
       );
       return Left(ServerFailure(e.toString()));

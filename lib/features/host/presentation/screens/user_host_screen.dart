@@ -1,3 +1,4 @@
+import 'package:fitrix/features/workout/presentation/cubit/workouts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/get_it.dart';
@@ -6,17 +7,17 @@ import '../../../../generated/l10n.dart';
 import '../../../home/presentation/screens/user_home_screen.dart';
 import '../../../profile/presentation/screens/user_profile_screen.dart';
 import '../../../progress/presentation/screens/user_progress_screen.dart';
-import '../../../workouts/presentation/screens/user_workouts_screen.dart';
+import '../../../workout/presentation/screens/user_workouts_screen.dart';
 import '../cubits/host_cubit.dart';
-import '../cubits/host_state.dart';
+import '../widgets/welcome_video_dialog.dart';
 
 class UserHostScreen extends StatelessWidget {
   const UserHostScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => di.get<HostCubit>(),
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => di.get<HostCubit>())],
       child: UserHostScreenBody(),
     );
   }
@@ -38,6 +39,23 @@ class _UserHostScreenBodyState extends State<UserHostScreenBody> {
     const UserProgressScreen(),
     const UserProfileScreen(),
   ];
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   // Show video dialog every time screen loads
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     _showWelcomeVideoDialog();
+  //   });
+  // }
+
+  void _showWelcomeVideoDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: true, // User can close by tapping outside
+      builder: (context) => const WelcomeVideoDialog(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

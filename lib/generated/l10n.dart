@@ -64,30 +64,30 @@ class S {
     return Intl.message('Password', name: 'password', desc: '', args: []);
   }
 
-  /// `Please enter email`
+  /// `Enter email`
   String get please_enter_email {
     return Intl.message(
-      'Please enter email',
+      'Enter email',
       name: 'please_enter_email',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter a valid email address`
+  /// `Invalid email`
   String get please_enter_valid_email {
     return Intl.message(
-      'Please enter a valid email address',
+      'Invalid email',
       name: 'please_enter_valid_email',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter your password`
+  /// `Enter password`
   String get please_enter_your_password {
     return Intl.message(
-      'Please enter your password',
+      'Enter password',
       name: 'please_enter_your_password',
       desc: '',
       args: [],
@@ -164,16 +164,6 @@ class S {
     return Intl.message('Sign up', name: 'sign_up', desc: '', args: []);
   }
 
-  /// `Please enter your First Name`
-  String get please_enter_your_first_name {
-    return Intl.message(
-      'Please enter your First Name',
-      name: 'please_enter_your_first_name',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `First Name`
   String get first_name {
     return Intl.message('First Name', name: 'first_name', desc: '', args: []);
@@ -184,39 +174,29 @@ class S {
     return Intl.message('Last Name', name: 'last_name', desc: '', args: []);
   }
 
-  /// `Please enter your Last Name`
-  String get please_enter_your_last_name {
-    return Intl.message(
-      'Please enter your Last Name',
-      name: 'please_enter_your_last_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Password must be at least 8 characters`
+  /// `Min 8 chars`
   String get password_must_be_at_least_8_characters {
     return Intl.message(
-      'Password must be at least 8 characters',
+      'Min 8 chars',
       name: 'password_must_be_at_least_8_characters',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter password`
+  /// `Enter password`
   String get please_enter_password {
     return Intl.message(
-      'Please enter password',
+      'Enter password',
       name: 'please_enter_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `SETTINGS`
+  /// `Settings`
   String get settings {
-    return Intl.message('SETTINGS', name: 'settings', desc: '', args: []);
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
   /// `Reset Password`
@@ -229,10 +209,10 @@ class S {
     );
   }
 
-  /// `Enter Your Email To Receive Reset Code`
+  /// `Enter email for reset code`
   String get enter_your_email_to_receive_reset_code {
     return Intl.message(
-      'Enter Your Email To Receive Reset Code',
+      'Enter email for reset code',
       name: 'enter_your_email_to_receive_reset_code',
       desc: '',
       args: [],
@@ -244,10 +224,10 @@ class S {
     return Intl.message('Continue', name: 'continuex', desc: '', args: []);
   }
 
-  /// `We've sent an email to`
+  /// `Email sent to`
   String get we_have_sent_an_email_to {
     return Intl.message(
-      'We\'ve sent an email to',
+      'Email sent to',
       name: 'we_have_sent_an_email_to',
       desc: '',
       args: [],
@@ -259,20 +239,20 @@ class S {
     return Intl.message('Enter Code', name: 'enter_code', desc: '', args: []);
   }
 
-  /// `Please enter code sent to your email`
+  /// `Enter code from email`
   String get please_enter_code_sent_to_your_email {
     return Intl.message(
-      'Please enter code sent to your email',
+      'Enter code from email',
       name: 'please_enter_code_sent_to_your_email',
       desc: '',
       args: [],
     );
   }
 
-  /// `Didn't receive a code.`
+  /// `Didn't receive code?`
   String get didnt_receive_code {
     return Intl.message(
-      'Didn\'t receive a code.',
+      'Didn\'t receive code?',
       name: 'didnt_receive_code',
       desc: '',
       args: [],
@@ -284,20 +264,20 @@ class S {
     return Intl.message('Resend', name: 'resend', desc: '', args: []);
   }
 
-  /// `VERIFY YOUR IDENTITY`
+  /// `Verify Identity`
   String get verify_your_identity {
     return Intl.message(
-      'VERIFY YOUR IDENTITY',
+      'Verify Identity',
       name: 'verify_your_identity',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter your new password`
+  /// `Enter new password`
   String get enter_your_new_password {
     return Intl.message(
-      'Enter your new password',
+      'Enter new password',
       name: 'enter_your_new_password',
       desc: '',
       args: [],
@@ -314,49 +294,49 @@ class S {
     );
   }
 
-  /// `Confirm New Password`
+  /// `Confirm Password`
   String get confirm_new_password {
     return Intl.message(
-      'Confirm New Password',
+      'Confirm Password',
       name: 'confirm_new_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please confirm your password`
+  /// `Confirm password`
   String get please_confirm_your_password {
     return Intl.message(
-      'Please confirm your password',
+      'Confirm password',
       name: 'please_confirm_your_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Passwords do not match`
+  /// `Passwords don't match`
   String get passwords_do_not_match {
     return Intl.message(
-      'Passwords do not match',
+      'Passwords don\'t match',
       name: 'passwords_do_not_match',
       desc: '',
       args: [],
     );
   }
 
-  /// `FINISH`
+  /// `Finish`
   String get finish {
-    return Intl.message('FINISH', name: 'finish', desc: '', args: []);
+    return Intl.message('Finish', name: 'finish', desc: '', args: []);
   }
 
-  /// `RATE APP`
+  /// `Rate App`
   String get rate_app {
-    return Intl.message('RATE APP', name: 'rate_app', desc: '', args: []);
+    return Intl.message('Rate App', name: 'rate_app', desc: '', args: []);
   }
 
-  /// `REVIEW`
+  /// `Review`
   String get review {
-    return Intl.message('REVIEW', name: 'review', desc: '', args: []);
+    return Intl.message('Review', name: 'review', desc: '', args: []);
   }
 
   /// `Logout`
@@ -369,20 +349,20 @@ class S {
     return Intl.message('Account', name: 'account', desc: '', args: []);
   }
 
-  /// `Edit Your Profile`
+  /// `Edit Profile`
   String get edit_your_profile {
     return Intl.message(
-      'Edit Your Profile',
+      'Edit Profile',
       name: 'edit_your_profile',
       desc: '',
       args: [],
     );
   }
 
-  /// `Change Your Password`
+  /// `Change Password`
   String get change_your_password {
     return Intl.message(
-      'Change Your Password',
+      'Change Password',
       name: 'change_your_password',
       desc: '',
       args: [],
@@ -424,20 +404,20 @@ class S {
     );
   }
 
-  /// `Profile Updated Successfully`
+  /// `Profile updated!`
   String get profile_updated_successfully {
     return Intl.message(
-      'Profile Updated Successfully',
+      'Profile updated!',
       name: 'profile_updated_successfully',
       desc: '',
       args: [],
     );
   }
 
-  /// `Failed to update profile`
+  /// `Update failed`
   String get failed_to_update_profile {
     return Intl.message(
-      'Failed to update profile',
+      'Update failed',
       name: 'failed_to_update_profile',
       desc: '',
       args: [],
@@ -454,30 +434,25 @@ class S {
     return Intl.message('Update', name: 'update', desc: '', args: []);
   }
 
-  /// `Choose from Gallery`
+  /// `Gallery`
   String get choose_from_gallery {
     return Intl.message(
-      'Choose from Gallery',
+      'Gallery',
       name: 'choose_from_gallery',
       desc: '',
       args: [],
     );
   }
 
-  /// `Take a Picture`
+  /// `Camera`
   String get take_a_picture {
-    return Intl.message(
-      'Take a Picture',
-      name: 'take_a_picture',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Camera', name: 'take_a_picture', desc: '', args: []);
   }
 
-  /// `Enter New Password`
+  /// `New password`
   String get enter_new_password {
     return Intl.message(
-      'Enter New Password',
+      'New password',
       name: 'enter_new_password',
       desc: '',
       args: [],
@@ -599,20 +574,20 @@ class S {
     );
   }
 
-  /// `View All Workouts`
+  /// `View All`
   String get view_all_workouts {
     return Intl.message(
-      'View All Workouts',
+      'View All',
       name: 'view_all_workouts',
       desc: '',
       args: [],
     );
   }
 
-  /// `View All Trainees`
+  /// `View All`
   String get view_all_trainees {
     return Intl.message(
-      'View All Trainees',
+      'View All',
       name: 'view_all_trainees',
       desc: '',
       args: [],
@@ -669,10 +644,10 @@ class S {
     );
   }
 
-  /// `Add your first trainee to get started`
+  /// `Add your first trainee`
   String get add_first_trainee {
     return Intl.message(
-      'Add your first trainee to get started',
+      'Add your first trainee',
       name: 'add_first_trainee',
       desc: '',
       args: [],
@@ -689,10 +664,10 @@ class S {
     );
   }
 
-  /// `No personal records yet`
+  /// `No records yet`
   String get no_personal_records_yet {
     return Intl.message(
-      'No personal records yet',
+      'No records yet',
       name: 'no_personal_records_yet',
       desc: '',
       args: [],
@@ -714,9 +689,9 @@ class S {
     );
   }
 
-  /// `Minutes`
+  /// `mins`
   String get minutes {
-    return Intl.message('Minutes', name: 'minutes', desc: '', args: []);
+    return Intl.message('mins', name: 'minutes', desc: '', args: []);
   }
 
   /// `Completion`
@@ -729,10 +704,10 @@ class S {
     return Intl.message('Rate', name: 'rate', desc: '', args: []);
   }
 
-  /// `Current Weight`
+  /// `Current Weight (kg)`
   String get current_weight {
     return Intl.message(
-      'Current Weight',
+      'Current Weight (kg)',
       name: 'current_weight',
       desc: '',
       args: [],
@@ -844,10 +819,10 @@ class S {
     return Intl.message('Loading...', name: 'loading', desc: '', args: []);
   }
 
-  /// `No data available`
+  /// `No data`
   String get no_data_available {
     return Intl.message(
-      'No data available',
+      'No data',
       name: 'no_data_available',
       desc: '',
       args: [],
@@ -864,280 +839,235 @@ class S {
     );
   }
 
-  /// `Bad Request - The request was invalid or cannot be processed`
+  /// `Invalid request`
   String get error_400 {
     return Intl.message(
-      'Bad Request - The request was invalid or cannot be processed',
+      'Invalid request',
       name: 'error_400',
       desc: '',
       args: [],
     );
   }
 
-  /// `Unauthorized - Please login to continue`
+  /// `Login required`
   String get error_401 {
     return Intl.message(
-      'Unauthorized - Please login to continue',
+      'Login required',
       name: 'error_401',
       desc: '',
       args: [],
     );
   }
 
-  /// `Forbidden - You don't have permission to access this resource`
+  /// `Access denied`
   String get error_401_403 {
     return Intl.message(
-      'Forbidden - You don\'t have permission to access this resource',
+      'Access denied',
       name: 'error_401_403',
       desc: '',
       args: [],
     );
   }
 
-  /// `Forbidden - Access denied`
+  /// `Forbidden`
   String get error_403 {
-    return Intl.message(
-      'Forbidden - Access denied',
-      name: 'error_403',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Forbidden', name: 'error_403', desc: '', args: []);
   }
 
-  /// `Not Found - The requested resource was not found`
+  /// `Not found`
   String get error_404 {
-    return Intl.message(
-      'Not Found - The requested resource was not found',
-      name: 'error_404',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Not found', name: 'error_404', desc: '', args: []);
   }
 
-  /// `Method Not Allowed - The request method is not supported`
+  /// `Method not allowed`
   String get error_405 {
     return Intl.message(
-      'Method Not Allowed - The request method is not supported',
+      'Method not allowed',
       name: 'error_405',
       desc: '',
       args: [],
     );
   }
 
-  /// `Not Acceptable - The server cannot produce a response matching the request`
+  /// `Not acceptable`
   String get error_406 {
     return Intl.message(
-      'Not Acceptable - The server cannot produce a response matching the request',
+      'Not acceptable',
       name: 'error_406',
       desc: '',
       args: [],
     );
   }
 
-  /// `Request Timeout - The request took too long to process`
+  /// `Request timeout`
   String get error_408 {
     return Intl.message(
-      'Request Timeout - The request took too long to process',
+      'Request timeout',
       name: 'error_408',
       desc: '',
       args: [],
     );
   }
 
-  /// `Conflict - The request conflicts with the current state of the server`
+  /// `Conflict`
   String get error_409 {
-    return Intl.message(
-      'Conflict - The request conflicts with the current state of the server',
-      name: 'error_409',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Conflict', name: 'error_409', desc: '', args: []);
   }
 
-  /// `Gone - The requested resource is no longer available`
+  /// `Gone`
   String get error_410 {
-    return Intl.message(
-      'Gone - The requested resource is no longer available',
-      name: 'error_410',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Gone', name: 'error_410', desc: '', args: []);
   }
 
-  /// `Length Required - Content-Length header is missing`
+  /// `Length required`
   String get error_411 {
     return Intl.message(
-      'Length Required - Content-Length header is missing',
+      'Length required',
       name: 'error_411',
       desc: '',
       args: [],
     );
   }
 
-  /// `Precondition Failed - One or more conditions in the request failed`
+  /// `Precondition failed`
   String get error_412 {
     return Intl.message(
-      'Precondition Failed - One or more conditions in the request failed',
+      'Precondition failed',
       name: 'error_412',
       desc: '',
       args: [],
     );
   }
 
-  /// `Payload Too Large - The request is larger than the server is willing to process`
+  /// `File too large`
   String get error_413 {
     return Intl.message(
-      'Payload Too Large - The request is larger than the server is willing to process',
+      'File too large',
       name: 'error_413',
       desc: '',
       args: [],
     );
   }
 
-  /// `URI Too Long - The request URI is too long`
+  /// `URL too long`
   String get error_414 {
-    return Intl.message(
-      'URI Too Long - The request URI is too long',
-      name: 'error_414',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('URL too long', name: 'error_414', desc: '', args: []);
   }
 
-  /// `Unsupported Media Type - The media type is not supported`
+  /// `Unsupported format`
   String get error_415 {
     return Intl.message(
-      'Unsupported Media Type - The media type is not supported',
+      'Unsupported format',
       name: 'error_415',
       desc: '',
       args: [],
     );
   }
 
-  /// `Unprocessable Entity - The request was well-formed but contains invalid data`
+  /// `Invalid data`
   String get error_422 {
-    return Intl.message(
-      'Unprocessable Entity - The request was well-formed but contains invalid data',
-      name: 'error_422',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Invalid data', name: 'error_422', desc: '', args: []);
   }
 
-  /// `Too Many Requests - You have sent too many requests in a given time`
+  /// `Too many requests`
   String get error_429 {
     return Intl.message(
-      'Too Many Requests - You have sent too many requests in a given time',
+      'Too many requests',
       name: 'error_429',
       desc: '',
       args: [],
     );
   }
 
-  /// `Internal Server Error - Something went wrong on the server`
+  /// `Server error`
   String get error_500 {
-    return Intl.message(
-      'Internal Server Error - Something went wrong on the server',
-      name: 'error_500',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Server error', name: 'error_500', desc: '', args: []);
   }
 
-  /// `Not Implemented - The server does not support this functionality`
+  /// `Not implemented`
   String get error_501 {
     return Intl.message(
-      'Not Implemented - The server does not support this functionality',
+      'Not implemented',
       name: 'error_501',
       desc: '',
       args: [],
     );
   }
 
-  /// `Bad Gateway - Invalid response from the upstream server`
+  /// `Bad gateway`
   String get error_502 {
-    return Intl.message(
-      'Bad Gateway - Invalid response from the upstream server',
-      name: 'error_502',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Bad gateway', name: 'error_502', desc: '', args: []);
   }
 
-  /// `Service Unavailable - The server is temporarily unable to handle the request`
+  /// `Service unavailable`
   String get error_503 {
     return Intl.message(
-      'Service Unavailable - The server is temporarily unable to handle the request',
+      'Service unavailable',
       name: 'error_503',
       desc: '',
       args: [],
     );
   }
 
-  /// `Gateway Timeout - The upstream server failed to respond in time`
+  /// `Gateway timeout`
   String get error_504 {
     return Intl.message(
-      'Gateway Timeout - The upstream server failed to respond in time',
+      'Gateway timeout',
       name: 'error_504',
       desc: '',
       args: [],
     );
   }
 
-  /// `HTTP Version Not Supported - The HTTP version is not supported`
+  /// `HTTP version error`
   String get error_505 {
     return Intl.message(
-      'HTTP Version Not Supported - The HTTP version is not supported',
+      'HTTP version error',
       name: 'error_505',
       desc: '',
       args: [],
     );
   }
 
-  /// `Unexpected Error - Something unexpected happened`
+  /// `Unexpected error`
   String get error_unexpected {
     return Intl.message(
-      'Unexpected Error - Something unexpected happened',
+      'Unexpected error',
       name: 'error_unexpected',
       desc: '',
       args: [],
     );
   }
 
-  /// `Network Error - Please check your internet connection`
+  /// `Network error`
   String get error_network {
     return Intl.message(
-      'Network Error - Please check your internet connection',
+      'Network error',
       name: 'error_network',
       desc: '',
       args: [],
     );
   }
 
-  /// `Connection Timeout - The request took too long`
+  /// `Timeout`
   String get error_timeout {
-    return Intl.message(
-      'Connection Timeout - The request took too long',
-      name: 'error_timeout',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Timeout', name: 'error_timeout', desc: '', args: []);
   }
 
-  /// `Request Cancelled - The request was cancelled`
+  /// `Cancelled`
   String get error_cancelled {
     return Intl.message(
-      'Request Cancelled - The request was cancelled',
+      'Cancelled',
       name: 'error_cancelled',
       desc: '',
       args: [],
     );
   }
 
-  /// `Connection Error - Unable to connect to server`
+  /// `Connection error`
   String get error_connection {
     return Intl.message(
-      'Connection Error - Unable to connect to server',
+      'Connection error',
       name: 'error_connection',
       desc: '',
       args: [],
@@ -1154,20 +1084,20 @@ class S {
     );
   }
 
-  /// `The page you are looking for doesn't exist or has been moved. Please check the URL or go back to the home page.`
+  /// `Page doesn't exist or moved`
   String get not_found_description {
     return Intl.message(
-      'The page you are looking for doesn\'t exist or has been moved. Please check the URL or go back to the home page.',
+      'Page doesn\'t exist or moved',
       name: 'not_found_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Need help? Contact our support team.`
+  /// `Need help? Contact support`
   String get contact_us_help {
     return Intl.message(
-      'Need help? Contact our support team.',
+      'Need help? Contact support',
       name: 'contact_us_help',
       desc: '',
       args: [],
@@ -1189,14 +1119,9 @@ class S {
     );
   }
 
-  /// `Workout History`
+  /// `History`
   String get workout_history {
-    return Intl.message(
-      'Workout History',
-      name: 'workout_history',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('History', name: 'workout_history', desc: '', args: []);
   }
 
   /// `Filter`
@@ -1229,10 +1154,10 @@ class S {
     );
   }
 
-  /// `Start tracking your workouts`
+  /// `Start tracking`
   String get start_tracking {
     return Intl.message(
-      'Start tracking your workouts',
+      'Start tracking',
       name: 'start_tracking',
       desc: '',
       args: [],
@@ -1284,10 +1209,10 @@ class S {
     return Intl.message('Statistics', name: 'statistics', desc: '', args: []);
   }
 
-  /// `No progress data available`
+  /// `No progress data`
   String get no_progress_data {
     return Intl.message(
-      'No progress data available',
+      'No progress data',
       name: 'no_progress_data',
       desc: '',
       args: [],
@@ -1297,6 +1222,31 @@ class S {
   /// `Chest`
   String get chest {
     return Intl.message('Chest', name: 'chest', desc: '', args: []);
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message('Back', name: 'back', desc: '', args: []);
+  }
+
+  /// `Legs`
+  String get legs {
+    return Intl.message('Legs', name: 'legs', desc: '', args: []);
+  }
+
+  /// `Shoulders`
+  String get shoulders {
+    return Intl.message('Shoulders', name: 'shoulders', desc: '', args: []);
+  }
+
+  /// `Arms`
+  String get arms {
+    return Intl.message('Arms', name: 'arms', desc: '', args: []);
+  }
+
+  /// `Core`
+  String get core {
+    return Intl.message('Core', name: 'core', desc: '', args: []);
   }
 
   /// `Waist`
@@ -1309,11 +1259,6 @@ class S {
     return Intl.message('Hips', name: 'hips', desc: '', args: []);
   }
 
-  /// `Arms`
-  String get arms {
-    return Intl.message('Arms', name: 'arms', desc: '', args: []);
-  }
-
   /// `Thighs`
   String get thighs {
     return Intl.message('Thighs', name: 'thighs', desc: '', args: []);
@@ -1324,10 +1269,10 @@ class S {
     return Intl.message('cm', name: 'cm', desc: '', args: []);
   }
 
-  /// `Personal Information`
+  /// `Personal Info`
   String get personal_information {
     return Intl.message(
-      'Personal Information',
+      'Personal Info',
       name: 'personal_information',
       desc: '',
       args: [],
@@ -1364,14 +1309,9 @@ class S {
     return Intl.message('Version', name: 'version', desc: '', args: []);
   }
 
-  /// `Phone Number`
+  /// `Phone`
   String get phone_number {
-    return Intl.message(
-      'Phone Number',
-      name: 'phone_number',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Phone', name: 'phone_number', desc: '', args: []);
   }
 
   /// `Member Since`
@@ -1429,10 +1369,10 @@ class S {
     );
   }
 
-  /// `Workout Sections`
+  /// `Sections`
   String get workout_sections {
     return Intl.message(
-      'Workout Sections',
+      'Sections',
       name: 'workout_sections',
       desc: '',
       args: [],
@@ -1449,90 +1389,70 @@ class S {
     return Intl.message('Log', name: 'log', desc: '', args: []);
   }
 
-  /// `Back`
-  String get back {
-    return Intl.message('Back', name: 'back', desc: '', args: []);
-  }
-
-  /// `Legs`
-  String get legs {
-    return Intl.message('Legs', name: 'legs', desc: '', args: []);
-  }
-
-  /// `Shoulders`
-  String get shoulders {
-    return Intl.message('Shoulders', name: 'shoulders', desc: '', args: []);
-  }
-
-  /// `Core`
-  String get core {
-    return Intl.message('Core', name: 'core', desc: '', args: []);
-  }
-
-  /// `Chest exercises for upper body strength`
+  /// `Upper body strength`
   String get chest_description {
     return Intl.message(
-      'Chest exercises for upper body strength',
+      'Upper body strength',
       name: 'chest_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Build a strong and wide back`
+  /// `Strong wide back`
   String get back_description {
     return Intl.message(
-      'Build a strong and wide back',
+      'Strong wide back',
       name: 'back_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Leg day for lower body power`
+  /// `Lower body power`
   String get legs_description {
     return Intl.message(
-      'Leg day for lower body power',
+      'Lower body power',
       name: 'legs_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Shoulder exercises for definition`
+  /// `Shoulder definition`
   String get shoulders_description {
     return Intl.message(
-      'Shoulder exercises for definition',
+      'Shoulder definition',
       name: 'shoulders_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Biceps and triceps exercises`
+  /// `Biceps & triceps`
   String get arms_description {
     return Intl.message(
-      'Biceps and triceps exercises',
+      'Biceps & triceps',
       name: 'arms_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Strengthen your core and abs`
+  /// `Core & abs`
   String get core_description {
     return Intl.message(
-      'Strengthen your core and abs',
+      'Core & abs',
       name: 'core_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Search exercises...`
+  /// `Search...`
   String get search_exercises {
     return Intl.message(
-      'Search exercises...',
+      'Search...',
       name: 'search_exercises',
       desc: '',
       args: [],
@@ -1574,30 +1494,25 @@ class S {
     return Intl.message('Difficulty', name: 'difficulty', desc: '', args: []);
   }
 
-  /// `Most Popular`
+  /// `Popular`
   String get most_popular {
-    return Intl.message(
-      'Most Popular',
-      name: 'most_popular',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Popular', name: 'most_popular', desc: '', args: []);
   }
 
-  /// `No exercises found`
+  /// `No exercises`
   String get no_exercises_found {
     return Intl.message(
-      'No exercises found',
+      'No exercises',
       name: 'no_exercises_found',
       desc: '',
       args: [],
     );
   }
 
-  /// `Try adjusting your search or filter`
+  /// `Adjust search`
   String get try_adjusting_search {
     return Intl.message(
-      'Try adjusting your search or filter',
+      'Adjust search',
       name: 'try_adjusting_search',
       desc: '',
       args: [],
@@ -1634,14 +1549,9 @@ class S {
     );
   }
 
-  /// `Added to workout`
+  /// `Added!`
   String get added_to_workout {
-    return Intl.message(
-      'Added to workout',
-      name: 'added_to_workout',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Added!', name: 'added_to_workout', desc: '', args: []);
   }
 
   /// `Description`
@@ -1649,74 +1559,64 @@ class S {
     return Intl.message('Description', name: 'description', desc: '', args: []);
   }
 
-  /// `My Custom Exercises`
+  /// `My Custom`
   String get my_custom_exercises {
     return Intl.message(
-      'My Custom Exercises',
+      'My Custom',
       name: 'my_custom_exercises',
       desc: '',
       args: [],
     );
   }
 
-  /// `No Custom Exercises Yet`
+  /// `No custom exercises`
   String get no_custom_exercises_yet {
     return Intl.message(
-      'No Custom Exercises Yet',
+      'No custom exercises',
       name: 'no_custom_exercises_yet',
       desc: '',
       args: [],
     );
   }
 
-  /// `Create your own exercises to personalize your workouts`
+  /// `Create your own`
   String get create_your_own_exercises {
     return Intl.message(
-      'Create your own exercises to personalize your workouts',
+      'Create your own',
       name: 'create_your_own_exercises',
       desc: '',
       args: [],
     );
   }
 
-  /// `Create Your First Exercise`
+  /// `Create First`
   String get create_your_first_exercise {
     return Intl.message(
-      'Create Your First Exercise',
+      'Create First',
       name: 'create_your_first_exercise',
       desc: '',
       args: [],
     );
   }
 
-  /// `Create Custom Exercise`
+  /// `Create Custom`
   String get create_custom_exercise {
     return Intl.message(
-      'Create Custom Exercise',
+      'Create Custom',
       name: 'create_custom_exercise',
       desc: '',
       args: [],
     );
   }
 
-  /// `Edit Exercise`
+  /// `Edit`
   String get edit_exercise {
-    return Intl.message(
-      'Edit Exercise',
-      name: 'edit_exercise',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Edit', name: 'edit_exercise', desc: '', args: []);
   }
 
-  /// `Delete Exercise`
+  /// `Delete`
   String get delete_exercise {
-    return Intl.message(
-      'Delete Exercise',
-      name: 'delete_exercise',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Delete', name: 'delete_exercise', desc: '', args: []);
   }
 
   /// `Exercise Name`
@@ -1734,10 +1634,10 @@ class S {
     return Intl.message('Section', name: 'section', desc: '', args: []);
   }
 
-  /// `Exercise created successfully`
+  /// `Created!`
   String get exercise_created_successfully {
     return Intl.message(
-      'Exercise created successfully',
+      'Created!',
       name: 'exercise_created_successfully',
       desc: '',
       args: [],
@@ -1754,20 +1654,20 @@ class S {
     );
   }
 
-  /// `Are you sure you want to delete this exercise?`
+  /// `Delete this exercise?`
   String get delete_exercise_message {
     return Intl.message(
-      'Are you sure you want to delete this exercise?',
+      'Delete this exercise?',
       name: 'delete_exercise_message',
       desc: '',
       args: [],
     );
   }
 
-  /// `Exercise deleted`
+  /// `Deleted`
   String get exercise_deleted {
     return Intl.message(
-      'Exercise deleted',
+      'Deleted',
       name: 'exercise_deleted',
       desc: '',
       args: [],
@@ -1789,14 +1689,9 @@ class S {
     return Intl.message('Dumbbells', name: 'dumbbells', desc: '', args: []);
   }
 
-  /// `Cable Machine`
+  /// `Cable`
   String get cable_machine {
-    return Intl.message(
-      'Cable Machine',
-      name: 'cable_machine',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Cable', name: 'cable_machine', desc: '', args: []);
   }
 
   /// `Bodyweight`
@@ -1814,35 +1709,325 @@ class S {
     return Intl.message('Pull-up Bar', name: 'pull_up_bar', desc: '', args: []);
   }
 
+  /// `EZ Bar`
+  String get ez_bar {
+    return Intl.message('EZ Bar', name: 'ez_bar', desc: '', args: []);
+  }
+
+  /// `Kettlebell`
+  String get kettlebell {
+    return Intl.message('Kettlebell', name: 'kettlebell', desc: '', args: []);
+  }
+
+  /// `Weight Plates`
+  String get weight_plates {
+    return Intl.message(
+      'Weight Plates',
+      name: 'weight_plates',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Smith Machine`
+  String get smith_machine {
+    return Intl.message(
+      'Smith Machine',
+      name: 'smith_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg Press`
+  String get leg_press_machine {
+    return Intl.message(
+      'Leg Press',
+      name: 'leg_press_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chest Press`
+  String get chest_press_machine {
+    return Intl.message(
+      'Chest Press',
+      name: 'chest_press_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shoulder Press`
+  String get shoulder_press_machine {
+    return Intl.message(
+      'Shoulder Press',
+      name: 'shoulder_press_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lat Pulldown`
+  String get lat_pulldown_machine {
+    return Intl.message(
+      'Lat Pulldown',
+      name: 'lat_pulldown_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Seated Row`
+  String get seated_row_machine {
+    return Intl.message(
+      'Seated Row',
+      name: 'seated_row_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg Curl`
+  String get leg_curl_machine {
+    return Intl.message(
+      'Leg Curl',
+      name: 'leg_curl_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leg Extension`
+  String get leg_extension_machine {
+    return Intl.message(
+      'Leg Extension',
+      name: 'leg_extension_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hack Squat`
+  String get hack_squat_machine {
+    return Intl.message(
+      'Hack Squat',
+      name: 'hack_squat_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pec Deck`
+  String get pec_deck_machine {
+    return Intl.message(
+      'Pec Deck',
+      name: 'pec_deck_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Treadmill`
+  String get treadmill {
+    return Intl.message('Treadmill', name: 'treadmill', desc: '', args: []);
+  }
+
+  /// `Bike`
+  String get stationary_bike {
+    return Intl.message('Bike', name: 'stationary_bike', desc: '', args: []);
+  }
+
+  /// `Rowing`
+  String get rowing_machine {
+    return Intl.message('Rowing', name: 'rowing_machine', desc: '', args: []);
+  }
+
+  /// `Elliptical`
+  String get elliptical_machine {
+    return Intl.message(
+      'Elliptical',
+      name: 'elliptical_machine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stair Climber`
+  String get stair_climber {
+    return Intl.message(
+      'Stair Climber',
+      name: 'stair_climber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dip Station`
+  String get dip_station {
+    return Intl.message('Dip Station', name: 'dip_station', desc: '', args: []);
+  }
+
+  /// `TRX`
+  String get suspension_trainer {
+    return Intl.message('TRX', name: 'suspension_trainer', desc: '', args: []);
+  }
+
+  /// `Bands`
+  String get resistance_bands {
+    return Intl.message('Bands', name: 'resistance_bands', desc: '', args: []);
+  }
+
+  /// `Battle Ropes`
+  String get battle_ropes {
+    return Intl.message(
+      'Battle Ropes',
+      name: 'battle_ropes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicine Ball`
+  String get medicine_ball {
+    return Intl.message(
+      'Medicine Ball',
+      name: 'medicine_ball',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stability Ball`
+  String get stability_ball {
+    return Intl.message(
+      'Stability Ball',
+      name: 'stability_ball',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Foam Roller`
+  String get foam_roller {
+    return Intl.message('Foam Roller', name: 'foam_roller', desc: '', args: []);
+  }
+
+  /// `Flat Bench`
+  String get flat_bench {
+    return Intl.message('Flat Bench', name: 'flat_bench', desc: '', args: []);
+  }
+
+  /// `Incline Bench`
+  String get incline_bench {
+    return Intl.message(
+      'Incline Bench',
+      name: 'incline_bench',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decline Bench`
+  String get decline_bench {
+    return Intl.message(
+      'Decline Bench',
+      name: 'decline_bench',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjustable Bench`
+  String get adjustable_bench {
+    return Intl.message(
+      'Adjustable Bench',
+      name: 'adjustable_bench',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Squat Rack`
+  String get squat_rack {
+    return Intl.message('Squat Rack', name: 'squat_rack', desc: '', args: []);
+  }
+
+  /// `Power Rack`
+  String get power_rack {
+    return Intl.message('Power Rack', name: 'power_rack', desc: '', args: []);
+  }
+
+  /// `Ab Wheel`
+  String get ab_wheel {
+    return Intl.message('Ab Wheel', name: 'ab_wheel', desc: '', args: []);
+  }
+
+  /// `Plyo Box`
+  String get plyo_box {
+    return Intl.message('Plyo Box', name: 'plyo_box', desc: '', args: []);
+  }
+
+  /// `Slam Ball`
+  String get slam_ball {
+    return Intl.message('Slam Ball', name: 'slam_ball', desc: '', args: []);
+  }
+
+  /// `Sandbag`
+  String get sandbag {
+    return Intl.message('Sandbag', name: 'sandbag', desc: '', args: []);
+  }
+
+  /// `Rings`
+  String get gymnastic_rings {
+    return Intl.message('Rings', name: 'gymnastic_rings', desc: '', args: []);
+  }
+
+  /// `Parallettes`
+  String get parallettes {
+    return Intl.message('Parallettes', name: 'parallettes', desc: '', args: []);
+  }
+
+  /// `None`
+  String get none {
+    return Intl.message('None', name: 'none', desc: '', args: []);
+  }
+
+  /// `Other`
+  String get other_custom {
+    return Intl.message('Other', name: 'other_custom', desc: '', args: []);
+  }
+
   /// `Bench Press`
   String get bench_press {
     return Intl.message('Bench Press', name: 'bench_press', desc: '', args: []);
   }
 
-  /// `Classic compound exercise for chest development. Lie on bench and press barbell up.`
+  /// `Classic chest exercise`
   String get bench_press_description {
     return Intl.message(
-      'Classic compound exercise for chest development. Lie on bench and press barbell up.',
+      'Classic chest exercise',
       name: 'bench_press_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Incline Dumbbell Press`
+  /// `Incline Press`
   String get incline_dumbbell_press {
     return Intl.message(
-      'Incline Dumbbell Press',
+      'Incline Press',
       name: 'incline_dumbbell_press',
       desc: '',
       args: [],
     );
   }
 
-  /// `Target upper chest with incline angle. Press dumbbells upward from incline bench.`
+  /// `Upper chest focus`
   String get incline_dumbbell_press_description {
     return Intl.message(
-      'Target upper chest with incline angle. Press dumbbells upward from incline bench.',
+      'Upper chest focus',
       name: 'incline_dumbbell_press_description',
       desc: '',
       args: [],
@@ -1854,10 +2039,10 @@ class S {
     return Intl.message('Cable Flyes', name: 'cable_flyes', desc: '', args: []);
   }
 
-  /// `Isolation exercise for chest. Use cables to bring hands together in front.`
+  /// `Chest isolation`
   String get cable_flyes_description {
     return Intl.message(
-      'Isolation exercise for chest. Use cables to bring hands together in front.',
+      'Chest isolation',
       name: 'cable_flyes_description',
       desc: '',
       args: [],
@@ -1869,30 +2054,25 @@ class S {
     return Intl.message('Push-ups', name: 'push_ups', desc: '', args: []);
   }
 
-  /// `Bodyweight chest exercise. Lower body to ground and push back up.`
+  /// `Bodyweight chest`
   String get push_ups_description {
     return Intl.message(
-      'Bodyweight chest exercise. Lower body to ground and push back up.',
+      'Bodyweight chest',
       name: 'push_ups_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Dumbbell Flyes`
+  /// `DB Flyes`
   String get dumbbell_flyes {
-    return Intl.message(
-      'Dumbbell Flyes',
-      name: 'dumbbell_flyes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('DB Flyes', name: 'dumbbell_flyes', desc: '', args: []);
   }
 
-  /// `Stretch chest muscles with dumbbell flyes on flat bench.`
+  /// `Chest stretch`
   String get dumbbell_flyes_description {
     return Intl.message(
-      'Stretch chest muscles with dumbbell flyes on flat bench.',
+      'Chest stretch',
       name: 'dumbbell_flyes_description',
       desc: '',
       args: [],
@@ -1904,10 +2084,10 @@ class S {
     return Intl.message('Deadlift', name: 'deadlift', desc: '', args: []);
   }
 
-  /// `King of back exercises. Lift barbell from ground to standing position.`
+  /// `King of back`
   String get deadlift_description {
     return Intl.message(
-      'King of back exercises. Lift barbell from ground to standing position.',
+      'King of back',
       name: 'deadlift_description',
       desc: '',
       args: [],
@@ -1919,30 +2099,25 @@ class S {
     return Intl.message('Pull-ups', name: 'pull_ups', desc: '', args: []);
   }
 
-  /// `Bodyweight exercise for lat development. Pull yourself up to bar.`
+  /// `Lat development`
   String get pull_ups_description {
     return Intl.message(
-      'Bodyweight exercise for lat development. Pull yourself up to bar.',
+      'Lat development',
       name: 'pull_ups_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Barbell Rows`
+  /// `BB Rows`
   String get barbell_rows {
-    return Intl.message(
-      'Barbell Rows',
-      name: 'barbell_rows',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('BB Rows', name: 'barbell_rows', desc: '', args: []);
   }
 
-  /// `Build thick back with bent-over rows. Pull barbell to lower chest.`
+  /// `Thick back`
   String get barbell_rows_description {
     return Intl.message(
-      'Build thick back with bent-over rows. Pull barbell to lower chest.',
+      'Thick back',
       name: 'barbell_rows_description',
       desc: '',
       args: [],
@@ -1959,10 +2134,10 @@ class S {
     );
   }
 
-  /// `Cable exercise for lats. Pull bar down to upper chest.`
+  /// `Cable lats`
   String get lat_pulldown_description {
     return Intl.message(
-      'Cable exercise for lats. Pull bar down to upper chest.',
+      'Cable lats',
       name: 'lat_pulldown_description',
       desc: '',
       args: [],
@@ -1974,10 +2149,10 @@ class S {
     return Intl.message('Squats', name: 'squats', desc: '', args: []);
   }
 
-  /// `King of leg exercises. Lower body with barbell on shoulders.`
+  /// `King of legs`
   String get squats_description {
     return Intl.message(
-      'King of leg exercises. Lower body with barbell on shoulders.',
+      'King of legs',
       name: 'squats_description',
       desc: '',
       args: [],
@@ -1989,30 +2164,25 @@ class S {
     return Intl.message('Leg Press', name: 'leg_press', desc: '', args: []);
   }
 
-  /// `Push weight up with legs on leg press machine.`
+  /// `Quad focus`
   String get leg_press_description {
     return Intl.message(
-      'Push weight up with legs on leg press machine.',
+      'Quad focus',
       name: 'leg_press_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Romanian Deadlift`
+  /// `RDL`
   String get romanian_deadlift {
-    return Intl.message(
-      'Romanian Deadlift',
-      name: 'romanian_deadlift',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('RDL', name: 'romanian_deadlift', desc: '', args: []);
   }
 
-  /// `Target hamstrings with straight-leg deadlift motion.`
+  /// `Hamstring focus`
   String get romanian_deadlift_description {
     return Intl.message(
-      'Target hamstrings with straight-leg deadlift motion.',
+      'Hamstring focus',
       name: 'romanian_deadlift_description',
       desc: '',
       args: [],
@@ -2024,10 +2194,10 @@ class S {
     return Intl.message('Leg Curls', name: 'leg_curls', desc: '', args: []);
   }
 
-  /// `Isolate hamstrings with leg curl machine.`
+  /// `Hamstring isolation`
   String get leg_curls_description {
     return Intl.message(
-      'Isolate hamstrings with leg curl machine.',
+      'Hamstring isolation',
       name: 'leg_curls_description',
       desc: '',
       args: [],
@@ -2039,30 +2209,25 @@ class S {
     return Intl.message('Calf Raises', name: 'calf_raises', desc: '', args: []);
   }
 
-  /// `Build calf muscles by raising heels.`
+  /// `Calf building`
   String get calf_raises_description {
     return Intl.message(
-      'Build calf muscles by raising heels.',
+      'Calf building',
       name: 'calf_raises_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Overhead Press`
+  /// `OHP`
   String get overhead_press {
-    return Intl.message(
-      'Overhead Press',
-      name: 'overhead_press',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('OHP', name: 'overhead_press', desc: '', args: []);
   }
 
-  /// `Press barbell overhead for shoulder development.`
+  /// `Shoulder mass`
   String get overhead_press_description {
     return Intl.message(
-      'Press barbell overhead for shoulder development.',
+      'Shoulder mass',
       name: 'overhead_press_description',
       desc: '',
       args: [],
@@ -2079,10 +2244,10 @@ class S {
     );
   }
 
-  /// `Raise dumbbells to sides for shoulder width.`
+  /// `Shoulder width`
   String get lateral_raises_description {
     return Intl.message(
-      'Raise dumbbells to sides for shoulder width.',
+      'Shoulder width',
       name: 'lateral_raises_description',
       desc: '',
       args: [],
@@ -2099,30 +2264,25 @@ class S {
     );
   }
 
-  /// `Raise dumbbells in front for front deltoid focus.`
+  /// `Front delts`
   String get front_raises_description {
     return Intl.message(
-      'Raise dumbbells in front for front deltoid focus.',
+      'Front delts',
       name: 'front_raises_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Barbell Curls`
+  /// `BB Curls`
   String get barbell_curls {
-    return Intl.message(
-      'Barbell Curls',
-      name: 'barbell_curls',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('BB Curls', name: 'barbell_curls', desc: '', args: []);
   }
 
-  /// `Classic bicep exercise with barbell.`
+  /// `Bicep mass`
   String get barbell_curls_description {
     return Intl.message(
-      'Classic bicep exercise with barbell.',
+      'Bicep mass',
       name: 'barbell_curls_description',
       desc: '',
       args: [],
@@ -2134,10 +2294,10 @@ class S {
     return Intl.message('Tricep Dips', name: 'tricep_dips', desc: '', args: []);
   }
 
-  /// `Bodyweight exercise for triceps.`
+  /// `Tricep size`
   String get tricep_dips_description {
     return Intl.message(
-      'Bodyweight exercise for triceps.',
+      'Tricep size',
       name: 'tricep_dips_description',
       desc: '',
       args: [],
@@ -2154,30 +2314,30 @@ class S {
     );
   }
 
-  /// `Curl dumbbells with neutral grip for brachialis.`
+  /// `Brachialis`
   String get hammer_curls_description {
     return Intl.message(
-      'Curl dumbbells with neutral grip for brachialis.',
+      'Brachialis',
       name: 'hammer_curls_description',
       desc: '',
       args: [],
     );
   }
 
-  /// `Overhead Tricep Extension`
+  /// `Tricep Extension`
   String get overhead_tricep_extension {
     return Intl.message(
-      'Overhead Tricep Extension',
+      'Tricep Extension',
       name: 'overhead_tricep_extension',
       desc: '',
       args: [],
     );
   }
 
-  /// `Extend dumbbell overhead for tricep isolation.`
+  /// `Tricep isolation`
   String get overhead_tricep_extension_description {
     return Intl.message(
-      'Extend dumbbell overhead for tricep isolation.',
+      'Tricep isolation',
       name: 'overhead_tricep_extension_description',
       desc: '',
       args: [],
@@ -2189,10 +2349,10 @@ class S {
     return Intl.message('Planks', name: 'planks', desc: '', args: []);
   }
 
-  /// `Hold body in plank position for core strength.`
+  /// `Core strength`
   String get planks_description {
     return Intl.message(
-      'Hold body in plank position for core strength.',
+      'Core strength',
       name: 'planks_description',
       desc: '',
       args: [],
@@ -2204,10 +2364,10 @@ class S {
     return Intl.message('Crunches', name: 'crunches', desc: '', args: []);
   }
 
-  /// `Classic ab exercise. Curl upper body towards knees.`
+  /// `Ab exercise`
   String get crunches_description {
     return Intl.message(
-      'Classic ab exercise. Curl upper body towards knees.',
+      'Ab exercise',
       name: 'crunches_description',
       desc: '',
       args: [],
@@ -2224,10 +2384,10 @@ class S {
     );
   }
 
-  /// `Rotate torso side to side for obliques.`
+  /// `Obliques`
   String get russian_twists_description {
     return Intl.message(
-      'Rotate torso side to side for obliques.',
+      'Obliques',
       name: 'russian_twists_description',
       desc: '',
       args: [],
@@ -2239,10 +2399,10 @@ class S {
     return Intl.message('Leg Raises', name: 'leg_raises', desc: '', args: []);
   }
 
-  /// `Raise legs for lower ab development.`
+  /// `Lower abs`
   String get leg_raises_description {
     return Intl.message(
-      'Raise legs for lower ab development.',
+      'Lower abs',
       name: 'leg_raises_description',
       desc: '',
       args: [],
@@ -2404,80 +2564,95 @@ class S {
     return Intl.message('Reset', name: 'reset', desc: '', args: []);
   }
 
-  /// `Push yourself, because no one else is going to do it for you 💪`
+  /// `Dismiss`
+  String get dismiss {
+    return Intl.message('Dismiss', name: 'dismiss', desc: '', args: []);
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+  }
+
+  /// `Undo`
+  String get undo {
+    return Intl.message('Undo', name: 'undo', desc: '', args: []);
+  }
+
+  /// `Push yourself! 💪`
   String get motivational_quote_1 {
     return Intl.message(
-      'Push yourself, because no one else is going to do it for you 💪',
+      'Push yourself! 💪',
       name: 'motivational_quote_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Great things never come from comfort zones 🔥`
+  /// `Great things come from action 🔥`
   String get motivational_quote_2 {
     return Intl.message(
-      'Great things never come from comfort zones 🔥',
+      'Great things come from action 🔥',
       name: 'motivational_quote_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `The only bad workout is the one that didn't happen ⚡`
+  /// `No bad workout ⚡`
   String get motivational_quote_3 {
     return Intl.message(
-      'The only bad workout is the one that didn\'t happen ⚡',
+      'No bad workout ⚡',
       name: 'motivational_quote_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Your body can stand almost anything. It's your mind that needs convincing 🧠`
+  /// `Convince your mind 🧠`
   String get motivational_quote_4 {
     return Intl.message(
-      'Your body can stand almost anything. It\'s your mind that needs convincing 🧠',
+      'Convince your mind 🧠',
       name: 'motivational_quote_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Success starts with self-discipline 🎯`
+  /// `Self-discipline wins 🎯`
   String get motivational_quote_5 {
     return Intl.message(
-      'Success starts with self-discipline 🎯',
+      'Self-discipline wins 🎯',
       name: 'motivational_quote_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Train insane or remain the same 🏋️`
+  /// `Train hard 🏋️`
   String get motivational_quote_6 {
     return Intl.message(
-      'Train insane or remain the same 🏋️',
+      'Train hard 🏋️',
       name: 'motivational_quote_6',
       desc: '',
       args: [],
     );
   }
 
-  /// `Your only limit is you 🚀`
+  /// `No limits 🚀`
   String get motivational_quote_7 {
     return Intl.message(
-      'Your only limit is you 🚀',
+      'No limits 🚀',
       name: 'motivational_quote_7',
       desc: '',
       args: [],
     );
   }
 
-  /// `Don't wish for it, work for it 💯`
+  /// `Work for it 💯`
   String get motivational_quote_8 {
     return Intl.message(
-      'Don\'t wish for it, work for it 💯',
+      'Work for it 💯',
       name: 'motivational_quote_8',
       desc: '',
       args: [],
@@ -2494,40 +2669,35 @@ class S {
     );
   }
 
-  /// `Sign in to continue your fitness journey`
+  /// `Sign in to continue`
   String get signInToContinue {
     return Intl.message(
-      'Sign in to continue your fitness journey',
+      'Sign in to continue',
       name: 'signInToContinue',
       desc: '',
       args: [],
     );
   }
 
-  /// `Email Address`
+  /// `Email`
   String get emailAddress {
-    return Intl.message(
-      'Email Address',
-      name: 'emailAddress',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Email', name: 'emailAddress', desc: '', args: []);
   }
 
-  /// `Enter your email`
+  /// `Enter email`
   String get enterYourEmail {
     return Intl.message(
-      'Enter your email',
+      'Enter email',
       name: 'enterYourEmail',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter your password`
+  /// `Enter password`
   String get enterYourPassword {
     return Intl.message(
-      'Enter your password',
+      'Enter password',
       name: 'enterYourPassword',
       desc: '',
       args: [],
@@ -2569,40 +2739,40 @@ class S {
     return Intl.message('Register', name: 'register', desc: '', args: []);
   }
 
-  /// `Email is required`
+  /// `Email required`
   String get emailRequired {
     return Intl.message(
-      'Email is required',
+      'Email required',
       name: 'emailRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter a valid email`
+  /// `Invalid email`
   String get invalidEmail {
     return Intl.message(
-      'Please enter a valid email',
+      'Invalid email',
       name: 'invalidEmail',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password is required`
+  /// `Password required`
   String get passwordRequired {
     return Intl.message(
-      'Password is required',
+      'Password required',
       name: 'passwordRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password must be at least 8 characters`
+  /// `Min 6 chars`
   String get passwordMinLength {
     return Intl.message(
-      'Password must be at least 8 characters',
+      'Min 6 chars',
       name: 'passwordMinLength',
       desc: '',
       args: [],
@@ -2619,10 +2789,10 @@ class S {
     );
   }
 
-  /// `Please complete your profile to continue`
+  /// `Complete profile to continue`
   String get completeProfileMessage {
     return Intl.message(
-      'Please complete your profile to continue',
+      'Complete profile to continue',
       name: 'completeProfileMessage',
       desc: '',
       args: [],
@@ -2664,40 +2834,35 @@ class S {
     );
   }
 
-  /// `Enter your registered email and we'll send a reset link.`
+  /// `Enter email for reset link`
   String get forgotPasswordSubtitle {
     return Intl.message(
-      'Enter your registered email and we\'ll send a reset link.',
+      'Enter email for reset link',
       name: 'forgotPasswordSubtitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Send Reset Link`
+  /// `Send Link`
   String get sendResetLink {
-    return Intl.message(
-      'Send Reset Link',
-      name: 'sendResetLink',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Send Link', name: 'sendResetLink', desc: '', args: []);
   }
 
-  /// `A password reset link was sent to your email.`
+  /// `Reset link sent to email`
   String get resetLinkSent {
     return Intl.message(
-      'A password reset link was sent to your email.',
+      'Reset link sent to email',
       name: 'resetLinkSent',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter a valid email`
+  /// `Enter valid email`
   String get enterValidEmail {
     return Intl.message(
-      'Enter a valid email',
+      'Enter valid email',
       name: 'enterValidEmail',
       desc: '',
       args: [],
@@ -2714,14 +2879,9 @@ class S {
     );
   }
 
-  /// `Join Fitrix and start your transformation`
+  /// `Join Fitrix`
   String get joinFitrix {
-    return Intl.message(
-      'Join Fitrix and start your transformation',
-      name: 'joinFitrix',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Join Fitrix', name: 'joinFitrix', desc: '', args: []);
   }
 
   /// `Username`
@@ -2729,50 +2889,30 @@ class S {
     return Intl.message('Username', name: 'username', desc: '', args: []);
   }
 
-  /// `Choose a username`
+  /// `Choose username`
   String get chooseUsername {
     return Intl.message(
-      'Choose a username',
+      'Choose username',
       name: 'chooseUsername',
       desc: '',
       args: [],
     );
   }
 
-  /// `Phone Number`
-  String get phoneNumber {
-    return Intl.message(
-      'Phone Number',
-      name: 'phoneNumber',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enter your phone number`
-  String get enterPhoneNumber {
-    return Intl.message(
-      'Enter your phone number',
-      name: 'enterPhoneNumber',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create a strong password`
+  /// `Create password`
   String get createPassword {
     return Intl.message(
-      'Create a strong password',
+      'Create password',
       name: 'createPassword',
       desc: '',
       args: [],
     );
   }
 
-  /// `Select Your Role`
+  /// `Select Role`
   String get selectYourRole {
     return Intl.message(
-      'Select Your Role',
+      'Select Role',
       name: 'selectYourRole',
       desc: '',
       args: [],
@@ -2784,20 +2924,20 @@ class S {
     return Intl.message('User', name: 'normalUser', desc: '', args: []);
   }
 
-  /// `Track workouts & progress`
+  /// `Track workouts`
   String get normalUserDesc {
     return Intl.message(
-      'Track workouts & progress',
+      'Track workouts',
       name: 'normalUserDesc',
       desc: '',
       args: [],
     );
   }
 
-  /// `Create & manage plans`
+  /// `Manage plans`
   String get trainerDesc {
     return Intl.message(
-      'Create & manage plans',
+      'Manage plans',
       name: 'trainerDesc',
       desc: '',
       args: [],
@@ -2814,85 +2954,80 @@ class S {
     );
   }
 
-  /// `Already have an account? `
+  /// `Have account? `
   String get alreadyHaveAccount {
     return Intl.message(
-      'Already have an account? ',
+      'Have account? ',
       name: 'alreadyHaveAccount',
       desc: '',
       args: [],
     );
   }
 
-  /// `Registration successful! Welcome {username}`
+  /// `Welcome {username}!`
   String registrationSuccess(String username) {
     return Intl.message(
-      'Registration successful! Welcome $username',
+      'Welcome $username!',
       name: 'registrationSuccess',
       desc: '',
       args: [username],
     );
   }
 
-  /// `Dismiss`
-  String get dismiss {
-    return Intl.message('Dismiss', name: 'dismiss', desc: '', args: []);
-  }
-
-  /// `Username is required`
+  /// `Username required`
   String get usernameRequired {
     return Intl.message(
-      'Username is required',
+      'Username required',
       name: 'usernameRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Username must be at least 3 characters`
+  /// `Min 3 chars`
   String get usernameMinLength {
     return Intl.message(
-      'Username must be at least 3 characters',
+      'Min 3 chars',
       name: 'usernameMinLength',
       desc: '',
       args: [],
     );
   }
 
-  /// `Phone number is required`
+  /// `Phone required`
   String get phoneRequired {
     return Intl.message(
-      'Phone number is required',
+      'Phone required',
       name: 'phoneRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter a valid Egyptian phone number (e.g., 01012345678)`
+  /// `Invalid phone`
   String get invalidEgyptianPhone {
     return Intl.message(
-      'Please enter a valid Egyptian phone number (e.g., 01012345678)',
+      'Invalid phone',
       name: 'invalidEgyptianPhone',
       desc: '',
       args: [],
     );
   }
 
-  /// `Phone number must be 11 digits`
+  /// `11 digits`
   String get phoneExactLength {
     return Intl.message(
-      'Phone number must be 11 digits',
+      '11 digits',
       name: 'phoneExactLength',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password must contain uppercase, lowercase and number`
+  /// `Weak password`
   String get passwordComplexity {
     return Intl.message(
-      'Password must contain uppercase, lowercase and number',
+      'Weak password',
       name: 'passwordComplexity',
       desc: '',
       args: [],
@@ -2909,24 +3044,14 @@ class S {
     );
   }
 
-  /// `Let's set up your fitness journey`
+  /// `Setup fitness journey`
   String get setupFitnessJourney {
     return Intl.message(
-      'Let\'s set up your fitness journey',
+      'Setup fitness journey',
       name: 'setupFitnessJourney',
       desc: '',
       args: [],
     );
-  }
-
-  /// `First Name`
-  String get firstName {
-    return Intl.message('First Name', name: 'firstName', desc: '', args: []);
-  }
-
-  /// `Last Name`
-  String get lastName {
-    return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
   }
 
   /// `Weight (kg)`
@@ -2954,120 +3079,120 @@ class S {
     );
   }
 
-  /// `Complete Profile`
+  /// `Complete`
   String get completeProfileButton {
     return Intl.message(
-      'Complete Profile',
+      'Complete',
       name: 'completeProfileButton',
       desc: '',
       args: [],
     );
   }
 
-  /// `Profile completed! Welcome to Fitrix, {name}!`
+  /// `Welcome {name}!`
   String profileCompletedWelcome(String name) {
     return Intl.message(
-      'Profile completed! Welcome to Fitrix, $name!',
+      'Welcome $name!',
       name: 'profileCompletedWelcome',
       desc: '',
       args: [name],
     );
   }
 
-  /// `First name is required`
+  /// `First name required`
   String get firstNameRequired {
     return Intl.message(
-      'First name is required',
+      'First name required',
       name: 'firstNameRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last name is required`
+  /// `Last name required`
   String get lastNameRequired {
     return Intl.message(
-      'Last name is required',
+      'Last name required',
       name: 'lastNameRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Gender is required`
+  /// `Select gender`
   String get genderRequired {
     return Intl.message(
-      'Gender is required',
+      'Select gender',
       name: 'genderRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Select Male or Female`
+  /// `Male or Female`
   String get selectMaleOrFemale {
     return Intl.message(
-      'Select Male or Female',
+      'Male or Female',
       name: 'selectMaleOrFemale',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter a valid weight in kg`
+  /// `Invalid weight`
   String get enterValidWeight {
     return Intl.message(
-      'Enter a valid weight in kg',
+      'Invalid weight',
       name: 'enterValidWeight',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please check the weight entered`
+  /// `Check weight`
   String get checkWeightEntered {
     return Intl.message(
-      'Please check the weight entered',
+      'Check weight',
       name: 'checkWeightEntered',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter a number`
+  /// `Enter number`
   String get enterNumber {
     return Intl.message(
-      'Enter a number',
+      'Enter number',
       name: 'enterNumber',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter realistic % fat (1-70)`
+  /// `Body fat: 1-70%`
   String get enterRealisticBodyFat {
     return Intl.message(
-      'Enter realistic % fat (1-70)',
+      'Body fat: 1-70%',
       name: 'enterRealisticBodyFat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter a valid muscle mass (kg)`
+  /// `Invalid muscle`
   String get enterValidMuscleMass {
     return Intl.message(
-      'Enter a valid muscle mass (kg)',
+      'Invalid muscle',
       name: 'enterValidMuscleMass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please check muscle mass entered`
+  /// `Check muscle`
   String get checkMuscleMassEntered {
     return Intl.message(
-      'Please check muscle mass entered',
+      'Check muscle',
       name: 'checkMuscleMassEntered',
       desc: '',
       args: [],
@@ -3084,74 +3209,1729 @@ class S {
     return Intl.message('Female', name: 'female', desc: '', args: []);
   }
 
-  /// `Weight is required`
+  /// `Weight required`
   String get weightRequired {
     return Intl.message(
-      'Weight is required',
+      'Weight required',
       name: 'weightRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter your first name`
+  /// `First name`
   String get enterFirstName {
     return Intl.message(
-      'Enter your first name',
+      'First name',
       name: 'enterFirstName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter your last name`
+  /// `Last name`
   String get enterLastName {
-    return Intl.message(
-      'Enter your last name',
-      name: 'enterLastName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Last name', name: 'enterLastName', desc: '', args: []);
   }
 
-  /// `Enter your weight in kg`
+  /// `Weight (kg)`
   String get enterWeight {
-    return Intl.message(
-      'Enter your weight in kg',
-      name: 'enterWeight',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Weight (kg)', name: 'enterWeight', desc: '', args: []);
   }
 
-  /// `Enter your body fat percentage (optional)`
+  /// `Body fat %`
   String get enterBodyFat {
-    return Intl.message(
-      'Enter your body fat percentage (optional)',
-      name: 'enterBodyFat',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Body fat %', name: 'enterBodyFat', desc: '', args: []);
   }
 
-  /// `Enter your muscle mass in kg (optional)`
+  /// `Muscle (kg)`
   String get enterMuscleMass {
     return Intl.message(
-      'Enter your muscle mass in kg (optional)',
+      'Muscle (kg)',
       name: 'enterMuscleMass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Personal Information`
+  /// `Personal Info`
   String get personalInformation {
     return Intl.message(
-      'Personal Information',
+      'Personal Info',
       name: 'personalInformation',
       desc: '',
       args: [],
     );
+  }
+
+  /// `Phone`
+  String get phoneNumber {
+    return Intl.message('Phone', name: 'phoneNumber', desc: '', args: []);
+  }
+
+  /// `Member Since`
+  String get memberSince {
+    return Intl.message(
+      'Member Since',
+      name: 'memberSince',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Role`
+  String get role {
+    return Intl.message('Role', name: 'role', desc: '', args: []);
+  }
+
+  /// `Change Password`
+  String get changeYourPassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changeYourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy`
+  String get privacyPolicy {
+    return Intl.message('Privacy', name: 'privacyPolicy', desc: '', args: []);
+  }
+
+  /// `Terms`
+  String get termsConditions {
+    return Intl.message('Terms', name: 'termsConditions', desc: '', args: []);
+  }
+
+  /// `Support`
+  String get contactSupport {
+    return Intl.message('Support', name: 'contactSupport', desc: '', args: []);
+  }
+
+  /// `Logout`
+  String get logoutConfirmTitle {
+    return Intl.message(
+      'Logout',
+      name: 'logoutConfirmTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout?`
+  String get logoutConfirmMessage {
+    return Intl.message(
+      'Logout?',
+      name: 'logoutConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logged out`
+  String get loggedOutSuccess {
+    return Intl.message(
+      'Logged out',
+      name: 'loggedOutSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicyTitle {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms`
+  String get termsConditionsTitle {
+    return Intl.message(
+      'Terms',
+      name: 'termsConditionsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support`
+  String get contactSupportTitle {
+    return Intl.message(
+      'Support',
+      name: 'contactSupportTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Fitrix`
+  String get aboutTitle {
+    return Intl.message('About Fitrix', name: 'aboutTitle', desc: '', args: []);
+  }
+
+  /// `Updated`
+  String get lastUpdated {
+    return Intl.message('Updated', name: 'lastUpdated', desc: '', args: []);
+  }
+
+  /// `Email`
+  String get sendEmail {
+    return Intl.message('Email', name: 'sendEmail', desc: '', args: []);
+  }
+
+  /// `Call`
+  String get callUs {
+    return Intl.message('Call', name: 'callUs', desc: '', args: []);
+  }
+
+  /// `WhatsApp`
+  String get whatsapp {
+    return Intl.message('WhatsApp', name: 'whatsapp', desc: '', args: []);
+  }
+
+  /// `Message`
+  String get sendMessage {
+    return Intl.message('Message', name: 'sendMessage', desc: '', args: []);
+  }
+
+  /// `Build`
+  String get buildNumber {
+    return Intl.message('Build', name: 'buildNumber', desc: '', args: []);
+  }
+
+  /// `Developer`
+  String get developer {
+    return Intl.message('Developer', name: 'developer', desc: '', args: []);
+  }
+
+  /// `Website`
+  String get website {
+    return Intl.message('Website', name: 'website', desc: '', args: []);
+  }
+
+  /// `Visit`
+  String get visitWebsite {
+    return Intl.message('Visit', name: 'visitWebsite', desc: '', args: []);
+  }
+
+  /// `Follow Us`
+  String get followUs {
+    return Intl.message('Follow Us', name: 'followUs', desc: '', args: []);
+  }
+
+  /// `Share`
+  String get shareApp {
+    return Intl.message('Share', name: 'shareApp', desc: '', args: []);
+  }
+
+  /// `Introduction`
+  String get introduction {
+    return Intl.message(
+      'Introduction',
+      name: 'introduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to Fitrix. We protect your privacy.`
+  String get introductionText {
+    return Intl.message(
+      'Welcome to Fitrix. We protect your privacy.',
+      name: 'introductionText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data We Collect`
+  String get informationWeCollect {
+    return Intl.message(
+      'Data We Collect',
+      name: 'informationWeCollect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We collect:`
+  String get informationWeCollectText {
+    return Intl.message(
+      'We collect:',
+      name: 'informationWeCollectText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal info`
+  String get personalInformationItem {
+    return Intl.message(
+      'Personal info',
+      name: 'personalInformationItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile data`
+  String get profileInformationItem {
+    return Intl.message(
+      'Profile data',
+      name: 'profileInformationItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health data`
+  String get healthDataItem {
+    return Intl.message(
+      'Health data',
+      name: 'healthDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Usage data`
+  String get usageDataItem {
+    return Intl.message(
+      'Usage data',
+      name: 'usageDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How We Use Data`
+  String get howWeUseInfo {
+    return Intl.message(
+      'How We Use Data',
+      name: 'howWeUseInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We use data to:`
+  String get howWeUseInfoText {
+    return Intl.message(
+      'We use data to:',
+      name: 'howWeUseInfoText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provide services`
+  String get provideServicesItem {
+    return Intl.message(
+      'Provide services',
+      name: 'provideServicesItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personalize`
+  String get personalizeExperienceItem {
+    return Intl.message(
+      'Personalize',
+      name: 'personalizeExperienceItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track progress`
+  String get trackProgressItem {
+    return Intl.message(
+      'Track progress',
+      name: 'trackProgressItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send updates`
+  String get sendNotificationsItem {
+    return Intl.message(
+      'Send updates',
+      name: 'sendNotificationsItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Improve app`
+  String get improveServicesItem {
+    return Intl.message(
+      'Improve app',
+      name: 'improveServicesItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Security`
+  String get dataSecurity {
+    return Intl.message('Security', name: 'dataSecurity', desc: '', args: []);
+  }
+
+  /// `Your data is encrypted`
+  String get dataSecurityText {
+    return Intl.message(
+      'Your data is encrypted',
+      name: 'dataSecurityText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Rights`
+  String get yourRights {
+    return Intl.message('Your Rights', name: 'yourRights', desc: '', args: []);
+  }
+
+  /// `You can:`
+  String get yourRightsText {
+    return Intl.message('You can:', name: 'yourRightsText', desc: '', args: []);
+  }
+
+  /// `Access data`
+  String get accessDataItem {
+    return Intl.message(
+      'Access data',
+      name: 'accessDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Correct data`
+  String get correctDataItem {
+    return Intl.message(
+      'Correct data',
+      name: 'correctDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete data`
+  String get deleteDataItem {
+    return Intl.message(
+      'Delete data',
+      name: 'deleteDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opt-out`
+  String get optOutItem {
+    return Intl.message('Opt-out', name: 'optOutItem', desc: '', args: []);
+  }
+
+  /// `Export data`
+  String get exportDataItem {
+    return Intl.message(
+      'Export data',
+      name: 'exportDataItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get contactUsSection {
+    return Intl.message(
+      'Contact',
+      name: 'contactUsSection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Questions? Email appfitrix@gmail.com`
+  String get contactUsText {
+    return Intl.message(
+      'Questions? Email appfitrix@gmail.com',
+      name: 'contactUsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms Acceptance`
+  String get acceptanceOfTerms {
+    return Intl.message(
+      'Terms Acceptance',
+      name: 'acceptanceOfTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By using Fitrix, you agree to terms`
+  String get acceptanceOfTermsText {
+    return Intl.message(
+      'By using Fitrix, you agree to terms',
+      name: 'acceptanceOfTermsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get userAccount {
+    return Intl.message('Account', name: 'userAccount', desc: '', args: []);
+  }
+
+  /// `You're responsible for:`
+  String get userAccountText {
+    return Intl.message(
+      'You\'re responsible for:',
+      name: 'userAccountText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep credentials safe`
+  String get maintainCredentialsItem {
+    return Intl.message(
+      'Keep credentials safe',
+      name: 'maintainCredentialsItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All activities`
+  String get accountActivitiesItem {
+    return Intl.message(
+      'All activities',
+      name: 'accountActivitiesItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accurate info`
+  String get accurateInfoItem {
+    return Intl.message(
+      'Accurate info',
+      name: 'accurateInfoItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update info`
+  String get updateInfoItem {
+    return Intl.message(
+      'Update info',
+      name: 'updateInfoItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Acceptable Use`
+  String get acceptableUse {
+    return Intl.message(
+      'Acceptable Use',
+      name: 'acceptableUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't:`
+  String get acceptableUseText {
+    return Intl.message(
+      'Don\'t:',
+      name: 'acceptableUseText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post inappropriate content`
+  String get inappropriateContentItem {
+    return Intl.message(
+      'Post inappropriate content',
+      name: 'inappropriateContentItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Harass users`
+  String get harassUsersItem {
+    return Intl.message(
+      'Harass users',
+      name: 'harassUsersItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hack`
+  String get unauthorizedAccessItem {
+    return Intl.message(
+      'Hack',
+      name: 'unauthorizedAccessItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commercial use`
+  String get commercialUseItem {
+    return Intl.message(
+      'Commercial use',
+      name: 'commercialUseItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Break laws`
+  String get violateLawsItem {
+    return Intl.message(
+      'Break laws',
+      name: 'violateLawsItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Health Notice`
+  String get healthDisclaimer {
+    return Intl.message(
+      'Health Notice',
+      name: 'healthDisclaimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fitrix tracks fitness but:`
+  String get healthDisclaimerText {
+    return Intl.message(
+      'Fitrix tracks fitness but:',
+      name: 'healthDisclaimerText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not medical advice`
+  String get notMedicalAdviceItem {
+    return Intl.message(
+      'Not medical advice',
+      name: 'notMedicalAdviceItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult doctor`
+  String get consultProviderItem {
+    return Intl.message(
+      'Consult doctor',
+      name: 'consultProviderItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use at risk`
+  String get useAtRiskItem {
+    return Intl.message(
+      'Use at risk',
+      name: 'useAtRiskItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not liable`
+  String get notLiableItem {
+    return Intl.message(
+      'Not liable',
+      name: 'notLiableItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IP Rights`
+  String get intellectualProperty {
+    return Intl.message(
+      'IP Rights',
+      name: 'intellectualProperty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All content owned by us`
+  String get intellectualPropertyText {
+    return Intl.message(
+      'All content owned by us',
+      name: 'intellectualPropertyText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Termination`
+  String get termination {
+    return Intl.message('Termination', name: 'termination', desc: '', args: []);
+  }
+
+  /// `We can suspend accounts`
+  String get terminationText {
+    return Intl.message(
+      'We can suspend accounts',
+      name: 'terminationText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Term Changes`
+  String get changesToTerms {
+    return Intl.message(
+      'Term Changes',
+      name: 'changesToTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We can modify terms`
+  String get changesToTermsText {
+    return Intl.message(
+      'We can modify terms',
+      name: 'changesToTermsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Questions? appfitrix@gmail.com`
+  String get legalContact {
+    return Intl.message(
+      'Questions? appfitrix@gmail.com',
+      name: 'legalContact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How can we help?`
+  String get howCanWeHelp {
+    return Intl.message(
+      'How can we help?',
+      name: 'howCanWeHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support team ready`
+  String get supportTeamReady {
+    return Intl.message(
+      'Support team ready',
+      name: 'supportTeamReady',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQ`
+  String get frequentlyAskedQuestions {
+    return Intl.message(
+      'FAQ',
+      name: 'frequentlyAskedQuestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset password?`
+  String get faqResetPassword {
+    return Intl.message(
+      'Reset password?',
+      name: 'faqResetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap 'Forgot Password'`
+  String get faqResetPasswordAnswer {
+    return Intl.message(
+      'Tap \'Forgot Password\'',
+      name: 'faqResetPasswordAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync devices?`
+  String get faqSyncData {
+    return Intl.message(
+      'Sync devices?',
+      name: 'faqSyncData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto synced`
+  String get faqSyncDataAnswer {
+    return Intl.message(
+      'Auto synced',
+      name: 'faqSyncDataAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track workouts?`
+  String get faqTrackWorkouts {
+    return Intl.message(
+      'Track workouts?',
+      name: 'faqTrackWorkouts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap + button`
+  String get faqTrackWorkoutsAnswer {
+    return Intl.message(
+      'Tap + button',
+      name: 'faqTrackWorkoutsAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Fitness Companion`
+  String get personalFitnessCompanion {
+    return Intl.message(
+      'Your Fitness Companion',
+      name: 'personalFitnessCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track workouts, monitor progress`
+  String get appDescription {
+    return Intl.message(
+      'Track workouts, monitor progress',
+      name: 'appDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fitrix Team`
+  String get fitrixTeam {
+    return Intl.message('Fitrix Team', name: 'fitrixTeam', desc: '', args: []);
+  }
+
+  /// `October 2025`
+  String get lastUpdatedDate {
+    return Intl.message(
+      'October 2025',
+      name: 'lastUpdatedDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Profile`
+  String get updateProfile {
+    return Intl.message(
+      'Update Profile',
+      name: 'updateProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get saveChanges {
+    return Intl.message('Save', name: 'saveChanges', desc: '', args: []);
+  }
+
+  /// `Height (cm)`
+  String get height {
+    return Intl.message('Height (cm)', name: 'height', desc: '', args: []);
+  }
+
+  /// `Height`
+  String get enterHeight {
+    return Intl.message('Height', name: 'enterHeight', desc: '', args: []);
+  }
+
+  /// `Height required`
+  String get heightRequired {
+    return Intl.message(
+      'Height required',
+      name: 'heightRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid height`
+  String get enterValidHeight {
+    return Intl.message(
+      'Invalid height',
+      name: 'enterValidHeight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check height`
+  String get checkHeightEntered {
+    return Intl.message(
+      'Check height',
+      name: 'checkHeightEntered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated!`
+  String get profileUpdatedSuccess {
+    return Intl.message(
+      'Profile updated!',
+      name: 'profileUpdatedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details`
+  String get exercise_details {
+    return Intl.message(
+      'Details',
+      name: 'exercise_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Details`
+  String get view_details {
+    return Intl.message(
+      'View Details',
+      name: 'view_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instructions`
+  String get instructions {
+    return Intl.message(
+      'Instructions',
+      name: 'instructions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Steps`
+  String get step_by_step_instructions {
+    return Intl.message(
+      'Steps',
+      name: 'step_by_step_instructions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Difficulty`
+  String get select_difficulty {
+    return Intl.message(
+      'Difficulty',
+      name: 'select_difficulty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Equipment`
+  String get select_equipment {
+    return Intl.message(
+      'Equipment',
+      name: 'select_equipment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add image`
+  String get tap_to_add_image {
+    return Intl.message(
+      'Add image',
+      name: 'tap_to_add_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g., Chest Press`
+  String get eg_chest_press {
+    return Intl.message(
+      'e.g., Chest Press',
+      name: 'eg_chest_press',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name required`
+  String get please_enter_exercise_name {
+    return Intl.message(
+      'Name required',
+      name: 'please_enter_exercise_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get brief_description_of_the_exercise {
+    return Intl.message(
+      'Description',
+      name: 'brief_description_of_the_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom Equipment`
+  String get custom_equipment {
+    return Intl.message(
+      'Custom Equipment',
+      name: 'custom_equipment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Equipment name`
+  String get enter_your_equipment_name {
+    return Intl.message(
+      'Equipment name',
+      name: 'enter_your_equipment_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name required`
+  String get please_enter_custom_equipment_name {
+    return Intl.message(
+      'Name required',
+      name: 'please_enter_custom_equipment_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image failed`
+  String get failed_to_pick_image {
+    return Intl.message(
+      'Image failed',
+      name: 'failed_to_pick_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Public`
+  String get public_exercises {
+    return Intl.message('Public', name: 'public_exercises', desc: '', args: []);
+  }
+
+  /// `Select Session`
+  String get select_workout {
+    return Intl.message(
+      'Select Session',
+      name: 'select_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Sessions`
+  String get no_workout_sessions {
+    return Intl.message(
+      'No Sessions',
+      name: 'no_workout_sessions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create session`
+  String get create_new_session_to_start {
+    return Intl.message(
+      'Create session',
+      name: 'create_new_session_to_start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create_session {
+    return Intl.message('Create', name: 'create_session', desc: '', args: []);
+  }
+
+  /// `Session created!`
+  String get session_created {
+    return Intl.message(
+      'Session created!',
+      name: 'session_created',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Added!`
+  String get exercise_added_successfully {
+    return Intl.message(
+      'Added!',
+      name: 'exercise_added_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adding...`
+  String get adding {
+    return Intl.message('Adding...', name: 'adding', desc: '', args: []);
+  }
+
+  /// `Session completed`
+  String get cannot_add_to_completed_session {
+    return Intl.message(
+      'Session completed',
+      name: 'cannot_add_to_completed_session',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Network error`
+  String get network_error {
+    return Intl.message(
+      'Network error',
+      name: 'network_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add failed`
+  String get failed_to_add_exercise {
+    return Intl.message(
+      'Add failed',
+      name: 'failed_to_add_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get something_went_wrong {
+    return Intl.message(
+      'Error',
+      name: 'something_went_wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Workouts`
+  String get no_workouts_yet {
+    return Intl.message(
+      'No Workouts',
+      name: 'no_workouts_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create first workout`
+  String get start_your_fitness_journey {
+    return Intl.message(
+      'Create first workout',
+      name: 'start_your_fitness_journey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Session created!`
+  String get workout_session_created {
+    return Intl.message(
+      'Session created!',
+      name: 'workout_session_created',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Sets`
+  String get total_sets {
+    return Intl.message('Total Sets', name: 'total_sets', desc: '', args: []);
+  }
+
+  /// `Complete`
+  String get complete_workout {
+    return Intl.message(
+      'Complete',
+      name: 'complete_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed!`
+  String get workout_completed {
+    return Intl.message(
+      'Completed!',
+      name: 'workout_completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Started!`
+  String get workout_started {
+    return Intl.message(
+      'Started!',
+      name: 'workout_started',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout done!`
+  String get workout_completed_success {
+    return Intl.message(
+      'Workout done!',
+      name: 'workout_completed_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No sets`
+  String get no_sets_yet {
+    return Intl.message('No sets', name: 'no_sets_yet', desc: '', args: []);
+  }
+
+  /// `No Exercises`
+  String get no_exercises_added {
+    return Intl.message(
+      'No Exercises',
+      name: 'no_exercises_added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap + to add`
+  String get tap_add_to_start {
+    return Intl.message(
+      'Tap + to add',
+      name: 'tap_add_to_start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Found`
+  String get workout_not_found {
+    return Intl.message(
+      'Not Found',
+      name: 'workout_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get notes {
+    return Intl.message('Notes', name: 'notes', desc: '', args: []);
+  }
+
+  /// `Exercises appear here`
+  String get exercises_will_appear_here {
+    return Intl.message(
+      'Exercises appear here',
+      name: 'exercises_will_appear_here',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Set`
+  String get add_set {
+    return Intl.message('Add Set', name: 'add_set', desc: '', args: []);
+  }
+
+  /// `Edit Set`
+  String get edit_set {
+    return Intl.message('Edit Set', name: 'edit_set', desc: '', args: []);
+  }
+
+  /// `Set`
+  String get set {
+    return Intl.message('Set', name: 'set', desc: '', args: []);
+  }
+
+  /// `Reps`
+  String get reps {
+    return Intl.message('Reps', name: 'reps', desc: '', args: []);
+  }
+
+  /// `Weight (kg)`
+  String get weight_kg {
+    return Intl.message('Weight (kg)', name: 'weight_kg', desc: '', args: []);
+  }
+
+  /// `Rest (sec)`
+  String get rest_time_seconds {
+    return Intl.message(
+      'Rest (sec)',
+      name: 'rest_time_seconds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get optional_notes {
+    return Intl.message('Notes', name: 'optional_notes', desc: '', args: []);
+  }
+
+  /// `Reps required`
+  String get please_enter_reps {
+    return Intl.message(
+      'Reps required',
+      name: 'please_enter_reps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weight required`
+  String get please_enter_weight {
+    return Intl.message(
+      'Weight required',
+      name: 'please_enter_weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid number`
+  String get please_enter_valid_number {
+    return Intl.message(
+      'Invalid number',
+      name: 'please_enter_valid_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message('Add', name: 'add', desc: '', args: []);
+  }
+
+  /// `Sessions`
+  String get sessions {
+    return Intl.message('Sessions', name: 'sessions', desc: '', args: []);
+  }
+
+  /// `Not started`
+  String get not_started {
+    return Intl.message('Not started', name: 'not_started', desc: '', args: []);
+  }
+
+  /// `No exercises`
+  String get no_exercises_added_yet {
+    return Intl.message(
+      'No exercises',
+      name: 'no_exercises_added_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Workout?`
+  String get create_new_workout {
+    return Intl.message(
+      'New Workout?',
+      name: 'create_new_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create session?`
+  String get create_workout_confirmation {
+    return Intl.message(
+      'Create session?',
+      name: 'create_workout_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success!`
+  String get success {
+    return Intl.message('Success!', name: 'success', desc: '', args: []);
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message('Error', name: 'error', desc: '', args: []);
+  }
+
+  /// `View`
+  String get view {
+    return Intl.message('View', name: 'view', desc: '', args: []);
+  }
+
+  /// `Confirm`
+  String get confirm_create_session {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm_create_session',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sure?`
+  String get are_you_sure {
+    return Intl.message('Sure?', name: 'are_you_sure', desc: '', args: []);
+  }
+
+  /// `Select Date`
+  String get select_workout_date {
+    return Intl.message(
+      'Select Date',
+      name: 'select_workout_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get workout_date {
+    return Intl.message('Date', name: 'workout_date', desc: '', args: []);
+  }
+
+  /// `Tomorrow`
+  String get tomorrow {
+    return Intl.message('Tomorrow', name: 'tomorrow', desc: '', args: []);
+  }
+
+  /// `Notes`
+  String get add_notes {
+    return Intl.message('Notes', name: 'add_notes', desc: '', args: []);
+  }
+
+  /// `Add notes...`
+  String get add_workout_notes {
+    return Intl.message(
+      'Add notes...',
+      name: 'add_workout_notes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search date...`
+  String get search_by_date {
+    return Intl.message(
+      'Search date...',
+      name: 'search_by_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Searching`
+  String get searching_for {
+    return Intl.message('Searching', name: 'searching_for', desc: '', args: []);
+  }
+
+  /// `found`
+  String get found {
+    return Intl.message('found', name: 'found', desc: '', args: []);
+  }
+
+  /// `Results`
+  String get search_results {
+    return Intl.message('Results', name: 'search_results', desc: '', args: []);
+  }
+
+  /// `Try other date`
+  String get try_different_date {
+    return Intl.message(
+      'Try other date',
+      name: 'try_different_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Exercise`
+  String get add_exercise {
+    return Intl.message(
+      'Add Exercise',
+      name: 'add_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to add`
+  String get tap_to_add_exercise {
+    return Intl.message(
+      'Tap to add',
+      name: 'tap_to_add_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current`
+  String get current_measurements {
+    return Intl.message(
+      'Current',
+      name: 'current_measurements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Goals`
+  String get fitness_goals {
+    return Intl.message('Goals', name: 'fitness_goals', desc: '', args: []);
+  }
+
+  /// `Weight Goal (kg)`
+  String get weight_goal {
+    return Intl.message(
+      'Weight Goal (kg)',
+      name: 'weight_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target weight`
+  String get enter_weight_goal {
+    return Intl.message(
+      'Target weight',
+      name: 'enter_weight_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Body Fat Goal (%)`
+  String get body_fat_goal {
+    return Intl.message(
+      'Body Fat Goal (%)',
+      name: 'body_fat_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target fat`
+  String get enter_body_fat_goal {
+    return Intl.message(
+      'Target fat',
+      name: 'enter_body_fat_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muscle Goal (kg)`
+  String get muscle_mass_goal {
+    return Intl.message(
+      'Muscle Goal (kg)',
+      name: 'muscle_mass_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target muscle`
+  String get enter_muscle_mass_goal {
+    return Intl.message(
+      'Target muscle',
+      name: 'enter_muscle_mass_goal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Measurements & Goals`
+  String get body_measurements_and_goals {
+    return Intl.message(
+      'Measurements & Goals',
+      name: 'body_measurements_and_goals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Goal Weight (kg)`
+  String get goal_weight {
+    return Intl.message(
+      'Goal Weight (kg)',
+      name: 'goal_weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Body Fat (%)`
+  String get current_body_fat {
+    return Intl.message(
+      'Body Fat (%)',
+      name: 'current_body_fat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Goal Fat (%)`
+  String get goal_body_fat {
+    return Intl.message(
+      'Goal Fat (%)',
+      name: 'goal_body_fat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muscle (kg)`
+  String get current_muscle_mass {
+    return Intl.message(
+      'Muscle (kg)',
+      name: 'current_muscle_mass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Goal Muscle (kg)`
+  String get goal_muscle_mass {
+    return Intl.message(
+      'Goal Muscle (kg)',
+      name: 'goal_muscle_mass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Goal`
+  String get goal {
+    return Intl.message('Goal', name: 'goal', desc: '', args: []);
+  }
+
+  /// `Reorder`
+  String get reorder_sections {
+    return Intl.message(
+      'Reorder',
+      name: 'reorder_sections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drag to reorder`
+  String get drag_sections_instruction {
+    return Intl.message(
+      'Drag to reorder',
+      name: 'drag_sections_instruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply_order {
+    return Intl.message('Apply', name: 'apply_order', desc: '', args: []);
+  }
+
+  /// `Update profile info`
+  String get updateYourProfileInformation {
+    return Intl.message(
+      'Update profile info',
+      name: 'updateYourProfileInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get enterPhoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'enterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get firstName {
+    return Intl.message('First Name', name: 'firstName', desc: '', args: []);
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
+  }
+
+  /// `Rate App`
+  String get rateApp {
+    return Intl.message('Rate App', name: 'rateApp', desc: '', args: []);
   }
 
   /// `App Settings`
@@ -3174,864 +4954,39 @@ class S {
     );
   }
 
-  /// `Member Since`
-  String get memberSince {
+  /// `Body fat required`
+  String get bodyFatRequired {
     return Intl.message(
-      'Member Since',
-      name: 'memberSince',
+      'Body fat required',
+      name: 'bodyFatRequired',
       desc: '',
       args: [],
     );
   }
 
-  /// `Role`
-  String get role {
-    return Intl.message('Role', name: 'role', desc: '', args: []);
-  }
-
-  /// `Change Your Password`
-  String get changeYourPassword {
-    return Intl.message(
-      'Change Your Password',
-      name: 'changeYourPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Privacy Policy`
-  String get privacyPolicy {
-    return Intl.message(
-      'Privacy Policy',
-      name: 'privacyPolicy',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Terms & Conditions`
-  String get termsConditions {
-    return Intl.message(
-      'Terms & Conditions',
-      name: 'termsConditions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Contact Support`
-  String get contactSupport {
-    return Intl.message(
-      'Contact Support',
-      name: 'contactSupport',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logout`
-  String get logoutConfirmTitle {
-    return Intl.message(
-      'Logout',
-      name: 'logoutConfirmTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Are you sure you want to logout?`
-  String get logoutConfirmMessage {
-    return Intl.message(
-      'Are you sure you want to logout?',
-      name: 'logoutConfirmMessage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logged out successfully`
-  String get loggedOutSuccess {
-    return Intl.message(
-      'Logged out successfully',
-      name: 'loggedOutSuccess',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Privacy Policy`
-  String get privacyPolicyTitle {
-    return Intl.message(
-      'Privacy Policy',
-      name: 'privacyPolicyTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Terms & Conditions`
-  String get termsConditionsTitle {
-    return Intl.message(
-      'Terms & Conditions',
-      name: 'termsConditionsTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Contact Support`
-  String get contactSupportTitle {
-    return Intl.message(
-      'Contact Support',
-      name: 'contactSupportTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `About Fitrix`
-  String get aboutTitle {
-    return Intl.message('About Fitrix', name: 'aboutTitle', desc: '', args: []);
-  }
-
-  /// `Last Updated`
-  String get lastUpdated {
-    return Intl.message(
-      'Last Updated',
-      name: 'lastUpdated',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Send Email`
-  String get sendEmail {
-    return Intl.message('Send Email', name: 'sendEmail', desc: '', args: []);
-  }
-
-  /// `Call Us`
-  String get callUs {
-    return Intl.message('Call Us', name: 'callUs', desc: '', args: []);
-  }
-
-  /// `WhatsApp`
-  String get whatsapp {
-    return Intl.message('WhatsApp', name: 'whatsapp', desc: '', args: []);
-  }
-
-  /// `Send Message`
-  String get sendMessage {
-    return Intl.message(
-      'Send Message',
-      name: 'sendMessage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Build Number`
-  String get buildNumber {
-    return Intl.message(
-      'Build Number',
-      name: 'buildNumber',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Developer`
-  String get developer {
-    return Intl.message('Developer', name: 'developer', desc: '', args: []);
-  }
-
-  /// `Website`
-  String get website {
-    return Intl.message('Website', name: 'website', desc: '', args: []);
-  }
-
-  /// `Visit Website`
-  String get visitWebsite {
-    return Intl.message(
-      'Visit Website',
-      name: 'visitWebsite',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Follow Us`
-  String get followUs {
-    return Intl.message('Follow Us', name: 'followUs', desc: '', args: []);
-  }
-
-  /// `Rate App`
-  String get rateApp {
-    return Intl.message('Rate App', name: 'rateApp', desc: '', args: []);
-  }
-
-  /// `Share App`
-  String get shareApp {
-    return Intl.message('Share App', name: 'shareApp', desc: '', args: []);
-  }
-
-  /// `Introduction`
-  String get introduction {
-    return Intl.message(
-      'Introduction',
-      name: 'introduction',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Welcome to Fitrix. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and share your information when you use our fitness tracking application.`
-  String get introductionText {
-    return Intl.message(
-      'Welcome to Fitrix. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and share your information when you use our fitness tracking application.',
-      name: 'introductionText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Information We Collect`
-  String get informationWeCollect {
-    return Intl.message(
-      'Information We Collect',
-      name: 'informationWeCollect',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We collect information that you provide directly to us, including:`
-  String get informationWeCollectText {
-    return Intl.message(
-      'We collect information that you provide directly to us, including:',
-      name: 'informationWeCollectText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Personal information (name, email, phone number)`
-  String get personalInformationItem {
-    return Intl.message(
-      'Personal information (name, email, phone number)',
-      name: 'personalInformationItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Profile information (age, gender, fitness goals)`
-  String get profileInformationItem {
-    return Intl.message(
-      'Profile information (age, gender, fitness goals)',
-      name: 'profileInformationItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Health and fitness data (weight, body measurements, workout history)`
-  String get healthDataItem {
-    return Intl.message(
-      'Health and fitness data (weight, body measurements, workout history)',
-      name: 'healthDataItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Usage data (app interactions, preferences)`
-  String get usageDataItem {
-    return Intl.message(
-      'Usage data (app interactions, preferences)',
-      name: 'usageDataItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `How We Use Your Information`
-  String get howWeUseInfo {
-    return Intl.message(
-      'How We Use Your Information',
-      name: 'howWeUseInfo',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We use the information we collect to:`
-  String get howWeUseInfoText {
-    return Intl.message(
-      'We use the information we collect to:',
-      name: 'howWeUseInfoText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Provide and maintain our services`
-  String get provideServicesItem {
-    return Intl.message(
-      'Provide and maintain our services',
-      name: 'provideServicesItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Personalize your fitness experience`
-  String get personalizeExperienceItem {
-    return Intl.message(
-      'Personalize your fitness experience',
-      name: 'personalizeExperienceItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Track your progress and achievements`
-  String get trackProgressItem {
-    return Intl.message(
-      'Track your progress and achievements',
-      name: 'trackProgressItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Send you notifications and updates`
-  String get sendNotificationsItem {
-    return Intl.message(
-      'Send you notifications and updates',
-      name: 'sendNotificationsItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Improve our app and services`
-  String get improveServicesItem {
-    return Intl.message(
-      'Improve our app and services',
-      name: 'improveServicesItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Data Security`
-  String get dataSecurity {
-    return Intl.message(
-      'Data Security',
-      name: 'dataSecurity',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We implement appropriate security measures to protect your personal information. Your data is encrypted and stored securely on our servers. We do not share your personal information with third parties without your consent.`
-  String get dataSecurityText {
-    return Intl.message(
-      'We implement appropriate security measures to protect your personal information. Your data is encrypted and stored securely on our servers. We do not share your personal information with third parties without your consent.',
-      name: 'dataSecurityText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Your Rights`
-  String get yourRights {
-    return Intl.message('Your Rights', name: 'yourRights', desc: '', args: []);
-  }
-
-  /// `You have the right to:`
-  String get yourRightsText {
-    return Intl.message(
-      'You have the right to:',
-      name: 'yourRightsText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Access your personal data`
-  String get accessDataItem {
-    return Intl.message(
-      'Access your personal data',
-      name: 'accessDataItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Correct inaccurate data`
-  String get correctDataItem {
-    return Intl.message(
-      'Correct inaccurate data',
-      name: 'correctDataItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Request deletion of your data`
-  String get deleteDataItem {
-    return Intl.message(
-      'Request deletion of your data',
-      name: 'deleteDataItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Opt-out of marketing communications`
-  String get optOutItem {
-    return Intl.message(
-      'Opt-out of marketing communications',
-      name: 'optOutItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Export your data`
-  String get exportDataItem {
-    return Intl.message(
-      'Export your data',
-      name: 'exportDataItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Contact Us`
-  String get contactUsSection {
-    return Intl.message(
-      'Contact Us',
-      name: 'contactUsSection',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `If you have any questions about this Privacy Policy, please contact us at appfitrix@gmail.com`
-  String get contactUsText {
-    return Intl.message(
-      'If you have any questions about this Privacy Policy, please contact us at appfitrix@gmail.com',
-      name: 'contactUsText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Acceptance of Terms`
-  String get acceptanceOfTerms {
-    return Intl.message(
-      'Acceptance of Terms',
-      name: 'acceptanceOfTerms',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `By accessing and using Fitrix, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our application.`
-  String get acceptanceOfTermsText {
-    return Intl.message(
-      'By accessing and using Fitrix, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our application.',
-      name: 'acceptanceOfTermsText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `User Account`
-  String get userAccount {
-    return Intl.message(
-      'User Account',
-      name: 'userAccount',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `To use certain features of Fitrix, you must create an account. You are responsible for:`
-  String get userAccountText {
-    return Intl.message(
-      'To use certain features of Fitrix, you must create an account. You are responsible for:',
-      name: 'userAccountText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintaining the confidentiality of your account credentials`
-  String get maintainCredentialsItem {
-    return Intl.message(
-      'Maintaining the confidentiality of your account credentials',
-      name: 'maintainCredentialsItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All activities that occur under your account`
-  String get accountActivitiesItem {
-    return Intl.message(
-      'All activities that occur under your account',
-      name: 'accountActivitiesItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Providing accurate and complete information`
-  String get accurateInfoItem {
-    return Intl.message(
-      'Providing accurate and complete information',
-      name: 'accurateInfoItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Updating your information as needed`
-  String get updateInfoItem {
-    return Intl.message(
-      'Updating your information as needed',
-      name: 'updateInfoItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Acceptable Use`
-  String get acceptableUse {
-    return Intl.message(
-      'Acceptable Use',
-      name: 'acceptableUse',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You agree to use Fitrix only for lawful purposes. You agree not to:`
-  String get acceptableUseText {
-    return Intl.message(
-      'You agree to use Fitrix only for lawful purposes. You agree not to:',
-      name: 'acceptableUseText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Upload or share inappropriate content`
-  String get inappropriateContentItem {
-    return Intl.message(
-      'Upload or share inappropriate content',
-      name: 'inappropriateContentItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Harass or harm other users`
-  String get harassUsersItem {
-    return Intl.message(
-      'Harass or harm other users',
-      name: 'harassUsersItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Attempt to access unauthorized areas`
-  String get unauthorizedAccessItem {
-    return Intl.message(
-      'Attempt to access unauthorized areas',
-      name: 'unauthorizedAccessItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Use the app for commercial purposes without permission`
-  String get commercialUseItem {
-    return Intl.message(
-      'Use the app for commercial purposes without permission',
-      name: 'commercialUseItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Violate any applicable laws or regulations`
-  String get violateLawsItem {
-    return Intl.message(
-      'Violate any applicable laws or regulations',
-      name: 'violateLawsItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Health Disclaimer`
-  String get healthDisclaimer {
-    return Intl.message(
-      'Health Disclaimer',
-      name: 'healthDisclaimer',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fitrix is designed to help you track your fitness progress. However:`
-  String get healthDisclaimerText {
-    return Intl.message(
-      'Fitrix is designed to help you track your fitness progress. However:',
-      name: 'healthDisclaimerText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We are not a substitute for professional medical advice`
-  String get notMedicalAdviceItem {
-    return Intl.message(
-      'We are not a substitute for professional medical advice',
-      name: 'notMedicalAdviceItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Consult a healthcare provider before starting any fitness program`
-  String get consultProviderItem {
-    return Intl.message(
-      'Consult a healthcare provider before starting any fitness program',
-      name: 'consultProviderItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Use the app at your own risk`
-  String get useAtRiskItem {
-    return Intl.message(
-      'Use the app at your own risk',
-      name: 'useAtRiskItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We are not liable for any injuries or health issues`
-  String get notLiableItem {
-    return Intl.message(
-      'We are not liable for any injuries or health issues',
-      name: 'notLiableItem',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Intellectual Property`
-  String get intellectualProperty {
-    return Intl.message(
-      'Intellectual Property',
-      name: 'intellectualProperty',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All content, features, and functionality of Fitrix are owned by us and are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, or distribute any part of our app without permission.`
-  String get intellectualPropertyText {
-    return Intl.message(
-      'All content, features, and functionality of Fitrix are owned by us and are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, or distribute any part of our app without permission.',
-      name: 'intellectualPropertyText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Termination`
-  String get termination {
-    return Intl.message('Termination', name: 'termination', desc: '', args: []);
-  }
-
-  /// `We reserve the right to suspend or terminate your account at any time for violating these terms or for any other reason at our discretion.`
-  String get terminationText {
-    return Intl.message(
-      'We reserve the right to suspend or terminate your account at any time for violating these terms or for any other reason at our discretion.',
-      name: 'terminationText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Changes to Terms`
-  String get changesToTerms {
-    return Intl.message(
-      'Changes to Terms',
-      name: 'changesToTerms',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We may modify these terms at any time. Continued use of Fitrix after changes constitutes acceptance of the modified terms.`
-  String get changesToTermsText {
-    return Intl.message(
-      'We may modify these terms at any time. Continued use of Fitrix after changes constitutes acceptance of the modified terms.',
-      name: 'changesToTermsText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `For questions about these terms, contact us at appfitrix@gmail.com`
-  String get legalContact {
-    return Intl.message(
-      'For questions about these terms, contact us at appfitrix@gmail.com',
-      name: 'legalContact',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `How can we help you?`
-  String get howCanWeHelp {
-    return Intl.message(
-      'How can we help you?',
-      name: 'howCanWeHelp',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Our support team is here to assist you`
-  String get supportTeamReady {
-    return Intl.message(
-      'Our support team is here to assist you',
-      name: 'supportTeamReady',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Frequently Asked Questions`
-  String get frequentlyAskedQuestions {
-    return Intl.message(
-      'Frequently Asked Questions',
-      name: 'frequentlyAskedQuestions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `How do I reset my password?`
-  String get faqResetPassword {
-    return Intl.message(
-      'How do I reset my password?',
-      name: 'faqResetPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Go to Login screen and tap 'Forgot Password'. Follow the instructions sent to your email.`
-  String get faqResetPasswordAnswer {
-    return Intl.message(
-      'Go to Login screen and tap \'Forgot Password\'. Follow the instructions sent to your email.',
-      name: 'faqResetPasswordAnswer',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Can I sync data across devices?`
-  String get faqSyncData {
-    return Intl.message(
-      'Can I sync data across devices?',
-      name: 'faqSyncData',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Yes, your data is automatically synced when you log in with the same account.`
-  String get faqSyncDataAnswer {
-    return Intl.message(
-      'Yes, your data is automatically synced when you log in with the same account.',
-      name: 'faqSyncDataAnswer',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `How do I track my workouts?`
-  String get faqTrackWorkouts {
-    return Intl.message(
-      'How do I track my workouts?',
-      name: 'faqTrackWorkouts',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Navigate to the Workouts section and tap the '+' button to create a new workout session.`
-  String get faqTrackWorkoutsAnswer {
-    return Intl.message(
-      'Navigate to the Workouts section and tap the \'+\' button to create a new workout session.',
-      name: 'faqTrackWorkoutsAnswer',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Your Personal Fitness Companion`
-  String get personalFitnessCompanion {
+  /// `Muscle mass required`
+  String get muscleMassRequired {
     return Intl.message(
-      'Your Personal Fitness Companion',
-      name: 'personalFitnessCompanion',
+      'Muscle mass required',
+      name: 'muscleMassRequired',
       desc: '',
       args: [],
     );
-  }
-
-  /// `Fitrix is your all-in-one fitness companion designed to help you achieve your health and fitness goals. Track workouts, monitor progress, and stay motivated on your fitness journey.`
-  String get appDescription {
-    return Intl.message(
-      'Fitrix is your all-in-one fitness companion designed to help you achieve your health and fitness goals. Track workouts, monitor progress, and stay motivated on your fitness journey.',
-      name: 'appDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fitrix Team`
-  String get fitrixTeam {
-    return Intl.message('Fitrix Team', name: 'fitrixTeam', desc: '', args: []);
   }
 
-  /// `October 2025`
-  String get lastUpdatedDate {
+  /// `Edit Profile & Measurements`
+  String get edit_profile_and_measurements {
     return Intl.message(
-      'October 2025',
-      name: 'lastUpdatedDate',
+      'Edit Profile & Measurements',
+      name: 'edit_profile_and_measurements',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
-  String get x {
-    return Intl.message('', name: 'x', desc: '', args: []);
+  /// `X`
+  String get X {
+    return Intl.message('X', name: 'X', desc: '', args: []);
   }
 }
 

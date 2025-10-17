@@ -17,11 +17,17 @@ class Routes {
   static const String settingsScreen = 'settingsScreen';
   static const String forgotPasswordScreen = 'ForgotPasswordScreen';
 
-  static const String sectionExercises = 'sectionExercises';
-  static const String customExercises = 'customExercises';
-
   static const String privacyPolicyScreen = '/privacy-policy';
   static const String termsConditionsScreen = '/terms-conditions';
   static const String contactSupportScreen = '/contact-support';
   static const String aboutScreen = '/about';
+  static const String updateProfileScreen = '/update-profile';
+
+  // Exercise Routes
+  static const String sectionExercises = '/section-exercises';
+  static const String exerciseDetails = '/exercise-details';
+  static const String customExercises = '/custom-exercises';
+  static const String createCustomExercise = '/create-custom-exercise';
+
+  static const String workoutDetails = '/workout-details';
 }
