@@ -1,11 +1,402 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/di/get_it.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/models/goal_model.dart';
+import '../../data/models/progress_models.dart';
+import '../cubit/progress_cubit.dart';
+import '../cubit/progress_state.dart';
+import '../widgets/animated_goals_card.dart';
+import '../widgets/celebration_overlay.dart';
+import '../widgets/goals_list_card.dart';
+import '../widgets/measurement_card_switcher.dart';
+import '../widgets/measurements_list_card.dart';
+import '../widgets/statistics_cards.dart';
+import 'measurement_history_screen.dart';
+
+// class UserProgressScreen extends StatelessWidget {
+//   const UserProgressScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (_) => di<ProgressCubit>()..loadMeasurementCards(),
+//       child: const _UserProgressView(),
+//     );
+//   }
+// }
+//
+// class _UserProgressView extends StatelessWidget {
+//   const _UserProgressView();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final s = S.of(context);
+//
+//     return Scaffold(
+//       backgroundColor: ColorsManager.scaffoldBackground,
+//       appBar: _buildAppBar(s),
+//       body: BlocBuilder<ProgressCubit, ProgressState>(
+//         builder: (context, state) => _buildBody(context, state, s),
+//       ),
+//     );
+//   }
+//
+//   AppBar _buildAppBar(S s) {
+//     return AppBar(
+//       title: Text(s.my_progress, style: TextStyles.headline3),
+//       backgroundColor: ColorsManager.scaffoldBackground,
+//       elevation: 0,
+//     );
+//   }
+//
+//   Widget _buildBody(BuildContext context, ProgressState state, S s) {
+//     if (state is ProgressLoading) {
+//       return _buildLoadingState();
+//     }
+//
+//     if (state is ProgressError) {
+//       return _buildErrorState(context, state.message);
+//     }
+//
+//     if (state is ProgressLoaded) {
+//       return _buildLoadedState(context, state, s);
+//     }
+//
+//     return const SizedBox.shrink();
+//   }
+//
+//   Widget _buildLoadingState() {
+//     return const Center(
+//       child: CircularProgressIndicator(color: ColorsManager.primaryGreen),
+//     );
+//   }
+//
+//   Widget _buildErrorState(BuildContext context, String message) {
+//     return Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: [
+//           Icon(Icons.error_outline, size: 64.sp, color: ColorsManager.error),
+//           SizedBox(height: 16.h),
+//           Padding(
+//             padding: EdgeInsets.symmetric(horizontal: 32.w),
+//             child: Text(
+//               message,
+//               style: TextStyles.bodyMedium,
+//               textAlign: TextAlign.center,
+//             ),
+//           ),
+//           SizedBox(height: 16.h),
+//           ElevatedButton(
+//             onPressed: () =>
+//                 context.read<ProgressCubit>().loadMeasurementCards(),
+//             style: ElevatedButton.styleFrom(
+//               backgroundColor: ColorsManager.primaryGreen,
+//               padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
+//             ),
+//             child: Text('Retry', style: TextStyles.font16WhiteSemiBold),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   Widget _buildLoadedState(BuildContext context, ProgressLoaded state, S s) {
+//     return Stack(
+//       children: [
+//         RefreshIndicator(
+//           onRefresh: () => context.read<ProgressCubit>().refreshData(),
+//           color: ColorsManager.primaryGreen,
+//           child: SingleChildScrollView(
+//             physics: const AlwaysScrollableScrollPhysics(),
+//             padding: EdgeInsets.all(20.w),
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 MeasurementCardSwitcher(
+//                   cards: state.measurementCards,
+//                   selectedType: state.selectedCardType,
+//                 ),
+//                 SizedBox(height: 30.h),
+//
+//                 _buildViewHistoryButton(context),
+//                 SizedBox(height: 30.h),
+//
+//                 _buildSectionHeader(s.goals),
+//                 SizedBox(height: 12.h),
+//                 GoalsListCard(cards: state.measurementCards, s: s),
+//                 SizedBox(height: 20.h),
+//
+//                 _buildSectionHeader(s.statistics),
+//                 SizedBox(height: 12.h),
+//                 // ✅ Pass statistics
+//                 StatisticsCards(statistics: state.statistics, s: s),
+//               ],
+//             ),
+//           ),
+//         ),
+//
+//         if (state.shouldShowCelebration &&
+//             state.celebrationMessage != null &&
+//             state.celebrationProgress != null)
+//           CelebrationOverlay(
+//             message: state.celebrationMessage!,
+//             progressPercent: state.celebrationProgress!,
+//             onDismiss: () => context.read<ProgressCubit>().dismissCelebration(),
+//           ),
+//       ],
+//     );
+//   }
+//
+//   // ✅ Extract goals from measurement cards data
+//   List<GoalData> _extractGoalsFromCards(MeasurementCardsResponse cards) {
+//     return [
+//       // Weight Goal
+//       GoalData(
+//         title: 'Weight Goal',
+//         currentValue: cards.weightCard.lastWeight,
+//         goalValue: cards.weightCard.weightGoal,
+//         startValue: cards.weightCard.firstWeight,
+//         unit: 'kg',
+//         type: GoalType.decrease,
+//         icon: '⚖️',
+//       ),
+//
+//       // Body Fat Goal
+//       GoalData(
+//         title: 'Body Fat Goal',
+//         currentValue: cards.bodyFatCard.lastBodyFat,
+//         goalValue: cards.bodyFatCard.bodyFatGoal,
+//         startValue: cards.bodyFatCard.firstBodyFat,
+//         unit: '%',
+//         type: GoalType.decrease,
+//         icon: '💧',
+//       ),
+//
+//       // Muscle Mass Goal
+//       GoalData(
+//         title: 'Muscle Mass Goal',
+//         currentValue: cards.muscleMassCard.lastMuscleMass,
+//         goalValue: cards.muscleMassCard.muscleMassGoal,
+//         startValue: cards.muscleMassCard.firstMuscleMass,
+//         unit: 'kg',
+//         type: GoalType.increase,
+//         icon: '💪',
+//       ),
+//     ];
+//   }
+//
+//   Widget _buildViewHistoryButton(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () {
+//         Navigator.push(
+//           context,
+//           MaterialPageRoute(builder: (_) => const MeasurementHistoryScreen()),
+//         );
+//       },
+//       child: Container(
+//         padding: EdgeInsets.all(16.w),
+//         decoration: BoxDecoration(
+//           gradient: LinearGradient(
+//             colors: [
+//               ColorsManager.primaryGreen.withOpacity(0.1),
+//               ColorsManager.secondaryGreen.withOpacity(0.05),
+//             ],
+//             begin: Alignment.topLeft,
+//             end: Alignment.bottomRight,
+//           ),
+//           borderRadius: BorderRadius.circular(16.r),
+//           border: Border.all(
+//             color: ColorsManager.primaryGreen.withOpacity(0.3),
+//             width: 1.5,
+//           ),
+//         ),
+//         child: Column(
+//           children: [
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(
+//                       'Measurement History',
+//                       style: TextStyles.font16PrimaryTextSemiBold,
+//                     ),
+//                     SizedBox(height: 4.h),
+//                     Text(
+//                       'View detailed charts & analytics',
+//                       style: TextStyles.font12SecondaryTextRegular,
+//                     ),
+//                   ],
+//                 ),
+//                 Container(
+//                   padding: EdgeInsets.all(10.w),
+//                   decoration: BoxDecoration(
+//                     gradient: ColorsManager.primaryGradient,
+//                     shape: BoxShape.circle,
+//                   ),
+//                   child: Icon(
+//                     Icons.insights,
+//                     color: ColorsManager.whiteText,
+//                     size: 20.sp,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             SizedBox(height: 12.h),
+//
+//             // Mini chart icons preview
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//               children: [
+//                 _buildMiniChartIcon(Icons.show_chart, 'Line'),
+//                 _buildMiniChartIcon(Icons.bar_chart, 'Bar'),
+//                 _buildMiniChartIcon(Icons.area_chart, 'Area'),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+//
+//   Widget _buildMiniChartIcon(IconData icon, String label) {
+//     return Column(
+//       children: [
+//         Container(
+//           padding: EdgeInsets.all(8.w),
+//           decoration: BoxDecoration(
+//             color: ColorsManager.primaryGreen.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(8.r),
+//           ),
+//           child: Icon(icon, color: ColorsManager.primaryGreen, size: 20.sp),
+//         ),
+//         SizedBox(height: 4.h),
+//         Text(label, style: TextStyles.font10Bold),
+//       ],
+//     );
+//   }
+//
+//   ///Fourth
+//   ///Fourth
+//   ///Fourth
+//   // Widget _buildViewHistoryButton(BuildContext context) {
+//   //   return GestureDetector(
+//   //     onTap: () {
+//   //       Navigator.push(
+//   //         context,
+//   //         MaterialPageRoute(builder: (_) => const MeasurementHistoryScreen()),
+//   //       );
+//   //     },
+//   //     child: Container(
+//   //       height: 100.h,
+//   //       decoration: BoxDecoration(
+//   //         gradient: LinearGradient(
+//   //           colors: [ColorsManager.primaryGreen, ColorsManager.secondaryGreen],
+//   //           begin: Alignment.topLeft,
+//   //           end: Alignment.bottomRight,
+//   //         ),
+//   //         borderRadius: BorderRadius.circular(16.r),
+//   //         boxShadow: [
+//   //           BoxShadow(
+//   //             color: ColorsManager.primaryGreen.withOpacity(0.4),
+//   //             blurRadius: 12,
+//   //             offset: const Offset(0, 6),
+//   //           ),
+//   //         ],
+//   //       ),
+//   //       child: Stack(
+//   //         children: [
+//   //           // Background pattern
+//   //           Positioned.fill(
+//   //             child: CustomPaint(painter: _GraphPatternPainter()),
+//   //           ),
+//   //
+//   //           // Content
+//   //           Padding(
+//   //             padding: EdgeInsets.all(16.w),
+//   //             child: Row(
+//   //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//   //               children: [
+//   //                 Expanded(
+//   //                   child: Column(
+//   //                     crossAxisAlignment: CrossAxisAlignment.start,
+//   //                     mainAxisAlignment: MainAxisAlignment.center,
+//   //                     children: [
+//   //                       Row(
+//   //                         children: [
+//   //                           Icon(
+//   //                             Icons.trending_up,
+//   //                             color: ColorsManager.whiteText,
+//   //                             size: 24.sp,
+//   //                           ),
+//   //                           SizedBox(width: 8.w),
+//   //                           Text(
+//   //                             'View History',
+//   //                             style: TextStyles.font18WhiteBold,
+//   //                           ),
+//   //                         ],
+//   //                       ),
+//   //                       SizedBox(height: 4.h),
+//   //                       Text(
+//   //                         'Analyze your progress with charts',
+//   //                         style: TextStyles.font12WhiteRegular.copyWith(
+//   //                           color: ColorsManager.whiteText.withOpacity(0.9),
+//   //                         ),
+//   //                       ),
+//   //                     ],
+//   //                   ),
+//   //                 ),
+//   //                 Container(
+//   //                   padding: EdgeInsets.all(12.w),
+//   //                   decoration: BoxDecoration(
+//   //                     color: Colors.white.withOpacity(0.2),
+//   //                     shape: BoxShape.circle,
+//   //                   ),
+//   //                   child: Icon(
+//   //                     Icons.arrow_forward,
+//   //                     color: ColorsManager.whiteText,
+//   //                     size: 20.sp,
+//   //                   ),
+//   //                 ),
+//   //               ],
+//   //             ),
+//   //           ),
+//   //         ],
+//   //       ),
+//   //     ),
+//   //   );
+//   // }
+//
+//   Widget _buildSectionHeader(String title) {
+//     return Text(title, style: TextStyles.subtitle1);
+//   }
+// }
+
+import '../widgets/progress_app_bar.dart';
+import '../widgets/progress_loading_state.dart';
+import '../widgets/progress_error_state.dart';
+import '../widgets/progress_loaded_content.dart';
 
 class UserProgressScreen extends StatelessWidget {
   const UserProgressScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => di<ProgressCubit>()..loadProgress(),
+      child: const _UserProgressView(),
+    );
+  }
+}
+
+class _UserProgressView extends StatelessWidget {
+  const _UserProgressView();
 
   @override
   Widget build(BuildContext context) {
@@ -13,284 +404,23 @@ class UserProgressScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: ColorsManager.scaffoldBackground,
-      appBar: AppBar(
-        title: Text(s.my_progress, style: TextStyles.headline2),
-        backgroundColor: ColorsManager.scaffoldBackground,
-        elevation: 0,
-      ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await Future.delayed(const Duration(seconds: 1));
+      appBar: ProgressAppBar(title: s.my_progress),
+      body: BlocBuilder<ProgressCubit, ProgressState>(
+        builder: (context, state) {
+          if (state is ProgressLoading) {
+            return const ProgressLoadingState();
+          }
+
+          if (state is ProgressError) {
+            return ProgressErrorState(message: state.message);
+          }
+
+          if (state is ProgressLoaded) {
+            return ProgressLoadedContent(state: state);
+          }
+
+          return const SizedBox.shrink();
         },
-        color: ColorsManager.primaryGreen,
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.all(20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Weight Progress Card
-              _buildWeightProgressCard(s),
-              SizedBox(height: 20.h),
-
-              // Measurements Card
-              Text(s.measurements, style: TextStyles.subtitle1),
-              SizedBox(height: 16.h),
-              _buildMeasurementsCard(s),
-              SizedBox(height: 20.h),
-
-              // Goals Card
-              Text(s.goals, style: TextStyles.subtitle1),
-              SizedBox(height: 16.h),
-              _buildGoalsCard(s),
-              SizedBox(height: 20.h),
-
-              // Statistics
-              Text(s.statistics, style: TextStyles.subtitle1),
-              SizedBox(height: 16.h),
-              _buildStatisticsCard(s),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        heroTag: 'log_measurement_fab', // Add unique tag
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(s.log_measurement),
-              backgroundColor: ColorsManager.success,
-            ),
-          );
-        },
-        backgroundColor: ColorsManager.primaryGreen,
-        foregroundColor: ColorsManager.whiteText,
-        icon: const Icon(Icons.add),
-        label: Text(s.log_measurement, style: TextStyles.buttonMedium),
-      ),
-    );
-  }
-
-  Widget _buildWeightProgressCard(S s) {
-    return Container(
-      padding: EdgeInsets.all(20.w),
-      decoration: BoxDecoration(
-        gradient: ColorsManager.cardGradient,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: ColorsManager.primaryShadow,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(s.weight_progress, style: TextStyles.font18WhiteMedium),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-                decoration: BoxDecoration(
-                  color: ColorsManager.success.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_downward,
-                      size: 14.sp,
-                      color: ColorsManager.whiteText,
-                    ),
-                    SizedBox(width: 4.w),
-                    Text('4.5 ${s.kg}', style: TextStyles.font12WhiteRegular),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 16.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildWeightStat(s.current_weight, '75.5', s.kg),
-              Container(
-                width: 1,
-                height: 40.h,
-                color: ColorsManager.whiteText.withOpacity(0.3),
-              ),
-              _buildWeightStat('Start', '80.0', s.kg),
-              Container(
-                width: 1,
-                height: 40.h,
-                color: ColorsManager.whiteText.withOpacity(0.3),
-              ),
-              _buildWeightStat('Goal', '70.0', s.kg),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildWeightStat(String label, String value, String unit) {
-    return Column(
-      children: [
-        Text(label, style: TextStyles.font12WhiteRegular),
-        SizedBox(height: 4.h),
-        Text('$value $unit', style: TextStyles.font20WhiteSemiBold),
-      ],
-    );
-  }
-
-  Widget _buildMeasurementsCard(S s) {
-    final measurements = [
-      {'label': s.chest, 'value': '102', 'change': '+2'},
-      {'label': s.waist, 'value': '85', 'change': '-3'},
-      {'label': s.arms, 'value': '38', 'change': '+1'},
-      {'label': s.thighs, 'value': '58', 'change': '+2'},
-    ];
-
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: ColorsManager.cardShadow,
-      ),
-      child: Column(
-        children: measurements.map((m) {
-          final change = double.parse(m['change']!);
-          final isPositive = change > 0;
-          return Padding(
-            padding: EdgeInsets.only(bottom: 12.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(m['label']!, style: TextStyles.bodyMedium),
-                Row(
-                  children: [
-                    Text(
-                      '${m['value']} ${s.cm}',
-                      style: TextStyles.font16PrimaryTextRegular,
-                    ),
-                    SizedBox(width: 8.w),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 4.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: isPositive
-                            ? ColorsManager.success.withOpacity(0.1)
-                            : ColorsManager.error.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Text(
-                        '${isPositive ? '+' : ''}${m['change']} ${s.cm}',
-                        style: TextStyles.caption.copyWith(
-                          color: isPositive
-                              ? ColorsManager.success
-                              : ColorsManager.error,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-
-  Widget _buildGoalsCard(S s) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: ColorsManager.cardShadow,
-      ),
-      child: Column(
-        children: [
-          _buildGoalItem('Lose 10kg', 45, ColorsManager.primaryGreen),
-          SizedBox(height: 16.h),
-          _buildGoalItem('Bench Press 120kg', 75, ColorsManager.info),
-          SizedBox(height: 16.h),
-          _buildGoalItem('Run 5km', 30, ColorsManager.warning),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildGoalItem(String goal, int progress, Color color) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(goal, style: TextStyles.font14PrimaryTextMedium),
-            Text('$progress%', style: TextStyles.font14PrimaryGreenSemiBold),
-          ],
-        ),
-        SizedBox(height: 8.h),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(8.r),
-          child: LinearProgressIndicator(
-            value: progress / 100,
-            backgroundColor: ColorsManager.grey200,
-            valueColor: AlwaysStoppedAnimation<Color>(color),
-            minHeight: 8.h,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildStatisticsCard(S s) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildStatCard(
-            Icons.emoji_events,
-            '15',
-            'PRs',
-            ColorsManager.warning,
-          ),
-        ),
-        SizedBox(width: 12.w),
-        Expanded(
-          child: _buildStatCard(
-            Icons.local_fire_department,
-            '850',
-            'Streak',
-            ColorsManager.error,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildStatCard(
-    IconData icon,
-    String value,
-    String label,
-    Color color,
-  ) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: ColorsManager.cardShadow,
-      ),
-      child: Column(
-        children: [
-          Icon(icon, color: color, size: 32.sp),
-          SizedBox(height: 8.h),
-          Text(value, style: TextStyles.font24PrimaryTextBold),
-          Text(label, style: TextStyles.bodySmall),
-        ],
       ),
     );
   }

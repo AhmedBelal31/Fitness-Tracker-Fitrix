@@ -64,8 +64,8 @@ class UserProfileScreen extends StatelessWidget {
           children: [
             const UserProfileHeader(),
             SizedBox(height: 32.h),
-            // const PersonalInfoSection(),
-            // SizedBox(height: 24.h),
+            const PersonalInfoSection(),
+            SizedBox(height: 24.h),
             const AppSettingsSection(),
             SizedBox(height: 24.h),
             const HelpSupportSection(),

@@ -68,6 +68,13 @@ dependencies:
   ntp: ^2.0.0
   flutter_secure_storage: ^9.2.4
   share_plus: ^12.0.0
+  confetti: ^0.7.0
+  just_audio: ^0.9.36
+  carousel_slider: ^5.1.1
+  google_nav_bar: ^5.0.7
+
+#  fl_chart: ^0.68.0
+
 
 
 
@@ -97,6 +104,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/logo/
+    - assets/sounds/
 
 
 

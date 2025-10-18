@@ -494,4 +494,68 @@ class TextStyles {
   static TextStyle withLineHeight(TextStyle baseStyle, double height) {
     return baseStyle.copyWith(height: height);
   }
+
+  // Add these to the White Text Styles section (around line 280)
+
+  static TextStyle get font16WhiteSemiBold => TextStyle(
+    fontSize: 16.sp,
+    color: ColorsManager.whiteText,
+    fontWeight: FontWeightHelper.semiBold,
+  );
+
+  static TextStyle get font12WhiteSemiBold => TextStyle(
+    fontSize: 12.sp,
+    color: ColorsManager.whiteText,
+    fontWeight: FontWeightHelper.semiBold,
+  );
+
+  static TextStyle get font18WhiteBold => TextStyle(
+    fontSize: 18.sp,
+    color: ColorsManager.whiteText,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle get font10WhiteRegular => TextStyle(
+    fontSize: 10.sp,
+    color: ColorsManager.whiteText,
+    fontWeight: FontWeightHelper.regular,
+  );
+
+  // Add these after the existing white text styles section
+
+  static TextStyle get font14WhiteSemiBold => TextStyle(
+    fontSize: 14.sp,
+    color: ColorsManager.whiteText,
+    fontWeight: FontWeightHelper.semiBold,
+  );
+
+  static TextStyle get font18PrimaryTextBold => TextStyle(
+    fontSize: 18.sp,
+    color: ColorsManager.primaryText,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle get font14PrimaryTextRegular => TextStyle(
+    fontSize: 14.sp,
+    color: ColorsManager.primaryText,
+    fontWeight: FontWeightHelper.regular,
+  );
+
+  static TextStyle get font20PrimaryTextBold => TextStyle(
+    fontSize: 20.sp,
+    color: ColorsManager.primaryText,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle get font16PrimaryTextBold => TextStyle(
+    fontSize: 16.sp,
+    color: ColorsManager.primaryText,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle get font13Regular =>
+      TextStyle(fontSize: 13.sp, fontWeight: FontWeightHelper.regular);
+
+  static TextStyle get font11Regular =>
+      TextStyle(fontSize: 11.sp, fontWeight: FontWeightHelper.regular);
 }

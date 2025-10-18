@@ -819,10 +819,10 @@ class S {
     return Intl.message('Loading...', name: 'loading', desc: '', args: []);
   }
 
-  /// `No data`
+  /// `No data available`
   String get no_data_available {
     return Intl.message(
-      'No data',
+      'No data available',
       name: 'no_data_available',
       desc: '',
       args: [],
@@ -1519,10 +1519,10 @@ class S {
     );
   }
 
-  /// `Create Custom`
+  /// `Create your own`
   String get create_custom {
     return Intl.message(
-      'Create Custom',
+      'Create your own',
       name: 'create_custom',
       desc: '',
       args: [],
@@ -1559,10 +1559,10 @@ class S {
     return Intl.message('Description', name: 'description', desc: '', args: []);
   }
 
-  /// `My Custom`
+  /// `My Custom Exercises`
   String get my_custom_exercises {
     return Intl.message(
-      'My Custom',
+      'My Custom Exercises',
       name: 'my_custom_exercises',
       desc: '',
       args: [],
@@ -1579,10 +1579,10 @@ class S {
     );
   }
 
-  /// `Create your own`
+  /// `View & manage your custom exercises`
   String get create_your_own_exercises {
     return Intl.message(
-      'Create your own',
+      'View & manage your custom exercises',
       name: 'create_your_own_exercises',
       desc: '',
       args: [],
@@ -4979,6 +4979,301 @@ class S {
     return Intl.message(
       'Edit Profile & Measurements',
       name: 'edit_profile_and_measurements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fitrix User`
+  String get fitrixUser {
+    return Intl.message('Fitrix User', name: 'fitrixUser', desc: '', args: []);
+  }
+
+  /// `Muscle Mass`
+  String get muscleMass {
+    return Intl.message('Muscle Mass', name: 'muscleMass', desc: '', args: []);
+  }
+
+  /// `Body Fat`
+  String get bodyFat {
+    return Intl.message('Body Fat', name: 'bodyFat', desc: '', args: []);
+  }
+
+  /// `Weight`
+  String get weight {
+    return Intl.message('Weight', name: 'weight', desc: '', args: []);
+  }
+
+  /// `Records`
+  String get records {
+    return Intl.message('Records', name: 'records', desc: '', args: []);
+  }
+
+  /// `Per Week`
+  String get per_week {
+    return Intl.message('Per Week', name: 'per_week', desc: '', args: []);
+  }
+
+  /// `m`
+  String get minutes_short {
+    return Intl.message('m', name: 'minutes_short', desc: '', args: []);
+  }
+
+  /// `Personal Bests`
+  String get personal_bests {
+    return Intl.message(
+      'Personal Bests',
+      name: 'personal_bests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Volume`
+  String get volume {
+    return Intl.message('Volume', name: 'volume', desc: '', args: []);
+  }
+
+  /// `Measurement History`
+  String get measurement_history {
+    return Intl.message(
+      'Measurement History',
+      name: 'measurement_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View detailed charts & analytics`
+  String get view_charts_analytics {
+    return Intl.message(
+      'View detailed charts & analytics',
+      name: 'view_charts_analytics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Line`
+  String get line_chart {
+    return Intl.message('Line', name: 'line_chart', desc: '', args: []);
+  }
+
+  /// `Bar`
+  String get bar_chart {
+    return Intl.message('Bar', name: 'bar_chart', desc: '', args: []);
+  }
+
+  /// `Area`
+  String get area_chart {
+    return Intl.message('Area', name: 'area_chart', desc: '', args: []);
+  }
+
+  /// `Body Fat Progress`
+  String get body_fat_progress {
+    return Intl.message(
+      'Body Fat Progress',
+      name: 'body_fat_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muscle Mass Progress`
+  String get muscle_mass_progress {
+    return Intl.message(
+      'Muscle Mass Progress',
+      name: 'muscle_mass_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get change {
+    return Intl.message('Change', name: 'change', desc: '', args: []);
+  }
+
+  /// `Avg`
+  String get average {
+    return Intl.message('Avg', name: 'average', desc: '', args: []);
+  }
+
+  /// `Max`
+  String get max_value {
+    return Intl.message('Max', name: 'max_value', desc: '', args: []);
+  }
+
+  /// `Min`
+  String get min_value {
+    return Intl.message('Min', name: 'min_value', desc: '', args: []);
+  }
+
+  /// `7 Days`
+  String get period_7_days {
+    return Intl.message('7 Days', name: 'period_7_days', desc: '', args: []);
+  }
+
+  /// `30 Days`
+  String get period_30_days {
+    return Intl.message('30 Days', name: 'period_30_days', desc: '', args: []);
+  }
+
+  /// `90 Days`
+  String get period_90_days {
+    return Intl.message('90 Days', name: 'period_90_days', desc: '', args: []);
+  }
+
+  /// `6 Months`
+  String get period_6_months {
+    return Intl.message(
+      '6 Months',
+      name: 'period_6_months',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1 Year`
+  String get period_1_year {
+    return Intl.message('1 Year', name: 'period_1_year', desc: '', args: []);
+  }
+
+  /// `Current`
+  String get current2 {
+    return Intl.message('Current', name: 'current2', desc: '', args: []);
+  }
+
+  /// `Start`
+  String get start {
+    return Intl.message('Start', name: 'start', desc: '', args: []);
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message('Active', name: 'active', desc: '', args: []);
+  }
+
+  /// `Record Details`
+  String get record_details {
+    return Intl.message(
+      'Record Details',
+      name: 'record_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Records`
+  String get all_records {
+    return Intl.message('All Records', name: 'all_records', desc: '', args: []);
+  }
+
+  /// `Exercise`
+  String get exercise {
+    return Intl.message('Exercise', name: 'exercise', desc: '', args: []);
+  }
+
+  /// `Unknown Exercise`
+  String get unknown_exercise {
+    return Intl.message(
+      'Unknown Exercise',
+      name: 'unknown_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout Session`
+  String get workout_session {
+    return Intl.message(
+      'Workout Session',
+      name: 'workout_session',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message('Date', name: 'date', desc: '', args: []);
+  }
+
+  /// `Loading records...`
+  String get loading_records {
+    return Intl.message(
+      'Loading records...',
+      name: 'loading_records',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message('Total', name: 'total', desc: '', args: []);
+  }
+
+  /// `Loading achievements...`
+  String get loading_achievements {
+    return Intl.message(
+      'Loading achievements...',
+      name: 'loading_achievements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom Exercises`
+  String get custom_exercises {
+    return Intl.message(
+      'Custom Exercises',
+      name: 'custom_exercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Exercises`
+  String get my_exercises {
+    return Intl.message(
+      'My Exercises',
+      name: 'my_exercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View all your custom exercises`
+  String get view_all_custom {
+    return Intl.message(
+      'View all your custom exercises',
+      name: 'view_all_custom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birth Date`
+  String get birth_date {
+    return Intl.message('Birth Date', name: 'birth_date', desc: '', args: []);
+  }
+
+  /// `Select your birth date`
+  String get select_birth_date {
+    return Intl.message(
+      'Select your birth date',
+      name: 'select_birth_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth`
+  String get date_of_birth {
+    return Intl.message(
+      'Date of Birth',
+      name: 'date_of_birth',
       desc: '',
       args: [],
     );

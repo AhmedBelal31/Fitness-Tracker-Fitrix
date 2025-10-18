@@ -2,17 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/di/get_it.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/services/hive_service.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
-import '../../../exercises/data/models/mock_exercises_data.dart';
-import '../../../exercises/presentation/widgets/section_card.dart';
-import '../../../host/presentation/widgets/progress_chart_widget.dart';
-import '../../../host/presentation/widgets/recent_workout_card.dart';
-import '../../../host/presentation/widgets/stat_card.dart';
-import '../../data/mock_data.dart';
 
 // class UserHomeScreenBodyBody extends StatelessWidget {
 //   const UserHomeScreenBodyBody({super.key});
@@ -1014,15 +1006,15 @@ class _UserHomeScreenBodyState extends State<UserHomeScreenBody>
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              ColorsManager.primaryGreen.withOpacity(0.1),
-              ColorsManager.success.withOpacity(0.1),
+              ColorsManager.primaryGreen.withValues(alpha: 0.1),
+              ColorsManager.success.withValues(alpha: 0.1),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: ColorsManager.primaryGreen.withOpacity(0.3),
+            color: ColorsManager.primaryGreen.withValues(alpha: 0.3),
             width: 1,
           ),
         ),
@@ -1031,7 +1023,7 @@ class _UserHomeScreenBodyState extends State<UserHomeScreenBody>
             Container(
               padding: EdgeInsets.all(12.w),
               decoration: BoxDecoration(
-                color: ColorsManager.primaryGreen.withOpacity(0.2),
+                color: ColorsManager.primaryGreen.withValues(alpha: 0.2),
                 shape: BoxShape.circle,
               ),
               child: Icon(

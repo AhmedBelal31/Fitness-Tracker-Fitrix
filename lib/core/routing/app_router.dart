@@ -17,6 +17,7 @@ import '../../features/exercises/presentation/screens/create_custom_exercise_scr
 import '../../features/exercises/presentation/screens/custom_exercises_screen.dart';
 import '../../features/exercises/presentation/screens/exercise_details_screen.dart';
 import '../../features/exercises/presentation/screens/section_exercises_screen.dart';
+import '../../features/home/presentation/screens/all_records_screen.dart';
 import '../../features/profile/presentation/screens/about_screen.dart';
 import '../../features/profile/presentation/screens/contact_support_screen.dart';
 import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
@@ -162,6 +163,8 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => WorkoutDetailsScreen(workoutId: workoutId),
         );
+      case Routes.allRecords:
+        return MaterialPageRoute(builder: (_) => const AllRecordsScreen());
 
       default:
         screen = const ErrorScreen();

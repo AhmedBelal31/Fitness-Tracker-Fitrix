@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitrix/generated/l10n.dart';
+import 'package:intl/intl.dart';
 import '../../../../../core/services/hive_service.dart';
 import '../../../../../core/theming/app_colors.dart';
 import 'profile_info_tile.dart';
@@ -29,13 +30,17 @@ class PersonalInfoSection extends StatelessWidget {
               ProfileInfoTile(
                 icon: Icons.phone,
                 title: s.phoneNumber,
-                value: '+20 123 456 7890',
+                value: profile?.phoneNumber ?? '+20 123 456 7890',
               ),
               const Divider(color: ColorsManager.lightBorder, height: 1),
               ProfileInfoTile(
                 icon: Icons.calendar_today,
-                title: s.memberSince,
-                value: 'January 2024',
+                title: s.date_of_birth,
+                value: profile?.dateOfBirth != null
+                    ? DateFormat(
+                        'dd MMM yyyy',
+                      ).format(profile!.dateOfBirth!).toString()
+                    : '',
               ),
               const Divider(color: ColorsManager.lightBorder, height: 1),
               ProfileInfoTile(icon: Icons.person, title: s.role, value: s.user),

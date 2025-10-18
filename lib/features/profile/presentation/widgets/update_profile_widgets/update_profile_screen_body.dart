@@ -67,8 +67,8 @@ class _UpdateProfileScreenBodyState extends State<UpdateProfileScreenBody> {
                 children: [
                   const PulsingFitnessIcon(),
                   SizedBox(height: 24.h),
-                  Text(s.updateProfile, style: TextStyles.headline2),
-                  SizedBox(height: 8.h),
+                  // Text(s.updateProfile, style: TextStyles.headline2),
+                  // SizedBox(height: 8.h),
                   Text(
                     s.updateYourProfileInformation,
                     style: TextStyles.subtitle2,

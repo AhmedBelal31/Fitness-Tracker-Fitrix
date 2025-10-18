@@ -157,7 +157,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         SizedBox(
           height: 44,
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
               widget.label,
               style: const TextStyle(

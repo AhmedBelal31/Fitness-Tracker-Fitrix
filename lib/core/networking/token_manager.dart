@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:ntp/ntp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer' as dev;
@@ -390,7 +391,7 @@ class TokenManager {
     await init();
     final token = _prefs?.getString(Constants.accessTokenKey);
     if (token != null) {
-      dev.log('🔑 Access token retrieved: exists', name: 'TokenManager');
+      Logger().d(token);
     } else {
       dev.log('🔑 Access token retrieved: null', name: 'TokenManager');
     }

@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "accurateInfoItem": MessageLookupByLibrary.simpleMessage("Accurate info"),
     "achievements": MessageLookupByLibrary.simpleMessage("Achievements"),
+    "active": MessageLookupByLibrary.simpleMessage("Active"),
     "active_trainees": MessageLookupByLibrary.simpleMessage("Active Trainees"),
     "add": MessageLookupByLibrary.simpleMessage("Add"),
     "add_exercise": MessageLookupByLibrary.simpleMessage("Add Exercise"),
@@ -66,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
+    "all_records": MessageLookupByLibrary.simpleMessage("All Records"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Have account? ",
     ),
@@ -82,15 +84,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "apply_order": MessageLookupByLibrary.simpleMessage("Apply"),
     "are_you_sure": MessageLookupByLibrary.simpleMessage("Sure?"),
+    "area_chart": MessageLookupByLibrary.simpleMessage("Area"),
     "arms": MessageLookupByLibrary.simpleMessage("Arms"),
     "arms_description": MessageLookupByLibrary.simpleMessage(
       "Biceps & triceps",
     ),
+    "average": MessageLookupByLibrary.simpleMessage("Avg"),
     "avg_duration": MessageLookupByLibrary.simpleMessage("Avg Duration"),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
     "back_description": MessageLookupByLibrary.simpleMessage(
       "Strong wide back",
     ),
+    "bar_chart": MessageLookupByLibrary.simpleMessage("Bar"),
     "barbell": MessageLookupByLibrary.simpleMessage("Barbell"),
     "barbell_curls": MessageLookupByLibrary.simpleMessage("BB Curls"),
     "barbell_curls_description": MessageLookupByLibrary.simpleMessage(
@@ -107,12 +112,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "Classic chest exercise",
     ),
     "biceps": MessageLookupByLibrary.simpleMessage("Biceps"),
+    "birth_date": MessageLookupByLibrary.simpleMessage("Birth Date"),
+    "bodyFat": MessageLookupByLibrary.simpleMessage("Body Fat"),
     "bodyFatPercent": MessageLookupByLibrary.simpleMessage("Body Fat %"),
     "bodyFatRequired": MessageLookupByLibrary.simpleMessage(
       "Body fat required",
     ),
     "body_fat": MessageLookupByLibrary.simpleMessage("Body Fat"),
     "body_fat_goal": MessageLookupByLibrary.simpleMessage("Body Fat Goal (%)"),
+    "body_fat_progress": MessageLookupByLibrary.simpleMessage(
+      "Body Fat Progress",
+    ),
     "body_measurements_and_goals": MessageLookupByLibrary.simpleMessage(
       "Measurements & Goals",
     ),
@@ -137,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cannot_add_to_completed_session": MessageLookupByLibrary.simpleMessage(
       "Session completed",
     ),
+    "change": MessageLookupByLibrary.simpleMessage("Change"),
     "changeYourPassword": MessageLookupByLibrary.simpleMessage(
       "Change Password",
     ),
@@ -208,7 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create Account",
     ),
     "createPassword": MessageLookupByLibrary.simpleMessage("Create password"),
-    "create_custom": MessageLookupByLibrary.simpleMessage("Create Custom"),
+    "create_custom": MessageLookupByLibrary.simpleMessage("Create your own"),
     "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "Create Custom",
     ),
@@ -225,10 +236,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create First",
     ),
     "create_your_own_exercises": MessageLookupByLibrary.simpleMessage(
-      "Create your own",
+      "View & manage your custom exercises",
     ),
     "crunches": MessageLookupByLibrary.simpleMessage("Crunches"),
     "crunches_description": MessageLookupByLibrary.simpleMessage("Ab exercise"),
+    "current2": MessageLookupByLibrary.simpleMessage("Current"),
     "current_body_fat": MessageLookupByLibrary.simpleMessage("Body Fat (%)"),
     "current_measurements": MessageLookupByLibrary.simpleMessage("Current"),
     "current_muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle (kg)"),
@@ -239,10 +251,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "custom_equipment": MessageLookupByLibrary.simpleMessage(
       "Custom Equipment",
     ),
+    "custom_exercises": MessageLookupByLibrary.simpleMessage(
+      "Custom Exercises",
+    ),
     "dataSecurity": MessageLookupByLibrary.simpleMessage("Security"),
     "dataSecurityText": MessageLookupByLibrary.simpleMessage(
       "Your data is encrypted",
     ),
+    "date": MessageLookupByLibrary.simpleMessage("Date"),
+    "date_of_birth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
     "deadlift": MessageLookupByLibrary.simpleMessage("Deadlift"),
     "deadlift_description": MessageLookupByLibrary.simpleMessage(
       "King of back",
@@ -367,6 +384,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_unexpected": MessageLookupByLibrary.simpleMessage(
       "Unexpected error",
     ),
+    "exercise": MessageLookupByLibrary.simpleMessage("Exercise"),
     "exercise_added_successfully": MessageLookupByLibrary.simpleMessage(
       "Added!",
     ),
@@ -411,6 +429,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "first_name": MessageLookupByLibrary.simpleMessage("First Name"),
     "fitness_goals": MessageLookupByLibrary.simpleMessage("Goals"),
     "fitrixTeam": MessageLookupByLibrary.simpleMessage("Fitrix Team"),
+    "fitrixUser": MessageLookupByLibrary.simpleMessage("Fitrix User"),
     "flat_bench": MessageLookupByLibrary.simpleMessage("Flat Bench"),
     "foam_roller": MessageLookupByLibrary.simpleMessage("Foam Roller"),
     "followUs": MessageLookupByLibrary.simpleMessage("Follow Us"),
@@ -537,7 +556,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "legs_description": MessageLookupByLibrary.simpleMessage(
       "Lower body power",
     ),
+    "line_chart": MessageLookupByLibrary.simpleMessage("Line"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "loading_achievements": MessageLookupByLibrary.simpleMessage(
+      "Loading achievements...",
+    ),
+    "loading_records": MessageLookupByLibrary.simpleMessage(
+      "Loading records...",
+    ),
     "log": MessageLookupByLibrary.simpleMessage("Log"),
     "log_measurement": MessageLookupByLibrary.simpleMessage("Log Measurement"),
     "loggedOutSuccess": MessageLookupByLibrary.simpleMessage("Logged out"),
@@ -553,11 +579,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("Manage Trainees"),
+    "max_value": MessageLookupByLibrary.simpleMessage("Max"),
+    "measurement_history": MessageLookupByLibrary.simpleMessage(
+      "Measurement History",
+    ),
     "measurements": MessageLookupByLibrary.simpleMessage("Measurements"),
     "medicine_ball": MessageLookupByLibrary.simpleMessage("Medicine Ball"),
     "memberSince": MessageLookupByLibrary.simpleMessage("Member Since"),
     "member_since": MessageLookupByLibrary.simpleMessage("Member Since"),
+    "min_value": MessageLookupByLibrary.simpleMessage("Min"),
     "minutes": MessageLookupByLibrary.simpleMessage("mins"),
+    "minutes_short": MessageLookupByLibrary.simpleMessage("m"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
     "most_popular": MessageLookupByLibrary.simpleMessage("Popular"),
     "motivational_quote_1": MessageLookupByLibrary.simpleMessage(
@@ -584,6 +616,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "motivational_quote_8": MessageLookupByLibrary.simpleMessage(
       "Work for it 💯",
     ),
+    "muscleMass": MessageLookupByLibrary.simpleMessage("Muscle Mass"),
     "muscleMassKg": MessageLookupByLibrary.simpleMessage("Muscle Mass (kg)"),
     "muscleMassRequired": MessageLookupByLibrary.simpleMessage(
       "Muscle mass required",
@@ -592,7 +625,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "muscle_mass_goal": MessageLookupByLibrary.simpleMessage(
       "Muscle Goal (kg)",
     ),
-    "my_custom_exercises": MessageLookupByLibrary.simpleMessage("My Custom"),
+    "muscle_mass_progress": MessageLookupByLibrary.simpleMessage(
+      "Muscle Mass Progress",
+    ),
+    "my_custom_exercises": MessageLookupByLibrary.simpleMessage(
+      "My Custom Exercises",
+    ),
+    "my_exercises": MessageLookupByLibrary.simpleMessage("My Exercises"),
     "my_progress": MessageLookupByLibrary.simpleMessage("My Progress"),
     "my_trainees": MessageLookupByLibrary.simpleMessage("My Trainees"),
     "my_workouts": MessageLookupByLibrary.simpleMessage("My Workouts"),
@@ -604,7 +643,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_custom_exercises_yet": MessageLookupByLibrary.simpleMessage(
       "No custom exercises",
     ),
-    "no_data_available": MessageLookupByLibrary.simpleMessage("No data"),
+    "no_data_available": MessageLookupByLibrary.simpleMessage(
+      "No data available",
+    ),
     "no_exercises_added": MessageLookupByLibrary.simpleMessage("No Exercises"),
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
       "No exercises",
@@ -669,6 +710,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Passwords don\'t match",
     ),
     "pec_deck_machine": MessageLookupByLibrary.simpleMessage("Pec Deck"),
+    "per_week": MessageLookupByLibrary.simpleMessage("Per Week"),
+    "period_1_year": MessageLookupByLibrary.simpleMessage("1 Year"),
+    "period_30_days": MessageLookupByLibrary.simpleMessage("30 Days"),
+    "period_6_months": MessageLookupByLibrary.simpleMessage("6 Months"),
+    "period_7_days": MessageLookupByLibrary.simpleMessage("7 Days"),
+    "period_90_days": MessageLookupByLibrary.simpleMessage("90 Days"),
     "personalFitnessCompanion": MessageLookupByLibrary.simpleMessage(
       "Your Fitness Companion",
     ),
@@ -678,6 +725,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalInformationItem": MessageLookupByLibrary.simpleMessage(
       "Personal info",
     ),
+    "personal_bests": MessageLookupByLibrary.simpleMessage("Personal Bests"),
     "personal_information": MessageLookupByLibrary.simpleMessage(
       "Personal Info",
     ),
@@ -760,6 +808,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "rateApp": MessageLookupByLibrary.simpleMessage("Rate App"),
     "rate_app": MessageLookupByLibrary.simpleMessage("Rate App"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("Recent Workouts"),
+    "record_details": MessageLookupByLibrary.simpleMessage("Record Details"),
+    "records": MessageLookupByLibrary.simpleMessage("Records"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registrationSuccess": m1,
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
@@ -804,6 +854,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Male or Female",
     ),
     "selectYourRole": MessageLookupByLibrary.simpleMessage("Select Role"),
+    "select_birth_date": MessageLookupByLibrary.simpleMessage(
+      "Select your birth date",
+    ),
     "select_difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
     "select_equipment": MessageLookupByLibrary.simpleMessage("Equipment"),
     "select_workout": MessageLookupByLibrary.simpleMessage("Select Session"),
@@ -849,6 +902,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "squats_description": MessageLookupByLibrary.simpleMessage("King of legs"),
     "stability_ball": MessageLookupByLibrary.simpleMessage("Stability Ball"),
     "stair_climber": MessageLookupByLibrary.simpleMessage("Stair Climber"),
+    "start": MessageLookupByLibrary.simpleMessage("Start"),
     "start_tracking": MessageLookupByLibrary.simpleMessage("Start tracking"),
     "start_workout": MessageLookupByLibrary.simpleMessage("Start Workout"),
     "start_your_fitness_journey": MessageLookupByLibrary.simpleMessage(
@@ -883,6 +937,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "today": MessageLookupByLibrary.simpleMessage("Today"),
     "today_stats": MessageLookupByLibrary.simpleMessage("Today\'s Stats"),
     "tomorrow": MessageLookupByLibrary.simpleMessage("Tomorrow"),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
     "total_sets": MessageLookupByLibrary.simpleMessage("Total Sets"),
     "total_workouts": MessageLookupByLibrary.simpleMessage("Total Workouts"),
     "trackProgressItem": MessageLookupByLibrary.simpleMessage("Track progress"),
@@ -906,6 +961,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage("Hack"),
     "undo": MessageLookupByLibrary.simpleMessage("Undo"),
+    "unknown_exercise": MessageLookupByLibrary.simpleMessage(
+      "Unknown Exercise",
+    ),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "updateInfoItem": MessageLookupByLibrary.simpleMessage("Update info"),
     "updateProfile": MessageLookupByLibrary.simpleMessage("Update Profile"),
@@ -931,16 +989,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "version": MessageLookupByLibrary.simpleMessage("Version"),
     "view": MessageLookupByLibrary.simpleMessage("View"),
     "view_all": MessageLookupByLibrary.simpleMessage("View All"),
+    "view_all_custom": MessageLookupByLibrary.simpleMessage(
+      "View all your custom exercises",
+    ),
     "view_all_trainees": MessageLookupByLibrary.simpleMessage("View All"),
     "view_all_workouts": MessageLookupByLibrary.simpleMessage("View All"),
+    "view_charts_analytics": MessageLookupByLibrary.simpleMessage(
+      "View detailed charts & analytics",
+    ),
     "view_details": MessageLookupByLibrary.simpleMessage("View Details"),
     "violateLawsItem": MessageLookupByLibrary.simpleMessage("Break laws"),
     "visitWebsite": MessageLookupByLibrary.simpleMessage("Visit"),
+    "volume": MessageLookupByLibrary.simpleMessage("Volume"),
     "waist": MessageLookupByLibrary.simpleMessage("Waist"),
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
       "Email sent to",
     ),
     "website": MessageLookupByLibrary.simpleMessage("Website"),
+    "weight": MessageLookupByLibrary.simpleMessage("Weight"),
     "weightKg": MessageLookupByLibrary.simpleMessage("Weight (kg)"),
     "weightRequired": MessageLookupByLibrary.simpleMessage("Weight required"),
     "weight_change": MessageLookupByLibrary.simpleMessage("Weight Change"),
@@ -962,6 +1028,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "workout_history": MessageLookupByLibrary.simpleMessage("History"),
     "workout_not_found": MessageLookupByLibrary.simpleMessage("Not Found"),
     "workout_sections": MessageLookupByLibrary.simpleMessage("Sections"),
+    "workout_session": MessageLookupByLibrary.simpleMessage("Workout Session"),
     "workout_session_created": MessageLookupByLibrary.simpleMessage(
       "Session created!",
     ),

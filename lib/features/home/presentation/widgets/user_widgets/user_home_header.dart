@@ -11,6 +11,11 @@ class UserHomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final profile = HiveService().getProfile();
     final s = S.of(context);
+    var firstAndLastName =
+        ((profile?.firstName?.isNotEmpty ?? false) ||
+            (profile?.lastName?.isNotEmpty ?? false))
+        ? '${profile?.firstName ?? ""} ${profile?.lastName ?? ""}'.trim()
+        : s.fitrixUser;
 
     return TweenAnimationBuilder(
       duration: const Duration(milliseconds: 600),
@@ -32,7 +37,7 @@ class UserHomeHeader extends StatelessWidget {
             style: TextStyles.bodyMedium.copyWith(color: Colors.grey[600]),
           ),
           SizedBox(height: 4.h),
-          Text(profile?.firstName ?? s.user, style: TextStyles.headline1),
+          Text(firstAndLastName, style: TextStyles.headline1),
         ],
       ),
     );

@@ -191,4 +191,39 @@ class ColorsManager {
   static const Color lightCardBackground = Color(0xFFFFFFFF);
   static const Color lightPrimaryText = Color(0xFF1A1A1A);
   static const Color lightSecondaryText = Color(0xFF6B7280);
+
+  // Add to ColorsManager class (after line with orange color)
+
+  // 🎨 Enhanced Fitness Card Colors (Better Contrast)
+  static const Color muscleMassOrange = Color(
+    0xFFFF8C42,
+  ); // Brighter, better contrast
+  static const Color muscleMassDark = Color(
+    0xFFE67E30,
+  ); // Darker shade for gradient
+  static const Color bodyFatBlue = Color(
+    0xFF5B9BD5,
+  ); // Better blue for body fat
+  static const Color bodyFatDark = Color(
+    0xFF3B7EBD,
+  ); // Darker blue for gradient
+
+  // 🎨 Card Style Gradients
+  static const LinearGradient weightCardGradient = LinearGradient(
+    colors: [primaryGreen, Color(0xFF2F9B63)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient bodyFatCardGradient = LinearGradient(
+    colors: [bodyFatBlue, bodyFatDark],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient muscleMassCardGradient = LinearGradient(
+    colors: [muscleMassOrange, muscleMassDark],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }

@@ -73,4 +73,10 @@ class ApiEndpoints {
   static const String getExerciseSet = '/Workouts/exercise-set';
 
   static const String getCustomExercise = '/Exercises/get-custom-exercise';
+
+  static const String measurementCards = 'Users/measurement-cards';
+  static const String measurementCharts = 'Users/get-measurement-charts';
+  static const String recordsStates = 'Records/states';
+
+  static const String recordsAchievements = '/Records/achievements';
 }

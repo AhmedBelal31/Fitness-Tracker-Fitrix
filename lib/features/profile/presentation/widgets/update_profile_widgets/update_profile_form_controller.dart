@@ -82,6 +82,7 @@ class UpdateProfileFormController {
 
   String selectedGender = '';
   bool isInitialized = false;
+  DateTime? selectedBirthDate;
 
   void initializeWithProfile(LoginProfileModel profile) {
     firstNameController.text = profile.firstName ?? '';
@@ -98,12 +99,17 @@ class UpdateProfileFormController {
     weightGoalController.text = profile.weightGoal?.toString() ?? '';
     bodyFatGoalController.text = profile.bodyFatGoal?.toString() ?? '';
     muscleMassGoalController.text = profile.muscleMassGoal?.toString() ?? '';
+    selectedBirthDate = profile.dateOfBirth;
 
     isInitialized = true;
   }
 
   void setGender(String gender) {
     selectedGender = gender;
+  }
+
+  void setBirthDate(DateTime? date) {
+    selectedBirthDate = date;
   }
 
   Map<String, dynamic> getFormData() {
@@ -122,6 +128,7 @@ class UpdateProfileFormController {
       'weightGoal': double.tryParse(weightGoalController.text.trim()),
       'bodyFatGoal': double.tryParse(bodyFatGoalController.text.trim()),
       'muscleMassGoal': double.tryParse(muscleMassGoalController.text.trim()),
+      'birthDate': selectedBirthDate,
     };
   }
 
