@@ -50,6 +50,7 @@ class FitrixApp extends StatelessWidget {
 
               // ✅ Single light theme with locale-based font
               theme: AppTheme.getLightTheme(currentLocale),
+              // theme: AppTheme.getDarkTheme(currentLocale),
               themeMode: ThemeMode.light, // Force light mode
               // Locale configuration
               locale: currentLocale,

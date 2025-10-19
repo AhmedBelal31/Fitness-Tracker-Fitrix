@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fitrix/core/common_ui/widgets/app_logger.dart';
 import 'package:fitrix/core/networking/token_manager.dart';
 import 'dart:developer' as dev;
 
@@ -209,9 +210,8 @@ class AuthInterceptor extends Interceptor {
     try {
       // Only handle 401 errors
       if (err.response?.statusCode != 401) {
-        dev.log(
-          '⏭️ Not a 401 error (${err.response?.statusCode}), passing through',
-          name: 'AuthInterceptor',
+        AppLogger.e(
+          'Error: ${err.response?.statusCode} - ${err.response?.data}',
         );
         return handler.next(err);
       }
@@ -231,6 +231,8 @@ class AuthInterceptor extends Interceptor {
       final refreshToken = await _tokenManager.getRefreshToken();
       final expiredAccessToken = await _tokenManager.getAccessToken();
 
+      AppLogger.d('Expired Access Token: $expiredAccessToken');
+      AppLogger.d('Refresh Token: $refreshToken');
       if (refreshToken == null || refreshToken.isEmpty) {
         dev.log('⚠️ No refresh token available', name: 'AuthInterceptor');
         await _tokenManager.clearTokens();

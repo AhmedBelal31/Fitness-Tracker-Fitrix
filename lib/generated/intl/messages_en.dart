@@ -275,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_exercise_message": MessageLookupByLibrary.simpleMessage(
       "Delete this exercise?",
     ),
+    "deleting": MessageLookupByLibrary.simpleMessage("Deleting..."),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "developer": MessageLookupByLibrary.simpleMessage("Developer"),
     "didnt_receive_code": MessageLookupByLibrary.simpleMessage(

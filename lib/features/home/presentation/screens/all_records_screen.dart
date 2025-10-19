@@ -219,7 +219,7 @@ class _AllRecordsView extends StatelessWidget {
     int index,
   ) {
     final colors = [
-      ColorsManager.warning,
+      ColorsManager.orange,
       ColorsManager.primaryGreen,
       ColorsManager.info,
     ];

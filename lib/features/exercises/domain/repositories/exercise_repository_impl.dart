@@ -271,7 +271,7 @@ class ExerciseRepositoryImpl implements ExerciseRepository {
     }
   }
 
-  // ========== DELETE CUSTOM EXERCISE ==========
+  // exercise_repository_impl.dart
   @override
   Future<Either<Failure, bool>> deleteCustomExercise(String exerciseId) async {
     try {
@@ -282,16 +282,26 @@ class ExerciseRepositoryImpl implements ExerciseRepository {
 
       if (response.statusCode == 200 || response.statusCode == 204) {
         return const Right(true);
+      } else if (response.statusCode == 400) {
+        // Extract specific error message from API response
+        final errorData = response.data;
+        if (errorData != null && errorData is Map) {
+          final errors = errorData['errors'];
+          if (errors != null && errors is Map) {
+            // Get first error message
+            final firstError = errors.values.first;
+            if (firstError is List && firstError.isNotEmpty) {
+              return Left(ServerFailure(firstError.first.toString()));
+            }
+          }
+        }
+        return Left(ServerFailure('Cannot delete this exercise'));
       } else if (response.statusCode == 401) {
         return Left(ServerFailure('Unauthorized. Please login again.'));
       } else if (response.statusCode == 404) {
         return Left(ServerFailure('Exercise not found.'));
       } else {
-        return Left(
-          ServerFailure(
-            'Failed to delete custom exercise: ${response.statusMessage}',
-          ),
-        );
+        return Left(ServerFailure('Failed to delete exercise'));
       }
     } on DioException catch (e) {
       return Left(ServerFailure(_handleDioError(e)));

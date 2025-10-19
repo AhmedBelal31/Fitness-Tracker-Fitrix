@@ -732,6 +732,7 @@
   "birth_date": "Birth Date",
   "select_birth_date": "Select your birth date",
   "date_of_birth": "Date of Birth",
+  "deleting": "Deleting...",
 
   "X": "X"
 }

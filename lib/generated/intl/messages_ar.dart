@@ -247,6 +247,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_exercise_message": MessageLookupByLibrary.simpleMessage(
       "متأكد تمسح التمرين؟",
     ),
+    "deleting": MessageLookupByLibrary.simpleMessage("جاري المسح..."),
     "description": MessageLookupByLibrary.simpleMessage("الوصف"),
     "developer": MessageLookupByLibrary.simpleMessage("المطوّر"),
     "didnt_receive_code": MessageLookupByLibrary.simpleMessage("الكود موصلش؟"),

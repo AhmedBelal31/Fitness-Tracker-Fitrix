@@ -5279,6 +5279,11 @@ class S {
     );
   }
 
+  /// `Deleting...`
+  String get deleting {
+    return Intl.message('Deleting...', name: 'deleting', desc: '', args: []);
+  }
+
   /// `X`
   String get X {
     return Intl.message('X', name: 'X', desc: '', args: []);

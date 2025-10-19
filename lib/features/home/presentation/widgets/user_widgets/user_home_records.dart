@@ -289,7 +289,7 @@ class UserHomeRecords extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
-        color: ColorsManager.primaryGreen.withOpacity(0.1),
+        color: ColorsManager.primaryGreen.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: SizedBox(
@@ -311,7 +311,7 @@ class UserHomeRecords extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: ColorsManager.softShadow,
         border: Border.all(
-          color: ColorsManager.error.withOpacity(0.3),
+          color: ColorsManager.error.withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -381,7 +381,7 @@ class UserHomeRecords extends StatelessWidget {
     int index,
   ) {
     final colors = [
-      ColorsManager.warning,
+      ColorsManager.orange,
       ColorsManager.primaryGreen,
       ColorsManager.info,
     ];
@@ -399,15 +399,18 @@ class UserHomeRecords extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [color.withOpacity(0.12), color.withOpacity(0.04)],
+            colors: [
+              color.withValues(alpha: 0.12),
+              color.withValues(alpha: 0.04),
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: color.withOpacity(0.25), width: 1.5),
+          border: Border.all(color: color.withValues(alpha: 0.25), width: 1.5),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.15),
+              color: color.withValues(alpha: 0.15),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -438,12 +441,12 @@ class UserHomeRecords extends StatelessWidget {
                     padding: EdgeInsets.all(12.w),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [color, color.withOpacity(0.7)],
+                        colors: [color, color.withValues(alpha: 0.7)],
                       ),
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: color.withOpacity(0.3),
+                          color: color.withValues(alpha: 0.3),
                           blurRadius: 8,
                           spreadRadius: 1,
                         ),

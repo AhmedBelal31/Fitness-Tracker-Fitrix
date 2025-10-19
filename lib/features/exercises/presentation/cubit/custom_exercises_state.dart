@@ -34,9 +34,13 @@ class CustomExerciseCreated extends CustomExercisesState {
 
 class CustomExercisesError extends CustomExercisesState {
   final String message;
+  final List<ExerciseModel>? exercises;
 
-  const CustomExercisesError(this.message);
+  const CustomExercisesError(this.message, {this.exercises});
+}
 
-  @override
-  List<Object?> get props => [message];
+class CustomExercisesDeleting extends CustomExercisesState {
+  final List<ExerciseModel> exercises;
+
+  const CustomExercisesDeleting(this.exercises);
 }

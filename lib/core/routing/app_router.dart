@@ -126,7 +126,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => di.get<CustomExercisesCubit>(),
-            child: const CustomExercisesScreen(),
+            child: CustomExercisesScreen(),
           ),
         );
 
