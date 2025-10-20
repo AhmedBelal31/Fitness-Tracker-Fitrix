@@ -164,6 +164,7 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: ColorsManager.scaffoldBackground,
         elevation: 0,
+        centerTitle: true,
         titleTextStyle: TextStyle(
           fontFamily: fontFamily,
           fontSize: 20,

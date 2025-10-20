@@ -34,18 +34,18 @@ import 'package:flutter/material.dart';
 //     return Column(
 //       crossAxisAlignment: CrossAxisAlignment.start,
 //       children: [
-//         // ✅ Fixed height container for label to ensure alignment
+//         // Fixed height container for label
 //         SizedBox(
-//           height: 44, // Fixed height for up to 2 lines (22px per line)
+//           height: 44,
 //           child: Align(
-//             alignment: Alignment.centerLeft,
+//             alignment: AlignmentDirectional.centerStart,
 //             child: Text(
 //               widget.label,
 //               style: const TextStyle(
 //                 fontSize: 16,
 //                 fontWeight: FontWeight.w600,
 //                 color: Color(0xFF2D3748),
-//                 height: 1.3, // Line height
+//                 height: 1.3,
 //               ),
 //               maxLines: 2,
 //               overflow: TextOverflow.ellipsis,
@@ -89,6 +89,14 @@ import 'package:flutter/material.dart';
 //                 : null,
 //             filled: true,
 //             fillColor: Colors.grey.shade50,
+//             // ✅ Smaller error text style
+//             errorStyle: const TextStyle(
+//               fontSize: 11,
+//               height: 1.2,
+//               color: Color(0xFFE53E3E),
+//             ),
+//             // ✅ Reduce error max lines if needed
+//             errorMaxLines: 2,
 //             border: OutlineInputBorder(
 //               borderRadius: BorderRadius.circular(16),
 //               borderSide: BorderSide(color: Colors.grey.shade300),
@@ -119,12 +127,15 @@ import 'package:flutter/material.dart';
 //     );
 //   }
 // }
+
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String label;
   final String? hint;
   final IconData? prefixIcon;
+  final Widget? suffixIcon; // Added
   final bool isPassword;
+  final bool? obscureText; // Added (nullable for manual control)
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final bool enabled;
@@ -135,7 +146,9 @@ class CustomTextField extends StatefulWidget {
     required this.label,
     this.hint,
     this.prefixIcon,
+    this.suffixIcon, // Added
     this.isPassword = false,
+    this.obscureText, // Added
     this.keyboardType = TextInputType.text,
     this.validator,
     this.enabled = true,
@@ -174,7 +187,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         const SizedBox(height: 8),
         TextFormField(
           controller: widget.controller,
-          obscureText: widget.isPassword && _isObscured,
+          // Use manual obscureText if provided, otherwise use isPassword logic
+          obscureText: widget.obscureText ?? (widget.isPassword && _isObscured),
           keyboardType: widget.keyboardType,
           validator: widget.validator,
           enabled: widget.enabled,
@@ -190,31 +204,32 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     size: 20,
                   )
                 : null,
-            suffixIcon: widget.isPassword
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _isObscured = !_isObscured;
-                      });
-                    },
-                    icon: Icon(
-                      _isObscured
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined,
-                      color: Colors.grey.shade600,
-                      size: 20,
-                    ),
-                  )
-                : null,
+            // Use custom suffixIcon if provided, otherwise default password toggle
+            suffixIcon:
+                widget.suffixIcon ??
+                (widget.isPassword
+                    ? IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _isObscured = !_isObscured;
+                          });
+                        },
+                        icon: Icon(
+                          _isObscured
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Colors.grey.shade600,
+                          size: 20,
+                        ),
+                      )
+                    : null),
             filled: true,
             fillColor: Colors.grey.shade50,
-            // ✅ Smaller error text style
             errorStyle: const TextStyle(
               fontSize: 11,
               height: 1.2,
               color: Color(0xFFE53E3E),
             ),
-            // ✅ Reduce error max lines if needed
             errorMaxLines: 2,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),

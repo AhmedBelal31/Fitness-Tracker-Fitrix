@@ -83,6 +83,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "area_chart": MessageLookupByLibrary.simpleMessage("مساحي"),
     "arms": MessageLookupByLibrary.simpleMessage("الذراعين"),
     "arms_description": MessageLookupByLibrary.simpleMessage("باي وتراي"),
+    "at_least_6_characters": MessageLookupByLibrary.simpleMessage(
+      "6 أحرف على الأقل",
+    ),
     "average": MessageLookupByLibrary.simpleMessage("المتوسط"),
     "avg_duration": MessageLookupByLibrary.simpleMessage("متوسط المدة"),
     "back": MessageLookupByLibrary.simpleMessage("الظهر"),
@@ -137,6 +140,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "change": MessageLookupByLibrary.simpleMessage("التغيير"),
     "changeYourPassword": MessageLookupByLibrary.simpleMessage("غيّر الباسورد"),
+    "change_password": MessageLookupByLibrary.simpleMessage(
+      "تغيير كلمة المرور",
+    ),
+    "change_password_subtitle": MessageLookupByLibrary.simpleMessage(
+      "أدخل كلمة المرور الحالية واختر كلمة مرور جديدة",
+    ),
+    "change_password_title": MessageLookupByLibrary.simpleMessage(
+      "تحديث كلمة المرور",
+    ),
     "change_photo": MessageLookupByLibrary.simpleMessage("غيّر الصورة"),
     "change_your_password": MessageLookupByLibrary.simpleMessage(
       "غيّر الباسورد",
@@ -188,6 +200,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "contact_us_help": MessageLookupByLibrary.simpleMessage(
       "محتاج مساعدة؟ كلّم الدعم",
     ),
+    "contains_number": MessageLookupByLibrary.simpleMessage("تحتوي على رقم"),
+    "contains_uppercase_letter": MessageLookupByLibrary.simpleMessage(
+      "تحتوي على حرف كبير",
+    ),
     "continue_with_apple": MessageLookupByLibrary.simpleMessage("كمّل بآبل"),
     "continue_with_facebook": MessageLookupByLibrary.simpleMessage(
       "كمّل بفيسبوك",
@@ -226,6 +242,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "current_body_fat": MessageLookupByLibrary.simpleMessage("دهون (%)"),
     "current_measurements": MessageLookupByLibrary.simpleMessage("الحالي"),
     "current_muscle_mass": MessageLookupByLibrary.simpleMessage("عضلات (كجم)"),
+    "current_password": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور الحالية",
+    ),
     "current_weight": MessageLookupByLibrary.simpleMessage(
       "الوزن الحالي (كجم)",
     ),
@@ -615,9 +634,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
       "مفيش تمارين",
     ),
-    "no_exercises_found": MessageLookupByLibrary.simpleMessage(
-      "لم يتم العثور على تمارين",
-    ),
+    "no_exercises_found": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "مفيش أرقام قياسية",
     ),
@@ -665,8 +682,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "٦ حروف على الأقل",
     ),
     "passwordRequired": MessageLookupByLibrary.simpleMessage("الباسورد مطلوب"),
+    "password_changed_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير كلمة المرور بنجاح",
+    ),
+    "password_must_be_at_least_6_characters":
+        MessageLookupByLibrary.simpleMessage(
+          "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+        ),
     "password_must_be_at_least_8_characters":
         MessageLookupByLibrary.simpleMessage("٨ حروف على الأقل"),
+    "password_requirements": MessageLookupByLibrary.simpleMessage(
+      "متطلبات كلمة المرور:",
+    ),
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
       "الباسورد مش متطابق",
     ),
@@ -698,17 +725,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "phone_number": MessageLookupByLibrary.simpleMessage("التليفون"),
     "planks": MessageLookupByLibrary.simpleMessage("بلانك"),
     "planks_description": MessageLookupByLibrary.simpleMessage("قوة مركز"),
+    "please_confirm_new_password": MessageLookupByLibrary.simpleMessage(
+      "الرجاء تأكيد كلمة المرور الجديدة",
+    ),
     "please_confirm_your_password": MessageLookupByLibrary.simpleMessage(
       "أكّد الباسورد",
     ),
     "please_enter_code_sent_to_your_email":
         MessageLookupByLibrary.simpleMessage("اكتب الكود اللي وصلك"),
+    "please_enter_current_password": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال كلمة المرور الحالية",
+    ),
     "please_enter_custom_equipment_name": MessageLookupByLibrary.simpleMessage(
       "الاسم مطلوب",
     ),
     "please_enter_email": MessageLookupByLibrary.simpleMessage("اكتب الإيميل"),
     "please_enter_exercise_name": MessageLookupByLibrary.simpleMessage(
       "الاسم مطلوب",
+    ),
+    "please_enter_new_password": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال كلمة المرور الجديدة",
     ),
     "please_enter_password": MessageLookupByLibrary.simpleMessage(
       "اكتب الباسورد",
@@ -795,9 +831,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "schedule_session": MessageLookupByLibrary.simpleMessage("جدولة جلسة"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "search_by_date": MessageLookupByLibrary.simpleMessage("دوّر بالتاريخ..."),
-    "search_exercises": MessageLookupByLibrary.simpleMessage(
-      "البحث عن التمارين...",
-    ),
+    "search_exercises": MessageLookupByLibrary.simpleMessage("دوّر..."),
     "search_results": MessageLookupByLibrary.simpleMessage("النتائج"),
     "searching_for": MessageLookupByLibrary.simpleMessage("بيدوّر"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("رو جالس"),

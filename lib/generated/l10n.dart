@@ -1449,10 +1449,10 @@ class S {
     );
   }
 
-  /// `Search exercises...`
+  /// `Search...`
   String get search_exercises {
     return Intl.message(
-      'Search exercises...',
+      'Search...',
       name: 'search_exercises',
       desc: '',
       args: [],
@@ -1499,10 +1499,10 @@ class S {
     return Intl.message('Popular', name: 'most_popular', desc: '', args: []);
   }
 
-  /// `No Exercises Found`
+  /// `No exercises`
   String get no_exercises_found {
     return Intl.message(
-      'No Exercises Found',
+      'No exercises',
       name: 'no_exercises_found',
       desc: '',
       args: [],
@@ -1519,10 +1519,10 @@ class S {
     );
   }
 
-  /// `Create your own`
+  /// `Create Custom`
   String get create_custom {
     return Intl.message(
-      'Create your own',
+      'Create Custom',
       name: 'create_custom',
       desc: '',
       args: [],
@@ -1559,10 +1559,10 @@ class S {
     return Intl.message('Description', name: 'description', desc: '', args: []);
   }
 
-  /// `My Custom Exercises`
+  /// `My Custom`
   String get my_custom_exercises {
     return Intl.message(
-      'My Custom Exercises',
+      'My Custom',
       name: 'my_custom_exercises',
       desc: '',
       args: [],
@@ -1579,10 +1579,10 @@ class S {
     );
   }
 
-  /// `View & manage your custom exercises`
+  /// `Create your own`
   String get create_your_own_exercises {
     return Intl.message(
-      'View & manage your custom exercises',
+      'Create your own',
       name: 'create_your_own_exercises',
       desc: '',
       args: [],
@@ -5349,6 +5349,136 @@ class S {
     return Intl.message(
       'Clear Filters',
       name: 'clear_filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Your Password`
+  String get change_password_title {
+    return Intl.message(
+      'Update Your Password',
+      name: 'change_password_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your current password and choose a new one`
+  String get change_password_subtitle {
+    return Intl.message(
+      'Enter your current password and choose a new one',
+      name: 'change_password_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current Password`
+  String get current_password {
+    return Intl.message(
+      'Current Password',
+      name: 'current_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your current password`
+  String get please_enter_current_password {
+    return Intl.message(
+      'Please enter your current password',
+      name: 'please_enter_current_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a new password`
+  String get please_enter_new_password {
+    return Intl.message(
+      'Please enter a new password',
+      name: 'please_enter_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please confirm your new password`
+  String get please_confirm_new_password {
+    return Intl.message(
+      'Please confirm your new password',
+      name: 'please_confirm_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get password_must_be_at_least_6_characters {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'password_must_be_at_least_6_characters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password Requirements:`
+  String get password_requirements {
+    return Intl.message(
+      'Password Requirements:',
+      name: 'password_requirements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At least 6 characters`
+  String get at_least_6_characters {
+    return Intl.message(
+      'At least 6 characters',
+      name: 'at_least_6_characters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contains an uppercase letter`
+  String get contains_uppercase_letter {
+    return Intl.message(
+      'Contains an uppercase letter',
+      name: 'contains_uppercase_letter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contains a number`
+  String get contains_number {
+    return Intl.message(
+      'Contains a number',
+      name: 'contains_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Password`
+  String get change_password {
+    return Intl.message(
+      'Change Password',
+      name: 'change_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed successfully`
+  String get password_changed_successfully {
+    return Intl.message(
+      'Password changed successfully',
+      name: 'password_changed_successfully',
       desc: '',
       args: [],
     );

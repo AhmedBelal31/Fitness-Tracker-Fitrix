@@ -89,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "arms_description": MessageLookupByLibrary.simpleMessage(
       "Biceps & triceps",
     ),
+    "at_least_6_characters": MessageLookupByLibrary.simpleMessage(
+      "At least 6 characters",
+    ),
     "average": MessageLookupByLibrary.simpleMessage("Avg"),
     "avg_duration": MessageLookupByLibrary.simpleMessage("Avg Duration"),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
@@ -151,6 +154,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeYourPassword": MessageLookupByLibrary.simpleMessage(
       "Change Password",
     ),
+    "change_password": MessageLookupByLibrary.simpleMessage("Change Password"),
+    "change_password_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Enter your current password and choose a new one",
+    ),
+    "change_password_title": MessageLookupByLibrary.simpleMessage(
+      "Update Your Password",
+    ),
     "change_photo": MessageLookupByLibrary.simpleMessage("Change Photo"),
     "change_your_password": MessageLookupByLibrary.simpleMessage(
       "Change Password",
@@ -204,6 +214,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "contact_us_help": MessageLookupByLibrary.simpleMessage(
       "Need help? Contact support",
     ),
+    "contains_number": MessageLookupByLibrary.simpleMessage(
+      "Contains a number",
+    ),
+    "contains_uppercase_letter": MessageLookupByLibrary.simpleMessage(
+      "Contains an uppercase letter",
+    ),
     "continue_with_apple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
     ),
@@ -223,7 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create Account",
     ),
     "createPassword": MessageLookupByLibrary.simpleMessage("Create password"),
-    "create_custom": MessageLookupByLibrary.simpleMessage("Create your own"),
+    "create_custom": MessageLookupByLibrary.simpleMessage("Create Custom"),
     "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "Create Custom",
     ),
@@ -240,7 +256,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create First",
     ),
     "create_your_own_exercises": MessageLookupByLibrary.simpleMessage(
-      "View & manage your custom exercises",
+      "Create your own",
     ),
     "crunches": MessageLookupByLibrary.simpleMessage("Crunches"),
     "crunches_description": MessageLookupByLibrary.simpleMessage("Ab exercise"),
@@ -248,6 +264,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "current_body_fat": MessageLookupByLibrary.simpleMessage("Body Fat (%)"),
     "current_measurements": MessageLookupByLibrary.simpleMessage("Current"),
     "current_muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle (kg)"),
+    "current_password": MessageLookupByLibrary.simpleMessage(
+      "Current Password",
+    ),
     "current_weight": MessageLookupByLibrary.simpleMessage(
       "Current Weight (kg)",
     ),
@@ -641,9 +660,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "muscle_mass_progress": MessageLookupByLibrary.simpleMessage(
       "Muscle Mass Progress",
     ),
-    "my_custom_exercises": MessageLookupByLibrary.simpleMessage(
-      "My Custom Exercises",
-    ),
+    "my_custom_exercises": MessageLookupByLibrary.simpleMessage("My Custom"),
     "my_exercises": MessageLookupByLibrary.simpleMessage("My Exercises"),
     "my_progress": MessageLookupByLibrary.simpleMessage("My Progress"),
     "my_trainees": MessageLookupByLibrary.simpleMessage("My Trainees"),
@@ -663,9 +680,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
       "No exercises",
     ),
-    "no_exercises_found": MessageLookupByLibrary.simpleMessage(
-      "No Exercises Found",
-    ),
+    "no_exercises_found": MessageLookupByLibrary.simpleMessage("No exercises"),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "No records yet",
     ),
@@ -719,8 +734,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordRequired": MessageLookupByLibrary.simpleMessage(
       "Password required",
     ),
+    "password_changed_successfully": MessageLookupByLibrary.simpleMessage(
+      "Password changed successfully",
+    ),
+    "password_must_be_at_least_6_characters":
+        MessageLookupByLibrary.simpleMessage(
+          "Password must be at least 6 characters",
+        ),
     "password_must_be_at_least_8_characters":
         MessageLookupByLibrary.simpleMessage("Min 8 chars"),
+    "password_requirements": MessageLookupByLibrary.simpleMessage(
+      "Password Requirements:",
+    ),
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
       "Passwords don\'t match",
     ),
@@ -756,17 +781,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone"),
     "planks": MessageLookupByLibrary.simpleMessage("Planks"),
     "planks_description": MessageLookupByLibrary.simpleMessage("Core strength"),
+    "please_confirm_new_password": MessageLookupByLibrary.simpleMessage(
+      "Please confirm your new password",
+    ),
     "please_confirm_your_password": MessageLookupByLibrary.simpleMessage(
       "Confirm password",
     ),
     "please_enter_code_sent_to_your_email":
         MessageLookupByLibrary.simpleMessage("Enter code from email"),
+    "please_enter_current_password": MessageLookupByLibrary.simpleMessage(
+      "Please enter your current password",
+    ),
     "please_enter_custom_equipment_name": MessageLookupByLibrary.simpleMessage(
       "Name required",
     ),
     "please_enter_email": MessageLookupByLibrary.simpleMessage("Enter email"),
     "please_enter_exercise_name": MessageLookupByLibrary.simpleMessage(
       "Name required",
+    ),
+    "please_enter_new_password": MessageLookupByLibrary.simpleMessage(
+      "Please enter a new password",
     ),
     "please_enter_password": MessageLookupByLibrary.simpleMessage(
       "Enter password",
@@ -859,9 +893,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "search_by_date": MessageLookupByLibrary.simpleMessage("Search date..."),
-    "search_exercises": MessageLookupByLibrary.simpleMessage(
-      "Search exercises...",
-    ),
+    "search_exercises": MessageLookupByLibrary.simpleMessage("Search..."),
     "search_results": MessageLookupByLibrary.simpleMessage("Results"),
     "searching_for": MessageLookupByLibrary.simpleMessage("Searching"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("Seated Row"),

@@ -291,4 +291,9 @@ class FirebaseTokenService {
     }
     return null;
   }
+
+  Future<bool> isNotificationsEnabled() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('notifications_enabled') ?? true;
+  }
 }

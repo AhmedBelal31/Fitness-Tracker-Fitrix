@@ -21,6 +21,7 @@ import '../../features/exercises/presentation/screens/section_exercises_screen.d
 import '../../features/home/presentation/screens/all_records_screen.dart';
 import '../../features/home/presentation/widgets/custom_exercise_widgets/select_section_screen.dart';
 import '../../features/profile/presentation/screens/about_screen.dart';
+import '../../features/profile/presentation/screens/change_password_screen.dart';
 import '../../features/profile/presentation/screens/contact_support_screen.dart';
 import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
 import '../../features/profile/presentation/screens/terms_conditions_screen.dart';
@@ -131,6 +132,7 @@ class AppRouter {
             child: CustomExercisesScreen(),
           ),
         );
+
       case Routes.selectSection:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
@@ -174,6 +176,11 @@ class AppRouter {
         );
       case Routes.allRecords:
         return MaterialPageRoute(builder: (_) => const AllRecordsScreen());
+
+      case Routes.changePassword:
+        return MaterialPageRoute(
+          builder: (_) => const ChangePasswordScreen(), // No arguments needed
+        );
 
       default:
         screen = const ErrorScreen();

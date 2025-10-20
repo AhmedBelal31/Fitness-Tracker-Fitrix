@@ -4,6 +4,7 @@ class ApiEndpoints {
   static const String login = "Auth/login";
   static const String register = "Auth/register";
   static const String forgotPassword = "Auth/forgot-password";
+  static const String changePassword = '/Auth/change-password';
 
   static const String completeProfile = "Users/create-profile";
   static const String currentUser = "currentUser";
@@ -18,22 +19,12 @@ class ApiEndpoints {
   static const String dashboard = '/api/dashboard';
   static const String userStats = '/api/dashboard/stats';
 
-  // Measurements
-  static const String measurements = '/api/measurements';
-  static const String addMeasurement = '/api/measurements/add';
-  static const String latestMeasurement = '/api/measurements/latest';
-
   // Workouts
   static const String workouts = '/api/workout';
   static const String recentWorkouts = '/api/workout/recent';
   static const String createWorkout = '/api/workout/create';
   static String workoutDetails(String workoutId) => '/api/workout/$workoutId';
   static String deleteWorkout(String workoutId) => '/api/workout/$workoutId';
-
-  // Personal Records
-  static const String personalRecords = '/api/personal-records';
-  static const String personalRecordsSummary = '/api/personal-records/summary';
-  static String addPersonalRecord = '/api/personal-records/add';
 
   // Trainer
   static const String trainees = '/api/trainer/trainees';

@@ -6,6 +6,7 @@ import '../../../../../core/networking/dio_helper.dart';
 import '../../../../../core/networking/error/failures.dart';
 import '../../../data/models/login_profile_model.dart';
 import '../../../data/models/params/complete_profile_params.dart';
+import '../../../data/models/params/reset_password_request_params.dart';
 import '../../../data/models/params/update_profile_params.dart';
 import 'profile_repository.dart';
 
@@ -254,6 +255,46 @@ class ProfileRepositoryImpl implements ProfileRepository {
     } catch (e) {
       dev.log(
         '❌ Unexpected error during profile update: $e',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  // Add this method to ProfileRepositoryImpl
+  @override
+  Future<Either<Failure, void>> resetPassword(
+    ResetPasswordRequest request,
+  ) async {
+    try {
+      dev.log('📤 Sending reset password request', name: 'ProfileRepository');
+
+      final response = await _apiService.postRequest(
+        ApiEndpoints.changePassword,
+        data: request.toJson(),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        dev.log('✅ Password reset successful', name: 'ProfileRepository');
+        return const Right(null);
+      } else {
+        dev.log(
+          '❌ Password reset failed: ${response.statusCode}',
+          name: 'ProfileRepository',
+        );
+        return Left(
+          ServerFailure.fromResponse(response.statusCode, response.data),
+        );
+      }
+    } on DioException catch (e) {
+      dev.log(
+        '❌ DioException during password reset: ${e.message}',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      dev.log(
+        '❌ Unexpected error during password reset: $e',
         name: 'ProfileRepository',
       );
       return Left(ServerFailure(e.toString()));

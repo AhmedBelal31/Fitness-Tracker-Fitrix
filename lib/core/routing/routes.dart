@@ -32,4 +32,6 @@ class Routes {
 
   static const String workoutDetails = '/workout-details';
   static const String allRecords = '/all-records';
+
+  static const String changePassword = '/changePassword';
 }
