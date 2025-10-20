@@ -13,11 +13,13 @@ import '../../features/exercises/data/models/exercise_model.dart';
 import '../../features/exercises/data/models/section_model.dart';
 import '../../features/exercises/presentation/cubit/custom_exercises_cubit.dart';
 import '../../features/exercises/presentation/cubit/exercises_cubit.dart';
+import '../../features/exercises/presentation/cubit/sections_cubit.dart';
 import '../../features/exercises/presentation/screens/create_custom_exercise_screen.dart';
 import '../../features/exercises/presentation/screens/custom_exercises_screen.dart';
 import '../../features/exercises/presentation/screens/exercise_details_screen.dart';
 import '../../features/exercises/presentation/screens/section_exercises_screen.dart';
 import '../../features/home/presentation/screens/all_records_screen.dart';
+import '../../features/home/presentation/widgets/custom_exercise_widgets/select_section_screen.dart';
 import '../../features/profile/presentation/screens/about_screen.dart';
 import '../../features/profile/presentation/screens/contact_support_screen.dart';
 import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
@@ -127,6 +129,13 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => di.get<CustomExercisesCubit>(),
             child: CustomExercisesScreen(),
+          ),
+        );
+      case Routes.selectSection:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: di<SectionsCubit>(),
+            child: const SelectSectionScreen(),
           ),
         );
 

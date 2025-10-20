@@ -28,6 +28,7 @@ class Routes {
   static const String exerciseDetails = '/exercise-details';
   static const String customExercises = '/custom-exercises';
   static const String createCustomExercise = '/create-custom-exercise';
+  static const String selectSection = '/select-section';
 
   static const String workoutDetails = '/workout-details';
   static const String allRecords = '/all-records';

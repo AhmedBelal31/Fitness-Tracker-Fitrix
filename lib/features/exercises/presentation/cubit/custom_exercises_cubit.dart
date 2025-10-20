@@ -9,10 +9,10 @@ import 'custom_exercises_state.dart';
 //
 //   CustomExercisesCubit(this._repository) : super(CustomExercisesInitial());
 //
-//   Future<void> loadCustomExercises({String? difficulty}) async {
+//   Future<void> loadCustomExercises() async {
 //     emit(CustomExercisesLoading());
 //
-//     final result = await _repository.getCustomExercises(difficulty: difficulty);
+//     final result = await _repository.getCustomExercises();
 //
 //     result.fold(
 //       (failure) => emit(CustomExercisesError(failure.errorMessage)),
@@ -20,6 +20,7 @@ import 'custom_exercises_state.dart';
 //     );
 //   }
 //
+//   /// Create a new custom exercise
 //   Future<void> createCustomExercise(CreateCustomExerciseRequest request) async {
 //     emit(CustomExercisesCreating());
 //
@@ -29,10 +30,12 @@ import 'custom_exercises_state.dart';
 //       exercise,
 //     ) {
 //       emit(CustomExerciseCreated(exercise));
-//       loadCustomExercises(); // Reload list after creation
+//       // Reload list after creation
+//       loadCustomExercises();
 //     });
 //   }
 //
+//   /// Update an existing custom exercise
 //   Future<void> updateCustomExercise({
 //     required String exerciseId,
 //     required String sectionId,
@@ -44,29 +47,45 @@ import 'custom_exercises_state.dart';
 //       request,
 //     );
 //
-//     result.fold(
-//       (failure) => emit(CustomExercisesError(failure.errorMessage)),
-//       (_) => loadCustomExercises(), // Reload list after update
-//     );
+//     result.fold((failure) => emit(CustomExercisesError(failure.errorMessage)), (
+//       _,
+//     ) {
+//       // Reload list after update
+//       loadCustomExercises();
+//     });
 //   }
 //
 //   Future<void> deleteCustomExercise(String exerciseId) async {
-//     // Keep current exercises while showing loading indicator
+//     // Preserve current exercises during deletion
+//     List<ExerciseModel> currentExercises = [];
+//
 //     if (state is CustomExercisesLoaded) {
-//       final currentExercises = (state as CustomExercisesLoaded).exercises;
+//       currentExercises = (state as CustomExercisesLoaded).exercises;
+//       emit(CustomExercisesDeleting(currentExercises));
+//     } else if (state is CustomExercisesError) {
+//       currentExercises = (state as CustomExercisesError).exercises ?? [];
 //       emit(CustomExercisesDeleting(currentExercises));
 //     }
 //
 //     final result = await _repository.deleteCustomExercise(exerciseId);
 //
-//     result.fold((failure) => emit(CustomExercisesError(failure.errorMessage)), (
-//       _,
-//     ) {
-//       loadCustomExercises(); // Reload list after deletion
-//     });
+//     result.fold(
+//       (failure) {
+//         // Keep the list visible when deletion fails
+//         emit(
+//           CustomExercisesError(
+//             failure.errorMessage,
+//             exercises: currentExercises,
+//           ),
+//         );
+//       },
+//       (_) {
+//         // Only reload on successful deletion
+//         loadCustomExercises();
+//       },
+//     );
 //   }
 // }
-// custom_exercises_cubit.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomExercisesCubit extends Cubit<CustomExercisesState> {
@@ -74,10 +93,11 @@ class CustomExercisesCubit extends Cubit<CustomExercisesState> {
 
   CustomExercisesCubit(this._repository) : super(CustomExercisesInitial());
 
-  Future<void> loadCustomExercises() async {
+  /// Load all custom exercises with optional difficulty filter
+  Future<void> loadCustomExercises({String? difficulty}) async {
     emit(CustomExercisesLoading());
 
-    final result = await _repository.getCustomExercises();
+    final result = await _repository.getCustomExercises(difficulty: difficulty);
 
     result.fold(
       (failure) => emit(CustomExercisesError(failure.errorMessage)),
@@ -120,6 +140,7 @@ class CustomExercisesCubit extends Cubit<CustomExercisesState> {
     });
   }
 
+  /// Delete a custom exercise
   Future<void> deleteCustomExercise(String exerciseId) async {
     // Preserve current exercises during deletion
     List<ExerciseModel> currentExercises = [];

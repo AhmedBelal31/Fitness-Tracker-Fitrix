@@ -521,6 +521,53 @@ class ProgressCubit extends Cubit<ProgressState> {
   // }
 
   /// ✅ Check ONLY weight progress and celebrate ANY change toward goal
+  // void _checkAndCelebrate(MeasurementCardsResponse cards) {
+  //   final weightCard = cards.weightCard;
+  //
+  //   // Calculate absolute change from start
+  //   final weightChange = (weightCard.firstWeight - weightCard.lastWeight).abs();
+  //
+  //   debugPrint('🏋️ Weight Change: ${weightChange.toStringAsFixed(1)}kg');
+  //   debugPrint('   Start: ${weightCard.firstWeight}kg');
+  //   debugPrint('   Current: ${weightCard.lastWeight}kg');
+  //   debugPrint('   Goal: ${weightCard.weightGoal}kg');
+  //
+  //   // ✅ Celebrate if ANY weight change (> 0.5kg)
+  //   if (weightChange >= 0.5) {
+  //     // Calculate progress toward goal (for percentage display)
+  //     final startToGoal = (weightCard.firstWeight - weightCard.weightGoal)
+  //         .abs();
+  //     final currentToGoal = (weightCard.lastWeight - weightCard.weightGoal)
+  //         .abs();
+  //     final progressPercent =
+  //         ((startToGoal - currentToGoal) / startToGoal * 100).clamp(0, 100);
+  //
+  //     final isGoodDirection = progressPercent > 0;
+  //     final message = isGoodDirection
+  //         ? '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!'
+  //         : '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
+  //
+  //     debugPrint('🎉 WEIGHT CHANGE CELEBRATION: $message');
+  //
+  //     Future.delayed(const Duration(milliseconds: 800), () {
+  //       if (state is ProgressLoaded) {
+  //         emit(
+  //           (state as ProgressLoaded).copyWith(
+  //             shouldShowCelebration: true,
+  //             celebrationMessage: message,
+  //             celebrationProgress: progressPercent
+  //                 .clamp(1, 100)
+  //                 .toDouble(), // Show at least 1% for visual
+  //           ),
+  //         );
+  //       }
+  //     });
+  //   } else {
+  //     debugPrint(
+  //       '⚠️ No celebration: Weight change is only ${weightChange.toStringAsFixed(1)}kg',
+  //     );
+  //   }
+  // }
   void _checkAndCelebrate(MeasurementCardsResponse cards) {
     final weightCard = cards.weightCard;
 
@@ -534,34 +581,51 @@ class ProgressCubit extends Cubit<ProgressState> {
 
     // ✅ Celebrate if ANY weight change (> 0.5kg)
     if (weightChange >= 0.5) {
-      // Calculate progress toward goal (for percentage display)
-      final startToGoal = (weightCard.firstWeight - weightCard.weightGoal)
-          .abs();
-      final currentToGoal = (weightCard.lastWeight - weightCard.weightGoal)
-          .abs();
-      final progressPercent =
-          ((startToGoal - currentToGoal) / startToGoal * 100).clamp(0, 100);
+      // Check if goal exists before calculating progress
+      if (weightCard.weightGoal != null) {
+        final goal = weightCard.weightGoal!; // Safe unwrap
+        final startToGoal = (weightCard.firstWeight - goal).abs();
+        final currentToGoal = (weightCard.lastWeight - goal).abs();
+        final progressPercent =
+            ((startToGoal - currentToGoal) / startToGoal * 100).clamp(0, 100);
 
-      final isGoodDirection = progressPercent > 0;
-      final message = isGoodDirection
-          ? '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!'
-          : '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
+        final isGoodDirection = progressPercent > 0;
+        final message = isGoodDirection
+            ? '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!'
+            : '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
 
-      debugPrint('🎉 WEIGHT CHANGE CELEBRATION: $message');
+        debugPrint('🎉 WEIGHT CHANGE CELEBRATION: $message');
 
-      Future.delayed(const Duration(milliseconds: 800), () {
-        if (state is ProgressLoaded) {
-          emit(
-            (state as ProgressLoaded).copyWith(
-              shouldShowCelebration: true,
-              celebrationMessage: message,
-              celebrationProgress: progressPercent
-                  .clamp(1, 100)
-                  .toDouble(), // Show at least 1% for visual
-            ),
-          );
-        }
-      });
+        Future.delayed(const Duration(milliseconds: 800), () {
+          if (state is ProgressLoaded) {
+            emit(
+              (state as ProgressLoaded).copyWith(
+                shouldShowCelebration: true,
+                celebrationMessage: message,
+                celebrationProgress: progressPercent.clamp(1, 100).toDouble(),
+              ),
+            );
+          }
+        });
+      } else {
+        // No goal set, just celebrate the change
+        final message =
+            '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
+
+        debugPrint('🎉 WEIGHT CHANGE (No Goal): $message');
+
+        Future.delayed(const Duration(milliseconds: 800), () {
+          if (state is ProgressLoaded) {
+            emit(
+              (state as ProgressLoaded).copyWith(
+                shouldShowCelebration: true,
+                celebrationMessage: message,
+                celebrationProgress: 50.0, // Show 50% when no goal
+              ),
+            );
+          }
+        });
+      }
     } else {
       debugPrint(
         '⚠️ No celebration: Weight change is only ${weightChange.toStringAsFixed(1)}kg',

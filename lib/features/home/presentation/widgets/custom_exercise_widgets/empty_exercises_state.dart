@@ -23,13 +23,10 @@ class EmptyExercisesState extends StatelessWidget {
     return TweenAnimationBuilder(
       duration: const Duration(milliseconds: 800),
       tween: Tween<double>(begin: 0, end: 1),
-      curve: Curves.easeOutCubic, // Changed from elasticOut to easeOutCubic
+      curve: Curves.elasticOut,
       builder: (context, double value, child) {
-        // Clamp opacity to valid range
-        final clampedOpacity = value.clamp(0.0, 1.0);
-
         return Opacity(
-          opacity: clampedOpacity,
+          opacity: value,
           child: Transform.scale(scale: 0.8 + (0.2 * value), child: child),
         );
       },
@@ -60,27 +57,24 @@ class EmptyExercisesState extends StatelessWidget {
     return TweenAnimationBuilder(
       duration: const Duration(milliseconds: 1000),
       tween: Tween<double>(begin: 0, end: 1),
-      curve: Curves.easeOutBack, // Changed from elasticOut to easeOutBack
+      curve: Curves.elasticOut,
       builder: (context, double value, child) {
         return Transform.rotate(
           angle: (1 - value) * 0.5,
-          child: Transform.scale(
-            scale: value.clamp(0.0, 1.0), // Clamp scale value
-            child: child,
-          ),
+          child: Transform.scale(scale: value, child: child),
         );
       },
       child: Container(
         width: 120.w,
         height: 120.h,
         decoration: BoxDecoration(
-          color: ColorsManager.primaryGreen.withOpacity(0.1),
+          gradient: ColorsManager.primaryGradient.scale(0.3),
           shape: BoxShape.circle,
         ),
         child: Icon(
           hasFilters ? Icons.search_off : Icons.fitness_center_outlined,
           size: 60.sp,
-          color: ColorsManager.primaryGreen,
+          color: ColorsManager.whiteText,
         ),
       ),
     );
@@ -108,10 +102,7 @@ class EmptyExercisesState extends StatelessWidget {
       tween: Tween<double>(begin: 0, end: 1),
       curve: Curves.easeOutBack,
       builder: (context, double value, child) {
-        return Transform.scale(
-          scale: value.clamp(0.8, 1.0), // Clamp scale value
-          child: child,
-        );
+        return Transform.scale(scale: value, child: child);
       },
       child: ElevatedButton.icon(
         onPressed: onCreateTap,
@@ -131,29 +122,18 @@ class EmptyExercisesState extends StatelessWidget {
   }
 
   Widget _buildClearFiltersButton(S s) {
-    return TweenAnimationBuilder(
-      duration: const Duration(milliseconds: 600),
-      tween: Tween<double>(begin: 0, end: 1),
-      curve: Curves.easeOutBack,
-      builder: (context, double value, child) {
-        return Transform.scale(
-          scale: value.clamp(0.8, 1.0), // Clamp scale value
-          child: child,
-        );
-      },
-      child: ElevatedButton.icon(
-        onPressed: onClearFilters,
-        icon: const Icon(Icons.clear, size: 20),
-        label: Text(s.clear_filters),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: ColorsManager.primaryGreen,
-          foregroundColor: ColorsManager.whiteText,
-          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          elevation: 4,
+    return ElevatedButton.icon(
+      onPressed: onClearFilters,
+      icon: const Icon(Icons.clear, size: 20),
+      label: Text(s.clear_filters),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: ColorsManager.primaryGreen,
+        foregroundColor: ColorsManager.whiteText,
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.r),
         ),
+        elevation: 4,
       ),
     );
   }

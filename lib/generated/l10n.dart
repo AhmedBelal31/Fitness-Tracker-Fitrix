@@ -1449,10 +1449,10 @@ class S {
     );
   }
 
-  /// `Search...`
+  /// `Search exercises...`
   String get search_exercises {
     return Intl.message(
-      'Search...',
+      'Search exercises...',
       name: 'search_exercises',
       desc: '',
       args: [],
@@ -1499,10 +1499,10 @@ class S {
     return Intl.message('Popular', name: 'most_popular', desc: '', args: []);
   }
 
-  /// `No exercises`
+  /// `No Exercises Found`
   String get no_exercises_found {
     return Intl.message(
-      'No exercises',
+      'No Exercises Found',
       name: 'no_exercises_found',
       desc: '',
       args: [],
@@ -3319,10 +3319,10 @@ class S {
     );
   }
 
-  /// `Logout?`
+  /// `Are you sure you want to log out?`
   String get logoutConfirmMessage {
     return Intl.message(
-      'Logout?',
+      'Are you sure you want to log out?',
       name: 'logoutConfirmMessage',
       desc: '',
       args: [],
@@ -5282,6 +5282,76 @@ class S {
   /// `Deleting...`
   String get deleting {
     return Intl.message('Deleting...', name: 'deleting', desc: '', args: []);
+  }
+
+  /// `Choose a Section`
+  String get choose_section_for_exercise {
+    return Intl.message(
+      'Choose a Section',
+      name: 'choose_section_for_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select which category your custom exercise belongs to`
+  String get select_category_for_custom_exercise {
+    return Intl.message(
+      'Select which category your custom exercise belongs to',
+      name: 'select_category_for_custom_exercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading sections...`
+  String get loading_sections {
+    return Intl.message(
+      'Loading sections...',
+      name: 'loading_sections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Section`
+  String get select_section {
+    return Intl.message(
+      'Select Section',
+      name: 'select_section',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage your custom exercises`
+  String get manage_your_exercises {
+    return Intl.message(
+      'Manage your custom exercises',
+      name: 'manage_your_exercises',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try adjusting your filters or search terms`
+  String get try_different_filters {
+    return Intl.message(
+      'Try adjusting your filters or search terms',
+      name: 'try_different_filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear Filters`
+  String get clear_filters {
+    return Intl.message(
+      'Clear Filters',
+      name: 'clear_filters',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `X`

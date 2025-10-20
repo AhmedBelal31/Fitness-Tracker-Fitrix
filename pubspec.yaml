@@ -72,8 +72,8 @@ dependencies:
   just_audio: ^0.9.36
   carousel_slider: ^5.1.1
   google_nav_bar: ^5.0.7
+  rename: ^3.1.0
 
-#  fl_chart: ^0.68.0
 
 
 

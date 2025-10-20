@@ -31,6 +31,7 @@ class ExerciseEntity {
   final String id;
   final String sectionId;
   final String name;
+  final String sectionName;
   final String? description;
   final String? instructions;
   final String? equipment;
@@ -45,6 +46,7 @@ class ExerciseEntity {
     required this.id,
     required this.sectionId,
     required this.name,
+    required this.sectionName,
     this.description,
     this.instructions,
     this.equipment,

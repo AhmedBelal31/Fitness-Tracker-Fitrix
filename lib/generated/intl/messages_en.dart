@@ -171,7 +171,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "chest_press_machine": MessageLookupByLibrary.simpleMessage("Chest Press"),
     "chooseUsername": MessageLookupByLibrary.simpleMessage("Choose username"),
     "choose_from_gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+    "choose_section_for_exercise": MessageLookupByLibrary.simpleMessage(
+      "Choose a Section",
+    ),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
+    "clear_filters": MessageLookupByLibrary.simpleMessage("Clear Filters"),
     "cm": MessageLookupByLibrary.simpleMessage("cm"),
     "commercialUseItem": MessageLookupByLibrary.simpleMessage("Commercial use"),
     "completeProfile": MessageLookupByLibrary.simpleMessage("Complete Profile"),
@@ -565,12 +569,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading_records": MessageLookupByLibrary.simpleMessage(
       "Loading records...",
     ),
+    "loading_sections": MessageLookupByLibrary.simpleMessage(
+      "Loading sections...",
+    ),
     "log": MessageLookupByLibrary.simpleMessage("Log"),
     "log_measurement": MessageLookupByLibrary.simpleMessage("Log Measurement"),
     "loggedOutSuccess": MessageLookupByLibrary.simpleMessage("Logged out"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Logout?"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to log out?",
+    ),
     "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("Logout"),
     "lower_abs": MessageLookupByLibrary.simpleMessage("Lower Abs"),
     "lower_back": MessageLookupByLibrary.simpleMessage("Lower Back"),
@@ -580,6 +589,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("Manage Trainees"),
+    "manage_your_exercises": MessageLookupByLibrary.simpleMessage(
+      "Manage your custom exercises",
+    ),
     "max_value": MessageLookupByLibrary.simpleMessage("Max"),
     "measurement_history": MessageLookupByLibrary.simpleMessage(
       "Measurement History",
@@ -651,7 +663,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
       "No exercises",
     ),
-    "no_exercises_found": MessageLookupByLibrary.simpleMessage("No exercises"),
+    "no_exercises_found": MessageLookupByLibrary.simpleMessage(
+      "No Exercises Found",
+    ),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "No records yet",
     ),
@@ -845,7 +859,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "search_by_date": MessageLookupByLibrary.simpleMessage("Search date..."),
-    "search_exercises": MessageLookupByLibrary.simpleMessage("Search..."),
+    "search_exercises": MessageLookupByLibrary.simpleMessage(
+      "Search exercises...",
+    ),
     "search_results": MessageLookupByLibrary.simpleMessage("Results"),
     "searching_for": MessageLookupByLibrary.simpleMessage("Searching"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("Seated Row"),
@@ -858,8 +874,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_birth_date": MessageLookupByLibrary.simpleMessage(
       "Select your birth date",
     ),
+    "select_category_for_custom_exercise": MessageLookupByLibrary.simpleMessage(
+      "Select which category your custom exercise belongs to",
+    ),
     "select_difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
     "select_equipment": MessageLookupByLibrary.simpleMessage("Equipment"),
+    "select_section": MessageLookupByLibrary.simpleMessage("Select Section"),
     "select_workout": MessageLookupByLibrary.simpleMessage("Select Session"),
     "select_workout_date": MessageLookupByLibrary.simpleMessage("Select Date"),
     "sendEmail": MessageLookupByLibrary.simpleMessage("Email"),
@@ -959,6 +979,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "try_different_date": MessageLookupByLibrary.simpleMessage(
       "Try other date",
+    ),
+    "try_different_filters": MessageLookupByLibrary.simpleMessage(
+      "Try adjusting your filters or search terms",
     ),
     "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage("Hack"),
     "undo": MessageLookupByLibrary.simpleMessage("Undo"),

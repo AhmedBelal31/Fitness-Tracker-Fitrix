@@ -465,7 +465,7 @@
   "termsConditions": "الشروط",
   "contactSupport": "الدعم",
   "logoutConfirmTitle": "خروج",
-  "logoutConfirmMessage": "عايز تخرج؟",
+  "logoutConfirmMessage":"هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "loggedOutSuccess": "تم الخروج",
 
   "privacyPolicyTitle": "سياسة الخصوصية",
@@ -737,6 +737,20 @@
   "select_birth_date": "اختر تاريخ ميلادك",
   "date_of_birth": "تاريخ الميلاد",
   "deleting":"جاري المسح...",
+  "select_section": "اختر القسم",
+  "choose_section_for_exercise": "اختر قسم",
+  "select_category_for_custom_exercise": "اختر الفئة التي ينتمي إليها تمرينك المخصص",
+  "loading_sections": "جاري تحميل الأقسام...",
+  "manage_your_exercises": "إدارة تمارينك المخصصة",
+  "search_exercises": "البحث عن التمارين...",
+  "all": "الكل",
+  "beginner": "مبتدئ",
+  "intermediate": "متوسط",
+  "advanced": "متقدم",
+  "clear": "مسح",
+  "no_exercises_found": "لم يتم العثور على تمارين",
+  "try_different_filters": "حاول تعديل الفلاتر أو كلمات البحث",
+  "clear_filters": "مسح الفلاتر",
   "X": "X"
 
 }

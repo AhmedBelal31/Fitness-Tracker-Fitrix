@@ -465,7 +465,7 @@
   "termsConditions": "Terms",
   "contactSupport": "Support",
   "logoutConfirmTitle": "Logout",
-  "logoutConfirmMessage": "Logout?",
+  "logoutConfirmMessage": "Are you sure you want to log out?",
   "loggedOutSuccess": "Logged out",
 
   "privacyPolicyTitle": "Privacy Policy",
@@ -733,6 +733,20 @@
   "select_birth_date": "Select your birth date",
   "date_of_birth": "Date of Birth",
   "deleting": "Deleting...",
+  "choose_section_for_exercise": "Choose a Section",
+  "select_category_for_custom_exercise": "Select which category your custom exercise belongs to",
+  "loading_sections": "Loading sections...",
+  "select_section": "Select Section",
+  "manage_your_exercises": "Manage your custom exercises",
+  "search_exercises": "Search exercises...",
+  "all": "All",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advanced": "Advanced",
+  "clear": "Clear",
+  "no_exercises_found": "No Exercises Found",
+  "try_different_filters": "Try adjusting your filters or search terms",
+  "clear_filters": "Clear Filters",
 
   "X": "X"
 }

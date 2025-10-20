@@ -63,7 +63,12 @@ class LogoutButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorsManager.error,
             ),
-            child: Text(s.logout),
+            child: Text(
+              s.logout,
+              style: TextStyles.font12Bold.copyWith(
+                color: ColorsManager.whiteText,
+              ),
+            ),
           ),
         ],
       ),

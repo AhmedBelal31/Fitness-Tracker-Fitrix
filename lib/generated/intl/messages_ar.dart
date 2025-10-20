@@ -157,7 +157,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "chest_press_machine": MessageLookupByLibrary.simpleMessage("جهاز صدر"),
     "chooseUsername": MessageLookupByLibrary.simpleMessage("اختار يوزر"),
     "choose_from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
+    "choose_section_for_exercise": MessageLookupByLibrary.simpleMessage(
+      "اختر قسم",
+    ),
     "clear": MessageLookupByLibrary.simpleMessage("مسح"),
+    "clear_filters": MessageLookupByLibrary.simpleMessage("مسح الفلاتر"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
     "commercialUseItem": MessageLookupByLibrary.simpleMessage("استخدام تجاري"),
     "completeProfile": MessageLookupByLibrary.simpleMessage("كمّل البروفايل"),
@@ -519,12 +523,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "loading_records": MessageLookupByLibrary.simpleMessage(
       "جاري تحميل السجلات...",
     ),
+    "loading_sections": MessageLookupByLibrary.simpleMessage(
+      "جاري تحميل الأقسام...",
+    ),
     "log": MessageLookupByLibrary.simpleMessage("سجّل"),
     "log_measurement": MessageLookupByLibrary.simpleMessage("سجّل قياس"),
     "loggedOutSuccess": MessageLookupByLibrary.simpleMessage("تم الخروج"),
     "login": MessageLookupByLibrary.simpleMessage("دخول"),
     "logout": MessageLookupByLibrary.simpleMessage("خروج"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("عايز تخرج؟"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    ),
     "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("خروج"),
     "lower_abs": MessageLookupByLibrary.simpleMessage("بطن سفلي"),
     "lower_back": MessageLookupByLibrary.simpleMessage("ظهر سفلي"),
@@ -534,6 +543,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("إدارة المتدربين"),
+    "manage_your_exercises": MessageLookupByLibrary.simpleMessage(
+      "إدارة تمارينك المخصصة",
+    ),
     "max_value": MessageLookupByLibrary.simpleMessage("الأعلى"),
     "measurement_history": MessageLookupByLibrary.simpleMessage("سجل القياسات"),
     "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
@@ -603,7 +615,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
       "مفيش تمارين",
     ),
-    "no_exercises_found": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
+    "no_exercises_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على تمارين",
+    ),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "مفيش أرقام قياسية",
     ),
@@ -781,7 +795,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "schedule_session": MessageLookupByLibrary.simpleMessage("جدولة جلسة"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "search_by_date": MessageLookupByLibrary.simpleMessage("دوّر بالتاريخ..."),
-    "search_exercises": MessageLookupByLibrary.simpleMessage("دوّر..."),
+    "search_exercises": MessageLookupByLibrary.simpleMessage(
+      "البحث عن التمارين...",
+    ),
     "search_results": MessageLookupByLibrary.simpleMessage("النتائج"),
     "searching_for": MessageLookupByLibrary.simpleMessage("بيدوّر"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("رو جالس"),
@@ -792,8 +808,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_birth_date": MessageLookupByLibrary.simpleMessage(
       "اختر تاريخ ميلادك",
     ),
+    "select_category_for_custom_exercise": MessageLookupByLibrary.simpleMessage(
+      "اختر الفئة التي ينتمي إليها تمرينك المخصص",
+    ),
     "select_difficulty": MessageLookupByLibrary.simpleMessage("الصعوبة"),
     "select_equipment": MessageLookupByLibrary.simpleMessage("المعدات"),
+    "select_section": MessageLookupByLibrary.simpleMessage("اختر القسم"),
     "select_workout": MessageLookupByLibrary.simpleMessage("اختر جلسة"),
     "select_workout_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "sendEmail": MessageLookupByLibrary.simpleMessage("إيميل"),
@@ -887,6 +907,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "try_adjusting_search": MessageLookupByLibrary.simpleMessage("عدّل البحث"),
     "try_different_date": MessageLookupByLibrary.simpleMessage(
       "جرّب تاريخ تاني",
+    ),
+    "try_different_filters": MessageLookupByLibrary.simpleMessage(
+      "حاول تعديل الفلاتر أو كلمات البحث",
     ),
     "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage("اختراق"),
     "undo": MessageLookupByLibrary.simpleMessage("تراجع"),
