@@ -5,6 +5,7 @@ import 'package:confetti/confetti.dart';
 import 'package:fitrix/core/theming/styles.dart';
 import 'dart:math';
 
+import '../../../../core/services/sound_service.dart';
 import '../../../../core/theming/app_colors.dart';
 
 // class CelebrationOverlay extends StatefulWidget {
@@ -29,10 +30,14 @@ import '../../../../core/theming/app_colors.dart';
 //   late AnimationController _animationController;
 //   late Animation<double> _scaleAnimation;
 //   late Animation<double> _fadeAnimation;
+//   late AudioPlayer _audioPlayer;
 //
 //   @override
 //   void initState() {
 //     super.initState();
+//
+//     // ✅ Initialize audio player
+//     _audioPlayer = AudioPlayer();
 //
 //     // Confetti controller
 //     _confettiController = ConfettiController(
@@ -56,11 +61,15 @@ import '../../../../core/theming/app_colors.dart';
 //       ),
 //     );
 //
+//     // ✅ Play celebration sound
+//     _playSound();
+//
+//     // ✅ Haptic feedback
+//     HapticFeedback.mediumImpact();
+//
 //     // Start animations
 //     _animationController.forward();
 //     _confettiController.play();
-//
-//     HapticFeedback.mediumImpact();
 //
 //     // Auto dismiss after 4 seconds
 //     Future.delayed(const Duration(seconds: 4), () {
@@ -68,6 +77,14 @@ import '../../../../core/theming/app_colors.dart';
 //         _dismiss();
 //       }
 //     });
+//   }
+//
+//   Future<void> _playSound() async {
+//     // ✅ Use SoundService
+//     await SoundService.instance.playSound(
+//       'assets/sounds/celebrate.mp3',
+//       volume: 0.7,
+//     );
 //   }
 //
 //   @override
@@ -96,7 +113,9 @@ import '../../../../core/theming/app_colors.dart';
 //               animation: _fadeAnimation,
 //               builder: (context, child) {
 //                 return Container(
-//                   color: Colors.black.withOpacity(0.6 * _fadeAnimation.value),
+//                   color: Colors.black.withValues(
+//                     alpha: 0.6 * _fadeAnimation.value,
+//                   ),
 //                 );
 //               },
 //             ),
@@ -162,7 +181,7 @@ import '../../../../core/theming/app_colors.dart';
 //         borderRadius: BorderRadius.circular(24.r),
 //         boxShadow: [
 //           BoxShadow(
-//             color: ColorsManager.primaryGreen.withOpacity(0.5),
+//             color: ColorsManager.primaryGreen.withValues(alpha: 0.5),
 //             blurRadius: 30,
 //             offset: const Offset(0, 10),
 //           ),
@@ -175,7 +194,7 @@ import '../../../../core/theming/app_colors.dart';
 //           Container(
 //             padding: EdgeInsets.all(20.w),
 //             decoration: BoxDecoration(
-//               color: Colors.white.withOpacity(0.2),
+//               color: Colors.white.withValues(alpha: 0.2),
 //               shape: BoxShape.circle,
 //             ),
 //             child: Icon(_getIcon(), size: 60.sp, color: Colors.white),
@@ -192,9 +211,9 @@ import '../../../../core/theming/app_colors.dart';
 //
 //           // Progress percentage
 //           Text(
-//             '${widget.progressPercent.toStringAsFixed(0)}% Complete',
+//             '${widget.progressPercent.toStringAsFixed(1)}% Complete',
 //             style: TextStyles.font18WhiteMedium.copyWith(
-//               color: Colors.white.withOpacity(0.9),
+//               color: Colors.white.withValues(alpha: 0.9),
 //             ),
 //           ),
 //           SizedBox(height: 24.h),
@@ -228,12 +247,14 @@ import '../../../../core/theming/app_colors.dart';
 //       return Icons.local_fire_department; // Fire
 //     } else if (widget.progressPercent >= 50) {
 //       return Icons.star; // Star
+//     } else if (widget.progressPercent >= 25) {
+//       return Icons.stars; // Stars
 //     }
-//     return Icons.celebration;
+//     return Icons.celebration; // Party popper
 //   }
 // }
-
-import 'package:just_audio/just_audio.dart';
+import '../../../../core/helpers/celebration_prefs.dart';
+import '../../../../generated/l10n.dart';
 
 class CelebrationOverlay extends StatefulWidget {
   final String message;
@@ -257,14 +278,13 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
-  late AudioPlayer _audioPlayer; // ✅ just_audio player
+  late Animation<double> _slideAnimation;
+
+  bool _dontShowAgain = false;
 
   @override
   void initState() {
     super.initState();
-
-    // ✅ Initialize audio player
-    _audioPlayer = AudioPlayer();
 
     // Confetti controller
     _confettiController = ConfettiController(
@@ -273,10 +293,11 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
 
     // Animation controller
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
 
+    // Enhanced animations
     _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.elasticOut),
     );
@@ -284,57 +305,62 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: const Interval(0.0, 0.5),
+        curve: const Interval(0.0, 0.5, curve: Curves.easeIn),
       ),
     );
 
-    // ✅ Play celebration sound
-    _playSound();
+    _slideAnimation = Tween<double>(begin: 50.0, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: const Interval(0.2, 0.8, curve: Curves.easeOutCubic),
+      ),
+    );
 
-    // ✅ Haptic feedback
+    // Play celebration effects
+    _playSound();
     HapticFeedback.mediumImpact();
 
     // Start animations
     _animationController.forward();
     _confettiController.play();
 
-    // Auto dismiss after 4 seconds
-    Future.delayed(const Duration(seconds: 4), () {
+    // Auto dismiss after 6 seconds
+    Future.delayed(const Duration(seconds: 6), () {
       if (mounted) {
         _dismiss();
       }
     });
   }
 
+  Future<void> _playSound() async {
+    await SoundService.instance.playSound(
+      'assets/sounds/celebrate.mp3',
+      volume: 0.7,
+    );
+  }
+
   @override
   void dispose() {
-    _audioPlayer.dispose();
     _confettiController.dispose();
     _animationController.dispose();
     super.dispose();
   }
 
-  // ✅ Play celebration sound with just_audio
-  Future<void> _playSound() async {
-    try {
-      // ✅ Correct path - just the relative path from assets folder
-      await _audioPlayer.setAsset('assets/sounds/celebrate.mp3');
-      await _audioPlayer.play();
-      debugPrint('✅ Celebration sound playing');
-    } catch (e) {
-      // Sound failed to play, continue without it
-      debugPrint('❌ Failed to play celebration sound: $e');
+  void _dismiss() async {
+    // Save preference if user checked "don't show again"
+    if (_dontShowAgain) {
+      await CelebrationPrefs.setCelebrationDisabled(true);
     }
-  }
 
-  void _dismiss() {
-    _animationController.reverse().then((_) {
-      widget.onDismiss();
-    });
+    await _animationController.reverse();
+    widget.onDismiss();
   }
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
     return Material(
       color: Colors.transparent,
       child: Stack(
@@ -346,7 +372,9 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
               animation: _fadeAnimation,
               builder: (context, child) {
                 return Container(
-                  color: Colors.black.withOpacity(0.6 * _fadeAnimation.value),
+                  color: Colors.black.withValues(
+                    alpha: 0.7 * _fadeAnimation.value,
+                  ),
                 );
               },
             ),
@@ -360,14 +388,17 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
           // Celebration card
           Center(
             child: AnimatedBuilder(
-              animation: _scaleAnimation,
+              animation: _animationController,
               builder: (context, child) {
                 return Transform.scale(
                   scale: _scaleAnimation.value,
-                  child: child,
+                  child: Transform.translate(
+                    offset: Offset(0, _slideAnimation.value),
+                    child: Opacity(opacity: _fadeAnimation.value, child: child),
+                  ),
                 );
               },
-              child: _buildCelebrationCard(),
+              child: _buildCelebrationCard(s, isArabic),
             ),
           ),
         ],
@@ -383,10 +414,10 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
         blastDirection: blastDirection,
         particleDrag: 0.05,
         emissionFrequency: 0.05,
-        numberOfParticles: 20,
+        numberOfParticles: 25,
         gravity: 0.2,
         shouldLoop: false,
-        colors: [
+        colors: const [
           ColorsManager.primaryGreen,
           ColorsManager.secondaryGreen,
           ColorsManager.warning,
@@ -399,72 +430,241 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
     );
   }
 
-  Widget _buildCelebrationCard() {
+  Widget _buildCelebrationCard(S s, bool isArabic) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40.w),
-      padding: EdgeInsets.all(32.w),
+      margin: EdgeInsets.symmetric(horizontal: 32.w),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [ColorsManager.primaryGreen, ColorsManager.secondaryGreen],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(28.r),
         boxShadow: [
           BoxShadow(
-            color: ColorsManager.primaryGreen.withOpacity(0.5),
-            blurRadius: 30,
-            offset: const Offset(0, 10),
+            color: ColorsManager.primaryGreen.withValues(alpha: 0.6),
+            blurRadius: 40,
+            offset: const Offset(0, 15),
           ),
         ],
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Trophy/Star Icon
-          Container(
-            padding: EdgeInsets.all(20.w),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(_getIcon(), size: 60.sp, color: Colors.white),
-          ),
-          SizedBox(height: 20.h),
-
-          // Message
-          Text(
-            widget.message,
-            style: TextStyles.font24WhiteBold,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 12.h),
-
-          // Progress percentage
-          Text(
-            '${widget.progressPercent.toStringAsFixed(1)}% Complete',
-            style: TextStyles.font18WhiteMedium.copyWith(
-              color: Colors.white.withOpacity(0.9),
-            ),
-          ),
-          SizedBox(height: 24.h),
-
-          // Continue button
-          GestureDetector(
-            onTap: _dismiss,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(28.r),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Top section with icon and message
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(32.w),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30.r),
-              ),
-              child: Text(
-                'Continue',
-                style: TextStyles.font16PrimaryGreenRegular.copyWith(
-                  fontWeight: FontWeight.w600,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.white.withValues(alpha: 0.1),
+                    Colors.transparent,
+                  ],
                 ),
               ),
+              child: Column(
+                children: [
+                  // Animated icon with glow effect
+                  TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0.0, end: 1.0),
+                    duration: const Duration(milliseconds: 800),
+                    curve: Curves.elasticOut,
+                    builder: (context, value, child) {
+                      return Transform.scale(
+                        scale: 0.5 + (value * 0.5),
+                        child: Container(
+                          padding: EdgeInsets.all(24.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.25),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white.withValues(
+                                  alpha: 0.4 * value,
+                                ),
+                                blurRadius: 30 * value,
+                                spreadRadius: 10 * value,
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            _getIcon(),
+                            size: 64.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 24.h),
+
+                  // Message
+                  Text(
+                    widget.message,
+                    style: TextStyles.font24WhiteBold.copyWith(
+                      fontSize: 22.sp,
+                      height: 1.3,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 16.h),
+
+                  // Progress percentage with animated circular progress
+                  _buildProgressIndicator(s),
+                ],
+              ),
             ),
+
+            // Bottom section with checkbox and button
+            Container(
+              padding: EdgeInsets.all(24.w),
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(28.r),
+                  bottomRight: Radius.circular(28.r),
+                ),
+              ),
+              child: Column(
+                children: [
+                  // Don't show again checkbox
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _dontShowAgain = !_dontShowAgain;
+                      });
+                      HapticFeedback.lightImpact();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            width: 24.w,
+                            height: 24.h,
+                            decoration: BoxDecoration(
+                              color: _dontShowAgain
+                                  ? Colors.white
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(6.r),
+                              border: Border.all(color: Colors.white, width: 2),
+                            ),
+                            child: _dontShowAgain
+                                ? Icon(
+                                    Icons.check,
+                                    size: 16.sp,
+                                    color: ColorsManager.primaryGreen,
+                                  )
+                                : null,
+                          ),
+                          SizedBox(width: 12.w),
+                          Text(
+                            s.dont_show_again,
+                            style: TextStyles.font14WhiteMedium.copyWith(
+                              color: Colors.white.withValues(alpha: 0.9),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+
+                  // Continue button
+                  GestureDetector(
+                    onTap: () {
+                      HapticFeedback.lightImpact();
+                      _dismiss();
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(vertical: 16.h),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16.r),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.2),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        s.continue_text,
+                        style: TextStyles.font16PrimaryGreenRegular.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18.sp,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProgressIndicator(S s) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.0, end: widget.progressPercent / 100),
+            duration: const Duration(milliseconds: 1500),
+            curve: Curves.easeOutCubic,
+            builder: (context, value, child) {
+              return SizedBox(
+                width: 40.w,
+                height: 40.h,
+                child: CircularProgressIndicator(
+                  value: value,
+                  backgroundColor: Colors.white.withValues(alpha: 0.2),
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                  strokeWidth: 4,
+                ),
+              );
+            },
+          ),
+          SizedBox(width: 16.w),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${widget.progressPercent.toStringAsFixed(0)}%',
+                style: TextStyles.font20WhiteBold.copyWith(fontSize: 24.sp),
+              ),
+              Text(
+                s.complete,
+                style: TextStyles.font14WhiteMedium.copyWith(
+                  color: Colors.white.withValues(alpha: 0.8),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -473,14 +673,14 @@ class _CelebrationOverlayState extends State<CelebrationOverlay>
 
   IconData _getIcon() {
     if (widget.progressPercent >= 100) {
-      return Icons.emoji_events; // Trophy
+      return Icons.emoji_events;
     } else if (widget.progressPercent >= 75) {
-      return Icons.local_fire_department; // Fire
+      return Icons.local_fire_department;
     } else if (widget.progressPercent >= 50) {
-      return Icons.star; // Star
+      return Icons.star;
     } else if (widget.progressPercent >= 25) {
-      return Icons.stars; // Stars
+      return Icons.stars;
     }
-    return Icons.celebration; // Party popper
+    return Icons.celebration;
   }
 }

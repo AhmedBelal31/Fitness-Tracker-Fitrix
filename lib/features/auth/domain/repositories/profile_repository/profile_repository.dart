@@ -15,5 +15,5 @@ abstract class ProfileRepository {
   Future<Either<Failure, LoginProfileModel>> updateProfile(
     UpdateProfileParams params,
   );
-  Future<Either<Failure, void>> resetPassword(ResetPasswordRequest request);
+  Future<Either<Failure, void>> changePassword(ChangePasswordRequest request);
 }

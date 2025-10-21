@@ -24,15 +24,15 @@ class ViewHistoryButton extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              ColorsManager.primaryGreen.withOpacity(0.1),
-              ColorsManager.secondaryGreen.withOpacity(0.05),
+              ColorsManager.primaryGreen.withValues(alpha: 0.1),
+              ColorsManager.secondaryGreen.withValues(alpha: 0.05),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: ColorsManager.primaryGreen.withOpacity(0.3),
+            color: ColorsManager.primaryGreen.withValues(alpha: 0.3),
             width: 1.5,
           ),
         ),
@@ -90,7 +90,7 @@ class ViewHistoryButton extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(8.w),
           decoration: BoxDecoration(
-            color: ColorsManager.primaryGreen.withOpacity(0.1),
+            color: ColorsManager.primaryGreen.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Icon(icon, color: ColorsManager.primaryGreen, size: 20.sp),

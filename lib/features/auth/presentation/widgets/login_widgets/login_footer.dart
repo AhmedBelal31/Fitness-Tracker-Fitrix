@@ -1,7 +1,7 @@
 import 'package:fitrix/core/routing/navigation_helper.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 
 class LoginFooter extends StatelessWidget {
@@ -16,11 +16,17 @@ class LoginFooter extends StatelessWidget {
         Align(
           alignment: AlignmentDirectional.centerEnd,
           child: TextButton(
+            key: const ValueKey('forgot_password_button'),
             onPressed: () => context.pushNamed(Routes.forgotPasswordScreen),
+            style: TextButton.styleFrom(
+              foregroundColor: ColorsManager.getPrimaryGreen(context),
+            ),
             child: Text(
               l10n.forgotPassword,
-              style: TextStyles.font16PrimaryGreenRegular.copyWith(
+              style: TextStyle(
+                fontSize: 16,
                 fontWeight: FontWeight.w600,
+                color: ColorsManager.getPrimaryGreen(context),
               ),
             ),
           ),
@@ -30,14 +36,23 @@ class LoginFooter extends StatelessWidget {
           children: [
             Text(
               l10n.dontHaveAccount,
-              style: TextStyles.font16LightTextRegular,
+              style: TextStyle(
+                fontSize: 16,
+                color: ColorsManager.getSecondaryText(context),
+              ),
             ),
             TextButton(
+              key: const ValueKey('register_button'),
               onPressed: () => context.pushNamed(Routes.registerScreen),
+              style: TextButton.styleFrom(
+                foregroundColor: ColorsManager.getPrimaryGreen(context),
+              ),
               child: Text(
                 l10n.register,
-                style: TextStyles.font16PrimaryGreenRegular.copyWith(
+                style: TextStyle(
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
+                  color: ColorsManager.getPrimaryGreen(context),
                 ),
               ),
             ),

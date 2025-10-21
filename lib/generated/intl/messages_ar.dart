@@ -60,6 +60,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "added_to_workout": MessageLookupByLibrary.simpleMessage("اتضاف!"),
     "adding": MessageLookupByLibrary.simpleMessage("بيضيف..."),
+    "adjust_slider_to_set_height": MessageLookupByLibrary.simpleMessage(
+      "اضبط المنزلق لتحديد طولك",
+    ),
+    "adjust_slider_to_set_weight": MessageLookupByLibrary.simpleMessage(
+      "اضبط المنزلق لتحديد وزنك",
+    ),
+    "adjust_sliders_to_set_goals": MessageLookupByLibrary.simpleMessage(
+      "اضبط المنزلقات أدناه لتعيين القيمة الحالية والهدف",
+    ),
     "adjustable_bench": MessageLookupByLibrary.simpleMessage("بنش متحرك"),
     "advanced": MessageLookupByLibrary.simpleMessage("متقدم"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
@@ -89,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "average": MessageLookupByLibrary.simpleMessage("المتوسط"),
     "avg_duration": MessageLookupByLibrary.simpleMessage("متوسط المدة"),
     "back": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "backToLogin": MessageLookupByLibrary.simpleMessage("العودة لتسجيل الدخول"),
     "back_description": MessageLookupByLibrary.simpleMessage("ظهر قوي وعريض"),
     "bar_chart": MessageLookupByLibrary.simpleMessage("عمودي"),
     "barbell": MessageLookupByLibrary.simpleMessage("بار"),
@@ -112,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "bodyFatPercent": MessageLookupByLibrary.simpleMessage("دهون %"),
     "bodyFatRequired": MessageLookupByLibrary.simpleMessage("الدهون مطلوبة"),
     "body_fat": MessageLookupByLibrary.simpleMessage("دهون الجسم"),
-    "body_fat_goal": MessageLookupByLibrary.simpleMessage("هدف الدهون (%)"),
+    "body_fat_goal": MessageLookupByLibrary.simpleMessage("هدف نسبة الدهون"),
     "body_fat_progress": MessageLookupByLibrary.simpleMessage(
       "تقدم نسبة الدهون",
     ),
@@ -176,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "clear_filters": MessageLookupByLibrary.simpleMessage("مسح الفلاتر"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
     "commercialUseItem": MessageLookupByLibrary.simpleMessage("استخدام تجاري"),
+    "complete": MessageLookupByLibrary.simpleMessage("مكتمل"),
     "completeProfile": MessageLookupByLibrary.simpleMessage("كمّل البروفايل"),
     "completeProfileButton": MessageLookupByLibrary.simpleMessage("كمّل"),
     "completeProfileMessage": MessageLookupByLibrary.simpleMessage(
@@ -201,9 +212,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "محتاج مساعدة؟ كلّم الدعم",
     ),
     "contains_number": MessageLookupByLibrary.simpleMessage("تحتوي على رقم"),
+    "contains_special_character": MessageLookupByLibrary.simpleMessage(
+      "تحتوي على رمز خاص (!@#\$%^&*)",
+    ),
     "contains_uppercase_letter": MessageLookupByLibrary.simpleMessage(
       "تحتوي على حرف كبير",
     ),
+    "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
     "continue_with_apple": MessageLookupByLibrary.simpleMessage("كمّل بآبل"),
     "continue_with_facebook": MessageLookupByLibrary.simpleMessage(
       "كمّل بفيسبوك",
@@ -239,9 +254,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "crunches": MessageLookupByLibrary.simpleMessage("كرنش"),
     "crunches_description": MessageLookupByLibrary.simpleMessage("تمرين بطن"),
     "current2": MessageLookupByLibrary.simpleMessage("الحالي"),
-    "current_body_fat": MessageLookupByLibrary.simpleMessage("دهون (%)"),
+    "current_body_fat": MessageLookupByLibrary.simpleMessage(
+      "نسبة الدهون الحالية",
+    ),
     "current_measurements": MessageLookupByLibrary.simpleMessage("الحالي"),
-    "current_muscle_mass": MessageLookupByLibrary.simpleMessage("عضلات (كجم)"),
+    "current_muscle_mass": MessageLookupByLibrary.simpleMessage(
+      "الكتلة العضلية الحالية",
+    ),
     "current_password": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الحالية",
     ),
@@ -282,8 +301,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "معندكش حساب؟",
     ),
+    "dont_show_again": MessageLookupByLibrary.simpleMessage("لا تظهر مرة أخرى"),
     "drag_sections_instruction": MessageLookupByLibrary.simpleMessage(
       "اسحب عشان ترتب",
+    ),
+    "drag_to_reorder_sections": MessageLookupByLibrary.simpleMessage(
+      "اسحب العناصر لتغيير ترتيبها",
     ),
     "dumbbell_flyes": MessageLookupByLibrary.simpleMessage("فلاي دمبل"),
     "dumbbell_flyes_description": MessageLookupByLibrary.simpleMessage(
@@ -405,6 +428,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "faqTrackWorkoutsAnswer": MessageLookupByLibrary.simpleMessage(
       "اضغط زرار +",
     ),
+    "fat": MessageLookupByLibrary.simpleMessage("دهون"),
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "filter": MessageLookupByLibrary.simpleMessage("فلتر"),
     "finish": MessageLookupByLibrary.simpleMessage("خلّص"),
@@ -437,12 +461,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "front_raises_description": MessageLookupByLibrary.simpleMessage(
       "كتف أمامي",
     ),
+    "gain_muscle": MessageLookupByLibrary.simpleMessage("زيادة العضلات"),
     "genderRequired": MessageLookupByLibrary.simpleMessage("اختار النوع"),
     "glutes": MessageLookupByLibrary.simpleMessage("مؤخرة"),
     "goal": MessageLookupByLibrary.simpleMessage("الهدف"),
-    "goal_body_fat": MessageLookupByLibrary.simpleMessage("هدف الدهون (%)"),
+    "goal_body_fat": MessageLookupByLibrary.simpleMessage(
+      "نسبة الدهون المستهدفة",
+    ),
     "goal_muscle_mass": MessageLookupByLibrary.simpleMessage(
-      "هدف العضلات (كجم)",
+      "الكتلة العضلية المستهدفة",
     ),
     "goal_weight": MessageLookupByLibrary.simpleMessage("هدف الوزن (كجم)"),
     "goals": MessageLookupByLibrary.simpleMessage("الأهداف"),
@@ -461,6 +488,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "height": MessageLookupByLibrary.simpleMessage("الطول (سم)"),
     "heightRequired": MessageLookupByLibrary.simpleMessage("الطول مطلوب"),
+    "height_measurement": MessageLookupByLibrary.simpleMessage("قياس الطول"),
+    "height_measurement_info": MessageLookupByLibrary.simpleMessage(
+      "الطول الدقيق مهم لحساب مؤشر كتلة الجسم والمقاييس الأخرى",
+    ),
     "helpSupport": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
     "help_support": MessageLookupByLibrary.simpleMessage("المساعدة"),
     "hips": MessageLookupByLibrary.simpleMessage("الحوض"),
@@ -478,6 +509,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "incline_dumbbell_press_description": MessageLookupByLibrary.simpleMessage(
       "صدر علوي",
     ),
+    "increase_fat": MessageLookupByLibrary.simpleMessage("زيادة الدهون"),
     "informationWeCollect": MessageLookupByLibrary.simpleMessage("البيانات"),
     "informationWeCollectText": MessageLookupByLibrary.simpleMessage("نجمع:"),
     "instructions": MessageLookupByLibrary.simpleMessage("التعليمات"),
@@ -554,6 +586,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     ),
     "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("خروج"),
+    "lose_muscle": MessageLookupByLibrary.simpleMessage("فقدان العضلات"),
     "lower_abs": MessageLookupByLibrary.simpleMessage("بطن سفلي"),
     "lower_back": MessageLookupByLibrary.simpleMessage("ظهر سفلي"),
     "machine": MessageLookupByLibrary.simpleMessage("جهاز"),
@@ -569,6 +602,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "measurement_history": MessageLookupByLibrary.simpleMessage("سجل القياسات"),
     "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
     "medicine_ball": MessageLookupByLibrary.simpleMessage("كرة طبية"),
+    "medium": MessageLookupByLibrary.simpleMessage("متوسطة"),
     "memberSince": MessageLookupByLibrary.simpleMessage("عضو من"),
     "member_since": MessageLookupByLibrary.simpleMessage("عضو من"),
     "min_value": MessageLookupByLibrary.simpleMessage("الأدنى"),
@@ -607,7 +641,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "muscle_mass": MessageLookupByLibrary.simpleMessage("الكتلة العضلية"),
     "muscle_mass_goal": MessageLookupByLibrary.simpleMessage(
-      "هدف العضلات (كجم)",
+      "هدف الكتلة العضلية",
     ),
     "muscle_mass_progress": MessageLookupByLibrary.simpleMessage(
       "تقدم الكتلة العضلية",
@@ -628,7 +662,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "مفيش تمارين مخصصة",
     ),
     "no_data_available": MessageLookupByLibrary.simpleMessage(
-      "لا توجد بيانات متاحة",
+      "لا توجد بيانات متاحة لهذه الفترة",
     ),
     "no_exercises_added": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
@@ -694,9 +728,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_requirements": MessageLookupByLibrary.simpleMessage(
       "متطلبات كلمة المرور:",
     ),
+    "password_strength": MessageLookupByLibrary.simpleMessage(
+      "قوة كلمة المرور",
+    ),
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
       "الباسورد مش متطابق",
     ),
+    "passwords_match": MessageLookupByLibrary.simpleMessage(
+      "كلمات المرور متطابقة",
+    ),
+    "peak": MessageLookupByLibrary.simpleMessage("الذروة"),
     "pec_deck_machine": MessageLookupByLibrary.simpleMessage("بيك ديك"),
     "per_week": MessageLookupByLibrary.simpleMessage("في الأسبوع"),
     "period_1_year": MessageLookupByLibrary.simpleMessage("سنة واحدة"),
@@ -799,16 +840,23 @@ class MessageLookup extends MessageLookupByLibrary {
       "تفاصيل الرقم القياسي",
     ),
     "records": MessageLookupByLibrary.simpleMessage("الأرقام القياسية"),
+    "reduce_fat": MessageLookupByLibrary.simpleMessage("تقليل الدهون"),
     "register": MessageLookupByLibrary.simpleMessage("سجّل"),
     "registrationSuccess": m1,
     "rememberMe": MessageLookupByLibrary.simpleMessage("فاكرني"),
     "remember_me": MessageLookupByLibrary.simpleMessage("فاكرني"),
-    "reorder_sections": MessageLookupByLibrary.simpleMessage("إعادة ترتيب"),
+    "reorder_sections": MessageLookupByLibrary.simpleMessage(
+      "إعادة ترتيب الأقسام",
+    ),
     "reps": MessageLookupByLibrary.simpleMessage("التكرارات"),
+    "reps_progress": MessageLookupByLibrary.simpleMessage("تقدم التكرارات"),
     "resend": MessageLookupByLibrary.simpleMessage("ابعت تاني"),
     "reset": MessageLookupByLibrary.simpleMessage("إعادة"),
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "الرابط اتبعت على إيميلك",
+    ),
+    "resetPasswordInfo": MessageLookupByLibrary.simpleMessage(
+      "سنرسل رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
     ),
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة ضبط الباسورد",
@@ -836,6 +884,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "searching_for": MessageLookupByLibrary.simpleMessage("بيدوّر"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("رو جالس"),
     "section": MessageLookupByLibrary.simpleMessage("القسم"),
+    "section_order_saved": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ ترتيب الأقسام بنجاح",
+    ),
+    "secure_your_account": MessageLookupByLibrary.simpleMessage(
+      "قم بتأمين حسابك بكلمة مرور قوية",
+    ),
     "select": MessageLookupByLibrary.simpleMessage("اختر"),
     "selectMaleOrFemale": MessageLookupByLibrary.simpleMessage("ذكر أو أنثى"),
     "selectYourRole": MessageLookupByLibrary.simpleMessage("اختار دورك"),
@@ -850,6 +904,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_section": MessageLookupByLibrary.simpleMessage("اختر القسم"),
     "select_workout": MessageLookupByLibrary.simpleMessage("اختر جلسة"),
     "select_workout_date": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
+    "selected": MessageLookupByLibrary.simpleMessage("محدد"),
     "sendEmail": MessageLookupByLibrary.simpleMessage("إيميل"),
     "sendMessage": MessageLookupByLibrary.simpleMessage("رسالة"),
     "sendNotificationsItem": MessageLookupByLibrary.simpleMessage("تحديثات"),
@@ -857,6 +912,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "session_created": MessageLookupByLibrary.simpleMessage("الجلسة اتعملت!"),
     "sessions": MessageLookupByLibrary.simpleMessage("جلسات"),
     "set": MessageLookupByLibrary.simpleMessage("مجموعة"),
+    "set_body_fat_goals": MessageLookupByLibrary.simpleMessage(
+      "تعيين أهداف نسبة الدهون",
+    ),
+    "set_current_weight": MessageLookupByLibrary.simpleMessage(
+      "حدد الوزن الحالي",
+    ),
+    "set_goal_weight": MessageLookupByLibrary.simpleMessage(
+      "حدد الوزن المستهدف",
+    ),
+    "set_muscle_mass_goals": MessageLookupByLibrary.simpleMessage(
+      "تعيين أهداف الكتلة العضلية",
+    ),
+    "set_your_height": MessageLookupByLibrary.simpleMessage("حدد طولك"),
     "sets": MessageLookupByLibrary.simpleMessage("مجموعات"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "setupFitnessJourney": MessageLookupByLibrary.simpleMessage(
@@ -870,6 +938,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shoulders_description": MessageLookupByLibrary.simpleMessage(
       "أكتاف محددة",
     ),
+    "show_tutorial": MessageLookupByLibrary.simpleMessage("عرض الدليل"),
     "side_delts": MessageLookupByLibrary.simpleMessage("كتف جانبي"),
     "signIn": MessageLookupByLibrary.simpleMessage("دخول"),
     "signInToContinue": MessageLookupByLibrary.simpleMessage("ادخل عشان تكمّل"),
@@ -882,6 +951,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "something_went_wrong": MessageLookupByLibrary.simpleMessage("حصل خطأ"),
     "sort": MessageLookupByLibrary.simpleMessage("ترتيب"),
     "sort_by": MessageLookupByLibrary.simpleMessage("رتّب حسب"),
+    "sound_effects": MessageLookupByLibrary.simpleMessage("المؤثرات الصوتية"),
     "squat_rack": MessageLookupByLibrary.simpleMessage("ستاند سكوات"),
     "squats": MessageLookupByLibrary.simpleMessage("سكوات"),
     "squats_description": MessageLookupByLibrary.simpleMessage("ملك الأرجل"),
@@ -898,6 +968,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "step_by_step_instructions": MessageLookupByLibrary.simpleMessage(
       "الخطوات",
     ),
+    "strong": MessageLookupByLibrary.simpleMessage("قوية"),
     "success": MessageLookupByLibrary.simpleMessage("نجح!"),
     "supportTeamReady": MessageLookupByLibrary.simpleMessage("الدعم جاهز"),
     "suspension_trainer": MessageLookupByLibrary.simpleMessage("TRX"),
@@ -909,6 +980,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "اضغط عشان تضيف",
     ),
     "tap_to_add_image": MessageLookupByLibrary.simpleMessage("ضيّف صورة"),
+    "tap_to_edit": MessageLookupByLibrary.simpleMessage("انقر للتعديل"),
+    "tap_to_set_body_fat_goal_slider": MessageLookupByLibrary.simpleMessage(
+      "انقر لتعيين نسبة الدهون الحالية والهدف باستخدام المنزلقات التفاعلية",
+    ),
+    "tap_to_set_current_and_goal_weight": MessageLookupByLibrary.simpleMessage(
+      "انقر لتعيين وزنك الحالي والوزن المستهدف",
+    ),
+    "tap_to_set_height": MessageLookupByLibrary.simpleMessage(
+      "انقر لتعيين طولك باستخدام المقياس التفاعلي",
+    ),
+    "tap_to_set_muscle_mass_goal_slider": MessageLookupByLibrary.simpleMessage(
+      "انقر لتعيين الكتلة العضلية الحالية والهدف باستخدام المنزلقات التفاعلية",
+    ),
     "target_muscles": MessageLookupByLibrary.simpleMessage("العضلات المستهدفة"),
     "termination": MessageLookupByLibrary.simpleMessage("الإنهاء"),
     "terminationText": MessageLookupByLibrary.simpleMessage(
@@ -921,6 +1005,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "thighs": MessageLookupByLibrary.simpleMessage("الفخدين"),
     "this_month": MessageLookupByLibrary.simpleMessage("الشهر ده"),
     "this_week": MessageLookupByLibrary.simpleMessage("الأسبوع ده"),
+    "to_gain": MessageLookupByLibrary.simpleMessage("للاكتساب"),
+    "to_lose": MessageLookupByLibrary.simpleMessage("للفقدان"),
     "today": MessageLookupByLibrary.simpleMessage("النهاردة"),
     "today_stats": MessageLookupByLibrary.simpleMessage("إحصائيات اليوم"),
     "tomorrow": MessageLookupByLibrary.simpleMessage("بكرة"),
@@ -971,6 +1057,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تأكيد الهوية",
     ),
     "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
+    "very_weak": MessageLookupByLibrary.simpleMessage("ضعيفة جداً"),
     "view": MessageLookupByLibrary.simpleMessage("شوف"),
     "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "view_all_custom": MessageLookupByLibrary.simpleMessage(
@@ -982,22 +1069,32 @@ class MessageLookup extends MessageLookupByLibrary {
       "عرض الرسوم البيانية والتحليلات التفصيلية",
     ),
     "view_details": MessageLookupByLibrary.simpleMessage("شوف التفاصيل"),
+    "view_progress": MessageLookupByLibrary.simpleMessage("عرض التقدم"),
     "violateLawsItem": MessageLookupByLibrary.simpleMessage("كسر القوانين"),
     "visitWebsite": MessageLookupByLibrary.simpleMessage("زور"),
     "volume": MessageLookupByLibrary.simpleMessage("الحجم"),
+    "volume_progress": MessageLookupByLibrary.simpleMessage("تقدم الحجم"),
     "waist": MessageLookupByLibrary.simpleMessage("الوسط"),
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
       "بعتنا إيميل على",
     ),
+    "weak": MessageLookupByLibrary.simpleMessage("ضعيفة"),
     "website": MessageLookupByLibrary.simpleMessage("الموقع"),
     "weight": MessageLookupByLibrary.simpleMessage("الوزن"),
     "weightKg": MessageLookupByLibrary.simpleMessage("الوزن (كجم)"),
     "weightRequired": MessageLookupByLibrary.simpleMessage("الوزن مطلوب"),
     "weight_change": MessageLookupByLibrary.simpleMessage("تغيير الوزن"),
     "weight_goal": MessageLookupByLibrary.simpleMessage("هدف الوزن (كجم)"),
+    "weight_goal_info": MessageLookupByLibrary.simpleMessage(
+      "حدد وزنًا مستهدفًا واقعيًا بناءً على أهدافك الصحية",
+    ),
     "weight_kg": MessageLookupByLibrary.simpleMessage("وزن (كجم)"),
+    "weight_measurement_info": MessageLookupByLibrary.simpleMessage(
+      "تتبع وزنك الحالي بانتظام للحصول على تقدم دقيق",
+    ),
     "weight_plates": MessageLookupByLibrary.simpleMessage("أوزان"),
     "weight_progress": MessageLookupByLibrary.simpleMessage("تقدم الوزن"),
+    "weight_tracking": MessageLookupByLibrary.simpleMessage("تتبع الوزن"),
     "welcome": MessageLookupByLibrary.simpleMessage("أهلاً بيك"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("أهلاً بعودتك!"),
     "welcomeBackUser": m2,

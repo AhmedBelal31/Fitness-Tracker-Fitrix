@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:fitrix/core/di/get_it.dart';
 import 'package:fitrix/core/theming/app_colors.dart';
-import 'package:fitrix/core/theming/styles.dart';
 import 'package:fitrix/generated/l10n.dart';
 import '../../data/achievements_models.dart';
 import '../cubit/achievements_cubit.dart';
@@ -29,15 +28,27 @@ class _AllRecordsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: ColorsManager.scaffoldBackground,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(s.all_records, style: TextStyles.headline3),
-        backgroundColor: ColorsManager.scaffoldBackground,
+        title: Text(
+          s.all_records,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: ColorsManager.getPrimaryText(context),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded, size: 20.sp),
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            size: 20.sp,
+            color: ColorsManager.getPrimaryText(context),
+          ),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -57,11 +68,11 @@ class _AllRecordsView extends StatelessWidget {
                 : (state as AchievementsRefreshing).currentAchievements;
 
             if (achievements.milestones.isEmpty) {
-              return _buildEmptyState(s.no_personal_records_yet);
+              return _buildEmptyState(context, s.no_personal_records_yet);
             }
 
             return RefreshIndicator(
-              color: ColorsManager.primaryGreen,
+              color: ColorsManager.getPrimaryGreen(context),
               onRefresh: () async {
                 await context.read<AchievementsCubit>().refreshAchievements();
               },
@@ -70,7 +81,7 @@ class _AllRecordsView extends StatelessWidget {
           }
 
           if (state is AchievementsEmpty) {
-            return _buildEmptyState(state.message);
+            return _buildEmptyState(context, state.message);
           }
 
           return const SizedBox.shrink();
@@ -86,11 +97,8 @@ class _AllRecordsView extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(20.w),
       children: [
-        // Stats Summary
         _buildStatsSummary(achievements, context),
         SizedBox(height: 24.h),
-
-        // All Milestones
         ...achievements.milestones.asMap().entries.map((entry) {
           final index = entry.key;
           final milestone = entry.value;
@@ -120,16 +128,28 @@ class _AllRecordsView extends StatelessWidget {
   }
 
   Widget _buildStatsSummary(AchievementsResponse achievements, context) {
-    final s = S.of(context); // ✅ Add localization
+    final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        gradient: ColorsManager.primaryGradient,
+        gradient: isDark
+            ? LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  ColorsManager.darkPrimaryGreen,
+                  ColorsManager.darkSecondaryGreen,
+                ],
+              )
+            : ColorsManager.primaryGradient,
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            color: ColorsManager.primaryGreen.withValues(alpha: 0.3),
+            color: ColorsManager.getPrimaryGreen(
+              context,
+            ).withValues(alpha: isDark ? 0.4 : 0.3),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -141,25 +161,29 @@ class _AllRecordsView extends StatelessWidget {
           _buildStatItem(
             Icons.emoji_events_rounded,
             achievements.totalRecords.toString(),
-            s.total, // ✅ Localized
+            s.total,
+            isDark,
           ),
-          _buildDivider(),
+          _buildDivider(isDark),
           _buildStatItem(
             Icons.fitness_center_rounded,
             achievements.weightRecords.toString(),
-            s.weight, // ✅ Localized
+            s.weight,
+            isDark,
           ),
-          _buildDivider(),
+          _buildDivider(isDark),
           _buildStatItem(
             Icons.repeat_rounded,
             achievements.repsRecords.toString(),
-            s.reps, // ✅ Localized
+            s.reps,
+            isDark,
           ),
-          _buildDivider(),
+          _buildDivider(isDark),
           _buildStatItem(
             Icons.timeline_rounded,
             achievements.volumeRecords.toString(),
-            s.volume, // ✅ Localized
+            s.volume,
+            isDark,
           ),
         ],
       ),
@@ -167,7 +191,7 @@ class _AllRecordsView extends StatelessWidget {
   }
 
   Widget _buildLoadingState(BuildContext context) {
-    final s = S.of(context); // ✅ Add localization
+    final s = S.of(context);
 
     return Center(
       child: Column(
@@ -177,40 +201,61 @@ class _AllRecordsView extends StatelessWidget {
             width: 50.w,
             height: 50.h,
             child: CircularProgressIndicator(
-              color: ColorsManager.primaryGreen,
+              color: ColorsManager.getPrimaryGreen(context),
               strokeWidth: 3,
             ),
           ),
           SizedBox(height: 16.h),
-          Text(s.loading_records, style: TextStyles.bodyMedium),
+          Text(
+            s.loading_records,
+            style: TextStyle(
+              fontSize: 14,
+              color: ColorsManager.getSecondaryText(context),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildStatItem(IconData icon, String value, String label) {
+  Widget _buildStatItem(
+    IconData icon,
+    String value,
+    String label,
+    bool isDark,
+  ) {
+    final iconColor = isDark ? ColorsManager.darkScaffold : Colors.white;
+
     return Column(
       children: [
-        Icon(icon, color: Colors.white, size: 24.sp),
+        Icon(icon, color: iconColor, size: 24.sp),
         SizedBox(height: 8.h),
-        Text(value, style: TextStyles.font20Bold.copyWith(color: Colors.white)),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: iconColor,
+          ),
+        ),
         SizedBox(height: 4.h),
         Text(
           label,
-          style: TextStyles.font12Regular.copyWith(
-            color: Colors.white.withValues(alpha: 0.9),
+          style: TextStyle(
+            fontSize: 12,
+            color: iconColor.withValues(alpha: 0.9),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildDivider() {
-    return Container(
-      width: 1.w,
-      height: 60.h,
-      color: Colors.white.withValues(alpha: 0.3),
-    );
+  Widget _buildDivider(bool isDark) {
+    final dividerColor = isDark
+        ? ColorsManager.darkScaffold.withValues(alpha: 0.3)
+        : Colors.white.withValues(alpha: 0.3);
+
+    return Container(width: 1.w, height: 60.h, color: dividerColor);
   }
 
   Widget _buildMilestoneCard(
@@ -218,9 +263,10 @@ class _AllRecordsView extends StatelessWidget {
     MilestoneModel milestone,
     int index,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final colors = [
       ColorsManager.orange,
-      ColorsManager.primaryGreen,
+      ColorsManager.getPrimaryGreen(context),
       ColorsManager.info,
     ];
     final color = colors[index % colors.length];
@@ -238,17 +284,20 @@ class _AllRecordsView extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              color.withValues(alpha: 0.12),
-              color.withValues(alpha: 0.04),
+              color.withValues(alpha: isDark ? 0.2 : 0.12),
+              color.withValues(alpha: isDark ? 0.1 : 0.04),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: color.withValues(alpha: 0.25), width: 1.5),
+          border: Border.all(
+            color: color.withValues(alpha: isDark ? 0.3 : 0.25),
+            width: 1.5,
+          ),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: 0.15),
+              color: color.withValues(alpha: isDark ? 0.2 : 0.15),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -260,7 +309,7 @@ class _AllRecordsView extends StatelessWidget {
               right: -10.w,
               top: -10.h,
               child: Opacity(
-                opacity: 0.08,
+                opacity: isDark ? 0.05 : 0.08,
                 child: Text(milestone.icon, style: TextStyle(fontSize: 60.sp)),
               ),
             ),
@@ -295,15 +344,20 @@ class _AllRecordsView extends StatelessWidget {
                       children: [
                         Text(
                           milestone.title,
-                          style: TextStyles.font16Bold.copyWith(color: color),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: color,
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 4.h),
                         Text(
                           milestone.description,
-                          style: TextStyles.font13Regular.copyWith(
-                            color: ColorsManager.primaryText,
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: ColorsManager.getPrimaryText(context),
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -314,13 +368,14 @@ class _AllRecordsView extends StatelessWidget {
                             Icon(
                               Icons.calendar_today_rounded,
                               size: 11.sp,
-                              color: ColorsManager.secondaryText,
+                              color: ColorsManager.getSecondaryText(context),
                             ),
                             SizedBox(width: 4.w),
                             Text(
                               DateFormat('MMM d, yyyy').format(milestone.date),
-                              style: TextStyles.font11Regular.copyWith(
-                                color: ColorsManager.secondaryText,
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: ColorsManager.getSecondaryText(context),
                               ),
                             ),
                           ],
@@ -339,6 +394,8 @@ class _AllRecordsView extends StatelessWidget {
   }
 
   Widget _buildErrorState(BuildContext context, String message, S s) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Center(
       child: Padding(
         padding: EdgeInsets.all(32.w),
@@ -349,7 +406,10 @@ class _AllRecordsView extends StatelessWidget {
             SizedBox(height: 16.h),
             Text(
               message,
-              style: TextStyles.bodyMedium,
+              style: TextStyle(
+                fontSize: 14,
+                color: ColorsManager.getPrimaryText(context),
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 24.h),
@@ -358,13 +418,23 @@ class _AllRecordsView extends StatelessWidget {
                 context.read<AchievementsCubit>().loadAchievements();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: ColorsManager.primaryGreen,
+                backgroundColor: ColorsManager.getPrimaryGreen(context),
+                foregroundColor: isDark
+                    ? ColorsManager.darkScaffold
+                    : Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 14.h),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.r),
                 ),
               ),
-              child: Text(s.retry, style: TextStyles.font14WhiteSemiBold),
+              child: Text(
+                s.retry,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? ColorsManager.darkScaffold : Colors.white,
+                ),
+              ),
             ),
           ],
         ),
@@ -372,7 +442,7 @@ class _AllRecordsView extends StatelessWidget {
     );
   }
 
-  Widget _buildEmptyState(String message) {
+  Widget _buildEmptyState(BuildContext context, String message) {
     return Center(
       child: Padding(
         padding: EdgeInsets.all(32.w),
@@ -382,12 +452,17 @@ class _AllRecordsView extends StatelessWidget {
             Icon(
               Icons.emoji_events_outlined,
               size: 80.sp,
-              color: ColorsManager.lightText,
+              color: ColorsManager.getSecondaryText(
+                context,
+              ).withValues(alpha: 0.5),
             ),
             SizedBox(height: 24.h),
             Text(
               message,
-              style: TextStyles.bodyLarge,
+              style: TextStyle(
+                fontSize: 16,
+                color: ColorsManager.getSecondaryText(context),
+              ),
               textAlign: TextAlign.center,
             ),
           ],

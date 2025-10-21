@@ -5,12 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:load_switch/load_switch.dart';
 import '../../../../../core/theming/app_colors.dart';
 
-class NotificationLoadSwitch extends StatelessWidget {
+class AnimatedLoadSwitch extends StatelessWidget {
   final bool value;
   final Future<bool> Function() future;
   final ValueChanged<bool> onChange;
 
-  const NotificationLoadSwitch({
+  const AnimatedLoadSwitch({
     super.key,
     required this.value,
     required this.future,
@@ -19,6 +19,8 @@ class NotificationLoadSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return LoadSwitch(
       value: value,
       future: () => future(),
@@ -28,16 +30,16 @@ class NotificationLoadSwitch extends StatelessWidget {
       curveIn: Curves.easeInOut,
       curveOut: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
-      // Correct signature: (bool value, bool isActive)
       switchDecoration: (value, isActive) => BoxDecoration(
         color: value
-            ? ColorsManager.primaryGreen.withValues(alpha: 0.2)
-            : ColorsManager.lightText.withValues(alpha: 0.2),
+            ? ColorsManager.getPrimaryGreen(context).withValues(alpha: 0.2)
+            : (isDark ? ColorsManager.darkBorder : ColorsManager.lightBorder)
+                  .withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(30.r),
         boxShadow: [
           BoxShadow(
             color: value
-                ? ColorsManager.primaryGreen.withValues(alpha: 0.3)
+                ? ColorsManager.getPrimaryGreen(context).withValues(alpha: 0.3)
                 : Colors.black.withValues(alpha: 0.1),
             spreadRadius: 1,
             blurRadius: 4,
@@ -45,18 +47,17 @@ class NotificationLoadSwitch extends StatelessWidget {
           ),
         ],
       ),
-      // Correct signature: (bool value) for spinColor
-      spinColor: (value) =>
-          value ? ColorsManager.primaryGreen : ColorsManager.lightText,
+      spinColor: (value) => value
+          ? ColorsManager.getPrimaryGreen(context)
+          : ColorsManager.getSecondaryText(context),
       spinStrokeWidth: 2,
-      // Correct signature: (bool value, bool isActive)
       thumbDecoration: (value, isActive) => BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
             color: value
-                ? ColorsManager.primaryGreen.withValues(alpha: 0.3)
+                ? ColorsManager.getPrimaryGreen(context).withValues(alpha: 0.3)
                 : Colors.black.withValues(alpha: 0.2),
             spreadRadius: 1,
             blurRadius: 3,
@@ -67,7 +68,7 @@ class NotificationLoadSwitch extends StatelessWidget {
       onChange: onChange,
       onTap: (v) {
         HapticFeedback.mediumImpact();
-        log('Notification switch tapped while value is $v');
+        log('Switch tapped while value is $v');
       },
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/app_colors.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -10,7 +10,11 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
+      style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: ColorsManager.getPrimaryText(context),
+      ),
     );
   }
 }

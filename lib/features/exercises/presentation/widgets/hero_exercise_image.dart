@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../core/theming/app_colors.dart';
+import 'dart:math' as math;
 
 class HeroExerciseImage extends StatefulWidget {
   final String heroTag;
@@ -34,7 +35,6 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
   }
 
   void _setupAnimations() {
-    // Pulse animation - smooth breathing effect
     _pulseController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
@@ -44,7 +44,6 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
       CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
     );
 
-    // Rotation animation - slow continuous spin
     _rotationController = AnimationController(
       duration: const Duration(seconds: 20),
       vsync: this,
@@ -52,10 +51,9 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
 
     _rotationAnimation = Tween<double>(
       begin: 0,
-      end: 2 * 3.14159,
+      end: 2 * math.pi,
     ).animate(_rotationController);
 
-    // Scale animation - pop in effect
     _scaleController = AnimationController(
       duration: const Duration(milliseconds: 800),
       vsync: this,
@@ -80,9 +78,12 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
   Widget build(BuildContext context) {
     return Hero(
       tag: widget.heroTag,
-      child: widget.imageUrl != null && widget.imageUrl!.isNotEmpty
-          ? _buildImage()
-          : _buildAnimatedPlaceholder(),
+      child: Material(
+        type: MaterialType.transparency,
+        child: widget.imageUrl != null && widget.imageUrl!.isNotEmpty
+            ? _buildImage()
+            : _buildAnimatedPlaceholder(),
+      ),
     );
   }
 
@@ -100,12 +101,12 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    ColorsManager.primaryGreen.withValues(
-                      alpha: 0.1 * _pulseAnimation.value,
-                    ),
-                    ColorsManager.primaryGreen.withValues(
-                      alpha: 0.3 * _pulseAnimation.value,
-                    ),
+                    ColorsManager.getPrimaryGreen(
+                      context,
+                    ).withValues(alpha: 0.1 * _pulseAnimation.value),
+                    ColorsManager.getPrimaryGreen(
+                      context,
+                    ).withValues(alpha: 0.3 * _pulseAnimation.value),
                   ],
                 ),
               ),
@@ -136,7 +137,7 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
                     gradient: LinearGradient(
                       colors: [
                         Colors.white.withValues(alpha: 0),
-                        Colors.white.withValues(alpha: 0.9),
+                        Colors.white.withValues(alpha: 0.2),
                         Colors.white.withValues(alpha: 0),
                       ],
                     ),
@@ -151,13 +152,33 @@ class _HeroExerciseImageState extends State<HeroExerciseImage>
   }
 
   Widget _buildAnimatedPlaceholder() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return AnimatedBuilder(
       animation: _scaleController,
       builder: (context, child) {
         return Transform.scale(
           scale: _scaleAnimation.value,
           child: Container(
-            decoration: BoxDecoration(gradient: ColorsManager.cardGradient),
+            decoration: BoxDecoration(
+              gradient: isDark
+                  ? LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        ColorsManager.darkPrimaryGreen,
+                        ColorsManager.darkSecondaryGreen,
+                      ],
+                    )
+                  : LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        ColorsManager.primaryGreen,
+                        ColorsManager.secondaryGreen,
+                      ],
+                    ),
+            ),
             child: Center(
               child: AnimatedBuilder(
                 animation: Listenable.merge([

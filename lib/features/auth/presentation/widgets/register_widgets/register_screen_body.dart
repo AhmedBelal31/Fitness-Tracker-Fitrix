@@ -12,23 +12,48 @@ class RegisterScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: ColorsManager.scaffoldBackground,
+      backgroundColor: ColorsManager.getScaffoldBackground(context),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: ColorsManager.appBackgroundGradient,
+        decoration: BoxDecoration(
+          gradient: ColorsManager.getBackgroundGradient(context),
         ),
-        child: SafeArea(
-          child: BlocConsumer<RegisterCubit, RegisterState>(
-            listener: RegisterBlocListener.handleStateChanges,
-            builder: (context, state) {
-              return RegisterAnimatedContent(
-                isLoading: state.isLoading,
-                onNavigateToLogin: () =>
-                    context.pushReplacementNamed(Routes.loginScreen),
-              );
-            },
-          ),
+        child: Stack(
+          children: [
+            if (isDark)
+              Positioned(
+                top: -100,
+                right: -100,
+                child: Container(
+                  width: 300,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        ColorsManager.darkPrimaryGreen.withOpacity(0.06),
+                        ColorsManager.darkSecondaryGreen.withOpacity(0.03),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            SafeArea(
+              child: BlocConsumer<RegisterCubit, RegisterState>(
+                listener: RegisterBlocListener.handleStateChanges,
+                builder: (context, state) {
+                  return RegisterAnimatedContent(
+                    isLoading: state.isLoading,
+                    onNavigateToLogin: () =>
+                        context.pushReplacementNamed(Routes.loginScreen),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

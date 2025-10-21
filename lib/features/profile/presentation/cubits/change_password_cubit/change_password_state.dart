@@ -1,4 +1,3 @@
-// States
 abstract class ChangePasswordState {}
 
 class ChangePasswordInitial extends ChangePasswordState {}

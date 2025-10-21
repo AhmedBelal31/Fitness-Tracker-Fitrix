@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../../core/theming/app_colors.dart';
 
 class RegisterLoginLink extends StatelessWidget {
   final bool isLoading;
@@ -19,13 +19,21 @@ class RegisterLoginLink extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(s.alreadyHaveAccount, style: TextStyles.font16LightTextRegular),
+        Text(
+          s.alreadyHaveAccount,
+          style: TextStyle(
+            fontSize: 16,
+            color: ColorsManager.getSecondaryText(context),
+          ),
+        ),
         TextButton(
           onPressed: isLoading ? null : onPressed,
           child: Text(
             s.login,
-            style: TextStyles.font16PrimaryGreenRegular.copyWith(
+            style: TextStyle(
+              fontSize: 16,
               fontWeight: FontWeight.w600,
+              color: ColorsManager.getPrimaryGreen(context),
             ),
           ),
         ),

@@ -1,218 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import '../../../../core/helpers/celebration_prefs.dart';
 import '../../data/models/measurement_chart_models.dart';
 import '../../data/models/progress_models.dart';
 import '../../data/models/statistics_model.dart';
 import '../../domain/progress_repository.dart';
 import '../widgets/goal_progress_helper.dart';
 import 'progress_state.dart';
-
-// class ProgressCubit extends Cubit<ProgressState> {
-//   final ProgressRepository repository;
-//
-//   ProgressCubit({required this.repository}) : super(ProgressInitial());
-//
-//   Future<void> loadMeasurementCards() async {
-//     emit(ProgressLoading());
-//
-//     try {
-//       // Load measurement cards
-//       final cards = await repository.getMeasurementCards();
-//
-//       // Load statistics
-//       StatisticsResponse? stats;
-//       try {
-//         stats = await repository.getStatistics();
-//       } catch (e) {
-//         debugPrint('⚠️ Failed to load statistics: $e');
-//         // Continue without statistics
-//       }
-//
-//       emit(
-//         ProgressLoaded(
-//           measurementCards: cards,
-//           selectedCardType: MeasurementCardType.weight,
-//           statistics: stats, // ✅ Pass statistics
-//         ),
-//       );
-//     } catch (e) {
-//       emit(ProgressError('Failed to load progress data: $e'));
-//     }
-//   }
-//
-//   Future<void> refreshData() async {
-//     if (state is! ProgressLoaded) return;
-//
-//     try {
-//       final cards = await repository.getMeasurementCards();
-//
-//       StatisticsResponse? stats;
-//       try {
-//         stats = await repository.getStatistics();
-//       } catch (e) {
-//         debugPrint('⚠️ Failed to refresh statistics: $e');
-//       }
-//
-//       emit(
-//         (state as ProgressLoaded).copyWith(
-//           measurementCards: cards,
-//           statistics: stats, // ✅ Update statistics
-//         ),
-//       );
-//     } catch (e) {
-//       // Keep current state on refresh error
-//       debugPrint('⚠️ Failed to refresh: $e');
-//     }
-//   }
-//   // Future<void> loadMeasurementCards() async {
-//   //   try {
-//   //     emit(ProgressLoading());
-//   //     final cards = await repository.getMeasurementCards();
-//   //     emit(ProgressLoaded(measurementCards: cards));
-//   //     _checkAndCelebrate(cards);
-//   //   } catch (e) {
-//   //     emit(ProgressError(e.toString()));
-//   //   }
-//   // }
-//
-//   // NEW: Load chart data
-//   Future<void> loadMeasurementCharts({int days = 30}) async {
-//     try {
-//       emit(ChartLoading());
-//       final charts = await repository.getMeasurementCharts(days: days);
-//       emit(
-//         ChartLoaded(
-//           charts: charts,
-//           selectedPeriod: TimePeriod.values.firstWhere(
-//             (p) => p.days == days,
-//             orElse: () => TimePeriod.month,
-//           ),
-//         ),
-//       );
-//     } catch (e) {
-//       emit(ChartError(e.toString()));
-//     }
-//   }
-//
-//   // NEW: Change time period
-//   void changeTimePeriod(TimePeriod period) {
-//     loadMeasurementCharts(days: period.days);
-//   }
-//
-//   // NEW: Change metric
-//   void changeMetric(MeasurementCardType metric) {
-//     if (state is ChartLoaded) {
-//       emit((state as ChartLoaded).copyWith(selectedMetric: metric));
-//     }
-//   }
-//
-//   // NEW: Change chart type
-//   void changeChartType(ChartType chartType) {
-//     if (state is ChartLoaded) {
-//       emit((state as ChartLoaded).copyWith(selectedChartType: chartType));
-//     }
-//   }
-//
-//   void switchCardType(MeasurementCardType type) {
-//     if (state is ProgressLoaded) {
-//       emit((state as ProgressLoaded).copyWith(selectedCardType: type));
-//     }
-//   }
-//
-//   // Future<void> refreshData() async {
-//   //   await loadMeasurementCards();
-//   // }
-//
-//   void dismissCelebration() {
-//     if (state is ProgressLoaded) {
-//       emit((state as ProgressLoaded).copyWith(shouldShowCelebration: false));
-//     }
-//   }
-//
-//   void _checkAndCelebrate(MeasurementCardsResponse cards) {
-//     // Check weight progress
-//     final weightProgress = GoalProgressHelper.calculateProgress(
-//       startValue: cards.weightCard.firstWeight,
-//       currentValue: cards.weightCard.lastWeight,
-//       goalValue: cards.weightCard.weightGoal,
-//       isPositiveGood: false,
-//     );
-//     print('🏋️ Weight Progress: ${weightProgress.toStringAsFixed(1)}%');
-//     print('   Start: ${cards.weightCard.firstWeight}kg');
-//     print('   Current: ${cards.weightCard.lastWeight}kg');
-//     print('   Goal: ${cards.weightCard.weightGoal}kg');
-//
-//     // Check body fat progress
-//     final bodyFatProgress = GoalProgressHelper.calculateProgress(
-//       startValue: cards.bodyFatCard.firstBodyFat,
-//       currentValue: cards.bodyFatCard.lastBodyFat,
-//       goalValue: cards.bodyFatCard.bodyFatGoal,
-//       isPositiveGood: false,
-//     );
-//     print('💧 Body Fat Progress: ${bodyFatProgress.toStringAsFixed(1)}%');
-//     print('   Start: ${cards.bodyFatCard.firstBodyFat}%');
-//     print('   Current: ${cards.bodyFatCard.lastBodyFat}%');
-//     print('   Goal: ${cards.bodyFatCard.bodyFatGoal}%');
-//
-//     // Check muscle mass progress
-//     final muscleProgress = GoalProgressHelper.calculateProgress(
-//       startValue: cards.muscleMassCard.firstMuscleMass,
-//       currentValue: cards.muscleMassCard.lastMuscleMass,
-//       goalValue: cards.muscleMassCard.muscleMassGoal,
-//       isPositiveGood: true,
-//     );
-//     print('💪 Muscle Mass Progress: ${muscleProgress.toStringAsFixed(1)}%');
-//     print('   Start: ${cards.muscleMassCard.firstMuscleMass}kg');
-//     print('   Current: ${cards.muscleMassCard.lastMuscleMass}kg');
-//     print('   Goal: ${cards.muscleMassCard.muscleMassGoal}kg');
-//
-//     // Find the highest progress
-//     final maxProgress = [
-//       weightProgress,
-//       bodyFatProgress,
-//       muscleProgress,
-//     ].reduce((a, b) => a > b ? a : b);
-//
-//     print('🎯 Max Progress: ${maxProgress.toStringAsFixed(1)}%');
-//
-//     // Celebrate if milestone reached
-//     if (GoalProgressHelper.shouldCelebrate(maxProgress) ||
-//         GoalProgressHelper.isGoalReached(maxProgress)) {
-//       final message = GoalProgressHelper.getMilestoneMessage(maxProgress);
-//
-//       Future.delayed(const Duration(milliseconds: 800), () {
-//         if (state is ProgressLoaded) {
-//           emit(
-//             (state as ProgressLoaded).copyWith(
-//               shouldShowCelebration: true,
-//               celebrationMessage: message,
-//               celebrationProgress: maxProgress,
-//             ),
-//           );
-//         }
-//       });
-//     }
-//   }
-//
-//   // void switchCardType(MeasurementCardType type) {
-//   //   if (state is ProgressLoaded) {
-//   //     final currentState = state as ProgressLoaded;
-//   //     emit(currentState.copyWith(selectedCardType: type));
-//   //   }
-//   // }
-//   //
-//   // Future<void> refreshData() async {
-//   //   // ✅ Celebration will show again after refresh if milestone is met
-//   //   await loadMeasurementCards();
-//   // }
-//   //
-//   // void dismissCelebration() {
-//   //   if (state is ProgressLoaded) {
-//   //     final currentState = state as ProgressLoaded;
-//   //     emit(currentState.copyWith(shouldShowCelebration: false));
-//   //   }
-//   // }
-// }
 import 'package:flutter/foundation.dart';
 
 // class ProgressCubit extends Cubit<ProgressState> {
@@ -239,6 +34,9 @@ import 'package:flutter/foundation.dart';
 //           statistics: stats,
 //         ),
 //       );
+//
+//       // ✅ Check for celebration after loading
+//       _checkAndCelebrate(cards);
 //     } catch (e) {
 //       emit(ProgressError('Failed to load progress data: $e'));
 //     }
@@ -258,6 +56,9 @@ import 'package:flutter/foundation.dart';
 //           statistics: stats,
 //         ),
 //       );
+//
+//       // ✅ Check for celebration after refresh
+//       _checkAndCelebrate(cards);
 //     } catch (e) {
 //       debugPrint('⚠️ Refresh failed: $e');
 //     }
@@ -317,8 +118,6 @@ import 'package:flutter/foundation.dart';
 //     }
 //   }
 //
-//   // ========== PRIVATE HELPERS ==========
-//
 //   /// Load statistics with error handling
 //   Future<StatisticsResponse?> _loadStatisticsSafely() async {
 //     try {
@@ -328,7 +127,67 @@ import 'package:flutter/foundation.dart';
 //       return null;
 //     }
 //   }
+//
+//   void _checkAndCelebrate(MeasurementCardsResponse cards) async {
+//     // ✅ Check if celebrations are disabled
+//     final isCelebrationDisabled =
+//         await CelebrationPrefs.isCelebrationDisabled();
+//     if (isCelebrationDisabled) {
+//       debugPrint('🔕 Celebrations disabled by user');
+//       return;
+//     }
+//
+//     final weightCard = cards.weightCard;
+//     final weightChange = (weightCard.firstWeight - weightCard.lastWeight).abs();
+//
+//     debugPrint('🏋️ Weight Change: ${weightChange.toStringAsFixed(1)}kg');
+//
+//     if (weightChange >= 0.5) {
+//       if (weightCard.weightGoal != null) {
+//         final goal = weightCard.weightGoal!;
+//         final startToGoal = (weightCard.firstWeight - goal).abs();
+//         final currentToGoal = (weightCard.lastWeight - goal).abs();
+//         final progressPercent =
+//             ((startToGoal - currentToGoal) / startToGoal * 100).clamp(0, 100);
+//
+//         final isGoodDirection = progressPercent > 0;
+//         final message = isGoodDirection
+//             ? '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!'
+//             : '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
+//
+//         Future.delayed(const Duration(milliseconds: 800), () {
+//           if (state is ProgressLoaded) {
+//             emit(
+//               (state as ProgressLoaded).copyWith(
+//                 shouldShowCelebration: true,
+//                 celebrationMessage: message,
+//                 celebrationProgress: progressPercent.clamp(1, 100).toDouble(),
+//               ),
+//             );
+//           }
+//         });
+//       }
+//     }
+//   }
+//
+//   /// ✅ Get appropriate message based on progress
+//   String _getWeightMessage(double progress) {
+//     if (progress >= 100) {
+//       return '🏆 Goal Achieved!\nYou reached your target weight!';
+//     } else if (progress >= 75) {
+//       return '🔥 Almost There!\n${progress.toStringAsFixed(0)}% to your goal!';
+//     } else if (progress >= 50) {
+//       return '💪 Halfway Point!\nKeep pushing forward!';
+//     } else if (progress >= 25) {
+//       return '⭐ Great Progress!\nYou\'re on the right track!';
+//     } else if (progress >= 10) {
+//       return '🎯 Nice Start!\nEvery step counts!';
+//     } else {
+//       return '🚀 Progress Made!\nYou\'re moving toward your goal!';
+//     }
+//   }
 // }
+// lib/features/progress/domain/cubits/progress_cubit.dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -357,7 +216,7 @@ class ProgressCubit extends Cubit<ProgressState> {
         ),
       );
 
-      // ✅ Check for celebration after loading
+      // Check for celebration after loading
       _checkAndCelebrate(cards);
     } catch (e) {
       emit(ProgressError('Failed to load progress data: $e'));
@@ -379,7 +238,7 @@ class ProgressCubit extends Cubit<ProgressState> {
         ),
       );
 
-      // ✅ Check for celebration after refresh
+      // Check for celebration after refresh
       _checkAndCelebrate(cards);
     } catch (e) {
       debugPrint('⚠️ Refresh failed: $e');
@@ -440,7 +299,51 @@ class ProgressCubit extends Cubit<ProgressState> {
     }
   }
 
-  // ========== PRIVATE HELPERS ==========
+  // ========== ✅ EXERCISE PROGRESS METHODS ==========
+
+  String? _currentExerciseId;
+
+  /// Load exercise progress charts
+  Future<void> loadExerciseProgress(
+    String exerciseId, {
+    TimePeriod period = TimePeriod.month,
+  }) async {
+    _currentExerciseId = exerciseId;
+    emit(ExerciseProgressLoading());
+
+    try {
+      final response = await _repository.getExerciseProgress(
+        exerciseId,
+        days: period.days,
+      );
+      emit(
+        ExerciseProgressLoaded(
+          charts: response,
+          selectedMetric: ExerciseMetricType.weight,
+          selectedPeriod: period,
+        ),
+      );
+    } catch (e) {
+      emit(ExerciseProgressError(e.toString()));
+    }
+  }
+
+  /// Change exercise metric
+  void changeExerciseMetric(ExerciseMetricType metric) {
+    if (state is ExerciseProgressLoaded) {
+      final currentState = state as ExerciseProgressLoaded;
+      emit(currentState.copyWith(selectedMetric: metric));
+    }
+  }
+
+  /// Change exercise time period
+  void changeExerciseTimePeriod(TimePeriod period) {
+    if (state is ExerciseProgressLoaded && _currentExerciseId != null) {
+      loadExerciseProgress(_currentExerciseId!, period: period);
+    }
+  }
+
+  // ========== HELPER METHODS ==========
 
   /// Load statistics with error handling
   Future<StatisticsResponse?> _loadStatisticsSafely() async {
@@ -452,149 +355,44 @@ class ProgressCubit extends Cubit<ProgressState> {
     }
   }
 
-  /// ✅ Check progress and trigger celebration
-  // void _checkAndCelebrate(MeasurementCardsResponse cards) {
-  //   // Check weight progress
-  //   final weightProgress = GoalProgressHelper.calculateProgress(
-  //     startValue: cards.weightCard.firstWeight,
-  //     currentValue: cards.weightCard.lastWeight,
-  //     goalValue: cards.weightCard.weightGoal,
-  //     isPositiveGood: false,
-  //   );
-  //   debugPrint('🏋️ Weight Progress: ${weightProgress.toStringAsFixed(1)}%');
-  //   debugPrint('   Start: ${cards.weightCard.firstWeight}kg');
-  //   debugPrint('   Current: ${cards.weightCard.lastWeight}kg');
-  //   debugPrint('   Goal: ${cards.weightCard.weightGoal}kg');
-  //
-  //   // Check body fat progress
-  //   final bodyFatProgress = GoalProgressHelper.calculateProgress(
-  //     startValue: cards.bodyFatCard.firstBodyFat,
-  //     currentValue: cards.bodyFatCard.lastBodyFat,
-  //     goalValue: cards.bodyFatCard.bodyFatGoal,
-  //     isPositiveGood: false,
-  //   );
-  //   debugPrint('💧 Body Fat Progress: ${bodyFatProgress.toStringAsFixed(1)}%');
-  //   debugPrint('   Start: ${cards.bodyFatCard.firstBodyFat}%');
-  //   debugPrint('   Current: ${cards.bodyFatCard.lastBodyFat}%');
-  //   debugPrint('   Goal: ${cards.bodyFatCard.bodyFatGoal}%');
-  //
-  //   // Check muscle mass progress
-  //   final muscleProgress = GoalProgressHelper.calculateProgress(
-  //     startValue: cards.muscleMassCard.firstMuscleMass,
-  //     currentValue: cards.muscleMassCard.lastMuscleMass,
-  //     goalValue: cards.muscleMassCard.muscleMassGoal,
-  //     isPositiveGood: true,
-  //   );
-  //   debugPrint(
-  //     '💪 Muscle Mass Progress: ${muscleProgress.toStringAsFixed(1)}%',
-  //   );
-  //   debugPrint('   Start: ${cards.muscleMassCard.firstMuscleMass}kg');
-  //   debugPrint('   Current: ${cards.muscleMassCard.lastMuscleMass}kg');
-  //   debugPrint('   Goal: ${cards.muscleMassCard.muscleMassGoal}kg');
-  //
-  //   // Find the highest progress
-  //   final maxProgress = [
-  //     weightProgress,
-  //     bodyFatProgress,
-  //     muscleProgress,
-  //   ].reduce((a, b) => a > b ? a : b);
-  //
-  //   debugPrint('🎯 Max Progress: ${maxProgress.toStringAsFixed(1)}%');
-  //
-  //   // Celebrate if milestone reached
-  //   if (GoalProgressHelper.shouldCelebrate(maxProgress) ||
-  //       GoalProgressHelper.isGoalReached(maxProgress)) {
-  //     final message = GoalProgressHelper.getMilestoneMessage(maxProgress);
-  //
-  //     Future.delayed(const Duration(milliseconds: 800), () {
-  //       if (state is ProgressLoaded) {
-  //         emit(
-  //           (state as ProgressLoaded).copyWith(
-  //             shouldShowCelebration: true,
-  //             celebrationMessage: message,
-  //             celebrationProgress: maxProgress,
-  //           ),
-  //         );
-  //       }
-  //     });
-  //   }
-  // }
+  void changeExerciseChartType(ChartType chartType) {
+    if (state is ExerciseProgressLoaded) {
+      final currentState = state as ExerciseProgressLoaded;
+      emit(currentState.copyWith(selectedChartType: chartType));
+    }
+  }
 
-  /// ✅ Check ONLY weight progress and celebrate ANY change toward goal
-  // void _checkAndCelebrate(MeasurementCardsResponse cards) {
-  //   final weightCard = cards.weightCard;
-  //
-  //   // Calculate absolute change from start
-  //   final weightChange = (weightCard.firstWeight - weightCard.lastWeight).abs();
-  //
-  //   debugPrint('🏋️ Weight Change: ${weightChange.toStringAsFixed(1)}kg');
-  //   debugPrint('   Start: ${weightCard.firstWeight}kg');
-  //   debugPrint('   Current: ${weightCard.lastWeight}kg');
-  //   debugPrint('   Goal: ${weightCard.weightGoal}kg');
-  //
-  //   // ✅ Celebrate if ANY weight change (> 0.5kg)
-  //   if (weightChange >= 0.5) {
-  //     // Calculate progress toward goal (for percentage display)
-  //     final startToGoal = (weightCard.firstWeight - weightCard.weightGoal)
-  //         .abs();
-  //     final currentToGoal = (weightCard.lastWeight - weightCard.weightGoal)
-  //         .abs();
-  //     final progressPercent =
-  //         ((startToGoal - currentToGoal) / startToGoal * 100).clamp(0, 100);
-  //
-  //     final isGoodDirection = progressPercent > 0;
-  //     final message = isGoodDirection
-  //         ? '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!'
-  //         : '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
-  //
-  //     debugPrint('🎉 WEIGHT CHANGE CELEBRATION: $message');
-  //
-  //     Future.delayed(const Duration(milliseconds: 800), () {
-  //       if (state is ProgressLoaded) {
-  //         emit(
-  //           (state as ProgressLoaded).copyWith(
-  //             shouldShowCelebration: true,
-  //             celebrationMessage: message,
-  //             celebrationProgress: progressPercent
-  //                 .clamp(1, 100)
-  //                 .toDouble(), // Show at least 1% for visual
-  //           ),
-  //         );
-  //       }
-  //     });
-  //   } else {
-  //     debugPrint(
-  //       '⚠️ No celebration: Weight change is only ${weightChange.toStringAsFixed(1)}kg',
-  //     );
-  //   }
-  // }
-  void _checkAndCelebrate(MeasurementCardsResponse cards) {
+  // lib/features/progress/domain/cubits/progress_cubit.dart
+
+  void _checkAndCelebrate(MeasurementCardsResponse cards) async {
+    // Check if celebrations are disabled
+    final isCelebrationDisabled =
+        await CelebrationPrefs.isCelebrationDisabled();
+    if (isCelebrationDisabled) {
+      debugPrint('🔕 Celebrations disabled by user');
+      return;
+    }
+
     final weightCard = cards.weightCard;
-
-    // Calculate absolute change from start
     final weightChange = (weightCard.firstWeight - weightCard.lastWeight).abs();
 
     debugPrint('🏋️ Weight Change: ${weightChange.toStringAsFixed(1)}kg');
-    debugPrint('   Start: ${weightCard.firstWeight}kg');
-    debugPrint('   Current: ${weightCard.lastWeight}kg');
-    debugPrint('   Goal: ${weightCard.weightGoal}kg');
 
-    // ✅ Celebrate if ANY weight change (> 0.5kg)
     if (weightChange >= 0.5) {
-      // Check if goal exists before calculating progress
       if (weightCard.weightGoal != null) {
-        final goal = weightCard.weightGoal!; // Safe unwrap
+        final goal = weightCard.weightGoal!;
         final startToGoal = (weightCard.firstWeight - goal).abs();
         final currentToGoal = (weightCard.lastWeight - goal).abs();
         final progressPercent =
             ((startToGoal - currentToGoal) / startToGoal * 100).clamp(0, 100);
 
         final isGoodDirection = progressPercent > 0;
-        final message = isGoodDirection
-            ? '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!'
-            : '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
 
-        debugPrint('🎉 WEIGHT CHANGE CELEBRATION: $message');
+        // ✅ Get localized message
+        final message = _getLocalizedCelebrationMessage(
+          weightChange: weightChange,
+          isGoodDirection: isGoodDirection,
+        );
 
         Future.delayed(const Duration(milliseconds: 800), () {
           if (state is ProgressLoaded) {
@@ -607,33 +405,35 @@ class ProgressCubit extends Cubit<ProgressState> {
             );
           }
         });
-      } else {
-        // No goal set, just celebrate the change
-        final message =
-            '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
-
-        debugPrint('🎉 WEIGHT CHANGE (No Goal): $message');
-
-        Future.delayed(const Duration(milliseconds: 800), () {
-          if (state is ProgressLoaded) {
-            emit(
-              (state as ProgressLoaded).copyWith(
-                shouldShowCelebration: true,
-                celebrationMessage: message,
-                celebrationProgress: 50.0, // Show 50% when no goal
-              ),
-            );
-          }
-        });
       }
-    } else {
-      debugPrint(
-        '⚠️ No celebration: Weight change is only ${weightChange.toStringAsFixed(1)}kg',
-      );
     }
   }
 
-  /// ✅ Get appropriate message based on progress
+  // ✅ Helper method to get localized celebration message
+  String _getLocalizedCelebrationMessage({
+    required double weightChange,
+    required bool isGoodDirection,
+  }) {
+    // Get current locale
+    final locale = Intl.getCurrentLocale();
+    final isArabic = locale.startsWith('ar');
+
+    if (isGoodDirection) {
+      if (isArabic) {
+        return '🎯 تحديث الوزن!\nتغير وزنك ${weightChange.toStringAsFixed(1)} كجم!';
+      } else {
+        return '🎯 Weight Update!\nYou changed ${weightChange.toStringAsFixed(1)}kg!';
+      }
+    } else {
+      if (isArabic) {
+        return '📊 تم تسجيل الوزن!\nتم تسجيل تغيير ${weightChange.toStringAsFixed(1)} كجم!';
+      } else {
+        return '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
+      }
+    }
+  }
+
+  /// Get appropriate message based on progress
   String _getWeightMessage(double progress) {
     if (progress >= 100) {
       return '🏆 Goal Achieved!\nYou reached your target weight!';

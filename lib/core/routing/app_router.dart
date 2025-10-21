@@ -17,6 +17,7 @@ import '../../features/exercises/presentation/cubit/sections_cubit.dart';
 import '../../features/exercises/presentation/screens/create_custom_exercise_screen.dart';
 import '../../features/exercises/presentation/screens/custom_exercises_screen.dart';
 import '../../features/exercises/presentation/screens/exercise_details_screen.dart';
+import '../../features/exercises/presentation/screens/exercise_progress_screen.dart';
 import '../../features/exercises/presentation/screens/section_exercises_screen.dart';
 import '../../features/home/presentation/screens/all_records_screen.dart';
 import '../../features/home/presentation/widgets/custom_exercise_widgets/select_section_screen.dart';
@@ -180,6 +181,11 @@ class AppRouter {
       case Routes.changePassword:
         return MaterialPageRoute(
           builder: (_) => const ChangePasswordScreen(), // No arguments needed
+        );
+      case Routes.exerciseProgress:
+        final exercise = settings.arguments as ExerciseModel;
+        return MaterialPageRoute(
+          builder: (_) => ExerciseProgressScreen(exercise: exercise),
         );
 
       default:

@@ -11,6 +11,7 @@ import 'core/helpers/notification_service.dart';
 import 'core/networking/token_manager.dart';
 import 'core/routing/app_router.dart';
 import 'core/services/hive_service.dart';
+import 'core/services/sound_service.dart';
 import 'firebase_options.dart';
 import 'fitrix_app.dart';
 
@@ -40,6 +41,7 @@ void main() async {
   await TokenManager.instance.init();
 
   await HiveService().init();
+  await SoundService.instance.init();
   runApp(
     DevicePreview(
       // enabled: kDebugMode,

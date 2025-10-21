@@ -55,17 +55,6 @@ class ChartDataPoint extends Equatable {
 
 enum ChartType { line, bar, area }
 
-// enum TimePeriod {
-//   week(7, '7 Days'),
-//   month(30, '30 Days'),
-//   threeMonths(90, '90 Days'),
-//   sixMonths(180, '6 Months'),
-//   year(365, '1 Year');
-//
-//   final int days;
-//   final String label;
-//   const TimePeriod(this.days, this.label);
-// }
 enum TimePeriod {
   week(7, 'period_7_days'),
   month(30, 'period_30_days'),

@@ -30,28 +30,46 @@ class LogoutButton extends StatelessWidget {
 
   void _showLogoutDialog(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(s.logoutConfirmTitle, style: TextStyles.headline3),
-        content: Text(s.logoutConfirmMessage, style: TextStyles.bodyMedium),
+        backgroundColor: Theme.of(context).cardTheme.color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.r),
+        ),
+        title: Text(
+          s.logoutConfirmTitle,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: ColorsManager.getPrimaryText(context),
+          ),
+        ),
+        content: Text(
+          s.logoutConfirmMessage,
+          style: TextStyle(
+            fontSize: 14,
+            color: ColorsManager.getSecondaryText(context),
+          ),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(s.cancel),
+            child: Text(
+              s.cancel,
+              style: TextStyle(color: ColorsManager.getSecondaryText(context)),
+            ),
           ),
           ElevatedButton(
             onPressed: () async {
               Navigator.pop(context);
-
               await TokenManager.instance.clearAll();
-
               if (context.mounted) {
                 Navigator.of(
                   context,
                 ).pushNamedAndRemoveUntil(Routes.loginScreen, (route) => false);
-
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(s.loggedOutSuccess),
@@ -65,12 +83,30 @@ class LogoutButton extends StatelessWidget {
             ),
             child: Text(
               s.logout,
-              style: TextStyles.font12Bold.copyWith(
-                color: ColorsManager.whiteText,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class VersionText extends StatelessWidget {
+  const VersionText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = S.of(context);
+    return Text(
+      '${s.version} 1.0.0',
+      style: TextStyle(
+        fontSize: 12,
+        color: ColorsManager.getSecondaryText(context),
       ),
     );
   }

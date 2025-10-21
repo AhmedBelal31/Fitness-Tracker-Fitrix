@@ -10,21 +10,21 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
   ChangePasswordCubit(this._profileRepository) : super(ChangePasswordInitial());
 
   Future<void> changePassword({
-    required String email,
+    required String currentPassword,
     required String newPassword,
     required String confirmPassword,
   }) async {
     emit(ChangePasswordLoading());
-    final token = await TokenManager.instance.getAccessToken();
 
-    final request = ResetPasswordRequest(
-      email: email,
-      token: token ?? "",
+    // ✅ Create request model
+    final request = ChangePasswordRequest(
+      currentPassword: currentPassword,
       newPassword: newPassword,
       confirmPassword: confirmPassword,
     );
 
-    final result = await _profileRepository.resetPassword(request);
+    // ✅ Pass model to repository
+    final result = await _profileRepository.changePassword(request);
 
     result.fold(
       (failure) => emit(ChangePasswordError(failure.errorMessage)),

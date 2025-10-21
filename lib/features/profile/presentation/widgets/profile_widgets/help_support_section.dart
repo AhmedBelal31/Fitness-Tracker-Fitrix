@@ -12,6 +12,7 @@ class HelpSupportSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Column(
       children: [
@@ -19,58 +20,76 @@ class HelpSupportSection extends StatelessWidget {
         SizedBox(height: 12.h),
         Container(
           decoration: BoxDecoration(
-            color: ColorsManager.cardBackground,
+            color: Theme.of(context).cardTheme.color,
             borderRadius: BorderRadius.circular(16.r),
-            boxShadow: ColorsManager.cardShadow,
+            boxShadow: [
+              BoxShadow(
+                color: isDark
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : Colors.black.withValues(alpha: 0.08),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
           child: Column(
             children: [
               ProfileSettingsTile(
                 icon: Icons.privacy_tip,
                 title: s.privacyPolicy,
-                trailing: const Icon(
+                trailing: Icon(
                   Icons.chevron_right,
-                  color: ColorsManager.lightText,
+                  color: ColorsManager.getSecondaryText(context),
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.privacyPolicyScreen);
-                },
+                onTap: () =>
+                    Navigator.pushNamed(context, Routes.privacyPolicyScreen),
               ),
-              const Divider(color: ColorsManager.lightBorder, height: 1),
+              Divider(
+                color: isDark
+                    ? ColorsManager.darkBorder
+                    : ColorsManager.lightBorder,
+                height: 1,
+              ),
               ProfileSettingsTile(
                 icon: Icons.description,
                 title: s.termsConditions,
-                trailing: const Icon(
+                trailing: Icon(
                   Icons.chevron_right,
-                  color: ColorsManager.lightText,
+                  color: ColorsManager.getSecondaryText(context),
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.termsConditionsScreen);
-                },
+                onTap: () =>
+                    Navigator.pushNamed(context, Routes.termsConditionsScreen),
               ),
-              const Divider(color: ColorsManager.lightBorder, height: 1),
+              Divider(
+                color: isDark
+                    ? ColorsManager.darkBorder
+                    : ColorsManager.lightBorder,
+                height: 1,
+              ),
               ProfileSettingsTile(
                 icon: Icons.help,
                 title: s.contactSupport,
-                trailing: const Icon(
+                trailing: Icon(
                   Icons.chevron_right,
-                  color: ColorsManager.lightText,
+                  color: ColorsManager.getSecondaryText(context),
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.contactSupportScreen);
-                },
+                onTap: () =>
+                    Navigator.pushNamed(context, Routes.contactSupportScreen),
               ),
-              const Divider(color: ColorsManager.lightBorder, height: 1),
+              Divider(
+                color: isDark
+                    ? ColorsManager.darkBorder
+                    : ColorsManager.lightBorder,
+                height: 1,
+              ),
               ProfileSettingsTile(
                 icon: Icons.info,
                 title: s.about,
-                trailing: const Icon(
+                trailing: Icon(
                   Icons.chevron_right,
-                  color: ColorsManager.lightText,
+                  color: ColorsManager.getSecondaryText(context),
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.aboutScreen);
-                },
+                onTap: () => Navigator.pushNamed(context, Routes.aboutScreen),
               ),
             ],
           ),

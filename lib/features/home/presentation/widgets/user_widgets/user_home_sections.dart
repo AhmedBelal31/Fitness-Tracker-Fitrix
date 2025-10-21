@@ -11,6 +11,255 @@ import '../../../../exercises/presentation/cubit/sections_state.dart';
 import '../../../../exercises/presentation/widgets/section_card.dart';
 import 'user_home_section_header.dart';
 
+// class UserHomeSections extends StatelessWidget {
+//   const UserHomeSections({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final s = S.of(context);
+//
+//     return TweenAnimationBuilder(
+//       duration: const Duration(milliseconds: 800),
+//       tween: Tween<double>(begin: 0, end: 1),
+//       curve: Curves.easeOutCubic,
+//       builder: (context, double value, child) {
+//         return Opacity(
+//           opacity: value,
+//           child: Transform.translate(
+//             offset: Offset(0, 30 * (1 - value)),
+//             child: child,
+//           ),
+//         );
+//       },
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           UserHomeSectionHeader(title: s.workout_sections),
+//           SizedBox(height: 16.h),
+//           BlocBuilder<SectionsCubit, SectionsState>(
+//             builder: (context, state) {
+//               if (state is SectionsLoading) {
+//                 return _buildLoadingGrid(context);
+//               }
+//               if (state is SectionsLoaded) {
+//                 return _buildSectionsGrid(context, state.sections);
+//               }
+//               if (state is SectionsError) {
+//                 return _buildErrorState(context, state.message);
+//               }
+//               return _buildLoadingGrid(context);
+//             },
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   Widget _buildSectionsGrid(BuildContext context, List sections) {
+//     final itemCount = sections.length > 6 ? 6 : sections.length;
+//
+//     return GridView.builder(
+//       shrinkWrap: true,
+//       physics: const NeverScrollableScrollPhysics(),
+//       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//         crossAxisCount: 2,
+//         crossAxisSpacing: 12.w,
+//         mainAxisSpacing: 12.h,
+//         childAspectRatio: 0.85,
+//       ),
+//       itemCount: itemCount,
+//       itemBuilder: (context, index) {
+//         final delay = index * 80;
+//
+//         return TweenAnimationBuilder(
+//           key: ValueKey('section_$index'),
+//           duration: Duration(milliseconds: 600 + delay),
+//           tween: Tween<double>(begin: 0, end: 1),
+//           curve: Curves.easeOutBack,
+//           builder: (context, double value, child) {
+//             final clampedOpacity = value.clamp(0.0, 1.0);
+//
+//             return Transform.scale(
+//               scale: 0.8 + (0.2 * value),
+//               child: Transform.rotate(
+//                 angle: (1 - value) * 0.1,
+//                 child: Opacity(
+//                   opacity: clampedOpacity,
+//                   child: Transform.translate(
+//                     offset: Offset(
+//                       (index % 2 == 0 ? -30 : 30) * (1 - value),
+//                       40 * (1 - value),
+//                     ),
+//                     child: child,
+//                   ),
+//                 ),
+//               ),
+//             );
+//           },
+//           child: SectionCard(
+//             section: sections[index],
+//             onTap: () {
+//               HapticFeedback.lightImpact();
+//               Navigator.pushNamed(
+//                 context,
+//                 Routes.sectionExercises,
+//                 arguments: sections[index],
+//               );
+//             },
+//           ),
+//         );
+//       },
+//     );
+//   }
+//
+//   Widget _buildLoadingGrid(BuildContext context) {
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
+//
+//     return GridView.builder(
+//       shrinkWrap: true,
+//       physics: const NeverScrollableScrollPhysics(),
+//       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//         crossAxisCount: 2,
+//         crossAxisSpacing: 12.w,
+//         mainAxisSpacing: 12.h,
+//         childAspectRatio: 0.85,
+//       ),
+//       itemCount: 6,
+//       itemBuilder: (context, index) {
+//         return TweenAnimationBuilder(
+//           duration: Duration(milliseconds: 800 + (index * 100)),
+//           tween: Tween<double>(begin: 0, end: 1),
+//           curve: Curves.easeInOut,
+//           builder: (context, double value, child) {
+//             return Opacity(
+//               opacity: 0.3 + (0.7 * value),
+//               child: Transform.scale(scale: 0.9 + (0.1 * value), child: child),
+//             );
+//           },
+//           child: Container(
+//             decoration: BoxDecoration(
+//               color: Theme.of(context).cardTheme.color,
+//               borderRadius: BorderRadius.circular(20.r),
+//               border: Border.all(
+//                 color: isDark
+//                     ? ColorsManager.darkBorder.withValues(alpha: 0.3)
+//                     : ColorsManager.lightBorder.withValues(alpha: 0.5),
+//                 width: 1.5,
+//               ),
+//               boxShadow: [
+//                 BoxShadow(
+//                   color: ColorsManager.getPrimaryGreen(
+//                     context,
+//                   ).withValues(alpha: isDark ? 0.1 : 0.08),
+//                   blurRadius: 8,
+//                   offset: const Offset(0, 4),
+//                 ),
+//               ],
+//             ),
+//             child: Center(
+//               child: CircularProgressIndicator(
+//                 color: ColorsManager.getPrimaryGreen(context),
+//                 strokeWidth: 2,
+//               ),
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
+//
+//   Widget _buildErrorState(BuildContext context, String message) {
+//     final s = S.of(context);
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
+//
+//     return TweenAnimationBuilder(
+//       duration: const Duration(milliseconds: 500),
+//       tween: Tween<double>(begin: 0, end: 1),
+//       curve: Curves.elasticOut,
+//       builder: (context, double value, child) {
+//         return Transform.scale(
+//           scale: value,
+//           child: Opacity(opacity: value, child: child),
+//         );
+//       },
+//       child: Container(
+//         padding: EdgeInsets.all(24.w),
+//         decoration: BoxDecoration(
+//           color: Theme.of(context).cardTheme.color,
+//           borderRadius: BorderRadius.circular(20.r),
+//           border: Border.all(
+//             color: Colors.red.withValues(alpha: 0.3),
+//             width: 1,
+//           ),
+//           boxShadow: [
+//             BoxShadow(
+//               color: isDark
+//                   ? Colors.black.withValues(alpha: 0.3)
+//                   : Colors.black.withValues(alpha: 0.08),
+//               blurRadius: 10,
+//               offset: const Offset(0, 4),
+//             ),
+//           ],
+//         ),
+//         child: Column(
+//           children: [
+//             TweenAnimationBuilder(
+//               duration: const Duration(milliseconds: 800),
+//               tween: Tween<double>(begin: 0, end: 1),
+//               curve: Curves.elasticOut,
+//               builder: (context, double value, child) {
+//                 return Transform.scale(
+//                   scale: value,
+//                   child: Transform.rotate(
+//                     angle: (1 - value) * 0.5,
+//                     child: child,
+//                   ),
+//                 );
+//               },
+//               child: Icon(Icons.error_outline, size: 48.sp, color: Colors.red),
+//             ),
+//             SizedBox(height: 12.h),
+//             Text(
+//               message,
+//               style: TextStyle(
+//                 fontSize: 12,
+//                 color: ColorsManager.getSecondaryText(context),
+//               ),
+//               textAlign: TextAlign.center,
+//             ),
+//             SizedBox(height: 16.h),
+//             TweenAnimationBuilder(
+//               duration: const Duration(milliseconds: 600),
+//               tween: Tween<double>(begin: 0, end: 1),
+//               curve: Curves.easeOutBack,
+//               builder: (context, double value, child) {
+//                 return Transform.scale(scale: value, child: child);
+//               },
+//               child: ElevatedButton.icon(
+//                 onPressed: () {
+//                   HapticFeedback.mediumImpact();
+//                   context.read<SectionsCubit>().loadSections();
+//                 },
+//                 icon: const Icon(Icons.refresh),
+//                 label: Text(s.retry),
+//                 style: ElevatedButton.styleFrom(
+//                   backgroundColor: ColorsManager.getPrimaryGreen(context),
+//                   foregroundColor: isDark
+//                       ? ColorsManager.darkScaffold
+//                       : Colors.white,
+//                   padding: EdgeInsets.symmetric(
+//                     horizontal: 24.w,
+//                     vertical: 12.h,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 class UserHomeSections extends StatelessWidget {
   const UserHomeSections({super.key});
 
@@ -39,18 +288,15 @@ class UserHomeSections extends StatelessWidget {
           BlocBuilder<SectionsCubit, SectionsState>(
             builder: (context, state) {
               if (state is SectionsLoading) {
-                return _buildLoadingGrid();
+                return _buildLoadingGrid(context);
               }
-
               if (state is SectionsLoaded) {
                 return _buildSectionsGrid(context, state.sections);
               }
-
               if (state is SectionsError) {
                 return _buildErrorState(context, state.message);
               }
-
-              return _buildLoadingGrid();
+              return _buildLoadingGrid(context);
             },
           ),
         ],
@@ -61,140 +307,206 @@ class UserHomeSections extends StatelessWidget {
   Widget _buildSectionsGrid(BuildContext context, List sections) {
     final itemCount = sections.length > 6 ? 6 : sections.length;
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12.w,
-        mainAxisSpacing: 12.h,
-        childAspectRatio: 1.0,
-      ),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        // ✅ Staggered delay for each item
-        final delay = index * 80;
-
-        return TweenAnimationBuilder(
-          key: ValueKey('section_$index'),
-          duration: Duration(milliseconds: 600 + delay),
-          tween: Tween<double>(begin: 0, end: 1),
-          curve: Curves.easeOutBack, // ✅ Changed from elasticOut to easeOutBack
-          builder: (context, double value, child) {
-            // ✅ Clamp opacity to valid range (0.0 - 1.0)
-            final clampedOpacity = value.clamp(0.0, 1.0);
-
-            return Transform.scale(
-              scale: 0.8 + (0.2 * value), // ✅ Scale from 0.8 to 1.0
-              child: Transform.rotate(
-                angle: (1 - value) * 0.1, // Subtle rotation
-                child: Opacity(
-                  opacity: clampedOpacity, // ✅ Use clamped value
-                  child: Transform.translate(
-                    offset: Offset(
-                      // Alternate left-right slide based on position
-                      (index % 2 == 0 ? -30 : 30) * (1 - value),
-                      40 * (1 - value), // Vertical slide
-                    ),
-                    child: child,
-                  ),
-                ),
-              ),
-            );
-          },
-          child: SectionCard(
-            section: sections[index],
-            onTap: () {
-              // ✅ Add haptic feedback on tap
-              HapticFeedback.lightImpact();
-              Navigator.pushNamed(
-                context,
-                Routes.sectionExercises,
-                arguments: sections[index],
-              );
-            },
+    return TweenAnimationBuilder(
+      duration: const Duration(milliseconds: 600),
+      tween: Tween<double>(begin: 0, end: 1),
+      curve: Curves.easeOutCubic,
+      builder: (context, double gridValue, child) {
+        return Opacity(
+          opacity: gridValue.clamp(0.0, 1.0),
+          child: Transform.translate(
+            offset: Offset(0, 20 * (1 - gridValue)),
+            child: child,
           ),
         );
       },
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12.w,
+          mainAxisSpacing: 12.h,
+          childAspectRatio: 0.85,
+        ),
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          final delay = index * 100;
+
+          return TweenAnimationBuilder(
+            key: ValueKey('section_$index'),
+            duration: Duration(milliseconds: 700 + delay),
+            tween: Tween<double>(begin: 0, end: 1),
+            curve: Curves.easeOutBack,
+            builder: (context, double value, child) {
+              final clampedValue = value.clamp(0.0, 1.0);
+
+              return Transform.scale(
+                scale: 0.7 + (0.3 * clampedValue),
+                child: Opacity(
+                  opacity: clampedValue,
+                  child: Transform.translate(
+                    offset: Offset(
+                      (index % 2 == 0 ? -50 : 50) * (1 - clampedValue),
+                      60 * (1 - clampedValue),
+                    ),
+                    child: Transform.rotate(
+                      angle: (1 - clampedValue) * 0.15,
+                      child: child,
+                    ),
+                  ),
+                ),
+              );
+            },
+            child: SectionCard(
+              section: sections[index],
+              onTap: () {
+                HapticFeedback.lightImpact();
+                Navigator.pushNamed(
+                  context,
+                  Routes.sectionExercises,
+                  arguments: sections[index],
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 
-  Widget _buildLoadingGrid() {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12.w,
-        mainAxisSpacing: 12.h,
-        childAspectRatio: 1.0,
-      ),
-      itemCount: 6,
-      itemBuilder: (context, index) {
-        return TweenAnimationBuilder(
-          duration: Duration(milliseconds: 800 + (index * 100)),
-          tween: Tween<double>(begin: 0, end: 1),
-          curve: Curves.easeInOut,
-          builder: (context, double value, child) {
-            return Opacity(
-              opacity: 0.3 + (0.7 * value),
-              child: Transform.scale(scale: 0.9 + (0.1 * value), child: child),
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: ColorsManager.cardBackground,
-              borderRadius: BorderRadius.circular(16.r),
-              boxShadow: [
-                BoxShadow(
-                  color: ColorsManager.primaryGreen.withOpacity(0.1),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Center(
-              child: CircularProgressIndicator(
-                color: ColorsManager.primaryGreen,
-                strokeWidth: 2,
-              ),
-            ),
+  Widget _buildLoadingGrid(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return TweenAnimationBuilder(
+      duration: const Duration(milliseconds: 500),
+      tween: Tween<double>(begin: 0, end: 1),
+      curve: Curves.easeOutCubic,
+      builder: (context, double gridValue, child) {
+        return Opacity(
+          opacity: gridValue.clamp(0.0, 1.0),
+          child: Transform.scale(
+            scale: 0.95 + (0.05 * gridValue),
+            child: child,
           ),
         );
       },
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12.w,
+          mainAxisSpacing: 12.h,
+          childAspectRatio: 0.85,
+        ),
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          final delay = index * 80;
+
+          return TweenAnimationBuilder(
+            duration: Duration(milliseconds: 600 + delay),
+            tween: Tween<double>(begin: 0, end: 1),
+            curve: Curves.easeInOut,
+            builder: (context, double value, child) {
+              final clampedValue = value.clamp(0.0, 1.0);
+
+              return Opacity(
+                opacity: 0.3 + (0.7 * clampedValue),
+                child: Transform.scale(
+                  scale: 0.85 + (0.15 * clampedValue),
+                  child: Transform.translate(
+                    offset: Offset(0, 30 * (1 - clampedValue)),
+                    child: child,
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardTheme.color,
+                borderRadius: BorderRadius.circular(20.r),
+                border: Border.all(
+                  color: isDark
+                      ? ColorsManager.darkBorder.withValues(alpha: 0.3)
+                      : ColorsManager.lightBorder.withValues(alpha: 0.5),
+                  width: 1.5,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: ColorsManager.getPrimaryGreen(
+                      context,
+                    ).withValues(alpha: isDark ? 0.1 : 0.08),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: TweenAnimationBuilder(
+                  duration: const Duration(milliseconds: 1000),
+                  tween: Tween<double>(begin: 0, end: 1),
+                  builder: (context, double spinValue, child) {
+                    return Transform.rotate(
+                      angle: spinValue * 2 * 3.14159,
+                      child: CircularProgressIndicator(
+                        color: ColorsManager.getPrimaryGreen(context),
+                        strokeWidth: 2.5,
+                      ),
+                    );
+                  },
+                  onEnd: () {},
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 
   Widget _buildErrorState(BuildContext context, String message) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return TweenAnimationBuilder(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 600),
       tween: Tween<double>(begin: 0, end: 1),
-      curve: Curves.elasticOut,
+      curve: Curves.easeOutBack,
       builder: (context, double value, child) {
         return Transform.scale(
-          scale: value,
-          child: Opacity(opacity: value, child: child),
+          scale: value.clamp(0.0, 1.0),
+          child: Opacity(opacity: value.clamp(0.0, 1.0), child: child),
         );
       },
       child: Container(
         padding: EdgeInsets.all(24.w),
         decoration: BoxDecoration(
-          color: ColorsManager.cardBackground,
-          borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: Colors.red.withOpacity(0.3), width: 1),
+          color: Theme.of(context).cardTheme.color,
+          borderRadius: BorderRadius.circular(20.r),
+          border: Border.all(
+            color: Colors.red.withValues(alpha: 0.3),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.black.withValues(alpha: 0.08),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         child: Column(
           children: [
-            // ✅ Animated error icon
             TweenAnimationBuilder(
-              duration: const Duration(milliseconds: 800),
+              duration: const Duration(milliseconds: 1000),
               tween: Tween<double>(begin: 0, end: 1),
               curve: Curves.elasticOut,
               builder: (context, double value, child) {
                 return Transform.scale(
-                  scale: value,
+                  scale: value.clamp(0.0, 1.0),
                   child: Transform.rotate(
                     angle: (1 - value) * 0.5,
                     child: child,
@@ -206,17 +518,22 @@ class UserHomeSections extends StatelessWidget {
             SizedBox(height: 12.h),
             Text(
               message,
-              style: TextStyles.bodySmall,
+              style: TextStyle(
+                fontSize: 12,
+                color: ColorsManager.getSecondaryText(context),
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 16.h),
-            // ✅ Animated retry button
             TweenAnimationBuilder(
-              duration: const Duration(milliseconds: 600),
+              duration: const Duration(milliseconds: 800),
               tween: Tween<double>(begin: 0, end: 1),
               curve: Curves.easeOutBack,
               builder: (context, double value, child) {
-                return Transform.scale(scale: value, child: child);
+                return Transform.scale(
+                  scale: value.clamp(0.0, 1.0),
+                  child: child,
+                );
               },
               child: ElevatedButton.icon(
                 onPressed: () {
@@ -226,7 +543,10 @@ class UserHomeSections extends StatelessWidget {
                 icon: const Icon(Icons.refresh),
                 label: Text(s.retry),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorsManager.primaryGreen,
+                  backgroundColor: ColorsManager.getPrimaryGreen(context),
+                  foregroundColor: isDark
+                      ? ColorsManager.darkScaffold
+                      : Colors.white,
                   padding: EdgeInsets.symmetric(
                     horizontal: 24.w,
                     vertical: 12.h,

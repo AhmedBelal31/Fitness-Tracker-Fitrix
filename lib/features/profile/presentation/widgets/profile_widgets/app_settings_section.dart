@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitrix/generated/l10n.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/app_colors.dart';
-import '../../../../../core/theming/styles.dart';
 import '../../cubits/localization/locale_cubit/locale_cubit.dart';
 import '../../cubits/localization/locale_cubit/locale_state.dart';
 import '../language_selector_sheet.dart';
@@ -12,12 +11,15 @@ import 'notification_switch_bloc_provider.dart';
 import 'profile_section_title.dart';
 import 'profile_settings_tile.dart';
 
+import 'sound_switch_bloc_provider.dart';
+
 class AppSettingsSection extends StatelessWidget {
   const AppSettingsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Column(
       children: [
@@ -25,13 +27,20 @@ class AppSettingsSection extends StatelessWidget {
         SizedBox(height: 12.h),
         Container(
           decoration: BoxDecoration(
-            color: ColorsManager.cardBackground,
+            color: Theme.of(context).cardTheme.color,
             borderRadius: BorderRadius.circular(16.r),
-            boxShadow: ColorsManager.cardShadow,
+            boxShadow: [
+              BoxShadow(
+                color: isDark
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : Colors.black.withValues(alpha: 0.08),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
           child: Column(
             children: [
-              // Language
               BlocBuilder<LocaleCubit, LocaleState>(
                 builder: (context, state) {
                   return ProfileSettingsTile(
@@ -43,40 +52,31 @@ class AppSettingsSection extends StatelessWidget {
                         state.locale.languageCode == 'en'
                             ? 'English'
                             : 'العربية',
-                        style: TextStyles.font14PrimaryGreenSemiBold,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: ColorsManager.getPrimaryGreen(context),
+                        ),
                       ),
                     ),
                     onTap: () => _showLanguageSelector(context),
                   );
                 },
               ),
-              const Divider(color: ColorsManager.lightBorder, height: 1),
-              NotificationSwitchBlocprovider(),
-              const Divider(color: ColorsManager.lightBorder, height: 1),
-
-              // Change Password
-              // ProfileSettingsTile(
-              //   icon: Icons.lock,
-              //   title: s.changeYourPassword,
-              //   trailing: const Icon(
-              //     Icons.chevron_right,
-              //     color: ColorsManager.lightText,
-              //   ),
-              //   onTap: () {
-              //     // TODO: Navigate to change password
-              //   },
-              // ),
-              ProfileSettingsTile(
-                icon: Icons.lock,
-                title: s.changeYourPassword,
-                trailing: const Icon(
-                  Icons.chevron_right,
-                  color: ColorsManager.lightText,
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.changePassword);
-                },
+              Divider(
+                color: isDark
+                    ? ColorsManager.darkBorder
+                    : ColorsManager.lightBorder,
+                height: 1,
               ),
+              const NotificationSwitchBlocProvider(),
+              Divider(
+                color: isDark
+                    ? ColorsManager.darkBorder
+                    : ColorsManager.lightBorder,
+                height: 1,
+              ),
+              const SoundSwitchBlocProvider(),
             ],
           ),
         ),

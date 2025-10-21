@@ -2,115 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
-import '../../../../generated/l10n.dart';
-import '../../data/models/section_model.dart';
-
-// class SectionCard extends StatelessWidget {
-//   final SectionModel section;
-//   final VoidCallback onTap;
-//
-//   const SectionCard({required this.section, required this.onTap, super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final s = S.of(context);
-//
-//     return InkWell(
-//       onTap: onTap,
-//       borderRadius: BorderRadius.circular(16.r),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           gradient: ColorsManager.cardGradient,
-//           borderRadius: BorderRadius.circular(16.r),
-//           boxShadow: ColorsManager.cardShadow,
-//         ),
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             // Icon
-//             Container(
-//               padding: EdgeInsets.all(16.w),
-//               decoration: BoxDecoration(
-//                 color: Colors.white.withOpacity(0.2),
-//                 shape: BoxShape.circle,
-//               ),
-//               child: Icon(
-//                 _getIconData(section.name),
-//                 size: 40.sp,
-//                 color: Colors.white,
-//               ),
-//             ),
-//             SizedBox(height: 12.h),
-//
-//             // Section Name (Localized)
-//             Text(
-//               _getSectionName(s, section.name),
-//               style: TextStyles.font18WhiteMedium,
-//               textAlign: TextAlign.center,
-//             ),
-//             SizedBox(height: 4.h),
-//
-//             // Exercise Count
-//             Container(
-//               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
-//               decoration: BoxDecoration(
-//                 color: Colors.white.withOpacity(0.2),
-//                 borderRadius: BorderRadius.circular(12.r),
-//               ),
-//               child: Text(
-//                 '${section.allExerciseNumber} ${s.exercises}',
-//                 style: TextStyles.font12WhiteRegular,
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-//
-//   String _getSectionName(S s, String sectionName) {
-//     switch (sectionName.toLowerCase()) {
-//       case 'chest':
-//         return s.chest;
-//       case 'back':
-//         return s.back;
-//       case 'legs':
-//         return s.legs;
-//       case 'shoulders':
-//         return s.shoulders;
-//       case 'arms':
-//         return s.arms;
-//       case 'core':
-//         return s.core;
-//       default:
-//         return sectionName;
-//     }
-//   }
-//
-//   IconData _getIconData(String sectionName) {
-//     switch (sectionName.toLowerCase()) {
-//       case 'chest':
-//         return Icons.fitness_center;
-//       case 'back':
-//         return Icons.accessibility_new;
-//       case 'legs':
-//         return Icons.directions_run;
-//       case 'shoulders':
-//         return Icons.sports_martial_arts;
-//       case 'arms':
-//         return Icons.sports_gymnastics;
-//       case 'core':
-//         return Icons.self_improvement;
-//       default:
-//         return Icons.fitness_center;
-//     }
-//   }
-// }
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
 
 class SectionCard extends StatelessWidget {
   final dynamic section;
@@ -120,50 +11,92 @@ class SectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(20.r),
         child: Container(
           decoration: BoxDecoration(
-            gradient: ColorsManager.primaryGradient,
-            borderRadius: BorderRadius.circular(16.r),
+            color: isDark ? ColorsManager.darkSurface : Colors.white,
+            borderRadius: BorderRadius.circular(20.r),
+            border: Border.all(
+              color: isDark
+                  ? ColorsManager.darkBorder.withValues(alpha: 0.3)
+                  : ColorsManager.lightBorder.withValues(alpha: 0.5),
+              width: 1.5,
+            ),
             boxShadow: [
               BoxShadow(
-                color: ColorsManager.primaryGreen.withValues(alpha: 0.3),
-                blurRadius: 12,
-                offset: const Offset(0, 6),
+                color: isDark
+                    ? Colors.black.withValues(alpha: 0.4)
+                    : ColorsManager.getPrimaryGreen(
+                        context,
+                      ).withValues(alpha: 0.08),
+                blurRadius: isDark ? 12 : 20,
+                offset: Offset(0, isDark ? 4 : 8),
+                spreadRadius: isDark ? 0 : -2,
               ),
+              if (isDark)
+                BoxShadow(
+                  color: ColorsManager.darkPrimaryGreen.withValues(alpha: 0.1),
+                  blurRadius: 20,
+                  offset: const Offset(0, 0),
+                ),
             ],
           ),
           child: Stack(
             children: [
-              // Background pattern
               Positioned.fill(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.r),
-                  child: CustomPaint(painter: _PatternPainter()),
+                  borderRadius: BorderRadius.circular(20.r),
+                  child: CustomPaint(
+                    painter: _ModernPatternPainter(
+                      isDark: isDark,
+                      color: ColorsManager.getPrimaryGreen(context),
+                    ),
+                  ),
                 ),
               ),
-              // Main content
+              Positioned(
+                top: -20,
+                right: -20,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        ColorsManager.getPrimaryGreen(
+                          context,
+                        ).withValues(alpha: isDark ? 0.15 : 0.08),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.all(16.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildIcon(),
-                    SizedBox(height: 12.h),
-                    _buildTitle(),
+                    _buildIconBadge(context, isDark),
+                    SizedBox(height: 16.h),
+                    _buildTitle(context, isDark),
                     if (section.description != null) ...[
-                      SizedBox(height: 4.h),
-                      _buildDescription(),
+                      SizedBox(height: 6.h),
+                      _buildDescription(context, isDark),
                     ],
+                    const Spacer(),
+                    _buildBottomRow(context, isDark),
                   ],
                 ),
               ),
-              // Exercise count badge (top-right)
-              _buildExerciseCountBadge(),
             ],
           ),
         ),
@@ -171,91 +104,119 @@ class SectionCard extends StatelessWidget {
     );
   }
 
-  Widget _buildIcon() {
+  Widget _buildIconBadge(BuildContext context, bool isDark) {
     return Container(
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.2),
-        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: isDark
+              ? [
+                  ColorsManager.darkPrimaryGreen,
+                  ColorsManager.darkSecondaryGreen,
+                ]
+              : [ColorsManager.primaryGreen, ColorsManager.secondaryGreen],
+        ),
+        borderRadius: BorderRadius.circular(14.r),
+        boxShadow: [
+          BoxShadow(
+            color: ColorsManager.getPrimaryGreen(
+              context,
+            ).withValues(alpha: isDark ? 0.4 : 0.3),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Icon(
         _getSectionIcon(),
-        color: ColorsManager.whiteText,
-        size: 32.sp,
+        color: isDark ? ColorsManager.darkScaffold : Colors.white,
+        size: 28.sp,
       ),
     );
   }
 
-  Widget _buildTitle() {
+  Widget _buildTitle(BuildContext context, bool isDark) {
     return Text(
       section.name ?? '',
-      style: TextStyles.headline3.copyWith(
-        color: ColorsManager.whiteText,
+      style: TextStyle(
         fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
+        color: ColorsManager.getPrimaryText(context),
+        height: 1.2,
       ),
-      textAlign: TextAlign.center,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );
   }
 
-  Widget _buildDescription() {
+  Widget _buildDescription(BuildContext context, bool isDark) {
     return Text(
       section.description ?? '',
-      style: TextStyles.caption.copyWith(
-        color: ColorsManager.whiteText.withValues(alpha: 0.8),
+      style: TextStyle(
+        fontSize: 11.sp,
+        color: ColorsManager.getSecondaryText(context).withValues(alpha: 0.8),
+        height: 1.3,
       ),
-      textAlign: TextAlign.center,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );
   }
 
-  Widget _buildExerciseCountBadge() {
-    return Positioned(
-      top: 8.w,
-      right: 8.w,
-      child: TweenAnimationBuilder(
-        duration: const Duration(milliseconds: 400),
-        tween: Tween<double>(begin: 0, end: 1),
-        curve: Curves.elasticOut,
-        builder: (context, double value, child) {
-          return Transform.scale(scale: value.clamp(0.0, 1.0), child: child);
-        },
-        child: Container(
+  Widget _buildBottomRow(BuildContext context, bool isDark) {
+    return Row(
+      children: [
+        Container(
           padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.9),
-            borderRadius: BorderRadius.circular(12.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              ),
-            ],
+            color: ColorsManager.getPrimaryGreen(
+              context,
+            ).withValues(alpha: isDark ? 0.2 : 0.1),
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(
+              color: ColorsManager.getPrimaryGreen(
+                context,
+              ).withValues(alpha: 0.3),
+              width: 1,
+            ),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 Icons.fitness_center,
-                color: ColorsManager.primaryGreen,
-                size: 14.sp,
+                color: ColorsManager.getPrimaryGreen(context),
+                size: 12.sp,
               ),
               SizedBox(width: 4.w),
               Text(
                 section.allExerciseNumber.toString(),
-                style: TextStyles.bodySmall.copyWith(
-                  color: ColorsManager.primaryGreen,
-                  fontWeight: FontWeight.w700,
+                style: TextStyle(
+                  color: ColorsManager.getPrimaryGreen(context),
+                  fontWeight: FontWeight.bold,
                   fontSize: 12.sp,
                 ),
               ),
             ],
           ),
         ),
-      ),
+        const Spacer(),
+        Container(
+          padding: EdgeInsets.all(6.w),
+          decoration: BoxDecoration(
+            color: ColorsManager.getPrimaryGreen(
+              context,
+            ).withValues(alpha: isDark ? 0.15 : 0.08),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            Icons.arrow_forward,
+            color: ColorsManager.getPrimaryGreen(context),
+            size: 16.sp,
+          ),
+        ),
+      ],
     );
   }
 
@@ -274,22 +235,42 @@ class SectionCard extends StatelessWidget {
   }
 }
 
-class _PatternPainter extends CustomPainter {
+class _ModernPatternPainter extends CustomPainter {
+  final bool isDark;
+  final Color color;
+
+  const _ModernPatternPainter({required this.isDark, required this.color});
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.05)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
+      ..color = color.withValues(alpha: isDark ? 0.03 : 0.02)
+      ..style = PaintingStyle.fill;
 
-    // Draw diagonal lines pattern
-    for (double i = -size.height; i < size.width; i += 20) {
-      canvas.drawLine(
-        Offset(i, 0),
-        Offset(i + size.height, size.height),
-        paint,
-      );
+    final dotPaint = Paint()
+      ..color = color.withValues(alpha: isDark ? 0.05 : 0.04)
+      ..style = PaintingStyle.fill;
+
+    for (double x = 0; x < size.width; x += 25) {
+      for (double y = 0; y < size.height; y += 25) {
+        canvas.drawCircle(Offset(x, y), 2, dotPaint);
+      }
     }
+
+    final gradientPaint = Paint()
+      ..shader = RadialGradient(
+        center: const Alignment(0.8, -0.8),
+        radius: 1.5,
+        colors: [
+          color.withValues(alpha: isDark ? 0.08 : 0.05),
+          Colors.transparent,
+        ],
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      gradientPaint,
+    );
   }
 
   @override

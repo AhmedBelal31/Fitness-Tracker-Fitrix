@@ -261,13 +261,12 @@ class ProfileRepositoryImpl implements ProfileRepository {
     }
   }
 
-  // Add this method to ProfileRepositoryImpl
   @override
-  Future<Either<Failure, void>> resetPassword(
-    ResetPasswordRequest request,
+  Future<Either<Failure, void>> changePassword(
+    ChangePasswordRequest request,
   ) async {
     try {
-      dev.log('📤 Sending reset password request', name: 'ProfileRepository');
+      dev.log('📤 Sending change password request', name: 'ProfileRepository');
 
       final response = await _apiService.postRequest(
         ApiEndpoints.changePassword,
@@ -275,11 +274,11 @@ class ProfileRepositoryImpl implements ProfileRepository {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        dev.log('✅ Password reset successful', name: 'ProfileRepository');
+        dev.log('✅ Password changed successfully', name: 'ProfileRepository');
         return const Right(null);
       } else {
         dev.log(
-          '❌ Password reset failed: ${response.statusCode}',
+          '❌ Password change failed: ${response.statusCode}',
           name: 'ProfileRepository',
         );
         return Left(
@@ -288,13 +287,13 @@ class ProfileRepositoryImpl implements ProfileRepository {
       }
     } on DioException catch (e) {
       dev.log(
-        '❌ DioException during password reset: ${e.message}',
+        '❌ DioException during password change: ${e.message}',
         name: 'ProfileRepository',
       );
       return Left(ServerFailure.fromDioException(e));
     } catch (e) {
       dev.log(
-        '❌ Unexpected error during password reset: $e',
+        '❌ Unexpected error during password change: $e',
         name: 'ProfileRepository',
       );
       return Left(ServerFailure(e.toString()));

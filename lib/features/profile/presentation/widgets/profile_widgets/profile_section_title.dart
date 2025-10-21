@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/app_colors.dart';
 
 class ProfileSectionTitle extends StatelessWidget {
   final String title;
@@ -10,7 +10,14 @@ class ProfileSectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional.centerStart,
-      child: Text(title, style: TextStyles.subtitle1),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: ColorsManager.getPrimaryText(context),
+        ),
+      ),
     );
   }
 }

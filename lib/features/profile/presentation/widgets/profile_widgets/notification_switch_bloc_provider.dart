@@ -11,8 +11,8 @@ import '../../cubits/notifications_cubit/notifications_state.dart';
 import 'animated_notification_switch.dart';
 import 'profile_settings_tile.dart';
 
-class NotificationSwitchBlocprovider extends StatelessWidget {
-  const NotificationSwitchBlocprovider({super.key});
+class NotificationSwitchBlocProvider extends StatelessWidget {
+  const NotificationSwitchBlocProvider({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class NotificationSwitchBlocprovider extends StatelessWidget {
           return ProfileSettingsTile(
             icon: Icons.notifications,
             title: s.notifications,
-            trailing: NotificationLoadSwitch(
+            trailing: AnimatedLoadSwitch(
               value: isEnabled,
               future: () => context
                   .read<NotificationsCubit>()

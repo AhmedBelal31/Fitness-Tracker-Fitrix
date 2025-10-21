@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/services/hive_service.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 
 class UserHomeHeader extends StatelessWidget {
@@ -34,10 +34,20 @@ class UserHomeHeader extends StatelessWidget {
         children: [
           Text(
             s.welcome_back,
-            style: TextStyles.bodyMedium.copyWith(color: Colors.grey[600]),
+            style: TextStyle(
+              fontSize: 14,
+              color: ColorsManager.getSecondaryText(context),
+            ),
           ),
           SizedBox(height: 4.h),
-          Text(firstAndLastName, style: TextStyles.headline1),
+          Text(
+            firstAndLastName,
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: ColorsManager.getPrimaryText(context),
+            ),
+          ),
         ],
       ),
     );

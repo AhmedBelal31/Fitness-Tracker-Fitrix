@@ -68,6 +68,7 @@ class ApiEndpoints {
   static const String measurementCards = 'Users/measurement-cards';
   static const String measurementCharts = 'Users/get-measurement-charts';
   static const String recordsStates = 'Records/states';
-
+  static String exerciseProgressCharts(String exerciseId) =>
+      '/Progress/charts/exercise/$exerciseId';
   static const String recordsAchievements = '/Records/achievements';
 }

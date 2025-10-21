@@ -10,6 +10,342 @@ import '../../data/workout_session_model.dart';
 import '../cubit/workouts_cubit.dart';
 import '../cubit/workouts_state.dart';
 
+// class WorkoutSessionSelector extends StatefulWidget {
+//   final ExerciseModel exercise;
+//   final Function(String sessionId) onSessionSelected;
+//
+//   const WorkoutSessionSelector({
+//     super.key,
+//     required this.exercise,
+//     required this.onSessionSelected,
+//   });
+//
+//   @override
+//   State<WorkoutSessionSelector> createState() => _WorkoutSessionSelectorState();
+// }
+//
+// class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
+//   @override
+//   void initState() {
+//     super.initState();
+//     context.read<WorkoutsCubit>().loadWorkoutHistory();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final s = S.of(context);
+//
+//     return DraggableScrollableSheet(
+//       initialChildSize: 0.7,
+//       minChildSize: 0.5,
+//       maxChildSize: 0.95,
+//       expand: false,
+//       builder: (context, scrollController) {
+//         return Column(
+//           children: [
+//             // Handle bar
+//             Container(
+//               margin: EdgeInsets.only(top: 8.h),
+//               width: 40.w,
+//               height: 4.h,
+//               decoration: BoxDecoration(
+//                 color: Colors.grey[300],
+//                 borderRadius: BorderRadius.circular(2.r),
+//               ),
+//             ),
+//
+//             // Header
+//             Padding(
+//               padding: EdgeInsets.all(20.w),
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: [
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       Text(s.select_workout, style: TextStyles.headline3),
+//                       SizedBox(height: 4.h),
+//                       Text(
+//                         widget.exercise.name,
+//                         style: TextStyles.bodyMedium.copyWith(
+//                           color: ColorsManager.lightText,
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   IconButton(
+//                     onPressed: () => _createNewSession(s),
+//                     icon: Icon(
+//                       Icons.add_circle,
+//                       color: ColorsManager.primaryGreen,
+//                       size: 28.sp,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//
+//             Divider(height: 1, color: Colors.grey[300]),
+//
+//             // Sessions List
+//             Expanded(
+//               child: BlocBuilder<WorkoutsCubit, WorkoutsState>(
+//                 builder: (context, state) {
+//                   if (state is WorkoutsLoading) {
+//                     return const Center(
+//                       child: CircularProgressIndicator(
+//                         color: ColorsManager.primaryGreen,
+//                       ),
+//                     );
+//                   }
+//
+//                   if (state is WorkoutHistoryLoaded) {
+//                     if (state.sessions.isEmpty) {
+//                       return _buildEmptyState(s);
+//                     }
+//
+//                     return ListView.separated(
+//                       controller: scrollController,
+//                       padding: EdgeInsets.all(20.w),
+//                       itemCount: state.sessions.length,
+//                       separatorBuilder: (context, index) =>
+//                           SizedBox(height: 12.h),
+//                       itemBuilder: (context, index) {
+//                         final session = state.sessions[index];
+//                         return _buildSessionCard(session, s);
+//                       },
+//                     );
+//                   }
+//
+//                   return _buildEmptyState(s);
+//                 },
+//               ),
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+//
+//   Widget _buildSessionCard(WorkoutSessionModel session, S s) {
+//     final dateFormat = DateFormat('EEEE, MMM d, yyyy');
+//     final timeFormat = DateFormat('h:mm a');
+//     final isCompleted = session.isCompleted;
+//
+//     return InkWell(
+//       onTap: isCompleted
+//           ? null // ✅ Disable tapping on completed sessions
+//           : () {
+//               widget.onSessionSelected(session.id);
+//               Navigator.pop(context);
+//             },
+//       borderRadius: BorderRadius.circular(12.r),
+//       child: Opacity(
+//         opacity: isCompleted ? 0.6 : 1.0, // ✅ Show as disabled
+//         child: Container(
+//           padding: EdgeInsets.all(16.w),
+//           decoration: BoxDecoration(
+//             color: ColorsManager.cardBackground,
+//             borderRadius: BorderRadius.circular(12.r),
+//             border: Border.all(
+//               color: isCompleted
+//                   ? Colors.grey[300]!
+//                   : ColorsManager.primaryGreen,
+//               width: isCompleted ? 1 : 2,
+//             ),
+//             boxShadow: isCompleted ? [] : ColorsManager.softShadow,
+//           ),
+//           child: Row(
+//             children: [
+//               Container(
+//                 width: 50.w,
+//                 height: 50.w,
+//                 decoration: BoxDecoration(
+//                   color: isCompleted
+//                       ? Colors.grey[200]
+//                       : ColorsManager.primaryGreen.withOpacity(0.1),
+//                   borderRadius: BorderRadius.circular(12.r),
+//                 ),
+//                 child: Icon(
+//                   isCompleted ? Icons.check_circle : Icons.fitness_center,
+//                   color: isCompleted
+//                       ? Colors.grey[600]
+//                       : ColorsManager.primaryGreen,
+//                   size: 24.sp,
+//                 ),
+//               ),
+//               SizedBox(width: 12.w),
+//               Expanded(
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(
+//                       dateFormat.format(session.date),
+//                       style: TextStyles.subtitle1.copyWith(
+//                         color: isCompleted
+//                             ? Colors.grey[600]
+//                             : ColorsManager.primaryText,
+//                       ),
+//                     ),
+//                     SizedBox(height: 4.h),
+//                     Row(
+//                       children: [
+//                         if (session.startTime != null) ...[
+//                           Icon(
+//                             Icons.schedule,
+//                             size: 14.sp,
+//                             color: ColorsManager.lightText,
+//                           ),
+//                           SizedBox(width: 4.w),
+//                           Text(
+//                             timeFormat.format(session.startTime!),
+//                             style: TextStyles.bodySmall.copyWith(
+//                               color: ColorsManager.lightText,
+//                             ),
+//                           ),
+//                           SizedBox(width: 8.w),
+//                         ],
+//                         Text(
+//                           '${session.workoutExercises.length} ${s.exercises}',
+//                           style: TextStyles.bodySmall.copyWith(
+//                             color: ColorsManager.lightText,
+//                           ),
+//                         ),
+//                         if (isCompleted) ...[
+//                           SizedBox(width: 8.w),
+//                           Container(
+//                             padding: EdgeInsets.symmetric(
+//                               horizontal: 6.w,
+//                               vertical: 2.h,
+//                             ),
+//                             decoration: BoxDecoration(
+//                               color: Colors.grey[300],
+//                               borderRadius: BorderRadius.circular(8.r),
+//                             ),
+//                             child: Text(
+//                               s.completed,
+//                               style: TextStyles.caption.copyWith(
+//                                 color: Colors.grey[700],
+//                                 fontSize: 10.sp,
+//                               ),
+//                             ),
+//                           ),
+//                         ],
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//               Icon(
+//                 isCompleted ? Icons.lock : Icons.chevron_right,
+//                 color: ColorsManager.lightText,
+//                 size: 24.sp,
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+//
+//   Widget _buildEmptyState(S s) {
+//     return Center(
+//       child: Padding(
+//         padding: EdgeInsets.all(32.w),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Icon(
+//               Icons.fitness_center_outlined,
+//               size: 64.sp,
+//               color: ColorsManager.lightText,
+//             ),
+//             SizedBox(height: 16.h),
+//             Text(s.no_workout_sessions, style: TextStyles.headline3),
+//             SizedBox(height: 8.h),
+//             Text(
+//               s.create_new_session_to_start,
+//               style: TextStyles.bodyMedium,
+//               textAlign: TextAlign.center,
+//             ),
+//             SizedBox(height: 24.h),
+//             ElevatedButton.icon(
+//               onPressed: () => _createNewSession(s),
+//               icon: const Icon(Icons.add),
+//               label: Text(s.create_session),
+//               style: ElevatedButton.styleFrom(
+//                 backgroundColor: ColorsManager.primaryGreen,
+//                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(12.r),
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+//
+//   // void _createNewSession(S s) {
+//   //   context.read<WorkoutsCubit>().createWorkoutSession(
+//   //     date: DateTime.now(),
+//   //     notes: null,
+//   //   );
+//   //
+//   //   // Show success and reload
+//   //   ScaffoldMessenger.of(context).showSnackBar(
+//   //     SnackBar(
+//   //       content: Text(s.session_created),
+//   //       backgroundColor: ColorsManager.success,
+//   //     ),
+//   //   );
+//   // }
+//
+//   Future<void> _createNewSession(S s) async {
+//     final confirmed = await showDialog<bool>(
+//       context: context,
+//       builder: (context) => AlertDialog(
+//         title: Text(s.confirm_create_session),
+//         content: Text(s.are_you_sure),
+//         actions: [
+//           TextButton(
+//             child: Text(s.cancel),
+//             onPressed: () => Navigator.of(context).pop(false),
+//           ),
+//           ElevatedButton(
+//             child: Text(s.confirm),
+//             onPressed: () => Navigator.of(context).pop(true),
+//           ),
+//         ],
+//       ),
+//     );
+//
+//     if (confirmed == true) {
+//       // Optionally, await any animation or async process here (e.g. reverse _controller)
+//       // await _controller.reverse();
+//
+//       // Call the cubit method to create the workout session
+//       context.read<WorkoutsCubit>().createWorkoutSession(
+//         date: DateTime.now(),
+//         notes: null,
+//       );
+//
+//       // Show confirmation message
+//       if (mounted) {
+//         ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             content: Text(s.session_created),
+//             backgroundColor: ColorsManager.success,
+//           ),
+//         );
+//       }
+//
+//       // If this method itself is called within a dialog, you can close it here
+//       Navigator.of(context).pop();
+//     }
+//   }
+// }
 class WorkoutSessionSelector extends StatefulWidget {
   final ExerciseModel exercise;
   final Function(String sessionId) onSessionSelected;
@@ -34,6 +370,7 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
@@ -49,7 +386,9 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
               width: 40.w,
               height: 4.h,
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: isDark
+                    ? ColorsManager.darkBorder
+                    : ColorsManager.lightBorder,
                 borderRadius: BorderRadius.circular(2.r),
               ),
             ),
@@ -63,12 +402,20 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(s.select_workout, style: TextStyles.headline3),
+                      Text(
+                        s.select_workout,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: ColorsManager.getPrimaryText(context),
+                        ),
+                      ),
                       SizedBox(height: 4.h),
                       Text(
                         widget.exercise.name,
-                        style: TextStyles.bodyMedium.copyWith(
-                          color: ColorsManager.lightText,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: ColorsManager.getSecondaryText(context),
                         ),
                       ),
                     ],
@@ -77,7 +424,7 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
                     onPressed: () => _createNewSession(s),
                     icon: Icon(
                       Icons.add_circle,
-                      color: ColorsManager.primaryGreen,
+                      color: ColorsManager.getPrimaryGreen(context),
                       size: 28.sp,
                     ),
                   ),
@@ -85,16 +432,21 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
               ),
             ),
 
-            Divider(height: 1, color: Colors.grey[300]),
+            Divider(
+              height: 1,
+              color: isDark
+                  ? ColorsManager.darkBorder
+                  : ColorsManager.lightBorder,
+            ),
 
             // Sessions List
             Expanded(
               child: BlocBuilder<WorkoutsCubit, WorkoutsState>(
                 builder: (context, state) {
                   if (state is WorkoutsLoading) {
-                    return const Center(
+                    return Center(
                       child: CircularProgressIndicator(
-                        color: ColorsManager.primaryGreen,
+                        color: ColorsManager.getPrimaryGreen(context),
                       ),
                     );
                   }
@@ -128,32 +480,45 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
   }
 
   Widget _buildSessionCard(WorkoutSessionModel session, S s) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final dateFormat = DateFormat('EEEE, MMM d, yyyy');
     final timeFormat = DateFormat('h:mm a');
     final isCompleted = session.isCompleted;
 
     return InkWell(
       onTap: isCompleted
-          ? null // ✅ Disable tapping on completed sessions
+          ? null
           : () {
               widget.onSessionSelected(session.id);
               Navigator.pop(context);
             },
       borderRadius: BorderRadius.circular(12.r),
       child: Opacity(
-        opacity: isCompleted ? 0.6 : 1.0, // ✅ Show as disabled
+        opacity: isCompleted ? 0.6 : 1.0,
         child: Container(
           padding: EdgeInsets.all(16.w),
           decoration: BoxDecoration(
-            color: ColorsManager.cardBackground,
+            color: Theme.of(context).cardTheme.color,
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(
               color: isCompleted
-                  ? Colors.grey[300]!
-                  : ColorsManager.primaryGreen,
+                  ? (isDark
+                        ? ColorsManager.darkBorder
+                        : ColorsManager.lightBorder)
+                  : ColorsManager.getPrimaryGreen(context),
               width: isCompleted ? 1 : 2,
             ),
-            boxShadow: isCompleted ? [] : ColorsManager.softShadow,
+            boxShadow: isCompleted
+                ? []
+                : [
+                    BoxShadow(
+                      color: isDark
+                          ? Colors.black.withValues(alpha: 0.3)
+                          : Colors.black.withValues(alpha: 0.08),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
           ),
           child: Row(
             children: [
@@ -162,15 +527,19 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
                 height: 50.w,
                 decoration: BoxDecoration(
                   color: isCompleted
-                      ? Colors.grey[200]
-                      : ColorsManager.primaryGreen.withOpacity(0.1),
+                      ? (isDark
+                            ? ColorsManager.darkBorder.withValues(alpha: 0.3)
+                            : ColorsManager.lightBorder.withValues(alpha: 0.5))
+                      : ColorsManager.getPrimaryGreen(
+                          context,
+                        ).withValues(alpha: isDark ? 0.2 : 0.1),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Icon(
                   isCompleted ? Icons.check_circle : Icons.fitness_center,
                   color: isCompleted
-                      ? Colors.grey[600]
-                      : ColorsManager.primaryGreen,
+                      ? ColorsManager.getSecondaryText(context)
+                      : ColorsManager.getPrimaryGreen(context),
                   size: 24.sp,
                 ),
               ),
@@ -181,10 +550,12 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
                   children: [
                     Text(
                       dateFormat.format(session.date),
-                      style: TextStyles.subtitle1.copyWith(
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
                         color: isCompleted
-                            ? Colors.grey[600]
-                            : ColorsManager.primaryText,
+                            ? ColorsManager.getSecondaryText(context)
+                            : ColorsManager.getPrimaryText(context),
                       ),
                     ),
                     SizedBox(height: 4.h),
@@ -194,21 +565,23 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
                           Icon(
                             Icons.schedule,
                             size: 14.sp,
-                            color: ColorsManager.lightText,
+                            color: ColorsManager.getSecondaryText(context),
                           ),
                           SizedBox(width: 4.w),
                           Text(
                             timeFormat.format(session.startTime!),
-                            style: TextStyles.bodySmall.copyWith(
-                              color: ColorsManager.lightText,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: ColorsManager.getSecondaryText(context),
                             ),
                           ),
                           SizedBox(width: 8.w),
                         ],
                         Text(
                           '${session.workoutExercises.length} ${s.exercises}',
-                          style: TextStyles.bodySmall.copyWith(
-                            color: ColorsManager.lightText,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: ColorsManager.getSecondaryText(context),
                           ),
                         ),
                         if (isCompleted) ...[
@@ -219,14 +592,19 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
                               vertical: 2.h,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: isDark
+                                  ? ColorsManager.darkBorder.withValues(
+                                      alpha: 0.5,
+                                    )
+                                  : ColorsManager.lightBorder,
                               borderRadius: BorderRadius.circular(8.r),
                             ),
                             child: Text(
                               s.completed,
-                              style: TextStyles.caption.copyWith(
-                                color: Colors.grey[700],
+                              style: TextStyle(
                                 fontSize: 10.sp,
+                                color: ColorsManager.getSecondaryText(context),
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
@@ -238,7 +616,7 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
               ),
               Icon(
                 isCompleted ? Icons.lock : Icons.chevron_right,
-                color: ColorsManager.lightText,
+                color: ColorsManager.getSecondaryText(context),
                 size: 24.sp,
               ),
             ],
@@ -249,6 +627,8 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
   }
 
   Widget _buildEmptyState(S s) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Center(
       child: Padding(
         padding: EdgeInsets.all(32.w),
@@ -258,23 +638,45 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
             Icon(
               Icons.fitness_center_outlined,
               size: 64.sp,
-              color: ColorsManager.lightText,
+              color: ColorsManager.getSecondaryText(
+                context,
+              ).withValues(alpha: 0.5),
             ),
             SizedBox(height: 16.h),
-            Text(s.no_workout_sessions, style: TextStyles.headline3),
+            Text(
+              s.no_workout_sessions,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: ColorsManager.getPrimaryText(context),
+              ),
+            ),
             SizedBox(height: 8.h),
             Text(
               s.create_new_session_to_start,
-              style: TextStyles.bodyMedium,
+              style: TextStyle(
+                fontSize: 14,
+                color: ColorsManager.getSecondaryText(context),
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 24.h),
             ElevatedButton.icon(
               onPressed: () => _createNewSession(s),
-              icon: const Icon(Icons.add),
-              label: Text(s.create_session),
+              icon: Icon(
+                Icons.add,
+                color: isDark ? ColorsManager.darkScaffold : Colors.white,
+              ),
+              label: Text(
+                s.create_session,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? ColorsManager.darkScaffold : Colors.white,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: ColorsManager.primaryGreen,
+                backgroundColor: ColorsManager.getPrimaryGreen(context),
                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.r),
@@ -287,34 +689,42 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
     );
   }
 
-  // void _createNewSession(S s) {
-  //   context.read<WorkoutsCubit>().createWorkoutSession(
-  //     date: DateTime.now(),
-  //     notes: null,
-  //   );
-  //
-  //   // Show success and reload
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     SnackBar(
-  //       content: Text(s.session_created),
-  //       backgroundColor: ColorsManager.success,
-  //     ),
-  //   );
-  // }
-
   Future<void> _createNewSession(S s) async {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(s.confirm_create_session),
-        content: Text(s.are_you_sure),
+        backgroundColor: Theme.of(context).cardTheme.color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.r),
+        ),
+        title: Text(
+          s.confirm_create_session,
+          style: TextStyle(color: ColorsManager.getPrimaryText(context)),
+        ),
+        content: Text(
+          s.are_you_sure,
+          style: TextStyle(color: ColorsManager.getSecondaryText(context)),
+        ),
         actions: [
           TextButton(
-            child: Text(s.cancel),
+            child: Text(
+              s.cancel,
+              style: TextStyle(color: ColorsManager.getSecondaryText(context)),
+            ),
             onPressed: () => Navigator.of(context).pop(false),
           ),
           ElevatedButton(
-            child: Text(s.confirm),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: ColorsManager.getPrimaryGreen(context),
+            ),
+            child: Text(
+              s.confirm,
+              style: TextStyle(
+                color: isDark ? ColorsManager.darkScaffold : Colors.white,
+              ),
+            ),
             onPressed: () => Navigator.of(context).pop(true),
           ),
         ],
@@ -322,16 +732,11 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
     );
 
     if (confirmed == true) {
-      // Optionally, await any animation or async process here (e.g. reverse _controller)
-      // await _controller.reverse();
-
-      // Call the cubit method to create the workout session
       context.read<WorkoutsCubit>().createWorkoutSession(
         date: DateTime.now(),
         notes: null,
       );
 
-      // Show confirmation message
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -341,7 +746,6 @@ class _WorkoutSessionSelectorState extends State<WorkoutSessionSelector> {
         );
       }
 
-      // If this method itself is called within a dialog, you can close it here
       Navigator.of(context).pop();
     }
   }

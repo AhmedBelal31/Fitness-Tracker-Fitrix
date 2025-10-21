@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/profile_widgets/app_settings_section.dart';
 import '../widgets/profile_widgets/help_support_section.dart';
 import '../widgets/profile_widgets/logout_button.dart';
 import '../widgets/profile_widgets/personal_info_section.dart';
 import '../widgets/profile_widgets/user_profile_header.dart';
-import '../widgets/profile_widgets/version_text.dart';
+import '../widgets/profile_widgets/version_text.dart' hide VersionText;
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -37,20 +36,29 @@ class UserProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: Text(s.profile, style: TextStyles.headline2),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        title: Text(
+          s.profile,
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: ColorsManager.getPrimaryText(context),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings, color: ColorsManager.primaryGreen),
-            // onPressed: () {},
+            icon: Icon(
+              Icons.settings,
+              color: ColorsManager.getPrimaryGreen(context),
+            ),
             onPressed: () {
               final randomMessage = (funnyMessages..shuffle()).first;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(randomMessage),
                   behavior: SnackBarBehavior.floating,
-                  backgroundColor: ColorsManager.primaryGreen,
+                  backgroundColor: ColorsManager.getPrimaryGreen(context),
                 ),
               );
             },

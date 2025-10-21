@@ -470,6 +470,13 @@ class TextStyles {
 
   static TextStyle get font10Regular =>
       TextStyle(fontSize: 10.sp, fontWeight: FontWeightHelper.regular);
+  // Add this in the White Text Styles section (after font24WhiteBold)
+
+  static TextStyle get font20WhiteBold => TextStyle(
+    fontSize: 20.sp,
+    color: ColorsManager.whiteText,
+    fontWeight: FontWeightHelper.bold,
+  );
 
   // =================================================================
   // 🎯 UTILITY METHODS

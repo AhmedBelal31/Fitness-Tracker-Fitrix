@@ -819,10 +819,10 @@ class S {
     return Intl.message('Loading...', name: 'loading', desc: '', args: []);
   }
 
-  /// `No data available`
+  /// `No data available for this period`
   String get no_data_available {
     return Intl.message(
-      'No data available',
+      'No data available for this period',
       name: 'no_data_available',
       desc: '',
       args: [],
@@ -4769,10 +4769,10 @@ class S {
     );
   }
 
-  /// `Body Fat Goal (%)`
+  /// `Body Fat Goal`
   String get body_fat_goal {
     return Intl.message(
-      'Body Fat Goal (%)',
+      'Body Fat Goal',
       name: 'body_fat_goal',
       desc: '',
       args: [],
@@ -4789,10 +4789,10 @@ class S {
     );
   }
 
-  /// `Muscle Goal (kg)`
+  /// `Muscle Mass Goal`
   String get muscle_mass_goal {
     return Intl.message(
-      'Muscle Goal (kg)',
+      'Muscle Mass Goal',
       name: 'muscle_mass_goal',
       desc: '',
       args: [],
@@ -4829,40 +4829,40 @@ class S {
     );
   }
 
-  /// `Body Fat (%)`
+  /// `Current Body Fat`
   String get current_body_fat {
     return Intl.message(
-      'Body Fat (%)',
+      'Current Body Fat',
       name: 'current_body_fat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Goal Fat (%)`
+  /// `Goal Body Fat`
   String get goal_body_fat {
     return Intl.message(
-      'Goal Fat (%)',
+      'Goal Body Fat',
       name: 'goal_body_fat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Muscle (kg)`
+  /// `Current Muscle Mass`
   String get current_muscle_mass {
     return Intl.message(
-      'Muscle (kg)',
+      'Current Muscle Mass',
       name: 'current_muscle_mass',
       desc: '',
       args: [],
     );
   }
 
-  /// `Goal Muscle (kg)`
+  /// `Goal Muscle Mass`
   String get goal_muscle_mass {
     return Intl.message(
-      'Goal Muscle (kg)',
+      'Goal Muscle Mass',
       name: 'goal_muscle_mass',
       desc: '',
       args: [],
@@ -4874,10 +4874,10 @@ class S {
     return Intl.message('Goal', name: 'goal', desc: '', args: []);
   }
 
-  /// `Reorder`
+  /// `Reorder Sections`
   String get reorder_sections {
     return Intl.message(
-      'Reorder',
+      'Reorder Sections',
       name: 'reorder_sections',
       desc: '',
       args: [],
@@ -5384,30 +5384,30 @@ class S {
     );
   }
 
-  /// `Please enter your current password`
+  /// `Enter your current password`
   String get please_enter_current_password {
     return Intl.message(
-      'Please enter your current password',
+      'Enter your current password',
       name: 'please_enter_current_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter a new password`
+  /// `Enter a new password`
   String get please_enter_new_password {
     return Intl.message(
-      'Please enter a new password',
+      'Enter a new password',
       name: 'please_enter_new_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please confirm your new password`
+  /// `Confirm your new password`
   String get please_confirm_new_password {
     return Intl.message(
-      'Please confirm your new password',
+      'Confirm your new password',
       name: 'please_confirm_new_password',
       desc: '',
       args: [],
@@ -5482,6 +5482,401 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Sound Effects`
+  String get sound_effects {
+    return Intl.message(
+      'Sound Effects',
+      name: 'sound_effects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't show this again`
+  String get dont_show_again {
+    return Intl.message(
+      'Don\'t show this again',
+      name: 'dont_show_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continue_text {
+    return Intl.message('Continue', name: 'continue_text', desc: '', args: []);
+  }
+
+  /// `Complete`
+  String get complete {
+    return Intl.message('Complete', name: 'complete', desc: '', args: []);
+  }
+
+  /// `Secure your account with a strong password`
+  String get secure_your_account {
+    return Intl.message(
+      'Secure your account with a strong password',
+      name: 'secure_your_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password Strength`
+  String get password_strength {
+    return Intl.message(
+      'Password Strength',
+      name: 'password_strength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Strong`
+  String get strong {
+    return Intl.message('Strong', name: 'strong', desc: '', args: []);
+  }
+
+  /// `Medium`
+  String get medium {
+    return Intl.message('Medium', name: 'medium', desc: '', args: []);
+  }
+
+  /// `Weak`
+  String get weak {
+    return Intl.message('Weak', name: 'weak', desc: '', args: []);
+  }
+
+  /// `Very Weak`
+  String get very_weak {
+    return Intl.message('Very Weak', name: 'very_weak', desc: '', args: []);
+  }
+
+  /// `Contains special character (!@#$%^&*)`
+  String get contains_special_character {
+    return Intl.message(
+      'Contains special character (!@#\$%^&*)',
+      name: 'contains_special_character',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords match`
+  String get passwords_match {
+    return Intl.message(
+      'Passwords match',
+      name: 'passwords_match',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Tutorial`
+  String get show_tutorial {
+    return Intl.message(
+      'Show Tutorial',
+      name: 'show_tutorial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Height Measurement`
+  String get height_measurement {
+    return Intl.message(
+      'Height Measurement',
+      name: 'height_measurement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to set your height using the interactive meter`
+  String get tap_to_set_height {
+    return Intl.message(
+      'Tap to set your height using the interactive meter',
+      name: 'tap_to_set_height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weight Tracking`
+  String get weight_tracking {
+    return Intl.message(
+      'Weight Tracking',
+      name: 'weight_tracking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to set your current weight and goal weight`
+  String get tap_to_set_current_and_goal_weight {
+    return Intl.message(
+      'Tap to set your current weight and goal weight',
+      name: 'tap_to_set_current_and_goal_weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to set your current body fat and goal using interactive sliders`
+  String get tap_to_set_body_fat_goal_slider {
+    return Intl.message(
+      'Tap to set your current body fat and goal using interactive sliders',
+      name: 'tap_to_set_body_fat_goal_slider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to set your current muscle mass and goal using interactive sliders`
+  String get tap_to_set_muscle_mass_goal_slider {
+    return Intl.message(
+      'Tap to set your current muscle mass and goal using interactive sliders',
+      name: 'tap_to_set_muscle_mass_goal_slider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Body Fat Goals`
+  String get set_body_fat_goals {
+    return Intl.message(
+      'Set Body Fat Goals',
+      name: 'set_body_fat_goals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Muscle Mass Goals`
+  String get set_muscle_mass_goals {
+    return Intl.message(
+      'Set Muscle Mass Goals',
+      name: 'set_muscle_mass_goals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjust the sliders below to set your current value and goal`
+  String get adjust_sliders_to_set_goals {
+    return Intl.message(
+      'Adjust the sliders below to set your current value and goal',
+      name: 'adjust_sliders_to_set_goals',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fat`
+  String get fat {
+    return Intl.message('Fat', name: 'fat', desc: '', args: []);
+  }
+
+  /// `Gain Muscle`
+  String get gain_muscle {
+    return Intl.message('Gain Muscle', name: 'gain_muscle', desc: '', args: []);
+  }
+
+  /// `Lose Muscle`
+  String get lose_muscle {
+    return Intl.message('Lose Muscle', name: 'lose_muscle', desc: '', args: []);
+  }
+
+  /// `Reduce Fat`
+  String get reduce_fat {
+    return Intl.message('Reduce Fat', name: 'reduce_fat', desc: '', args: []);
+  }
+
+  /// `Increase Fat`
+  String get increase_fat {
+    return Intl.message(
+      'Increase Fat',
+      name: 'increase_fat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to gain`
+  String get to_gain {
+    return Intl.message('to gain', name: 'to_gain', desc: '', args: []);
+  }
+
+  /// `to lose`
+  String get to_lose {
+    return Intl.message('to lose', name: 'to_lose', desc: '', args: []);
+  }
+
+  /// `Tap to edit`
+  String get tap_to_edit {
+    return Intl.message('Tap to edit', name: 'tap_to_edit', desc: '', args: []);
+  }
+
+  /// `Drag items to change their order`
+  String get drag_to_reorder_sections {
+    return Intl.message(
+      'Drag items to change their order',
+      name: 'drag_to_reorder_sections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Section order saved successfully`
+  String get section_order_saved {
+    return Intl.message(
+      'Section order saved successfully',
+      name: 'section_order_saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Your Height`
+  String get set_your_height {
+    return Intl.message(
+      'Set Your Height',
+      name: 'set_your_height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjust the slider to set your height`
+  String get adjust_slider_to_set_height {
+    return Intl.message(
+      'Adjust the slider to set your height',
+      name: 'adjust_slider_to_set_height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accurate height is important for calculating BMI and other metrics`
+  String get height_measurement_info {
+    return Intl.message(
+      'Accurate height is important for calculating BMI and other metrics',
+      name: 'height_measurement_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Current Weight`
+  String get set_current_weight {
+    return Intl.message(
+      'Set Current Weight',
+      name: 'set_current_weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Goal Weight`
+  String get set_goal_weight {
+    return Intl.message(
+      'Set Goal Weight',
+      name: 'set_goal_weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjust the slider to set your weight`
+  String get adjust_slider_to_set_weight {
+    return Intl.message(
+      'Adjust the slider to set your weight',
+      name: 'adjust_slider_to_set_weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track your current weight regularly for accurate progress`
+  String get weight_measurement_info {
+    return Intl.message(
+      'Track your current weight regularly for accurate progress',
+      name: 'weight_measurement_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set a realistic goal weight based on your fitness objectives`
+  String get weight_goal_info {
+    return Intl.message(
+      'Set a realistic goal weight based on your fitness objectives',
+      name: 'weight_goal_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Volume Progress`
+  String get volume_progress {
+    return Intl.message(
+      'Volume Progress',
+      name: 'volume_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reps Progress`
+  String get reps_progress {
+    return Intl.message(
+      'Reps Progress',
+      name: 'reps_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Peak`
+  String get peak {
+    return Intl.message('Peak', name: 'peak', desc: '', args: []);
+  }
+
+  /// `View Progress`
+  String get view_progress {
+    return Intl.message(
+      'View Progress',
+      name: 'view_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to Login`
+  String get backToLogin {
+    return Intl.message(
+      'Back to Login',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We'll send a password reset link to your email`
+  String get resetPasswordInfo {
+    return Intl.message(
+      'We\'ll send a password reset link to your email',
+      name: 'resetPasswordInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selected`
+  String get selected {
+    return Intl.message('Selected', name: 'selected', desc: '', args: []);
   }
 
   /// `X`

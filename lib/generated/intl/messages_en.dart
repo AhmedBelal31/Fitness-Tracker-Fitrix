@@ -62,6 +62,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_workout_notes": MessageLookupByLibrary.simpleMessage("Add notes..."),
     "added_to_workout": MessageLookupByLibrary.simpleMessage("Added!"),
     "adding": MessageLookupByLibrary.simpleMessage("Adding..."),
+    "adjust_slider_to_set_height": MessageLookupByLibrary.simpleMessage(
+      "Adjust the slider to set your height",
+    ),
+    "adjust_slider_to_set_weight": MessageLookupByLibrary.simpleMessage(
+      "Adjust the slider to set your weight",
+    ),
+    "adjust_sliders_to_set_goals": MessageLookupByLibrary.simpleMessage(
+      "Adjust the sliders below to set your current value and goal",
+    ),
     "adjustable_bench": MessageLookupByLibrary.simpleMessage(
       "Adjustable Bench",
     ),
@@ -95,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "average": MessageLookupByLibrary.simpleMessage("Avg"),
     "avg_duration": MessageLookupByLibrary.simpleMessage("Avg Duration"),
     "back": MessageLookupByLibrary.simpleMessage("Back"),
+    "backToLogin": MessageLookupByLibrary.simpleMessage("Back to Login"),
     "back_description": MessageLookupByLibrary.simpleMessage(
       "Strong wide back",
     ),
@@ -122,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Body fat required",
     ),
     "body_fat": MessageLookupByLibrary.simpleMessage("Body Fat"),
-    "body_fat_goal": MessageLookupByLibrary.simpleMessage("Body Fat Goal (%)"),
+    "body_fat_goal": MessageLookupByLibrary.simpleMessage("Body Fat Goal"),
     "body_fat_progress": MessageLookupByLibrary.simpleMessage(
       "Body Fat Progress",
     ),
@@ -188,6 +198,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "clear_filters": MessageLookupByLibrary.simpleMessage("Clear Filters"),
     "cm": MessageLookupByLibrary.simpleMessage("cm"),
     "commercialUseItem": MessageLookupByLibrary.simpleMessage("Commercial use"),
+    "complete": MessageLookupByLibrary.simpleMessage("Complete"),
     "completeProfile": MessageLookupByLibrary.simpleMessage("Complete Profile"),
     "completeProfileButton": MessageLookupByLibrary.simpleMessage("Complete"),
     "completeProfileMessage": MessageLookupByLibrary.simpleMessage(
@@ -217,9 +228,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "contains_number": MessageLookupByLibrary.simpleMessage(
       "Contains a number",
     ),
+    "contains_special_character": MessageLookupByLibrary.simpleMessage(
+      "Contains special character (!@#\$%^&*)",
+    ),
     "contains_uppercase_letter": MessageLookupByLibrary.simpleMessage(
       "Contains an uppercase letter",
     ),
+    "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
     "continue_with_apple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
     ),
@@ -261,9 +276,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "crunches": MessageLookupByLibrary.simpleMessage("Crunches"),
     "crunches_description": MessageLookupByLibrary.simpleMessage("Ab exercise"),
     "current2": MessageLookupByLibrary.simpleMessage("Current"),
-    "current_body_fat": MessageLookupByLibrary.simpleMessage("Body Fat (%)"),
+    "current_body_fat": MessageLookupByLibrary.simpleMessage(
+      "Current Body Fat",
+    ),
     "current_measurements": MessageLookupByLibrary.simpleMessage("Current"),
-    "current_muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle (kg)"),
+    "current_muscle_mass": MessageLookupByLibrary.simpleMessage(
+      "Current Muscle Mass",
+    ),
     "current_password": MessageLookupByLibrary.simpleMessage(
       "Current Password",
     ),
@@ -314,8 +333,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "dont_show_again": MessageLookupByLibrary.simpleMessage(
+      "Don\'t show this again",
+    ),
     "drag_sections_instruction": MessageLookupByLibrary.simpleMessage(
       "Drag to reorder",
+    ),
+    "drag_to_reorder_sections": MessageLookupByLibrary.simpleMessage(
+      "Drag items to change their order",
     ),
     "dumbbell_flyes": MessageLookupByLibrary.simpleMessage("DB Flyes"),
     "dumbbell_flyes_description": MessageLookupByLibrary.simpleMessage(
@@ -443,6 +468,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "faqTrackWorkoutsAnswer": MessageLookupByLibrary.simpleMessage(
       "Tap + button",
     ),
+    "fat": MessageLookupByLibrary.simpleMessage("Fat"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "finish": MessageLookupByLibrary.simpleMessage("Finish"),
@@ -473,12 +499,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "front_raises_description": MessageLookupByLibrary.simpleMessage(
       "Front delts",
     ),
+    "gain_muscle": MessageLookupByLibrary.simpleMessage("Gain Muscle"),
     "genderRequired": MessageLookupByLibrary.simpleMessage("Select gender"),
     "glutes": MessageLookupByLibrary.simpleMessage("Glutes"),
     "goal": MessageLookupByLibrary.simpleMessage("Goal"),
-    "goal_body_fat": MessageLookupByLibrary.simpleMessage("Goal Fat (%)"),
+    "goal_body_fat": MessageLookupByLibrary.simpleMessage("Goal Body Fat"),
     "goal_muscle_mass": MessageLookupByLibrary.simpleMessage(
-      "Goal Muscle (kg)",
+      "Goal Muscle Mass",
     ),
     "goal_weight": MessageLookupByLibrary.simpleMessage("Goal Weight (kg)"),
     "goals": MessageLookupByLibrary.simpleMessage("Goals"),
@@ -497,6 +524,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "height": MessageLookupByLibrary.simpleMessage("Height (cm)"),
     "heightRequired": MessageLookupByLibrary.simpleMessage("Height required"),
+    "height_measurement": MessageLookupByLibrary.simpleMessage(
+      "Height Measurement",
+    ),
+    "height_measurement_info": MessageLookupByLibrary.simpleMessage(
+      "Accurate height is important for calculating BMI and other metrics",
+    ),
     "helpSupport": MessageLookupByLibrary.simpleMessage("Help & Support"),
     "help_support": MessageLookupByLibrary.simpleMessage("Help & Support"),
     "hips": MessageLookupByLibrary.simpleMessage("Hips"),
@@ -516,6 +549,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "incline_dumbbell_press_description": MessageLookupByLibrary.simpleMessage(
       "Upper chest focus",
     ),
+    "increase_fat": MessageLookupByLibrary.simpleMessage("Increase Fat"),
     "informationWeCollect": MessageLookupByLibrary.simpleMessage(
       "Data We Collect",
     ),
@@ -600,6 +634,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to log out?",
     ),
     "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("Logout"),
+    "lose_muscle": MessageLookupByLibrary.simpleMessage("Lose Muscle"),
     "lower_abs": MessageLookupByLibrary.simpleMessage("Lower Abs"),
     "lower_back": MessageLookupByLibrary.simpleMessage("Lower Back"),
     "machine": MessageLookupByLibrary.simpleMessage("Machine"),
@@ -617,6 +652,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "measurements": MessageLookupByLibrary.simpleMessage("Measurements"),
     "medicine_ball": MessageLookupByLibrary.simpleMessage("Medicine Ball"),
+    "medium": MessageLookupByLibrary.simpleMessage("Medium"),
     "memberSince": MessageLookupByLibrary.simpleMessage("Member Since"),
     "member_since": MessageLookupByLibrary.simpleMessage("Member Since"),
     "min_value": MessageLookupByLibrary.simpleMessage("Min"),
@@ -655,7 +691,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "muscle_mass": MessageLookupByLibrary.simpleMessage("Muscle Mass"),
     "muscle_mass_goal": MessageLookupByLibrary.simpleMessage(
-      "Muscle Goal (kg)",
+      "Muscle Mass Goal",
     ),
     "muscle_mass_progress": MessageLookupByLibrary.simpleMessage(
       "Muscle Mass Progress",
@@ -674,7 +710,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No custom exercises",
     ),
     "no_data_available": MessageLookupByLibrary.simpleMessage(
-      "No data available",
+      "No data available for this period",
     ),
     "no_exercises_added": MessageLookupByLibrary.simpleMessage("No Exercises"),
     "no_exercises_added_yet": MessageLookupByLibrary.simpleMessage(
@@ -746,9 +782,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_requirements": MessageLookupByLibrary.simpleMessage(
       "Password Requirements:",
     ),
+    "password_strength": MessageLookupByLibrary.simpleMessage(
+      "Password Strength",
+    ),
     "passwords_do_not_match": MessageLookupByLibrary.simpleMessage(
       "Passwords don\'t match",
     ),
+    "passwords_match": MessageLookupByLibrary.simpleMessage("Passwords match"),
+    "peak": MessageLookupByLibrary.simpleMessage("Peak"),
     "pec_deck_machine": MessageLookupByLibrary.simpleMessage("Pec Deck"),
     "per_week": MessageLookupByLibrary.simpleMessage("Per Week"),
     "period_1_year": MessageLookupByLibrary.simpleMessage("1 Year"),
@@ -782,7 +823,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "planks": MessageLookupByLibrary.simpleMessage("Planks"),
     "planks_description": MessageLookupByLibrary.simpleMessage("Core strength"),
     "please_confirm_new_password": MessageLookupByLibrary.simpleMessage(
-      "Please confirm your new password",
+      "Confirm your new password",
     ),
     "please_confirm_your_password": MessageLookupByLibrary.simpleMessage(
       "Confirm password",
@@ -790,7 +831,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_code_sent_to_your_email":
         MessageLookupByLibrary.simpleMessage("Enter code from email"),
     "please_enter_current_password": MessageLookupByLibrary.simpleMessage(
-      "Please enter your current password",
+      "Enter your current password",
     ),
     "please_enter_custom_equipment_name": MessageLookupByLibrary.simpleMessage(
       "Name required",
@@ -800,7 +841,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Name required",
     ),
     "please_enter_new_password": MessageLookupByLibrary.simpleMessage(
-      "Please enter a new password",
+      "Enter a new password",
     ),
     "please_enter_password": MessageLookupByLibrary.simpleMessage(
       "Enter password",
@@ -859,16 +900,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "recent_workouts": MessageLookupByLibrary.simpleMessage("Recent Workouts"),
     "record_details": MessageLookupByLibrary.simpleMessage("Record Details"),
     "records": MessageLookupByLibrary.simpleMessage("Records"),
+    "reduce_fat": MessageLookupByLibrary.simpleMessage("Reduce Fat"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registrationSuccess": m1,
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
-    "reorder_sections": MessageLookupByLibrary.simpleMessage("Reorder"),
+    "reorder_sections": MessageLookupByLibrary.simpleMessage(
+      "Reorder Sections",
+    ),
     "reps": MessageLookupByLibrary.simpleMessage("Reps"),
+    "reps_progress": MessageLookupByLibrary.simpleMessage("Reps Progress"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "reset": MessageLookupByLibrary.simpleMessage("Reset"),
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "Reset link sent to email",
+    ),
+    "resetPasswordInfo": MessageLookupByLibrary.simpleMessage(
+      "We\'ll send a password reset link to your email",
     ),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "resistance_bands": MessageLookupByLibrary.simpleMessage("Bands"),
@@ -898,6 +946,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "searching_for": MessageLookupByLibrary.simpleMessage("Searching"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("Seated Row"),
     "section": MessageLookupByLibrary.simpleMessage("Section"),
+    "section_order_saved": MessageLookupByLibrary.simpleMessage(
+      "Section order saved successfully",
+    ),
+    "secure_your_account": MessageLookupByLibrary.simpleMessage(
+      "Secure your account with a strong password",
+    ),
     "select": MessageLookupByLibrary.simpleMessage("Select"),
     "selectMaleOrFemale": MessageLookupByLibrary.simpleMessage(
       "Male or Female",
@@ -914,6 +968,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_section": MessageLookupByLibrary.simpleMessage("Select Section"),
     "select_workout": MessageLookupByLibrary.simpleMessage("Select Session"),
     "select_workout_date": MessageLookupByLibrary.simpleMessage("Select Date"),
+    "selected": MessageLookupByLibrary.simpleMessage("Selected"),
     "sendEmail": MessageLookupByLibrary.simpleMessage("Email"),
     "sendMessage": MessageLookupByLibrary.simpleMessage("Message"),
     "sendNotificationsItem": MessageLookupByLibrary.simpleMessage(
@@ -923,6 +978,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "session_created": MessageLookupByLibrary.simpleMessage("Session created!"),
     "sessions": MessageLookupByLibrary.simpleMessage("Sessions"),
     "set": MessageLookupByLibrary.simpleMessage("Set"),
+    "set_body_fat_goals": MessageLookupByLibrary.simpleMessage(
+      "Set Body Fat Goals",
+    ),
+    "set_current_weight": MessageLookupByLibrary.simpleMessage(
+      "Set Current Weight",
+    ),
+    "set_goal_weight": MessageLookupByLibrary.simpleMessage("Set Goal Weight"),
+    "set_muscle_mass_goals": MessageLookupByLibrary.simpleMessage(
+      "Set Muscle Mass Goals",
+    ),
+    "set_your_height": MessageLookupByLibrary.simpleMessage("Set Your Height"),
     "sets": MessageLookupByLibrary.simpleMessage("Sets"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "setupFitnessJourney": MessageLookupByLibrary.simpleMessage(
@@ -936,6 +1002,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shoulders_description": MessageLookupByLibrary.simpleMessage(
       "Shoulder definition",
     ),
+    "show_tutorial": MessageLookupByLibrary.simpleMessage("Show Tutorial"),
     "side_delts": MessageLookupByLibrary.simpleMessage("Side Delts"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signInToContinue": MessageLookupByLibrary.simpleMessage(
@@ -950,6 +1017,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "something_went_wrong": MessageLookupByLibrary.simpleMessage("Error"),
     "sort": MessageLookupByLibrary.simpleMessage("Sort"),
     "sort_by": MessageLookupByLibrary.simpleMessage("Sort By"),
+    "sound_effects": MessageLookupByLibrary.simpleMessage("Sound Effects"),
     "squat_rack": MessageLookupByLibrary.simpleMessage("Squat Rack"),
     "squats": MessageLookupByLibrary.simpleMessage("Squats"),
     "squats_description": MessageLookupByLibrary.simpleMessage("King of legs"),
@@ -964,6 +1032,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stationary_bike": MessageLookupByLibrary.simpleMessage("Bike"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
     "step_by_step_instructions": MessageLookupByLibrary.simpleMessage("Steps"),
+    "strong": MessageLookupByLibrary.simpleMessage("Strong"),
     "success": MessageLookupByLibrary.simpleMessage("Success!"),
     "supportTeamReady": MessageLookupByLibrary.simpleMessage(
       "Support team ready",
@@ -973,6 +1042,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "tap_add_to_start": MessageLookupByLibrary.simpleMessage("Tap + to add"),
     "tap_to_add_exercise": MessageLookupByLibrary.simpleMessage("Tap to add"),
     "tap_to_add_image": MessageLookupByLibrary.simpleMessage("Add image"),
+    "tap_to_edit": MessageLookupByLibrary.simpleMessage("Tap to edit"),
+    "tap_to_set_body_fat_goal_slider": MessageLookupByLibrary.simpleMessage(
+      "Tap to set your current body fat and goal using interactive sliders",
+    ),
+    "tap_to_set_current_and_goal_weight": MessageLookupByLibrary.simpleMessage(
+      "Tap to set your current weight and goal weight",
+    ),
+    "tap_to_set_height": MessageLookupByLibrary.simpleMessage(
+      "Tap to set your height using the interactive meter",
+    ),
+    "tap_to_set_muscle_mass_goal_slider": MessageLookupByLibrary.simpleMessage(
+      "Tap to set your current muscle mass and goal using interactive sliders",
+    ),
     "target_muscles": MessageLookupByLibrary.simpleMessage("Target Muscles"),
     "termination": MessageLookupByLibrary.simpleMessage("Termination"),
     "terminationText": MessageLookupByLibrary.simpleMessage(
@@ -987,6 +1069,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "thighs": MessageLookupByLibrary.simpleMessage("Thighs"),
     "this_month": MessageLookupByLibrary.simpleMessage("This Month"),
     "this_week": MessageLookupByLibrary.simpleMessage("This Week"),
+    "to_gain": MessageLookupByLibrary.simpleMessage("to gain"),
+    "to_lose": MessageLookupByLibrary.simpleMessage("to lose"),
     "today": MessageLookupByLibrary.simpleMessage("Today"),
     "today_stats": MessageLookupByLibrary.simpleMessage("Today\'s Stats"),
     "tomorrow": MessageLookupByLibrary.simpleMessage("Tomorrow"),
@@ -1043,6 +1127,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Verify Identity",
     ),
     "version": MessageLookupByLibrary.simpleMessage("Version"),
+    "very_weak": MessageLookupByLibrary.simpleMessage("Very Weak"),
     "view": MessageLookupByLibrary.simpleMessage("View"),
     "view_all": MessageLookupByLibrary.simpleMessage("View All"),
     "view_all_custom": MessageLookupByLibrary.simpleMessage(
@@ -1054,22 +1139,32 @@ class MessageLookup extends MessageLookupByLibrary {
       "View detailed charts & analytics",
     ),
     "view_details": MessageLookupByLibrary.simpleMessage("View Details"),
+    "view_progress": MessageLookupByLibrary.simpleMessage("View Progress"),
     "violateLawsItem": MessageLookupByLibrary.simpleMessage("Break laws"),
     "visitWebsite": MessageLookupByLibrary.simpleMessage("Visit"),
     "volume": MessageLookupByLibrary.simpleMessage("Volume"),
+    "volume_progress": MessageLookupByLibrary.simpleMessage("Volume Progress"),
     "waist": MessageLookupByLibrary.simpleMessage("Waist"),
     "we_have_sent_an_email_to": MessageLookupByLibrary.simpleMessage(
       "Email sent to",
     ),
+    "weak": MessageLookupByLibrary.simpleMessage("Weak"),
     "website": MessageLookupByLibrary.simpleMessage("Website"),
     "weight": MessageLookupByLibrary.simpleMessage("Weight"),
     "weightKg": MessageLookupByLibrary.simpleMessage("Weight (kg)"),
     "weightRequired": MessageLookupByLibrary.simpleMessage("Weight required"),
     "weight_change": MessageLookupByLibrary.simpleMessage("Weight Change"),
     "weight_goal": MessageLookupByLibrary.simpleMessage("Weight Goal (kg)"),
+    "weight_goal_info": MessageLookupByLibrary.simpleMessage(
+      "Set a realistic goal weight based on your fitness objectives",
+    ),
     "weight_kg": MessageLookupByLibrary.simpleMessage("Weight (kg)"),
+    "weight_measurement_info": MessageLookupByLibrary.simpleMessage(
+      "Track your current weight regularly for accurate progress",
+    ),
     "weight_plates": MessageLookupByLibrary.simpleMessage("Weight Plates"),
     "weight_progress": MessageLookupByLibrary.simpleMessage("Weight Progress"),
+    "weight_tracking": MessageLookupByLibrary.simpleMessage("Weight Tracking"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back!"),
     "welcomeBackUser": m2,
