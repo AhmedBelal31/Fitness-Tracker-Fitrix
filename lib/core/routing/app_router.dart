@@ -25,7 +25,8 @@ import '../../features/profile/presentation/screens/about_screen.dart';
 import '../../features/profile/presentation/screens/change_password_screen.dart';
 import '../../features/profile/presentation/screens/contact_support_screen.dart';
 import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
-import '../../features/profile/presentation/screens/terms_conditions_screen.dart';
+import '../../features/profile/presentation/screens/terms_conditions_screen.dart'
+    hide PrivacyPolicyScreen;
 import '../../features/profile/presentation/screens/update_profile.dart';
 import '../../features/workout/presentation/cubit/workouts_cubit.dart';
 import '../../features/workout/presentation/screens/workout_details_screen.dart';
@@ -159,7 +160,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PrivacyPolicyScreen());
 
       case Routes.termsConditionsScreen:
-        return MaterialPageRoute(builder: (_) => const TermsConditionsScreen());
+        return MaterialPageRoute(builder: (_) => TermsConditionsScreen());
 
       case Routes.contactSupportScreen:
         return MaterialPageRoute(builder: (_) => const ContactSupportScreen());
