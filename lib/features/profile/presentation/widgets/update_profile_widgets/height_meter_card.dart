@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/theming/app_colors.dart';
-import '../../../../../../core/theming/styles.dart';
 import '../../../../../../generated/l10n.dart';
 import 'update_profile_form_controller.dart';
 import 'measurement_dialog_helper.dart';
@@ -19,6 +18,7 @@ class _HeightMeterCardState extends State<HeightMeterCard> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final height =
         double.tryParse(widget.controller.heightController.text) ?? 170.0;
 
@@ -39,33 +39,64 @@ class _HeightMeterCardState extends State<HeightMeterCard> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              ColorsManager.primaryGreen.withValues(alpha: 0.15),
-              ColorsManager.primaryGreen.withValues(alpha: 0.05),
+              ColorsManager.getPrimaryGreen(
+                context,
+              ).withValues(alpha: isDark ? 0.2 : 0.15),
+              ColorsManager.getPrimaryGreen(context).withValues(alpha: 0.05),
             ],
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: ColorsManager.primaryGreen.withValues(alpha: 0.3),
+            color: ColorsManager.getPrimaryGreen(
+              context,
+            ).withValues(alpha: 0.3),
             width: 1.5,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.black.withValues(alpha: 0.08),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         child: Row(
           children: [
-            Icon(Icons.height, size: 40.sp, color: ColorsManager.primaryGreen),
+            Icon(
+              Icons.height,
+              size: 40.sp,
+              color: ColorsManager.getPrimaryGreen(context),
+            ),
             SizedBox(width: 16.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(s.height, style: TextStyles.font14SecondaryTextRegular),
+                  Text(
+                    s.height,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: ColorsManager.getSecondaryText(context),
+                    ),
+                  ),
                   Text(
                     '${height.toStringAsFixed(0)} cm',
-                    style: TextStyles.font20PrimaryGreenMedium,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: ColorsManager.getPrimaryGreen(context),
+                    ),
                   ),
                 ],
               ),
             ),
-            Icon(Icons.touch_app, color: ColorsManager.lightText, size: 20.sp),
+            Icon(
+              Icons.touch_app,
+              color: ColorsManager.getSecondaryText(context),
+              size: 20.sp,
+            ),
           ],
         ),
       ),

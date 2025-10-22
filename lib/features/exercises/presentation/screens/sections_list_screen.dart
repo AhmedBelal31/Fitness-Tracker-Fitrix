@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../generated/l10n.dart';
 import '../cubit/sections_cubit.dart';
 import '../cubit/sections_state.dart';
 import '../widgets/section_card.dart';
@@ -28,7 +29,7 @@ class _SectionsListScreenState extends State<SectionsListScreen> {
         backgroundColor: const Color(0xFF1A1A1A),
         elevation: 0,
         title: Text(
-          'Exercise Sections',
+          S.of(context).sections,
           style: GoogleFonts.montserrat(
             fontSize: 24,
             fontWeight: FontWeight.bold,

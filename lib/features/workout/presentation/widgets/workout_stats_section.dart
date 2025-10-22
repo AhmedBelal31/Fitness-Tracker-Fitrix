@@ -13,6 +13,7 @@ class WorkoutStatsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final totalSets = workout.workoutExercises.fold(
       0,
       (sum, exercise) => sum + exercise.sets.length,
@@ -25,7 +26,9 @@ class WorkoutStatsSection extends StatelessWidget {
             icon: Icons.fitness_center,
             value: workout.workoutExercises.length.toString(),
             label: s.exercises,
-            color: ColorsManager.primaryGreen,
+            color: isDark
+                ? const Color(0xFF66BB6A)
+                : ColorsManager.primaryGreen,
             index: 0,
           ),
         ),
@@ -35,7 +38,7 @@ class WorkoutStatsSection extends StatelessWidget {
             icon: Icons.repeat,
             value: totalSets.toString(),
             label: s.total_sets,
-            color: ColorsManager.info,
+            color: isDark ? const Color(0xFF42A5F5) : ColorsManager.info,
             index: 1,
           ),
         ),
@@ -45,7 +48,7 @@ class WorkoutStatsSection extends StatelessWidget {
             icon: Icons.timer,
             value: workout.durationMinutes?.toString() ?? '0',
             label: s.minutes,
-            color: ColorsManager.success,
+            color: isDark ? const Color(0xFF66BB6A) : ColorsManager.success,
             index: 2,
           ),
         ),

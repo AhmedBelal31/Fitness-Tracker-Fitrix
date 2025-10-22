@@ -141,6 +141,8 @@ class _StatisticsCardsState extends State<StatisticsCards>
     required Color color,
     required int animationIndex,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return AnimatedBuilder(
       animation: _controllers[animationIndex],
       builder: (context, child) {
@@ -155,26 +157,44 @@ class _StatisticsCardsState extends State<StatisticsCards>
       child: Container(
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
-          color: ColorsManager.cardBackground,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(16.r),
-          boxShadow: ColorsManager.cardShadow,
+          boxShadow: [
+            BoxShadow(
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.black.withValues(alpha: 0.08),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.all(12.w),
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.1),
+                color: color.withValues(alpha: isDark ? 0.2 : 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: color, size: 28.sp),
             ),
             SizedBox(height: 12.h),
-            Text(value, style: TextStyles.font24PrimaryTextBold),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: ColorsManager.getPrimaryText(context),
+              ),
+            ),
             SizedBox(height: 4.h),
             Text(
               label,
-              style: TextStyles.bodySmall,
+              style: TextStyle(
+                fontSize: 12,
+                color: ColorsManager.getSecondaryText(context),
+              ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -184,18 +204,28 @@ class _StatisticsCardsState extends State<StatisticsCards>
   }
 
   Widget _buildPersonalBestsCard(StatisticsResponse stats) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final warningColor = isDark
+        ? const Color(0xFFFFB74D)
+        : ColorsManager.warning;
+
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            ColorsManager.warning.withValues(alpha: 0.1),
-            ColorsManager.warning.withValues(alpha: 0.05),
-          ],
+          colors: isDark
+              ? [
+                  const Color(0xFFE65100).withValues(alpha: 0.2),
+                  const Color(0xFFF57C00).withValues(alpha: 0.1),
+                ]
+              : [
+                  ColorsManager.warning.withValues(alpha: 0.1),
+                  ColorsManager.warning.withValues(alpha: 0.05),
+                ],
         ),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: ColorsManager.warning.withValues(alpha: 0.3),
+          color: warningColor.withValues(alpha: isDark ? 0.5 : 0.3),
           width: 1.5,
         ),
       ),
@@ -204,15 +234,15 @@ class _StatisticsCardsState extends State<StatisticsCards>
         children: [
           Row(
             children: [
-              Icon(
-                Icons.emoji_events,
-                color: ColorsManager.warning,
-                size: 20.sp,
-              ),
+              Icon(Icons.emoji_events, color: warningColor, size: 20.sp),
               SizedBox(width: 8.w),
               Text(
                 widget.s.personal_bests,
-                style: TextStyles.font16PrimaryTextSemiBold,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: ColorsManager.getPrimaryText(context),
+                ),
               ),
             ],
           ),
@@ -237,11 +267,29 @@ class _StatisticsCardsState extends State<StatisticsCards>
   }
 
   Widget _buildPBItem(String label, String value) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final successColor = isDark
+        ? const Color(0xFF4CAF50)
+        : ColorsManager.success;
+
     return Column(
       children: [
-        Text(value, style: TextStyles.font16SuccessBold),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: successColor,
+          ),
+        ),
         SizedBox(height: 2.h),
-        Text(label, style: TextStyles.caption),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 10,
+            color: ColorsManager.getSecondaryText(context),
+          ),
+        ),
       ],
     );
   }

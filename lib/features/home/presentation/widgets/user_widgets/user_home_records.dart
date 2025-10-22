@@ -179,7 +179,7 @@ import 'package:fitrix/core/di/get_it.dart';
 //             tween: Tween<double>(begin: 0, end: 1),
 //             builder: (context, double value, child) {
 //               return Opacity(
-//                 opacity: value.clamp(0.0, 1.0), // ✅ Fixed opacity clamping
+//                 opacity: value.clamp(0.0, 1.0),
 //                 child: Transform.translate(
 //                   offset: Offset(0, 30 * (1 - value)),
 //                   child: child,
@@ -189,7 +189,6 @@ import 'package:fitrix/core/di/get_it.dart';
 //             child: Column(
 //               crossAxisAlignment: CrossAxisAlignment.start,
 //               children: [
-//                 // In UserHomeRecords
 //                 UserHomeSectionHeader(
 //                   title: s.personal_records,
 //                   onSeeAll: _shouldShowSeeAll(state)
@@ -203,7 +202,6 @@ import 'package:fitrix/core/di/get_it.dart';
 //                         }
 //                       : null,
 //                 ),
-//
 //                 SizedBox(height: 16.h),
 //                 _buildContent(context, state, s),
 //               ],
@@ -226,45 +224,60 @@ import 'package:fitrix/core/di/get_it.dart';
 //
 //   Widget _buildContent(BuildContext context, AchievementsState state, S s) {
 //     if (state is AchievementsLoading) {
-//       return _buildLoadingState();
+//       return _buildLoadingState(context);
 //     }
-//
 //     if (state is AchievementsError) {
 //       return _buildErrorState(context, state.message, s);
 //     }
-//
 //     if (state is AchievementsLoaded) {
 //       final milestones = state.achievements.milestones;
 //       if (milestones.isEmpty) {
-//         return _buildEmptyState(s.no_personal_records_yet);
+//         return _buildEmptyState(context, s.no_personal_records_yet);
 //       }
 //       return _buildMilestonesList(context, milestones);
 //     }
-//
 //     if (state is AchievementsRefreshing) {
 //       final milestones = state.currentAchievements.milestones;
 //       return Stack(
 //         children: [
 //           _buildMilestonesList(context, milestones),
-//           Positioned(top: 0, right: 0, child: _buildRefreshingIndicator()),
+//           Positioned(
+//             top: 0,
+//             right: 0,
+//             child: _buildRefreshingIndicator(context),
+//           ),
 //         ],
 //       );
 //     }
-//
 //     if (state is AchievementsEmpty) {
-//       return _buildEmptyState(state.message);
+//       return _buildEmptyState(context, state.message);
 //     }
-//
 //     return const SizedBox.shrink();
 //   }
 //
-//   Widget _buildLoadingState() {
+//   Widget _buildLoadingState(BuildContext context) {
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
+//
 //     return Container(
 //       padding: EdgeInsets.all(40.w),
 //       decoration: BoxDecoration(
-//         color: ColorsManager.cardBackground,
+//         color: Theme.of(context).cardTheme.color,
 //         borderRadius: BorderRadius.circular(20.r),
-//         boxShadow: ColorsManager.softShadow,
+//         boxShadow: isDark
+//             ? [
+//                 BoxShadow(
+//                   color: Colors.black.withValues(alpha: 0.3),
+//                   blurRadius: 8,
+//                   offset: const Offset(0, 2),
+//                 ),
+//               ]
+//             : [
+//                 BoxShadow(
+//                   color: Colors.black.withValues(alpha: 0.08),
+//                   blurRadius: 10,
+//                   offset: const Offset(0, 4),
+//                 ),
+//               ],
 //       ),
 //       child: Center(
 //         child: Column(
@@ -273,30 +286,40 @@ import 'package:fitrix/core/di/get_it.dart';
 //               width: 40.w,
 //               height: 40.h,
 //               child: CircularProgressIndicator(
-//                 color: ColorsManager.primaryGreen,
+//                 color: ColorsManager.getPrimaryGreen(context),
 //                 strokeWidth: 3,
 //               ),
 //             ),
 //             SizedBox(height: 16.h),
-//             Text('Loading achievements...', style: TextStyles.bodyMedium),
+//             Text(
+//               'Loading achievements...',
+//               style: TextStyle(
+//                 fontSize: 14,
+//                 color: ColorsManager.getSecondaryText(context),
+//               ),
+//             ),
 //           ],
 //         ),
 //       ),
 //     );
 //   }
 //
-//   Widget _buildRefreshingIndicator() {
+//   Widget _buildRefreshingIndicator(BuildContext context) {
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
+//
 //     return Container(
 //       padding: EdgeInsets.all(8.w),
 //       decoration: BoxDecoration(
-//         color: ColorsManager.primaryGreen.withValues(alpha: 0.1),
+//         color: ColorsManager.getPrimaryGreen(
+//           context,
+//         ).withValues(alpha: isDark ? 0.2 : 0.1),
 //         borderRadius: BorderRadius.circular(12.r),
 //       ),
 //       child: SizedBox(
 //         width: 20.w,
 //         height: 20.h,
 //         child: CircularProgressIndicator(
-//           color: ColorsManager.primaryGreen,
+//           color: ColorsManager.getPrimaryGreen(context),
 //           strokeWidth: 2,
 //         ),
 //       ),
@@ -304,12 +327,28 @@ import 'package:fitrix/core/di/get_it.dart';
 //   }
 //
 //   Widget _buildErrorState(BuildContext context, String message, S s) {
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
+//
 //     return Container(
 //       padding: EdgeInsets.all(24.w),
 //       decoration: BoxDecoration(
-//         color: ColorsManager.cardBackground,
+//         color: Theme.of(context).cardTheme.color,
 //         borderRadius: BorderRadius.circular(20.r),
-//         boxShadow: ColorsManager.softShadow,
+//         boxShadow: isDark
+//             ? [
+//                 BoxShadow(
+//                   color: Colors.black.withValues(alpha: 0.3),
+//                   blurRadius: 8,
+//                   offset: const Offset(0, 2),
+//                 ),
+//               ]
+//             : [
+//                 BoxShadow(
+//                   color: Colors.black.withValues(alpha: 0.08),
+//                   blurRadius: 10,
+//                   offset: const Offset(0, 4),
+//                 ),
+//               ],
 //         border: Border.all(
 //           color: ColorsManager.error.withValues(alpha: 0.3),
 //           width: 1,
@@ -321,7 +360,10 @@ import 'package:fitrix/core/di/get_it.dart';
 //           SizedBox(height: 12.h),
 //           Text(
 //             message,
-//             style: TextStyles.bodyMedium,
+//             style: TextStyle(
+//               fontSize: 14,
+//               color: ColorsManager.getPrimaryText(context),
+//             ),
 //             textAlign: TextAlign.center,
 //           ),
 //           SizedBox(height: 16.h),
@@ -330,13 +372,23 @@ import 'package:fitrix/core/di/get_it.dart';
 //               context.read<AchievementsCubit>().loadAchievements();
 //             },
 //             style: ElevatedButton.styleFrom(
-//               backgroundColor: ColorsManager.primaryGreen,
+//               backgroundColor: ColorsManager.getPrimaryGreen(context),
+//               foregroundColor: isDark
+//                   ? ColorsManager.darkScaffold
+//                   : Colors.white,
 //               padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
 //               shape: RoundedRectangleBorder(
 //                 borderRadius: BorderRadius.circular(12.r),
 //               ),
 //             ),
-//             child: Text(s.retry, style: TextStyles.font14WhiteSemiBold),
+//             child: Text(
+//               s.retry,
+//               style: TextStyle(
+//                 fontSize: 14,
+//                 fontWeight: FontWeight.w600,
+//                 color: isDark ? ColorsManager.darkScaffold : Colors.white,
+//               ),
+//             ),
 //           ),
 //         ],
 //       ),
@@ -355,13 +407,13 @@ import 'package:fitrix/core/di/get_it.dart';
 //         return TweenAnimationBuilder(
 //           duration: Duration(milliseconds: 600 + (index * 150)),
 //           tween: Tween<double>(begin: 0, end: 1),
-//           curve: Curves.easeOutCubic, // ✅ Changed from easeOutBack
+//           curve: Curves.easeOutCubic,
 //           builder: (context, double value, child) {
-//             final clampedValue = value.clamp(0.0, 1.0); // ✅ Clamp value
+//             final clampedValue = value.clamp(0.0, 1.0);
 //             return Opacity(
 //               opacity: clampedValue,
 //               child: Transform.scale(
-//                 scale: 0.9 + (0.1 * clampedValue), // ✅ Reduced scale range
+//                 scale: 0.9 + (0.1 * clampedValue),
 //                 child: child,
 //               ),
 //             );
@@ -380,9 +432,10 @@ import 'package:fitrix/core/di/get_it.dart';
 //     MilestoneModel milestone,
 //     int index,
 //   ) {
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
 //     final colors = [
 //       ColorsManager.orange,
-//       ColorsManager.primaryGreen,
+//       ColorsManager.getPrimaryGreen(context),
 //       ColorsManager.info,
 //     ];
 //     final color = colors[index % colors.length];
@@ -400,17 +453,20 @@ import 'package:fitrix/core/di/get_it.dart';
 //         decoration: BoxDecoration(
 //           gradient: LinearGradient(
 //             colors: [
-//               color.withValues(alpha: 0.12),
-//               color.withValues(alpha: 0.04),
+//               color.withValues(alpha: isDark ? 0.2 : 0.12),
+//               color.withValues(alpha: isDark ? 0.1 : 0.04),
 //             ],
 //             begin: Alignment.topLeft,
 //             end: Alignment.bottomRight,
 //           ),
 //           borderRadius: BorderRadius.circular(16.r),
-//           border: Border.all(color: color.withValues(alpha: 0.25), width: 1.5),
+//           border: Border.all(
+//             color: color.withValues(alpha: isDark ? 0.3 : 0.25),
+//             width: 1.5,
+//           ),
 //           boxShadow: [
 //             BoxShadow(
-//               color: color.withValues(alpha: 0.15),
+//               color: color.withValues(alpha: isDark ? 0.2 : 0.15),
 //               blurRadius: 10,
 //               offset: const Offset(0, 4),
 //             ),
@@ -418,25 +474,18 @@ import 'package:fitrix/core/di/get_it.dart';
 //         ),
 //         child: Stack(
 //           children: [
-//             // ✅ Fixed background emoji size
 //             Positioned(
 //               right: -10.w,
 //               top: -10.h,
 //               child: Opacity(
-//                 opacity: 0.08,
-//                 child: Text(
-//                   milestone.icon,
-//                   style: TextStyle(fontSize: 60.sp), // ✅ Reduced from 100sp
-//                 ),
+//                 opacity: isDark ? 0.05 : 0.08,
+//                 child: Text(milestone.icon, style: TextStyle(fontSize: 60.sp)),
 //               ),
 //             ),
-//
-//             // Content
 //             Padding(
 //               padding: EdgeInsets.all(16.w),
 //               child: Row(
 //                 children: [
-//                   // ✅ Fixed icon badge size
 //                   Container(
 //                     padding: EdgeInsets.all(12.w),
 //                     decoration: BoxDecoration(
@@ -454,27 +503,30 @@ import 'package:fitrix/core/di/get_it.dart';
 //                     ),
 //                     child: Text(
 //                       milestone.icon,
-//                       style: TextStyle(fontSize: 24.sp), // ✅ Reduced from 32sp
+//                       style: TextStyle(fontSize: 24.sp),
 //                     ),
 //                   ),
 //                   SizedBox(width: 12.w),
-//
-//                   // Text content
 //                   Expanded(
 //                     child: Column(
 //                       crossAxisAlignment: CrossAxisAlignment.start,
 //                       children: [
 //                         Text(
 //                           milestone.title,
-//                           style: TextStyles.font16Bold.copyWith(color: color),
+//                           style: TextStyle(
+//                             fontSize: 16,
+//                             fontWeight: FontWeight.bold,
+//                             color: color,
+//                           ),
 //                           maxLines: 1,
 //                           overflow: TextOverflow.ellipsis,
 //                         ),
 //                         SizedBox(height: 4.h),
 //                         Text(
 //                           milestone.description,
-//                           style: TextStyles.font13Regular.copyWith(
-//                             color: ColorsManager.primaryText,
+//                           style: TextStyle(
+//                             fontSize: 13,
+//                             color: ColorsManager.getPrimaryText(context),
 //                           ),
 //                           maxLines: 2,
 //                           overflow: TextOverflow.ellipsis,
@@ -485,13 +537,14 @@ import 'package:fitrix/core/di/get_it.dart';
 //                             Icon(
 //                               Icons.calendar_today_rounded,
 //                               size: 11.sp,
-//                               color: ColorsManager.secondaryText,
+//                               color: ColorsManager.getSecondaryText(context),
 //                             ),
 //                             SizedBox(width: 4.w),
 //                             Text(
 //                               DateFormat('MMM d, yyyy').format(milestone.date),
-//                               style: TextStyles.font11Regular.copyWith(
-//                                 color: ColorsManager.secondaryText,
+//                               style: TextStyle(
+//                                 fontSize: 11,
+//                                 color: ColorsManager.getSecondaryText(context),
 //                               ),
 //                             ),
 //                           ],
@@ -499,8 +552,6 @@ import 'package:fitrix/core/di/get_it.dart';
 //                       ],
 //                     ),
 //                   ),
-//
-//                   // Arrow
 //                   Icon(Icons.chevron_right_rounded, color: color, size: 24.sp),
 //                 ],
 //               ),
@@ -511,13 +562,29 @@ import 'package:fitrix/core/di/get_it.dart';
 //     );
 //   }
 //
-//   Widget _buildEmptyState(String message) {
+//   Widget _buildEmptyState(BuildContext context, String message) {
+//     final isDark = Theme.of(context).brightness == Brightness.dark;
+//
 //     return Container(
 //       padding: EdgeInsets.all(32.w),
 //       decoration: BoxDecoration(
-//         color: ColorsManager.cardBackground,
+//         color: Theme.of(context).cardTheme.color,
 //         borderRadius: BorderRadius.circular(20.r),
-//         boxShadow: ColorsManager.softShadow,
+//         boxShadow: isDark
+//             ? [
+//                 BoxShadow(
+//                   color: Colors.black.withValues(alpha: 0.3),
+//                   blurRadius: 8,
+//                   offset: const Offset(0, 2),
+//                 ),
+//               ]
+//             : [
+//                 BoxShadow(
+//                   color: Colors.black.withValues(alpha: 0.08),
+//                   blurRadius: 10,
+//                   offset: const Offset(0, 4),
+//                 ),
+//               ],
 //       ),
 //       child: Center(
 //         child: Column(
@@ -525,12 +592,17 @@ import 'package:fitrix/core/di/get_it.dart';
 //             Icon(
 //               Icons.emoji_events_outlined,
 //               size: 56.sp,
-//               color: ColorsManager.lightText,
+//               color: ColorsManager.getSecondaryText(
+//                 context,
+//               ).withValues(alpha: 0.5),
 //             ),
 //             SizedBox(height: 16.h),
 //             Text(
 //               message,
-//               style: TextStyles.bodyMedium,
+//               style: TextStyle(
+//                 fontSize: 14,
+//                 color: ColorsManager.getSecondaryText(context),
+//               ),
 //               textAlign: TextAlign.center,
 //             ),
 //           ],
@@ -539,6 +611,8 @@ import 'package:fitrix/core/di/get_it.dart';
 //     );
 //   }
 // }
+//
+
 class UserHomeRecords extends StatelessWidget {
   const UserHomeRecords({super.key});
 
@@ -610,13 +684,13 @@ class UserHomeRecords extends StatelessWidget {
       if (milestones.isEmpty) {
         return _buildEmptyState(context, s.no_personal_records_yet);
       }
-      return _buildMilestonesList(context, milestones);
+      return _MilestonesListAnimated(milestones: milestones);
     }
     if (state is AchievementsRefreshing) {
       final milestones = state.currentAchievements.milestones;
       return Stack(
         children: [
-          _buildMilestonesList(context, milestones),
+          _MilestonesListAnimated(milestones: milestones),
           Positioned(
             top: 0,
             right: 0,
@@ -744,9 +818,8 @@ class UserHomeRecords extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           ElevatedButton(
-            onPressed: () {
-              context.read<AchievementsCubit>().loadAchievements();
-            },
+            onPressed: () =>
+                context.read<AchievementsCubit>().loadAchievements(),
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorsManager.getPrimaryGreen(context),
               foregroundColor: isDark
@@ -771,43 +844,154 @@ class UserHomeRecords extends StatelessWidget {
     );
   }
 
-  Widget _buildMilestonesList(
-    BuildContext context,
-    List<MilestoneModel> milestones,
-  ) {
+  Widget _buildEmptyState(BuildContext context, String message) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Container(
+      padding: EdgeInsets.all(32.w),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardTheme.color,
+        borderRadius: BorderRadius.circular(20.r),
+        boxShadow: isDark
+            ? [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.3),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ]
+            : [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            Icon(
+              Icons.emoji_events_outlined,
+              size: 56.sp,
+              color: ColorsManager.getSecondaryText(
+                context,
+              ).withValues(alpha: 0.5),
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              message,
+              style: TextStyle(
+                fontSize: 14,
+                color: ColorsManager.getSecondaryText(context),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ✅ ANIMATED MILESTONES LIST WITH STAGGERED ANIMATION
+class _MilestonesListAnimated extends StatefulWidget {
+  final List<MilestoneModel> milestones;
+
+  const _MilestonesListAnimated({required this.milestones});
+
+  @override
+  State<_MilestonesListAnimated> createState() =>
+      _MilestonesListAnimatedState();
+}
+
+class _MilestonesListAnimatedState extends State<_MilestonesListAnimated>
+    with TickerProviderStateMixin {
+  late List<AnimationController> _controllers;
+  late List<Animation<double>> _animations;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // ✅ Take only first 3 milestones
+    final count = widget.milestones.length.clamp(0, 3);
+
+    // Create animation controllers
+    _controllers = List.generate(
+      count,
+      (index) => AnimationController(
+        duration: const Duration(milliseconds: 500),
+        vsync: this,
+      ),
+    );
+
+    // Create curved animations
+    _animations = _controllers
+        .map(
+          (controller) =>
+              CurvedAnimation(parent: controller, curve: Curves.easeOutCubic),
+        )
+        .toList();
+
+    // ✅ Start animations sequentially with 150ms delay
+    for (int i = 0; i < count; i++) {
+      Future.delayed(Duration(milliseconds: i * 150), () {
+        if (mounted) _controllers[i].forward();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final displayMilestones = widget.milestones.take(3).toList();
+
     return Column(
-      children: milestones.take(3).toList().asMap().entries.map((entry) {
+      children: displayMilestones.asMap().entries.map((entry) {
         final index = entry.key;
         final milestone = entry.value;
 
-        return TweenAnimationBuilder(
-          duration: Duration(milliseconds: 600 + (index * 150)),
-          tween: Tween<double>(begin: 0, end: 1),
-          curve: Curves.easeOutCubic,
-          builder: (context, double value, child) {
-            final clampedValue = value.clamp(0.0, 1.0);
+        return AnimatedBuilder(
+          animation: _animations[index],
+          builder: (context, child) {
             return Opacity(
-              opacity: clampedValue,
-              child: Transform.scale(
-                scale: 0.9 + (0.1 * clampedValue),
-                child: child,
+              opacity: _animations[index].value,
+              child: Transform.translate(
+                offset: Offset(0, 30 * (1 - _animations[index].value)),
+                child: Transform.scale(
+                  scale: 0.9 + (0.1 * _animations[index].value),
+                  child: child,
+                ),
               ),
             );
           },
           child: Padding(
             padding: EdgeInsets.only(bottom: 12.h),
-            child: _buildMilestoneCard(context, milestone, index),
+            child: _MilestoneCard(milestone: milestone, index: index),
           ),
         );
       }).toList(),
     );
   }
+}
 
-  Widget _buildMilestoneCard(
-    BuildContext context,
-    MilestoneModel milestone,
-    int index,
-  ) {
+// ✅ MILESTONE CARD
+class _MilestoneCard extends StatelessWidget {
+  final MilestoneModel milestone;
+  final int index;
+
+  const _MilestoneCard({required this.milestone, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final colors = [
       ColorsManager.orange,
@@ -817,14 +1001,12 @@ class UserHomeRecords extends StatelessWidget {
     final color = colors[index % colors.length];
 
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => RecordDetailScreen(milestone: milestone),
-          ),
-        );
-      },
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => RecordDetailScreen(milestone: milestone),
+        ),
+      ),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -931,55 +1113,6 @@ class UserHomeRecords extends StatelessWidget {
                   Icon(Icons.chevron_right_rounded, color: color, size: 24.sp),
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEmptyState(BuildContext context, String message) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    return Container(
-      padding: EdgeInsets.all(32.w),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardTheme.color,
-        borderRadius: BorderRadius.circular(20.r),
-        boxShadow: isDark
-            ? [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ]
-            : [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.08),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-      ),
-      child: Center(
-        child: Column(
-          children: [
-            Icon(
-              Icons.emoji_events_outlined,
-              size: 56.sp,
-              color: ColorsManager.getSecondaryText(
-                context,
-              ).withValues(alpha: 0.5),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              message,
-              style: TextStyle(
-                fontSize: 14,
-                color: ColorsManager.getSecondaryText(context),
-              ),
-              textAlign: TextAlign.center,
             ),
           ],
         ),

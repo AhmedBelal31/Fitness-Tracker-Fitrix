@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,278 +6,9 @@ import '../../../../core/common_ui/widgets/custom_button.dart';
 import '../../../../core/common_ui/widgets/custom_text_field.dart';
 import '../../../../core/di/get_it.dart';
 import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../cubits/change_password_cubit/change_password_cubit.dart';
 import '../cubits/change_password_cubit/change_password_state.dart';
-//
-// class ChangePasswordScreen extends StatefulWidget {
-//   const ChangePasswordScreen({super.key});
-//
-//   @override
-//   State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
-// }
-//
-// class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
-//   final _formKey = GlobalKey<FormState>();
-//   final _currentPasswordController = TextEditingController();
-//   final _newPasswordController = TextEditingController();
-//   final _confirmPasswordController = TextEditingController();
-//
-//   bool _obscureCurrentPassword = true;
-//   bool _obscureNewPassword = true;
-//   bool _obscureConfirmPassword = true;
-//
-//   @override
-//   void dispose() {
-//     _currentPasswordController.dispose();
-//     _newPasswordController.dispose();
-//     _confirmPasswordController.dispose();
-//     super.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final s = S.of(context);
-//
-//     return BlocProvider(
-//       create: (context) => di<ChangePasswordCubit>(),
-//       child: Scaffold(
-//         backgroundColor: ColorsManager.scaffoldBackground,
-//         appBar: AppBar(
-//           title: Text(s.changeYourPassword, style: TextStyles.headline3),
-//           backgroundColor: ColorsManager.scaffoldBackground,
-//           elevation: 0,
-//           leading: IconButton(
-//             icon: const Icon(
-//               Icons.arrow_back_ios,
-//               color: ColorsManager.primaryText,
-//             ),
-//             onPressed: () => Navigator.pop(context),
-//           ),
-//         ),
-//         body: BlocConsumer<ChangePasswordCubit, ChangePasswordState>(
-//           listener: (context, state) {
-//             if (state is ChangePasswordSuccess) {
-//               ScaffoldMessenger.of(context).showSnackBar(
-//                 SnackBar(
-//                   content: Text(s.password_changed_successfully),
-//                   backgroundColor: ColorsManager.success,
-//                   behavior: SnackBarBehavior.floating,
-//                   shape: RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(8.r),
-//                   ),
-//                 ),
-//               );
-//               Navigator.pop(context);
-//             } else if (state is ChangePasswordError) {
-//               ScaffoldMessenger.of(context).showSnackBar(
-//                 SnackBar(
-//                   content: Text(state.message),
-//                   backgroundColor: ColorsManager.error,
-//                   behavior: SnackBarBehavior.floating,
-//                   shape: RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(8.r),
-//                   ),
-//                 ),
-//               );
-//             }
-//           },
-//           builder: (context, state) {
-//             return SingleChildScrollView(
-//               padding: EdgeInsets.all(20.w),
-//               child: Form(
-//                 key: _formKey,
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     _buildHeader(s),
-//                     SizedBox(height: 32.h),
-//                     _buildCurrentPasswordField(s),
-//                     SizedBox(height: 16.h),
-//                     _buildNewPasswordField(s),
-//                     SizedBox(height: 16.h),
-//                     _buildConfirmPasswordField(s),
-//                     SizedBox(height: 8.h),
-//                     _buildPasswordRequirements(s),
-//                     SizedBox(height: 32.h),
-//                     _buildChangePasswordButton(context, s, state),
-//                   ],
-//                 ),
-//               ),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildHeader(S s) {
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Text(s.change_password_title, style: TextStyles.headline2),
-//         SizedBox(height: 8.h),
-//         Text(
-//           s.change_password_subtitle,
-//           style: TextStyles.bodyMedium.copyWith(
-//             color: ColorsManager.secondaryText,
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-//
-//   Widget _buildCurrentPasswordField(S s) {
-//     return CustomTextField(
-//       controller: _currentPasswordController,
-//       label: s.current_password,
-//       obscureText: _obscureCurrentPassword,
-//       prefixIcon: Icons.lock_outline,
-//       suffixIcon: IconButton(
-//         icon: Icon(
-//           _obscureCurrentPassword ? Icons.visibility_off : Icons.visibility,
-//           color: ColorsManager.lightText,
-//         ),
-//         onPressed: () {
-//           setState(() => _obscureCurrentPassword = !_obscureCurrentPassword);
-//         },
-//       ),
-//       validator: (value) {
-//         if (value == null || value.isEmpty) {
-//           return s.please_enter_current_password;
-//         }
-//         return null;
-//       },
-//     );
-//   }
-//
-//   Widget _buildNewPasswordField(S s) {
-//     return CustomTextField(
-//       controller: _newPasswordController,
-//       label: s.new_password,
-//       obscureText: _obscureNewPassword,
-//       prefixIcon: Icons.lock_outline,
-//       suffixIcon: IconButton(
-//         icon: Icon(
-//           _obscureNewPassword ? Icons.visibility_off : Icons.visibility,
-//           color: ColorsManager.lightText,
-//         ),
-//         onPressed: () {
-//           setState(() => _obscureNewPassword = !_obscureNewPassword);
-//         },
-//       ),
-//       validator: (value) {
-//         if (value == null || value.isEmpty) {
-//           return s.please_enter_new_password;
-//         }
-//         if (value.length < 6) {
-//           return s.password_must_be_at_least_6_characters;
-//         }
-//         return null;
-//       },
-//     );
-//   }
-//
-//   Widget _buildConfirmPasswordField(S s) {
-//     return CustomTextField(
-//       controller: _confirmPasswordController,
-//       label: s.confirm_new_password,
-//       obscureText: _obscureConfirmPassword,
-//       prefixIcon: Icons.lock_outline,
-//       suffixIcon: IconButton(
-//         icon: Icon(
-//           _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
-//           color: ColorsManager.lightText,
-//         ),
-//         onPressed: () {
-//           setState(() => _obscureConfirmPassword = !_obscureConfirmPassword);
-//         },
-//       ),
-//       validator: (value) {
-//         if (value == null || value.isEmpty) {
-//           return s.please_confirm_new_password;
-//         }
-//         if (value != _newPasswordController.text) {
-//           return s.passwords_do_not_match;
-//         }
-//         return null;
-//       },
-//     );
-//   }
-//
-//   Widget _buildPasswordRequirements(S s) {
-//     return Container(
-//       padding: EdgeInsets.all(12.w),
-//       decoration: BoxDecoration(
-//         color: ColorsManager.info.withValues(alpha: )(0.1),
-//         borderRadius: BorderRadius.circular(8.r),
-//         border: Border.all(color: ColorsManager.info.withValues(alpha: )(0.3)),
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Row(
-//             children: [
-//               Icon(Icons.info_outline, size: 16.sp, color: ColorsManager.info),
-//               SizedBox(width: 8.w),
-//               Text(
-//                 s.password_requirements,
-//                 style: TextStyles.bodySmall.copyWith(
-//                   color: ColorsManager.info,
-//                   fontWeight: FontWeight.w600,
-//                 ),
-//               ),
-//             ],
-//           ),
-//           SizedBox(height: 8.h),
-//           _buildRequirement(s.at_least_6_characters),
-//           _buildRequirement(s.contains_uppercase_letter),
-//           _buildRequirement(s.contains_number),
-//         ],
-//       ),
-//     );
-//   }
-//
-//   Widget _buildRequirement(String text) {
-//     return Padding(
-//       padding: EdgeInsets.only(left: 24.w, top: 4.h),
-//       child: Row(
-//         children: [
-//           Icon(
-//             Icons.check_circle_outline,
-//             size: 14.sp,
-//             color: ColorsManager.lightText,
-//           ),
-//           SizedBox(width: 8.w),
-//           Text(text, style: TextStyles.caption),
-//         ],
-//       ),
-//     );
-//   }
-//
-//   Widget _buildChangePasswordButton(
-//     BuildContext context,
-//     S s,
-//     ChangePasswordState state,
-//   ) {
-//     return CustomButton(
-//       text: s.change_password,
-//       isLoading: state is ChangePasswordLoading,
-//       onPressed: state is ChangePasswordLoading
-//           ? null
-//           : () {
-//               if (_formKey.currentState!.validate()) {
-//                 context.read<ChangePasswordCubit>().changePassword(
-//                   currentPassword: _currentPasswordController.text,
-//                   newPassword: _newPasswordController.text,
-//                   confirmPassword: _confirmPasswordController.text,
-//                 );
-//               }
-//             },
-//     );
-//   }
-// }
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -285,7 +17,8 @@ class ChangePasswordScreen extends StatefulWidget {
   State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 }
 
-class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+class _ChangePasswordScreenState extends State<ChangePasswordScreen>
+    with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _currentPasswordController = TextEditingController();
   final _newPasswordController = TextEditingController();
@@ -295,18 +28,28 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   bool _obscureNewPassword = true;
   bool _obscureConfirmPassword = true;
 
-  // Password strength indicators
   bool _hasMinLength = false;
   bool _hasUppercase = false;
   bool _hasNumber = false;
   bool _hasSpecialChar = false;
   bool _passwordsMatch = false;
 
+  late AnimationController _controller;
+  late AnimationController _headerController;
+
   @override
   void initState() {
     super.initState();
     _newPasswordController.addListener(_validatePassword);
     _confirmPasswordController.addListener(_validatePasswordMatch);
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1200),
+      vsync: this,
+    )..forward();
+    _headerController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )..repeat();
   }
 
   @override
@@ -314,6 +57,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     _currentPasswordController.dispose();
     _newPasswordController.dispose();
     _confirmPasswordController.dispose();
+    _controller.dispose();
+    _headerController.dispose();
     super.dispose();
   }
 
@@ -363,11 +108,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return BlocProvider(
       create: (context) => di<ChangePasswordCubit>(),
       child: Scaffold(
-        backgroundColor: ColorsManager.scaffoldBackground,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: BlocConsumer<ChangePasswordCubit, ChangePasswordState>(
           listener: (context, state) {
             if (state is ChangePasswordSuccess) {
@@ -404,7 +150,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           builder: (context, state) {
             return CustomScrollView(
               slivers: [
-                _buildAppBar(s),
+                _buildAppBar(s, isDark),
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: EdgeInsets.all(24.w),
@@ -413,17 +159,42 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildCurrentPasswordField(s),
+                          _AnimatedItem(
+                            controller: _controller,
+                            index: 0,
+                            child: _buildCurrentPasswordField(s, isDark),
+                          ),
                           SizedBox(height: 24.h),
-                          _buildNewPasswordField(s),
+                          _AnimatedItem(
+                            controller: _controller,
+                            index: 1,
+                            child: _buildNewPasswordField(s, isDark),
+                          ),
                           SizedBox(height: 16.h),
                           _buildPasswordStrengthIndicator(s),
                           SizedBox(height: 24.h),
-                          _buildConfirmPasswordField(s),
+                          _AnimatedItem(
+                            controller: _controller,
+                            index: 2,
+                            child: _buildConfirmPasswordField(s, isDark),
+                          ),
                           SizedBox(height: 16.h),
-                          _buildPasswordRequirements(s),
+                          _AnimatedItem(
+                            controller: _controller,
+                            index: 3,
+                            child: _buildPasswordRequirements(s, isDark),
+                          ),
                           SizedBox(height: 32.h),
-                          _buildChangePasswordButton(context, s, state),
+                          _AnimatedItem(
+                            controller: _controller,
+                            index: 4,
+                            child: _buildChangePasswordButton(
+                              context,
+                              s,
+                              state,
+                              isDark,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -437,54 +208,101 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     );
   }
 
-  Widget _buildAppBar(S s) {
+  Widget _buildAppBar(S s, bool isDark) {
     return SliverAppBar(
       expandedHeight: 180.h,
       pinned: true,
-      backgroundColor: ColorsManager.primaryGreen,
+      backgroundColor: ColorsManager.getPrimaryGreen(context),
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: isDark ? ColorsManager.darkScaffold : Colors.white,
+        ),
         onPressed: () => Navigator.pop(context),
       ),
       flexibleSpace: FlexibleSpaceBar(
-        title: Text(s.changeYourPassword, style: TextStyles.font18WhiteBold),
-        background: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                ColorsManager.primaryGreen,
-                ColorsManager.secondaryGreen,
-              ],
-            ),
+        title: Text(
+          s.changeYourPassword,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: isDark ? ColorsManager.darkScaffold : Colors.white,
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 40.h),
-                Icon(
-                  Icons.security,
-                  size: 64.sp,
-                  color: Colors.white.withValues(alpha: 0.9),
-                ),
-                SizedBox(height: 12.h),
-                Text(
-                  s.secure_your_account,
-                  style: TextStyles.font14WhiteMedium.copyWith(
-                    color: Colors.white.withValues(alpha: 0.9),
+        ),
+        background: Stack(
+          fit: StackFit.expand,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: isDark
+                    ? LinearGradient(
+                        colors: [
+                          ColorsManager.darkPrimaryGreen,
+                          ColorsManager.darkSecondaryGreen,
+                        ],
+                      )
+                    : LinearGradient(
+                        colors: [
+                          ColorsManager.primaryGreen,
+                          ColorsManager.secondaryGreen,
+                        ],
+                      ),
+              ),
+            ),
+            AnimatedBuilder(
+              animation: _headerController,
+              builder: (context, child) {
+                return CustomPaint(
+                  painter: _HeaderPainter(
+                    animation: _headerController.value,
+                    isDark: isDark,
                   ),
-                ),
-              ],
+                );
+              },
             ),
-          ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 40.h),
+                  TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0.0, end: 1.0),
+                    duration: const Duration(milliseconds: 800),
+                    builder: (context, value, child) {
+                      return Transform.scale(
+                        scale: value,
+                        child: Icon(
+                          Icons.security,
+                          size: 64.sp,
+                          color:
+                              (isDark
+                                      ? ColorsManager.darkScaffold
+                                      : Colors.white)
+                                  .withValues(alpha: 0.9),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 12.h),
+                  Text(
+                    s.secure_your_account,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color:
+                          (isDark ? ColorsManager.darkScaffold : Colors.white)
+                              .withValues(alpha: 0.9),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildCurrentPasswordField(S s) {
+  Widget _buildCurrentPasswordField(S s, bool isDark) {
     return CustomTextField(
       controller: _currentPasswordController,
       label: s.current_password,
@@ -494,22 +312,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       suffixIcon: IconButton(
         icon: Icon(
           _obscureCurrentPassword ? Icons.visibility_off : Icons.visibility,
-          color: ColorsManager.lightText,
+          color: ColorsManager.getSecondaryText(context),
         ),
-        onPressed: () {
-          setState(() => _obscureCurrentPassword = !_obscureCurrentPassword);
-        },
+        onPressed: () =>
+            setState(() => _obscureCurrentPassword = !_obscureCurrentPassword),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return s.please_enter_current_password;
-        }
-        return null;
-      },
+      validator: (value) => (value == null || value.isEmpty)
+          ? s.please_enter_current_password
+          : null,
     );
   }
 
-  Widget _buildNewPasswordField(S s) {
+  Widget _buildNewPasswordField(S s, bool isDark) {
     return CustomTextField(
       controller: _newPasswordController,
       label: s.new_password,
@@ -519,19 +333,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       suffixIcon: IconButton(
         icon: Icon(
           _obscureNewPassword ? Icons.visibility_off : Icons.visibility,
-          color: ColorsManager.lightText,
+          color: ColorsManager.getSecondaryText(context),
         ),
-        onPressed: () {
-          setState(() => _obscureNewPassword = !_obscureNewPassword);
-        },
+        onPressed: () =>
+            setState(() => _obscureNewPassword = !_obscureNewPassword),
       ),
       validator: (value) {
-        if (value == null || value.isEmpty) {
-          return s.please_enter_new_password;
-        }
-        if (!_hasMinLength) {
-          return s.password_must_be_at_least_6_characters;
-        }
+        if (value == null || value.isEmpty) return s.please_enter_new_password;
+        if (!_hasMinLength) return s.password_must_be_at_least_6_characters;
         return null;
       },
     );
@@ -561,13 +370,17 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               children: [
                 Text(
                   s.password_strength,
-                  style: TextStyles.font14Bold.copyWith(
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                     color: _getStrengthColor(),
                   ),
                 ),
                 Text(
                   _getStrengthText(s),
-                  style: TextStyles.font14SemiBold.copyWith(
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
                     color: _getStrengthColor(),
                   ),
                 ),
@@ -589,7 +402,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     );
   }
 
-  Widget _buildConfirmPasswordField(S s) {
+  Widget _buildConfirmPasswordField(S s, bool isDark) {
     return CustomTextField(
       controller: _confirmPasswordController,
       label: s.confirm_new_password,
@@ -599,31 +412,40 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       suffixIcon: IconButton(
         icon: Icon(
           _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
-          color: ColorsManager.lightText,
+          color: ColorsManager.getSecondaryText(context),
         ),
-        onPressed: () {
-          setState(() => _obscureConfirmPassword = !_obscureConfirmPassword);
-        },
+        onPressed: () =>
+            setState(() => _obscureConfirmPassword = !_obscureConfirmPassword),
       ),
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if (value == null || value.isEmpty)
           return s.please_confirm_new_password;
-        }
-        if (value != _newPasswordController.text) {
+        if (value != _newPasswordController.text)
           return s.passwords_do_not_match;
-        }
         return null;
       },
     );
   }
 
-  Widget _buildPasswordRequirements(S s) {
+  Widget _buildPasswordRequirements(S s, bool isDark) {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
+        color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: ColorsManager.lightBorder, width: 1),
+        border: Border.all(
+          color: isDark ? ColorsManager.darkBorder : ColorsManager.lightBorder,
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isDark
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.black.withValues(alpha: 0.08),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -633,35 +455,41 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               Icon(
                 Icons.info_outline,
                 size: 20.sp,
-                color: ColorsManager.primaryGreen,
+                color: ColorsManager.getPrimaryGreen(context),
               ),
               SizedBox(width: 8.w),
               Text(
                 s.password_requirements,
-                style: TextStyles.font16Bold.copyWith(
-                  color: ColorsManager.primaryGreen,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: ColorsManager.getPrimaryGreen(context),
                 ),
               ),
             ],
           ),
           SizedBox(height: 16.h),
-          _buildRequirement(s.at_least_6_characters, _hasMinLength),
+          _buildRequirement(s.at_least_6_characters, _hasMinLength, isDark),
           SizedBox(height: 8.h),
-          _buildRequirement(s.contains_uppercase_letter, _hasUppercase),
+          _buildRequirement(s.contains_uppercase_letter, _hasUppercase, isDark),
           SizedBox(height: 8.h),
-          _buildRequirement(s.contains_number, _hasNumber),
+          _buildRequirement(s.contains_number, _hasNumber, isDark),
           SizedBox(height: 8.h),
-          _buildRequirement(s.contains_special_character, _hasSpecialChar),
+          _buildRequirement(
+            s.contains_special_character,
+            _hasSpecialChar,
+            isDark,
+          ),
           if (_confirmPasswordController.text.isNotEmpty) ...[
             SizedBox(height: 8.h),
-            _buildRequirement(s.passwords_match, _passwordsMatch),
+            _buildRequirement(s.passwords_match, _passwordsMatch, isDark),
           ],
         ],
       ),
     );
   }
 
-  Widget _buildRequirement(String text, bool isMet) {
+  Widget _buildRequirement(String text, bool isMet, bool isDark) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
@@ -679,17 +507,21 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               isMet ? Icons.check_circle : Icons.circle_outlined,
               key: ValueKey(isMet),
               size: 20.sp,
-              color: isMet ? ColorsManager.success : ColorsManager.lightText,
+              color: isMet
+                  ? ColorsManager.success
+                  : ColorsManager.getSecondaryText(context),
             ),
           ),
           SizedBox(width: 12.w),
           Expanded(
             child: Text(
               text,
-              style: TextStyles.font14Medium.copyWith(
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
                 color: isMet
                     ? ColorsManager.success
-                    : ColorsManager.secondaryText,
+                    : ColorsManager.getSecondaryText(context),
                 decoration: isMet ? TextDecoration.lineThrough : null,
               ),
             ),
@@ -703,6 +535,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     BuildContext context,
     S s,
     ChangePasswordState state,
+    bool isDark,
   ) {
     return CustomButton(
       text: s.change_password,
@@ -718,6 +551,77 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 );
               }
             },
+    );
+  }
+}
+
+class _HeaderPainter extends CustomPainter {
+  final double animation;
+  final bool isDark;
+
+  const _HeaderPainter({required this.animation, required this.isDark});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final color = isDark ? ColorsManager.darkScaffold : Colors.white;
+    final paint = Paint()
+      ..color = color.withValues(alpha: 0.08)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
+
+    for (int i = 0; i < 2; i++) {
+      final path = Path();
+      final offset = animation * size.width;
+      for (double x = -size.width; x < size.width * 2; x += 10) {
+        final y =
+            size.height * 0.5 + math.sin((x + offset) / 40 + (i * 0.5)) * 15;
+        if (x == -size.width) {
+          path.moveTo(x, y);
+        } else {
+          path.lineTo(x, y);
+        }
+      }
+      canvas.drawPath(path, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _HeaderPainter oldDelegate) =>
+      animation != oldDelegate.animation;
+}
+
+class _AnimatedItem extends StatelessWidget {
+  final AnimationController controller;
+  final int index;
+  final Widget child;
+
+  const _AnimatedItem({
+    required this.controller,
+    required this.index,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final delay = (index * 0.08).clamp(0.0, 0.7);
+    final end = (delay + 0.3).clamp(delay + 0.1, 1.0);
+
+    final animation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Interval(delay, end, curve: Curves.easeOut),
+      ),
+    );
+
+    return FadeTransition(
+      opacity: animation,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0, 0.3),
+          end: Offset.zero,
+        ).animate(animation),
+        child: child,
+      ),
     );
   }
 }

@@ -21,12 +21,14 @@ class ProgressLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     if (data.isEmpty) {
       return _buildEmptyState(context);
     }
 
     return Container(
-      height: 320.h, // ✅ Increased from 250.h to 320.h
+      height: 320.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: LineChart(
         LineChartData(
@@ -36,7 +38,9 @@ class ProgressLineChart extends StatelessWidget {
             horizontalInterval: 1,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: ColorsManager.lightText.withOpacity(0.1),
+                color: ColorsManager.getSecondaryText(
+                  context,
+                ).withValues(alpha: 0.2),
                 strokeWidth: 1,
               );
             },
@@ -52,21 +56,20 @@ class ProgressLineChart extends StatelessWidget {
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 32.h, // ✅ Increased from 30.h
-                interval: _getBottomInterval(), // ✅ Dynamic interval
+                reservedSize: 32.h,
+                interval: _getBottomInterval(),
                 getTitlesWidget: (value, meta) {
                   final index = value.toInt();
-                  if (index < 0 || index >= data.length) {
+                  if (index < 0 || index >= data.length)
                     return const SizedBox();
-                  }
                   final date = data[index].date;
                   return Padding(
                     padding: EdgeInsets.only(top: 8.h),
                     child: Text(
                       DateFormat('MMM d').format(date),
-                      style: TextStyles.font10WhiteRegular.copyWith(
-                        color: ColorsManager.secondaryText,
-                        fontSize: 9.sp, // ✅ Slightly smaller
+                      style: TextStyle(
+                        fontSize: 9.sp,
+                        color: ColorsManager.getSecondaryText(context),
                       ),
                     ),
                   );
@@ -76,13 +79,13 @@ class ProgressLineChart extends StatelessWidget {
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 45.w, // ✅ Increased from 40.w
+                reservedSize: 45.w,
                 getTitlesWidget: (value, meta) {
                   return Text(
                     '${value.toInt()}$unit',
-                    style: TextStyles.font10WhiteRegular.copyWith(
-                      color: ColorsManager.secondaryText,
+                    style: TextStyle(
                       fontSize: 10.sp,
+                      color: ColorsManager.getSecondaryText(context),
                     ),
                   );
                 },
@@ -96,9 +99,14 @@ class ProgressLineChart extends StatelessWidget {
           maxY: _getMaxY(),
           lineBarsData: [
             LineChartBarData(
-              spots: data.asMap().entries.map((entry) {
-                return FlSpot(entry.key.toDouble(), entry.value.value ?? 0);
-              }).toList(),
+              spots: data
+                  .asMap()
+                  .entries
+                  .map(
+                    (entry) =>
+                        FlSpot(entry.key.toDouble(), entry.value.value ?? 0),
+                  )
+                  .toList(),
               isCurved: true,
               gradient: LinearGradient(
                 colors: [lineColor, lineColor.withOpacity(0.7)],
@@ -110,7 +118,7 @@ class ProgressLineChart extends StatelessWidget {
                 getDotPainter: (spot, percent, barData, index) {
                   return FlDotCirclePainter(
                     radius: 4,
-                    color: Colors.white,
+                    color: isDark ? ColorsManager.darkScaffold : Colors.white,
                     strokeWidth: 2,
                     strokeColor: lineColor,
                   );
@@ -132,9 +140,8 @@ class ProgressLineChart extends StatelessWidget {
           lineTouchData: LineTouchData(
             enabled: true,
             touchTooltipData: LineTouchTooltipData(
-              getTooltipColor: (LineBarSpot touchedSpot) {
-                return ColorsManager.cardBackground;
-              },
+              getTooltipColor: (LineBarSpot touchedSpot) =>
+                  Theme.of(context).cardTheme.color!,
               tooltipBorderRadius: BorderRadius.circular(8.r),
               tooltipPadding: EdgeInsets.symmetric(
                 horizontal: 12.w,
@@ -145,8 +152,10 @@ class ProgressLineChart extends StatelessWidget {
                   final date = data[spot.x.toInt()].date;
                   return LineTooltipItem(
                     '${spot.y.toStringAsFixed(1)}$unit\n${DateFormat('MMM d').format(date)}',
-                    TextStyles.font12WhiteSemiBold.copyWith(
-                      color: ColorsManager.primaryText,
+                    TextStyle(
+                      fontSize: 12,
+                      color: ColorsManager.getPrimaryText(context),
+                      fontWeight: FontWeight.w600,
                     ),
                   );
                 }).toList();
@@ -158,12 +167,11 @@ class ProgressLineChart extends StatelessWidget {
     );
   }
 
-  // ✅ NEW: Calculate dynamic interval based on data length
   double _getBottomInterval() {
-    if (data.length <= 7) return 1; // Show all for 7 days
-    if (data.length <= 30) return 5; // Show every 5th for 30 days
-    if (data.length <= 90) return 15; // Show every 15th for 90 days
-    return 30; // Show every 30th for longer periods
+    if (data.length <= 7) return 1;
+    if (data.length <= 30) return 5;
+    if (data.length <= 90) return 15;
+    return 30;
   }
 
   double _getMinY() {
@@ -188,9 +196,19 @@ class ProgressLineChart extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.show_chart, size: 48.sp, color: ColorsManager.lightText),
+          Icon(
+            Icons.show_chart,
+            size: 48.sp,
+            color: ColorsManager.getSecondaryText(context),
+          ),
           SizedBox(height: 12.h),
-          Text(s.no_data_available, style: TextStyles.bodyMedium),
+          Text(
+            s.no_data_available,
+            style: TextStyle(
+              fontSize: 14,
+              color: ColorsManager.getPrimaryText(context),
+            ),
+          ),
         ],
       ),
     );

@@ -813,7 +813,19 @@
   "backToLogin": "العودة لتسجيل الدخول",
   "resetPasswordInfo": "سنرسل رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
   "selected": "محدد",
-
+  "workout_details": "تفاصيل التمرين",
+  "sections": "الأقسام",
+  "theme": "المظهر",
+  "choose_your_theme": "خصص مظهر التطبيق",
+  "light_theme": "الوضع الفاتح",
+  "light_theme_desc": "واجهة مشرقة ونظيفة",
+  "dark_theme": "الوضع الداكن",
+  "dark_theme_desc": "مريح للعين",
+  "system_theme": "النظام الافتراضي",
+  "system_theme_desc": "يتبع إعدادات الجهاز",
+  "light": "فاتح",
+  "dark": "داكن",
+  "system": "النظام",
   "X": "X"
 
 }

@@ -12,6 +12,7 @@ class WorkoutNotesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
@@ -23,9 +24,17 @@ class WorkoutNotesSection extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              color: ColorsManager.cardBackground,
+              color: Theme.of(context).cardTheme.color,
               borderRadius: BorderRadius.circular(12.r),
-              boxShadow: ColorsManager.softShadow,
+              boxShadow: [
+                BoxShadow(
+                  color: isDark
+                      ? Colors.black.withValues(alpha: 0.3)
+                      : Colors.black.withValues(alpha: 0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,15 +43,28 @@ class WorkoutNotesSection extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.notes,
-                      color: ColorsManager.primaryGreen,
+                      color: ColorsManager.getPrimaryGreen(context),
                       size: 20.sp,
                     ),
                     SizedBox(width: 8.w),
-                    Text(s.notes, style: TextStyles.subtitle1),
+                    Text(
+                      s.notes,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: ColorsManager.getPrimaryText(context),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 8.h),
-                Text(notes, style: TextStyles.bodyMedium),
+                Text(
+                  notes,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: ColorsManager.getPrimaryText(context),
+                  ),
+                ),
               ],
             ),
           ),

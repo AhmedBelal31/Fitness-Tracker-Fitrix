@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fitrix/core/theming/styles.dart';
 import '../../../../core/theming/app_colors.dart';
 
 class ProgressAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -10,10 +9,18 @@ class ProgressAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title, style: TextStyles.headline3),
-      backgroundColor: ColorsManager.scaffoldBackground,
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: ColorsManager.getPrimaryText(context),
+        ),
+      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       elevation: 0,
       scrolledUnderElevation: 0,
+      iconTheme: IconThemeData(color: ColorsManager.getPrimaryText(context)),
     );
   }
 

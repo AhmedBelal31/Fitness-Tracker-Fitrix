@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
@@ -34,14 +33,8 @@ class WorkoutActionsSection extends StatelessWidget {
           child: AnimatedBuilder(
             animation: timerManager,
             builder: (context, child) {
-              if (workout.isCompleted) {
-                return _buildCompletedBadge(s);
-              }
-
-              if (!timerManager.isRunning) {
-                return _buildStartButton(context, s);
-              }
-
+              if (workout.isCompleted) return _buildCompletedBadge(s, context);
+              if (!timerManager.isRunning) return _buildStartButton(context, s);
               return _buildCompleteButton(context, s);
             },
           ),
@@ -51,27 +44,30 @@ class WorkoutActionsSection extends StatelessWidget {
   }
 
   Widget _buildStartButton(BuildContext context, S s) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton.icon(
         onPressed: () async {
           await timerManager.startWorkout();
-          if (context.mounted) {
+          if (context.mounted)
             context.read<WorkoutsCubit>().startWorkoutSession(workoutId);
-          }
         },
-        icon: const Icon(Icons.play_arrow, color: Colors.white),
+        icon: Icon(
+          Icons.play_arrow,
+          color: isDark ? ColorsManager.darkScaffold : Colors.white,
+        ),
         label: Text(
           s.start_workout,
-          style: GoogleFonts.aBeeZee(
-            fontSize: 16.sp,
-            color: Colors.white,
+          style: TextStyle(
+            fontSize: 16,
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.5,
+            color: isDark ? ColorsManager.darkScaffold : Colors.white,
           ),
         ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: ColorsManager.primaryGreen,
+          backgroundColor: ColorsManager.getPrimaryGreen(context),
           padding: EdgeInsets.symmetric(vertical: 14.h),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.r),
@@ -82,26 +78,29 @@ class WorkoutActionsSection extends StatelessWidget {
   }
 
   Widget _buildCompleteButton(BuildContext context, S s) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton.icon(
         onPressed: () async {
           await timerManager.stopWorkout();
-          if (context.mounted) {
+          if (context.mounted)
             context.read<WorkoutsCubit>().completeWorkoutSession(
               workoutId,
               null,
             );
-          }
         },
-        icon: const Icon(Icons.check_circle, color: Colors.white),
+        icon: Icon(
+          Icons.check_circle,
+          color: isDark ? ColorsManager.darkScaffold : Colors.white,
+        ),
         label: Text(
           '${timerManager.elapsedTime} - ${s.complete_workout}',
-          style: GoogleFonts.aBeeZee(
-            fontSize: 16.sp,
-            color: Colors.white,
+          style: TextStyle(
+            fontSize: 16,
             fontWeight: FontWeight.bold,
-            letterSpacing: 0.5,
+            color: isDark ? ColorsManager.darkScaffold : Colors.white,
           ),
         ),
         style: ElevatedButton.styleFrom(
@@ -115,11 +114,13 @@ class WorkoutActionsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildCompletedBadge(S s) {
+  Widget _buildCompletedBadge(S s, BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14.h),
       decoration: BoxDecoration(
-        color: ColorsManager.success.withValues(alpha: 0.1),
+        color: ColorsManager.success.withValues(alpha: isDark ? 0.15 : 0.1),
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: ColorsManager.success),
       ),
@@ -130,7 +131,8 @@ class WorkoutActionsSection extends StatelessWidget {
           SizedBox(width: 8.w),
           Text(
             s.workout_completed,
-            style: TextStyles.bodyMedium.copyWith(
+            style: TextStyle(
+              fontSize: 14,
               color: ColorsManager.success,
               fontWeight: FontWeight.bold,
             ),

@@ -5879,6 +5879,96 @@ class S {
     return Intl.message('Selected', name: 'selected', desc: '', args: []);
   }
 
+  /// `Workout Details`
+  String get workout_details {
+    return Intl.message(
+      'Workout Details',
+      name: 'workout_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sections`
+  String get sections {
+    return Intl.message('Sections', name: 'sections', desc: '', args: []);
+  }
+
+  /// `Personalize your app appearance`
+  String get choose_your_theme {
+    return Intl.message(
+      'Personalize your app appearance',
+      name: 'choose_your_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Mode`
+  String get light_theme {
+    return Intl.message('Light Mode', name: 'light_theme', desc: '', args: []);
+  }
+
+  /// `Bright and clean interface`
+  String get light_theme_desc {
+    return Intl.message(
+      'Bright and clean interface',
+      name: 'light_theme_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get dark_theme {
+    return Intl.message('Dark Mode', name: 'dark_theme', desc: '', args: []);
+  }
+
+  /// `Easy on the eyes`
+  String get dark_theme_desc {
+    return Intl.message(
+      'Easy on the eyes',
+      name: 'dark_theme_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System Default`
+  String get system_theme {
+    return Intl.message(
+      'System Default',
+      name: 'system_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follows device settings`
+  String get system_theme_desc {
+    return Intl.message(
+      'Follows device settings',
+      name: 'system_theme_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get light {
+    return Intl.message('Light', name: 'light', desc: '', args: []);
+  }
+
+  /// `Dark`
+  String get dark {
+    return Intl.message('Dark', name: 'dark', desc: '', args: []);
+  }
+
+  /// `System`
+  String get system {
+    return Intl.message('System', name: 'system', desc: '', args: []);
+  }
+
   /// `X`
   String get X {
     return Intl.message('X', name: 'X', desc: '', args: []);

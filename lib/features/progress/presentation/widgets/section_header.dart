@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fitrix/core/theming/styles.dart';
+import '../../../../core/theming/app_colors.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -8,6 +8,13 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: TextStyles.subtitle1);
+    return Text(
+      title,
+      style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: ColorsManager.getPrimaryText(context),
+      ),
+    );
   }
 }

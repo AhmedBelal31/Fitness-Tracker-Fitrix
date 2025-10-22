@@ -19,6 +19,7 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final currentMuscle =
         double.tryParse(widget.controller.muscleMassController.text) ?? 45.0;
     final goalMuscle =
@@ -47,7 +48,7 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              ColorsManager.success.withValues(alpha: 0.15),
+              ColorsManager.success.withValues(alpha: isDark ? 0.2 : 0.15),
               ColorsManager.success.withValues(alpha: 0.05),
             ],
           ),
@@ -58,7 +59,9 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
           ),
           boxShadow: [
             BoxShadow(
-              color: ColorsManager.success.withValues(alpha: 0.1),
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : ColorsManager.success.withValues(alpha: 0.1),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),
@@ -67,7 +70,6 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Circular Progress Ring
             SizedBox(
               width: 60.w,
               height: 60.h,
@@ -93,13 +95,15 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
                       children: [
                         Text(
                           currentMuscle.toStringAsFixed(0),
-                          style: TextStyles.font16Bold.copyWith(
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                             color: ColorsManager.success,
                           ),
                         ),
                         Text(
                           'kg',
-                          style: TextStyles.caption.copyWith(
+                          style: TextStyle(
                             fontSize: 8.sp,
                             color: ColorsManager.success,
                           ),
@@ -111,12 +115,12 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
               ),
             ),
             SizedBox(height: 6.h),
-
-            // Goal Display
             Container(
               padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
               decoration: BoxDecoration(
-                color: ColorsManager.primaryGreen.withValues(alpha: 0.15),
+                color: ColorsManager.getPrimaryGreen(
+                  context,
+                ).withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Row(
@@ -125,16 +129,16 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
                   Icon(
                     Icons.flag,
                     size: 10.sp,
-                    color: ColorsManager.primaryGreen,
+                    color: ColorsManager.getPrimaryGreen(context),
                   ),
                   SizedBox(width: 3.w),
                   Flexible(
                     child: Text(
                       '${goalMuscle.toStringAsFixed(0)}kg',
-                      style: TextStyles.caption.copyWith(
+                      style: TextStyle(
                         fontSize: 9.sp,
                         fontWeight: FontWeight.w600,
-                        color: ColorsManager.primaryGreen,
+                        color: ColorsManager.getPrimaryGreen(context),
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -143,9 +147,11 @@ class _MuscleMassRingCardState extends State<MuscleMassRingCard> {
               ),
             ),
             SizedBox(height: 4.h),
-
-            // Tap to Edit
-            Icon(Icons.touch_app, size: 10.sp, color: ColorsManager.lightText),
+            Icon(
+              Icons.touch_app,
+              size: 10.sp,
+              color: ColorsManager.getSecondaryText(context),
+            ),
           ],
         ),
       ),

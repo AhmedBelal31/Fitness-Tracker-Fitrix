@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fitrix/core/theming/styles.dart';
 import 'package:fitrix/generated/l10n.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../data/models/progress_models.dart';
+import 'dart:developer' as developer;
 
 class GoalsListCard extends StatefulWidget {
   final MeasurementCardsResponse cards;
@@ -58,33 +58,48 @@ class _GoalsListCardState extends State<GoalsListCard>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    // ✅ Add debug print
+    print('🎯 GoalsListCard build() called');
+
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
+        color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: ColorsManager.cardShadow,
+        boxShadow: [
+          BoxShadow(
+            color: isDark
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.black.withValues(alpha: 0.08),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         children: [
           _buildGoalItem(
             title: widget.s.weight_goal,
             progress: _calculateWeightProgress(),
-            color: ColorsManager.primaryGreen,
+            color: isDark
+                ? const Color(0xFF66BB6A)
+                : ColorsManager.primaryGreen,
             animationIndex: 0,
           ),
           SizedBox(height: 16.h),
           _buildGoalItem(
             title: widget.s.body_fat_goal,
             progress: _calculateBodyFatProgress(),
-            color: ColorsManager.info,
+            color: isDark ? const Color(0xFF42A5F5) : ColorsManager.info,
             animationIndex: 1,
           ),
           SizedBox(height: 16.h),
           _buildGoalItem(
             title: widget.s.muscle_mass_goal,
             progress: _calculateMuscleProgress(),
-            color: ColorsManager.warning,
+            color: isDark ? const Color(0xFFFFB74D) : ColorsManager.warning,
             animationIndex: 2,
           ),
         ],
@@ -92,91 +107,42 @@ class _GoalsListCardState extends State<GoalsListCard>
     );
   }
 
-  // ✅ Calculate weight loss progress
-  // double _calculateWeightProgress() {
-  //   final start = widget.cards.weightCard.firstWeight;
-  //   final current = widget.cards.weightCard.lastWeight;
-  //   final goal = widget.cards.weightCard.weightGoal;
-  //
-  //   final totalToLose = start - goal;
-  //   final alreadyLost = start - current;
-  //
-  //   if (totalToLose <= 0) return 100;
-  //   return ((alreadyLost / totalToLose) * 100).clamp(0, 100);
-  // }
-  // ✅ Calculate weight loss progress
+  // ✅ SIMPLEST: Show current as % of goal
   double _calculateWeightProgress() {
-    final start = widget.cards.weightCard.firstWeight;
     final current = widget.cards.weightCard.lastWeight;
     final goal = widget.cards.weightCard.weightGoal;
 
-    // Return 0 if no goal is set
-    if (goal == null) return 0.0;
+    if (goal == null || goal == 0) return 0.0;
 
-    final totalToLose = start - goal;
-    final alreadyLost = start - current;
-
-    if (totalToLose <= 0) return 100;
-    return ((alreadyLost / totalToLose) * 100).clamp(0, 100);
+    print(
+      'Weight: $current / $goal = ${(current / goal * 100).toStringAsFixed(1)}%',
+    );
+    return (current / goal) * 100; // Don't clamp
   }
 
-  // ✅ Calculate body fat reduction progress
   double _calculateBodyFatProgress() {
-    final start = widget.cards.bodyFatCard.firstBodyFat;
     final current = widget.cards.bodyFatCard.lastBodyFat;
     final goal = widget.cards.bodyFatCard.bodyFatGoal;
 
-    // Return 0 if no goal is set
-    if (goal == null) return 0.0;
+    if (goal == null || goal == 0) return 0.0;
 
-    final totalToLose = start - goal;
-    final alreadyLost = start - current;
-
-    if (totalToLose <= 0) return 100;
-    return ((alreadyLost / totalToLose) * 100).clamp(0, 100);
+    print(
+      'Body Fat: $current / $goal = ${(current / goal * 100).toStringAsFixed(1)}%',
+    );
+    return (current / goal) * 100; // Don't clamp
   }
 
-  // ✅ Calculate muscle gain progress
   double _calculateMuscleProgress() {
-    final start = widget.cards.muscleMassCard.firstMuscleMass;
     final current = widget.cards.muscleMassCard.lastMuscleMass;
     final goal = widget.cards.muscleMassCard.muscleMassGoal;
 
-    // Return 0 if no goal is set
-    if (goal == null) return 0.0;
+    if (goal == null || goal == 0) return 0.0;
 
-    final totalToGain = goal - start;
-    final alreadyGained = current - start;
-
-    if (totalToGain <= 0) return 100;
-    return ((alreadyGained / totalToGain) * 100).clamp(0, 100);
+    print(
+      'Muscle: $current / $goal = ${(current / goal * 100).toStringAsFixed(1)}%',
+    );
+    return (current / goal) * 100; // Don't clamp
   }
-
-  // // ✅ Calculate body fat reduction progress
-  // double _calculateBodyFatProgress() {
-  //   final start = widget.cards.bodyFatCard.firstBodyFat;
-  //   final current = widget.cards.bodyFatCard.lastBodyFat;
-  //   final goal = widget.cards.bodyFatCard.bodyFatGoal;
-  //
-  //   final totalToLose = start - goal;
-  //   final alreadyLost = start - current;
-  //
-  //   if (totalToLose <= 0) return 100;
-  //   return ((alreadyLost / totalToLose) * 100).clamp(0, 100);
-  // }
-  //
-  // // ✅ Calculate muscle gain progress
-  // double _calculateMuscleProgress() {
-  //   final start = widget.cards.muscleMassCard.firstMuscleMass;
-  //   final current = widget.cards.muscleMassCard.lastMuscleMass;
-  //   final goal = widget.cards.muscleMassCard.muscleMassGoal;
-  //
-  //   final totalToGain = goal - start;
-  //   final alreadyGained = current - start;
-  //
-  //   if (totalToGain <= 0) return 100;
-  //   return ((alreadyGained / totalToGain) * 100).clamp(0, 100);
-  // }
 
   Widget _buildGoalItem({
     required String title,
@@ -184,6 +150,9 @@ class _GoalsListCardState extends State<GoalsListCard>
     required Color color,
     required int animationIndex,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isNegative = progress < 0;
+
     return AnimatedBuilder(
       animation: _animations[animationIndex],
       builder: (context, child) {
@@ -195,32 +164,55 @@ class _GoalsListCardState extends State<GoalsListCard>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title, style: TextStyles.font14PrimaryTextMedium),
                 Text(
-                  '${animatedProgress.toStringAsFixed(0)}%',
-                  style: TextStyles.font14Bold.copyWith(color: color),
+                  title,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: ColorsManager.getPrimaryText(context),
+                  ),
+                ),
+                Text(
+                  '${animatedProgress >= 0 ? "" : ""}${animatedProgress.toStringAsFixed(0)}%', // ✅ Show sign
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: isNegative
+                        ? Colors.red
+                        : color, // ✅ Red for negative
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 8.h),
             Stack(
               children: [
-                // Background
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
-                  child: Container(height: 8.h, color: ColorsManager.grey200),
+                  child: Container(
+                    height: 8.h,
+                    color: isDark
+                        ? ColorsManager.darkInputBackground
+                        : ColorsManager.grey200,
+                  ),
                 ),
-
-                // Animated Progress
                 FractionallySizedBox(
-                  widthFactor: animatedProgress / 100,
+                  widthFactor: (animatedProgress.abs() / 100).clamp(
+                    0.0,
+                    1.0,
+                  ), // ✅ Use abs() for width
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
                     child: Container(
                       height: 8.h,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [color, color.withValues(alpha: 0.7)],
+                          colors: isNegative
+                              ? [
+                                  Colors.red,
+                                  Colors.red.withValues(alpha: 0.7),
+                                ] // ✅ Red for negative
+                              : [color, color.withValues(alpha: 0.7)],
                         ),
                       ),
                     ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:fitrix/core/theming/styles.dart';
 import 'package:intl/intl.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../generated/l10n.dart';
@@ -26,7 +25,7 @@ class ProgressAreaChart extends StatelessWidget {
     }
 
     return Container(
-      height: 320.h, // ✅ Increased
+      height: 320.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: LineChart(
         LineChartData(
@@ -36,7 +35,9 @@ class ProgressAreaChart extends StatelessWidget {
             horizontalInterval: 1,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: ColorsManager.lightText.withOpacity(0.1),
+                color: ColorsManager.getSecondaryText(
+                  context,
+                ).withValues(alpha: 0.2),
                 strokeWidth: 1,
               );
             },
@@ -53,20 +54,19 @@ class ProgressAreaChart extends StatelessWidget {
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: 32.h,
-                interval: _getBottomInterval(), // ✅ Use same helper
+                interval: _getBottomInterval(),
                 getTitlesWidget: (value, meta) {
                   final index = value.toInt();
-                  if (index < 0 || index >= data.length) {
+                  if (index < 0 || index >= data.length)
                     return const SizedBox();
-                  }
                   final date = data[index].date;
                   return Padding(
                     padding: EdgeInsets.only(top: 8.h),
                     child: Text(
                       DateFormat('MMM d').format(date),
-                      style: TextStyles.font10WhiteRegular.copyWith(
-                        color: ColorsManager.secondaryText,
+                      style: TextStyle(
                         fontSize: 9.sp,
+                        color: ColorsManager.getSecondaryText(context),
                       ),
                     ),
                   );
@@ -80,9 +80,9 @@ class ProgressAreaChart extends StatelessWidget {
                 getTitlesWidget: (value, meta) {
                   return Text(
                     '${value.toInt()}$unit',
-                    style: TextStyles.font10WhiteRegular.copyWith(
-                      color: ColorsManager.secondaryText,
+                    style: TextStyle(
                       fontSize: 10.sp,
+                      color: ColorsManager.getSecondaryText(context),
                     ),
                   );
                 },
@@ -121,9 +121,8 @@ class ProgressAreaChart extends StatelessWidget {
           lineTouchData: LineTouchData(
             enabled: true,
             touchTooltipData: LineTouchTooltipData(
-              getTooltipColor: (LineBarSpot touchedSpot) {
-                return ColorsManager.cardBackground;
-              },
+              getTooltipColor: (LineBarSpot touchedSpot) =>
+                  Theme.of(context).cardTheme.color!,
               tooltipBorderRadius: BorderRadius.circular(8.r),
               tooltipPadding: EdgeInsets.symmetric(
                 horizontal: 12.w,
@@ -134,8 +133,10 @@ class ProgressAreaChart extends StatelessWidget {
                   final date = data[spot.x.toInt()].date;
                   return LineTooltipItem(
                     '${spot.y.toStringAsFixed(1)}$unit\n${DateFormat('MMM d').format(date)}',
-                    TextStyles.font12WhiteSemiBold.copyWith(
-                      color: ColorsManager.primaryText,
+                    TextStyle(
+                      fontSize: 12,
+                      color: ColorsManager.getPrimaryText(context),
+                      fontWeight: FontWeight.w600,
                     ),
                   );
                 }).toList();
@@ -147,7 +148,6 @@ class ProgressAreaChart extends StatelessWidget {
     );
   }
 
-  // ✅ Add same helper method
   double _getBottomInterval() {
     if (data.length <= 7) return 1;
     if (data.length <= 30) return 5;
@@ -177,9 +177,19 @@ class ProgressAreaChart extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.area_chart, size: 48.sp, color: ColorsManager.lightText),
+          Icon(
+            Icons.area_chart,
+            size: 48.sp,
+            color: ColorsManager.getSecondaryText(context),
+          ),
           SizedBox(height: 12.h),
-          Text(s.no_data_available, style: TextStyles.bodyMedium),
+          Text(
+            s.no_data_available,
+            style: TextStyle(
+              fontSize: 14,
+              color: ColorsManager.getPrimaryText(context),
+            ),
+          ),
         ],
       ),
     );

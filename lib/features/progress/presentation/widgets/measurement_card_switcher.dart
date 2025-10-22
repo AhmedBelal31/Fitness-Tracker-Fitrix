@@ -446,196 +446,6 @@ import 'dart:async';
 
 import 'package:carousel_slider/carousel_slider.dart';
 
-// class MeasurementCardSwitcher extends StatefulWidget {
-//   final MeasurementCardsResponse cards;
-//   final MeasurementCardType selectedType;
-//
-//   const MeasurementCardSwitcher({
-//     super.key,
-//     required this.cards,
-//     required this.selectedType,
-//   });
-//
-//   @override
-//   State<MeasurementCardSwitcher> createState() =>
-//       _MeasurementCardSwitcherState();
-// }
-//
-// class _MeasurementCardSwitcherState extends State<MeasurementCardSwitcher> {
-//   late CarouselSliderController _carouselController; // ✅ Changed type
-//   int _currentPage = 0;
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//     _carouselController = CarouselSliderController(); // ✅ Changed type
-//     _currentPage = widget.selectedType.index;
-//   }
-//
-//   @override
-//   void didUpdateWidget(MeasurementCardSwitcher oldWidget) {
-//     super.didUpdateWidget(oldWidget);
-//     if (oldWidget.selectedType != widget.selectedType) {
-//       setState(() {
-//         _currentPage = widget.selectedType.index;
-//       });
-//       // ✅ Updated method call with required parameters
-//       _carouselController.animateToPage(
-//         _currentPage,
-//         duration: const Duration(milliseconds: 400),
-//         curve: Curves.easeInOut,
-//       );
-//     }
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         _buildPageIndicator(),
-//         SizedBox(height: 12.h),
-//         _buildCarousel(),
-//       ],
-//     );
-//   }
-//
-//   Widget _buildPageIndicator() {
-//     return Container(
-//       padding: EdgeInsets.all(4.w),
-//       decoration: BoxDecoration(
-//         color: ColorsManager.cardBackground,
-//         borderRadius: BorderRadius.circular(12.r),
-//         boxShadow: [
-//           BoxShadow(
-//             color: Colors.black.withValues(alpha: )(0.05),
-//             blurRadius: 8,
-//             offset: const Offset(0, 2),
-//           ),
-//         ],
-//       ),
-//       child: Row(
-//         children: MeasurementCardType.values.map((type) {
-//           return _buildIndicatorChip(type);
-//         }).toList(),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildIndicatorChip(MeasurementCardType type) {
-//     final isSelected = _currentPage == type.index;
-//     final labels = ['Weight', 'Body Fat', 'Muscle'];
-//     final icons = [
-//       Icons.monitor_weight_outlined,
-//       Icons.water_drop_outlined,
-//       Icons.fitness_center_outlined,
-//     ];
-//
-//     return Expanded(
-//       child: GestureDetector(
-//         onTap: () {
-//           setState(() {
-//             _currentPage = type.index;
-//           });
-//           context.read<ProgressCubit>().switchCardType(type);
-//
-//           // ✅ Updated method call with required parameters
-//           _carouselController.animateToPage(
-//             type.index,
-//             duration: const Duration(milliseconds: 400),
-//             curve: Curves.easeInOut,
-//           );
-//         },
-//         child: AnimatedContainer(
-//           duration: const Duration(milliseconds: 250),
-//           curve: Curves.easeInOut,
-//           margin: EdgeInsets.symmetric(horizontal: 2.w),
-//           padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 6.w),
-//           decoration: BoxDecoration(
-//             gradient: isSelected ? ColorsManager.primaryGradient : null,
-//             color: isSelected ? null : Colors.transparent,
-//             borderRadius: BorderRadius.circular(10.r),
-//           ),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             mainAxisSize: MainAxisSize.min,
-//             children: [
-//               Icon(
-//                 icons[type.index],
-//                 size: 16.sp,
-//                 color: isSelected
-//                     ? ColorsManager.whiteText
-//                     : ColorsManager.secondaryText,
-//               ),
-//               SizedBox(width: 4.w),
-//               Flexible(
-//                 child: Text(
-//                   labels[type.index],
-//                   style: TextStyles.caption.copyWith(
-//                     fontSize: 11.sp,
-//                     color: isSelected
-//                         ? ColorsManager.whiteText
-//                         : ColorsManager.secondaryText,
-//                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-//                   ),
-//                   overflow: TextOverflow.ellipsis,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildCarousel() {
-//     final items = [
-//       MeasurementProgressCard(
-//         cards: widget.cards,
-//         type: MeasurementCardType.weight,
-//         key: const ValueKey('weight'),
-//       ),
-//       MeasurementProgressCard(
-//         cards: widget.cards,
-//         type: MeasurementCardType.bodyFat,
-//         key: const ValueKey('bodyFat'),
-//       ),
-//       MeasurementProgressCard(
-//         cards: widget.cards,
-//         type: MeasurementCardType.muscleMass,
-//         key: const ValueKey('muscleMass'),
-//       ),
-//     ];
-//
-//     return CarouselSlider(
-//       carouselController: _carouselController, // ✅ Now correct type
-//       items: items,
-//       options: CarouselOptions(
-//         height: 180.h,
-//         viewportFraction: 0.82,
-//         enlargeCenterPage: true,
-//         enlargeFactor: 0.15,
-//         enableInfiniteScroll: true,
-//         autoPlay: true,
-//         autoPlayInterval: const Duration(seconds: 5),
-//         autoPlayAnimationDuration: const Duration(milliseconds: 800),
-//         autoPlayCurve: Curves.easeInOut,
-//         pauseAutoPlayOnTouch: true,
-//         onPageChanged: (index, reason) {
-//           debugPrint('🎠 Page: $index, Reason: $reason');
-//
-//           setState(() {
-//             _currentPage = index;
-//           });
-//
-//           final type = MeasurementCardType.values[index];
-//           context.read<ProgressCubit>().switchCardType(type);
-//         },
-//         initialPage: _currentPage,
-//       ),
-//     );
-//   }
-// }
-
 class MeasurementCardSwitcher extends StatefulWidget {
   final MeasurementCardsResponse cards;
   final MeasurementCardType selectedType;
@@ -690,15 +500,22 @@ class _MeasurementCardSwitcherState extends State<MeasurementCardSwitcher> {
 
   Widget _buildPageIndicator() {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
       padding: EdgeInsets.all(4.w),
       decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
+        color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(
+          color: isDark ? ColorsManager.darkBorder : ColorsManager.lightBorder,
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: isDark
+                ? Colors.black.withValues(alpha: 0.3)
+                : Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -714,8 +531,8 @@ class _MeasurementCardSwitcherState extends State<MeasurementCardSwitcher> {
 
   Widget _buildIndicatorChip(MeasurementCardType type, S s) {
     final isSelected = _currentPage == type.index;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // ✅ Use localized labels
     final labels = [s.weight, s.body_fat, s.muscle_mass];
     final icons = [
       Icons.monitor_weight_outlined,
@@ -726,11 +543,8 @@ class _MeasurementCardSwitcherState extends State<MeasurementCardSwitcher> {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          setState(() {
-            _currentPage = type.index;
-          });
+          setState(() => _currentPage = type.index);
           context.read<ProgressCubit>().switchCardType(type);
-
           _carouselController.animateToPage(
             type.index,
             duration: const Duration(milliseconds: 400),
@@ -743,8 +557,21 @@ class _MeasurementCardSwitcherState extends State<MeasurementCardSwitcher> {
           margin: EdgeInsets.symmetric(horizontal: 2.w),
           padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 6.w),
           decoration: BoxDecoration(
-            gradient: isSelected ? ColorsManager.primaryGradient : null,
-            color: isSelected ? null : Colors.transparent,
+            gradient: isSelected
+                ? (isDark
+                      ? LinearGradient(
+                          colors: [
+                            ColorsManager.darkPrimaryGreen,
+                            ColorsManager.darkSecondaryGreen,
+                          ],
+                        )
+                      : ColorsManager.primaryGradient)
+                : null,
+            color: isSelected
+                ? null
+                : (isDark
+                      ? ColorsManager.darkInputBackground
+                      : Colors.transparent),
             borderRadius: BorderRadius.circular(10.r),
           ),
           child: Row(
@@ -755,18 +582,18 @@ class _MeasurementCardSwitcherState extends State<MeasurementCardSwitcher> {
                 icons[type.index],
                 size: 16.sp,
                 color: isSelected
-                    ? ColorsManager.whiteText
-                    : ColorsManager.secondaryText,
+                    ? (isDark ? ColorsManager.darkScaffold : Colors.white)
+                    : (isDark ? Colors.white : ColorsManager.secondaryText),
               ),
               SizedBox(width: 4.w),
               Flexible(
                 child: Text(
                   labels[type.index],
-                  style: TextStyles.caption.copyWith(
+                  style: TextStyle(
                     fontSize: 11.sp,
                     color: isSelected
-                        ? ColorsManager.whiteText
-                        : ColorsManager.secondaryText,
+                        ? (isDark ? ColorsManager.darkScaffold : Colors.white)
+                        : (isDark ? Colors.white : ColorsManager.secondaryText),
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                   ),
                   overflow: TextOverflow.ellipsis,

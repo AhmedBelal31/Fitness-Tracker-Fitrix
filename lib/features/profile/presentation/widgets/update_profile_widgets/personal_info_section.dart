@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import '../../../../../../core/common_ui/widgets/custom_text_field.dart';
 import '../../../../../../core/theming/app_colors.dart';
-import '../../../../../../core/theming/styles.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/widgets/complete_profile_widgets/gender_selector.dart'
     show GenderSelector;
@@ -26,10 +25,10 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Column(
       children: [
-        // First Name
         CustomTextField(
           controller: widget.controller.firstNameController,
           label: s.firstName,
@@ -39,8 +38,6 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
               _validators.validateRequired(v, s.firstName, context),
         ),
         SizedBox(height: 16.h),
-
-        // Last Name
         CustomTextField(
           controller: widget.controller.lastNameController,
           label: s.lastName,
@@ -50,12 +47,8 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
               _validators.validateRequired(v, s.lastName, context),
         ),
         SizedBox(height: 16.h),
-
-        // Birth Date Picker
-        _buildBirthDatePicker(s),
+        _buildBirthDatePicker(s, isDark),
         SizedBox(height: 16.h),
-
-        // Phone Number
         CustomTextField(
           controller: widget.controller.phoneController,
           label: s.phoneNumber,
@@ -65,8 +58,6 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
           validator: (v) => _validators.validatePhone(v, context),
         ),
         SizedBox(height: 16.h),
-
-        // Gender Selector
         GenderSelector(
           selected: widget.controller.selectedGender,
           onChanged: (gender) {
@@ -75,8 +66,6 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
             });
           },
         ),
-
-        // Gender Validation Error
         if (_validators.validateGender(
               widget.controller.selectedGender,
               context,
@@ -100,7 +89,7 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
     );
   }
 
-  Widget _buildBirthDatePicker(S s) {
+  Widget _buildBirthDatePicker(S s, bool isDark) {
     final selectedDate = widget.controller.selectedBirthDate;
     final displayText = selectedDate != null
         ? DateFormat('MMM d, yyyy').format(selectedDate)
@@ -111,18 +100,29 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         decoration: BoxDecoration(
-          color: ColorsManager.cardBackground,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
-            color: ColorsManager.primaryGreen.withValues(alpha: 0.3),
+            color: ColorsManager.getPrimaryGreen(
+              context,
+            ).withValues(alpha: 0.3),
             width: 1.5,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.black.withValues(alpha: 0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            ),
+          ],
         ),
         child: Row(
           children: [
             Icon(
               Icons.cake_outlined,
-              color: ColorsManager.primaryGreen,
+              color: ColorsManager.getPrimaryGreen(context),
               size: 22.sp,
             ),
             SizedBox(width: 12.w),
@@ -132,17 +132,20 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
                 children: [
                   Text(
                     s.birth_date,
-                    style: TextStyles.font12Regular.copyWith(
-                      color: ColorsManager.secondaryText,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: ColorsManager.getSecondaryText(context),
                     ),
                   ),
                   SizedBox(height: 4.h),
                   Text(
                     displayText,
-                    style: TextStyles.font14PrimaryTextMedium.copyWith(
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                       color: selectedDate != null
-                          ? ColorsManager.primaryText
-                          : ColorsManager.secondaryText,
+                          ? ColorsManager.getPrimaryText(context)
+                          : ColorsManager.getSecondaryText(context),
                     ),
                   ),
                 ],
@@ -150,7 +153,9 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
             ),
             Icon(
               Icons.calendar_today_rounded,
-              color: ColorsManager.primaryGreen.withValues(alpha: 0.7),
+              color: ColorsManager.getPrimaryGreen(
+                context,
+              ).withValues(alpha: 0.7),
               size: 20.sp,
             ),
           ],
@@ -161,6 +166,7 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
 
   void _showBirthDatePicker(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     DateTime tempDate =
         widget.controller.selectedBirthDate ?? DateTime(2000, 1, 1);
 
@@ -170,24 +176,35 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
       builder: (context) => Container(
         height: 350.h,
         decoration: BoxDecoration(
-          color: ColorsManager.scaffoldBackground,
+          color: Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
         ),
         child: Column(
           children: [
-            // Header
             Padding(
               padding: EdgeInsets.all(16.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(s.birth_date, style: TextStyles.font18PrimaryTextBold),
+                  Text(
+                    s.birth_date,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: ColorsManager.getPrimaryText(context),
+                    ),
+                  ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
-                        child: Text(s.cancel),
+                        child: Text(
+                          s.cancel,
+                          style: TextStyle(
+                            color: ColorsManager.getSecondaryText(context),
+                          ),
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -198,8 +215,10 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
                         },
                         child: Text(
                           s.done,
-                          style: TextStyles.font14Bold.copyWith(
-                            color: ColorsManager.primaryGreen,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: ColorsManager.getPrimaryGreen(context),
                           ),
                         ),
                       ),
@@ -210,10 +229,10 @@ class _PersonalInfoSectionState extends State<PersonalInfoSection> {
             ),
             Divider(
               height: 1,
-              color: ColorsManager.lightText.withValues(alpha: 0.2),
+              color: (isDark
+                  ? ColorsManager.darkBorder
+                  : ColorsManager.lightBorder),
             ),
-
-            // Cupertino Date Picker
             Expanded(
               child: CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.date,

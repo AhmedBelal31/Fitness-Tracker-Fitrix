@@ -41,7 +41,6 @@ class _AnimatedExerciseCardState extends State<AnimatedExerciseCard>
       begin: 0.0,
       end: 1.0,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0.3, 0),
       end: Offset.zero,
@@ -86,6 +85,8 @@ class WorkoutStatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 500 + (index * 100)),
@@ -96,10 +97,21 @@ class WorkoutStatCard extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              color: ColorsManager.cardBackground,
+              color: Theme.of(context).cardTheme.color,
               borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
-              boxShadow: ColorsManager.softShadow,
+              border: Border.all(
+                color: color.withValues(alpha: isDark ? 0.4 : 0.3),
+                width: 1,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: isDark
+                      ? Colors.black.withValues(alpha: 0.3)
+                      : Colors.black.withValues(alpha: 0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
             child: Column(
               children: [
@@ -111,8 +123,10 @@ class WorkoutStatCard extends StatelessWidget {
                   builder: (context, val, child) {
                     return Text(
                       val.toString(),
-                      style: TextStyles.font24PrimaryTextBold.copyWith(
-                        fontSize: 20.sp, // ✅ Using existing style with fontSize
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ColorsManager.getPrimaryText(context),
                       ),
                     );
                   },
@@ -120,7 +134,10 @@ class WorkoutStatCard extends StatelessWidget {
                 SizedBox(height: 4.h),
                 Text(
                   label,
-                  style: TextStyles.bodySmall,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ColorsManager.getSecondaryText(context),
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -160,7 +177,9 @@ class _SetRowState extends State<SetRow> {
 
   @override
   Widget build(BuildContext context) {
-    var s = S.of(context);
+    final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
       onTapUp: (_) => setState(() => _isPressed = false),
@@ -171,7 +190,9 @@ class _SetRowState extends State<SetRow> {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: _isPressed
-              ? ColorsManager.primaryGreen.withValues(alpha: 0.1)
+              ? ColorsManager.getPrimaryGreen(
+                  context,
+                ).withValues(alpha: isDark ? 0.15 : 0.1)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(8.r),
         ),
@@ -183,14 +204,19 @@ class _SetRowState extends State<SetRow> {
               decoration: BoxDecoration(
                 color: widget.isCompleted
                     ? ColorsManager.success
-                    : Colors.grey[300],
+                    : (isDark
+                          ? ColorsManager.darkInputBackground
+                          : Colors.grey[300]),
                 shape: BoxShape.circle,
               ),
               child: Center(
                 child: Text(
                   '${widget.setNumber}',
-                  style: TextStyles.bodyMedium.copyWith(
-                    color: widget.isCompleted ? Colors.white : Colors.black,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: widget.isCompleted
+                        ? Colors.white
+                        : (isDark ? Colors.white : Colors.black),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -202,12 +228,18 @@ class _SetRowState extends State<SetRow> {
                 children: [
                   Text(
                     '${widget.reps} ${s.reps}',
-                    style: TextStyles.bodyMedium,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: ColorsManager.getPrimaryText(context),
+                    ),
                   ),
                   SizedBox(width: 16.w),
                   Text(
                     '${widget.weight.toInt()} ${s.kg}',
-                    style: TextStyles.bodyMedium,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: ColorsManager.getPrimaryText(context),
+                    ),
                   ),
                   if (widget.isPersonalRecord) ...[
                     SizedBox(width: 8.w),
@@ -219,7 +251,7 @@ class _SetRowState extends State<SetRow> {
             if (!widget.isCompleted)
               Icon(
                 Icons.edit_outlined,
-                color: ColorsManager.primaryGreen,
+                color: ColorsManager.getPrimaryGreen(context),
                 size: 20.sp,
               ),
           ],

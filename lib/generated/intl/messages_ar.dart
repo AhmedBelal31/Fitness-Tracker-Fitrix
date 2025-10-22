@@ -182,6 +182,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "choose_section_for_exercise": MessageLookupByLibrary.simpleMessage(
       "اختر قسم",
     ),
+    "choose_your_theme": MessageLookupByLibrary.simpleMessage(
+      "خصص مظهر التطبيق",
+    ),
     "clear": MessageLookupByLibrary.simpleMessage("مسح"),
     "clear_filters": MessageLookupByLibrary.simpleMessage("مسح الفلاتر"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
@@ -272,6 +275,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "custom_exercises": MessageLookupByLibrary.simpleMessage(
       "التمارين المخصصة",
     ),
+    "dark": MessageLookupByLibrary.simpleMessage("داكن"),
+    "dark_theme": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+    "dark_theme_desc": MessageLookupByLibrary.simpleMessage("مريح للعين"),
     "dataSecurity": MessageLookupByLibrary.simpleMessage("الأمان"),
     "dataSecurityText": MessageLookupByLibrary.simpleMessage("بياناتك مشفرة"),
     "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
@@ -565,6 +571,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "legs": MessageLookupByLibrary.simpleMessage("الأرجل"),
     "legs_description": MessageLookupByLibrary.simpleMessage(
       "قوة الجزء السفلي",
+    ),
+    "light": MessageLookupByLibrary.simpleMessage("فاتح"),
+    "light_theme": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
+    "light_theme_desc": MessageLookupByLibrary.simpleMessage(
+      "واجهة مشرقة ونظيفة",
     ),
     "line_chart": MessageLookupByLibrary.simpleMessage("خطي"),
     "loading": MessageLookupByLibrary.simpleMessage("بيحمّل..."),
@@ -887,6 +898,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "section_order_saved": MessageLookupByLibrary.simpleMessage(
       "تم حفظ ترتيب الأقسام بنجاح",
     ),
+    "sections": MessageLookupByLibrary.simpleMessage("الأقسام"),
     "secure_your_account": MessageLookupByLibrary.simpleMessage(
       "قم بتأمين حسابك بكلمة مرور قوية",
     ),
@@ -972,6 +984,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "success": MessageLookupByLibrary.simpleMessage("نجح!"),
     "supportTeamReady": MessageLookupByLibrary.simpleMessage("الدعم جاهز"),
     "suspension_trainer": MessageLookupByLibrary.simpleMessage("TRX"),
+    "system": MessageLookupByLibrary.simpleMessage("النظام"),
+    "system_theme": MessageLookupByLibrary.simpleMessage("النظام الافتراضي"),
+    "system_theme_desc": MessageLookupByLibrary.simpleMessage(
+      "يتبع إعدادات الجهاز",
+    ),
     "take_a_picture": MessageLookupByLibrary.simpleMessage("صوّر"),
     "tap_add_to_start": MessageLookupByLibrary.simpleMessage(
       "اضغط + عشان تضيف",
@@ -1001,7 +1018,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "termsConditions": MessageLookupByLibrary.simpleMessage("الشروط"),
     "termsConditionsTitle": MessageLookupByLibrary.simpleMessage("الشروط"),
     "terms_conditions": MessageLookupByLibrary.simpleMessage("الشروط"),
-    "theme": MessageLookupByLibrary.simpleMessage("الثيم"),
+    "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "thighs": MessageLookupByLibrary.simpleMessage("الفخدين"),
     "this_month": MessageLookupByLibrary.simpleMessage("الشهر ده"),
     "this_week": MessageLookupByLibrary.simpleMessage("الأسبوع ده"),
@@ -1106,6 +1123,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "التمرين خلص!",
     ),
     "workout_date": MessageLookupByLibrary.simpleMessage("التاريخ"),
+    "workout_details": MessageLookupByLibrary.simpleMessage("تفاصيل التمرين"),
     "workout_history": MessageLookupByLibrary.simpleMessage("السجل"),
     "workout_not_found": MessageLookupByLibrary.simpleMessage("مش موجود"),
     "workout_sections": MessageLookupByLibrary.simpleMessage("الأقسام"),

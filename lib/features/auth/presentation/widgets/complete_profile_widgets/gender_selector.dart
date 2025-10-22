@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/theming/app_colors.dart';
-import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class GenderSelector extends StatelessWidget {
@@ -16,12 +15,10 @@ class GenderSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = S.of(context);
-
     return Row(
       children: [
         _genderRadio(context, 'Male', locale.male, Icons.male),
         const SizedBox(width: 24),
-        // 👇 Pass English value "Female", display localized text
         _genderRadio(context, 'Female', locale.female, Icons.female),
       ],
     );
@@ -34,20 +31,26 @@ class GenderSelector extends StatelessWidget {
     IconData icon,
   ) {
     final isSelected = selected == value;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Expanded(
       child: GestureDetector(
         onTap: () => onChanged(value),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
             color: isSelected
-                ? ColorsManager.primaryGreen.withValues(alpha: 0.14)
+                ? ColorsManager.getPrimaryGreen(
+                    context,
+                  ).withValues(alpha: isDark ? 0.2 : 0.14)
                 : Colors.transparent,
             border: Border.all(
               color: isSelected
-                  ? ColorsManager.primaryGreen
-                  : ColorsManager.lightText.withValues(alpha: 0.2),
+                  ? ColorsManager.getPrimaryGreen(context)
+                  : (isDark
+                        ? ColorsManager.darkBorder
+                        : ColorsManager.lightBorder),
               width: 2,
             ),
             borderRadius: BorderRadius.circular(14),
@@ -57,16 +60,18 @@ class GenderSelector extends StatelessWidget {
               Icon(
                 icon,
                 color: isSelected
-                    ? ColorsManager.primaryGreen
-                    : ColorsManager.lightText,
+                    ? ColorsManager.getPrimaryGreen(context)
+                    : ColorsManager.getSecondaryText(context),
               ),
               const SizedBox(height: 4),
               Text(
                 label,
-                style: TextStyles.font14Medium.copyWith(
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
                   color: isSelected
-                      ? ColorsManager.primaryGreen
-                      : ColorsManager.lightText,
+                      ? ColorsManager.getPrimaryGreen(context)
+                      : ColorsManager.getSecondaryText(context),
                 ),
               ),
             ],

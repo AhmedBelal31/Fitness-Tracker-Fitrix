@@ -90,6 +90,42 @@ class _AllRecordsView extends StatelessWidget {
     );
   }
 
+  // Widget _buildRecordsList(
+  //   BuildContext context,
+  //   AchievementsResponse achievements,
+  // ) {
+  //   return ListView(
+  //     padding: EdgeInsets.all(20.w),
+  //     children: [
+  //       _buildStatsSummary(achievements, context),
+  //       SizedBox(height: 24.h),
+  //       ...achievements.milestones.asMap().entries.map((entry) {
+  //         final index = entry.key;
+  //         final milestone = entry.value;
+  //
+  //         return TweenAnimationBuilder(
+  //           duration: Duration(milliseconds: 400 + (index * 100)),
+  //           tween: Tween<double>(begin: 0, end: 1),
+  //           curve: Curves.easeOutCubic,
+  //           builder: (context, double value, child) {
+  //             final clampedValue = value.clamp(0.0, 1.0);
+  //             return Opacity(
+  //               opacity: clampedValue,
+  //               child: Transform.translate(
+  //                 offset: Offset(30 * (1 - clampedValue), 0),
+  //                 child: child,
+  //               ),
+  //             );
+  //           },
+  //           child: Padding(
+  //             padding: EdgeInsets.only(bottom: 12.h),
+  //             child: _buildMilestoneCard(context, milestone, index),
+  //           ),
+  //         );
+  //       }),
+  //     ],
+  //   );
+  // }
   Widget _buildRecordsList(
     BuildContext context,
     AchievementsResponse achievements,
@@ -99,30 +135,7 @@ class _AllRecordsView extends StatelessWidget {
       children: [
         _buildStatsSummary(achievements, context),
         SizedBox(height: 24.h),
-        ...achievements.milestones.asMap().entries.map((entry) {
-          final index = entry.key;
-          final milestone = entry.value;
-
-          return TweenAnimationBuilder(
-            duration: Duration(milliseconds: 400 + (index * 100)),
-            tween: Tween<double>(begin: 0, end: 1),
-            curve: Curves.easeOutCubic,
-            builder: (context, double value, child) {
-              final clampedValue = value.clamp(0.0, 1.0);
-              return Opacity(
-                opacity: clampedValue,
-                child: Transform.translate(
-                  offset: Offset(30 * (1 - clampedValue), 0),
-                  child: child,
-                ),
-              );
-            },
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 12.h),
-              child: _buildMilestoneCard(context, milestone, index),
-            ),
-          );
-        }),
+        _AnimatedMilestonesList(milestones: achievements.milestones),
       ],
     );
   }
@@ -464,6 +477,227 @@ class _AllRecordsView extends StatelessWidget {
                 color: ColorsManager.getSecondaryText(context),
               ),
               textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AnimatedMilestonesList extends StatefulWidget {
+  final List<MilestoneModel> milestones;
+
+  const _AnimatedMilestonesList({required this.milestones});
+
+  @override
+  State<_AnimatedMilestonesList> createState() =>
+      _AnimatedMilestonesListState();
+}
+
+class _AnimatedMilestonesListState extends State<_AnimatedMilestonesList>
+    with TickerProviderStateMixin {
+  late List<AnimationController> _controllers;
+  late List<Animation<double>> _animations;
+
+  @override
+  void initState() {
+    super.initState();
+    _setupAnimations();
+  }
+
+  void _setupAnimations() {
+    final count = widget.milestones.length;
+
+    _controllers = List.generate(
+      count,
+      (index) => AnimationController(
+        duration: const Duration(milliseconds: 500),
+        vsync: this,
+      ),
+    );
+
+    _animations = _controllers.map((controller) {
+      return CurvedAnimation(parent: controller, curve: Curves.easeOutCubic);
+    }).toList();
+
+    // ✅ Increased delay from 100ms to 200ms
+    for (int i = 0; i < count; i++) {
+      Future.delayed(Duration(milliseconds: i * 200), () {
+        if (mounted) _controllers[i].forward();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: widget.milestones.asMap().entries.map((entry) {
+        final index = entry.key;
+        final milestone = entry.value;
+
+        return AnimatedBuilder(
+          animation: _animations[index],
+          builder: (context, child) {
+            return Opacity(
+              opacity: _animations[index].value,
+              child: Transform.translate(
+                offset: Offset(30 * (1 - _animations[index].value), 0),
+                child: Transform.scale(
+                  scale: 0.95 + (0.05 * _animations[index].value),
+                  child: child,
+                ),
+              ),
+            );
+          },
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 12.h),
+            child: _MilestoneCard(milestone: milestone, index: index),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+// ✅ Extract milestone card to separate widget
+class _MilestoneCard extends StatelessWidget {
+  final MilestoneModel milestone;
+  final int index;
+
+  const _MilestoneCard({required this.milestone, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colors = [
+      ColorsManager.orange,
+      ColorsManager.getPrimaryGreen(context),
+      ColorsManager.info,
+    ];
+    final color = colors[index % colors.length];
+
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => RecordDetailScreen(milestone: milestone),
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              color.withValues(alpha: isDark ? 0.2 : 0.12),
+              color.withValues(alpha: isDark ? 0.1 : 0.04),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(
+            color: color.withValues(alpha: isDark ? 0.3 : 0.25),
+            width: 1.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: color.withValues(alpha: isDark ? 0.2 : 0.15),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: -10.w,
+              top: -10.h,
+              child: Opacity(
+                opacity: isDark ? 0.05 : 0.08,
+                child: Text(milestone.icon, style: TextStyle(fontSize: 60.sp)),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16.w),
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(12.w),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [color, color.withValues(alpha: 0.7)],
+                      ),
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: color.withValues(alpha: 0.3),
+                          blurRadius: 8,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      milestone.icon,
+                      style: TextStyle(fontSize: 24.sp),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          milestone.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: color,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 4.h),
+                        Text(
+                          milestone.description,
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: ColorsManager.getPrimaryText(context),
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 6.h),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_today_rounded,
+                              size: 11.sp,
+                              color: ColorsManager.getSecondaryText(context),
+                            ),
+                            SizedBox(width: 4.w),
+                            Text(
+                              DateFormat('MMM d, yyyy').format(milestone.date),
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: ColorsManager.getSecondaryText(context),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(Icons.chevron_right_rounded, color: color, size: 24.sp),
+                ],
+              ),
             ),
           ],
         ),

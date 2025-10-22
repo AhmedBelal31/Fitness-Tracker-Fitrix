@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:fitrix/core/theming/styles.dart';
 import 'package:intl/intl.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../generated/l10n.dart';
@@ -30,14 +29,14 @@ class ProgressBarChart extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: BarChart(
         BarChartData(
-          alignment: BarChartAlignment.spaceAround, // ✅ Better spacing
+          alignment: BarChartAlignment.spaceAround,
           maxY: _getMaxY(),
           minY: _getMinY(),
-          groupsSpace: 4.w, // ✅ Space between bar groups
+          groupsSpace: 4.w,
           barTouchData: BarTouchData(
             enabled: true,
             touchTooltipData: BarTouchTooltipData(
-              getTooltipColor: (group) => ColorsManager.cardBackground,
+              getTooltipColor: (group) => Theme.of(context).cardTheme.color!,
               tooltipBorderRadius: BorderRadius.circular(8.r),
               tooltipPadding: EdgeInsets.symmetric(
                 horizontal: 12.w,
@@ -47,8 +46,10 @@ class ProgressBarChart extends StatelessWidget {
                 final date = data[group.x].date;
                 return BarTooltipItem(
                   '${rod.toY.toStringAsFixed(1)}$unit\n${DateFormat('MMM d, yyyy').format(date)}',
-                  TextStyles.font12WhiteSemiBold.copyWith(
-                    color: ColorsManager.primaryText,
+                  TextStyle(
+                    fontSize: 12,
+                    color: ColorsManager.getPrimaryText(context),
+                    fontWeight: FontWeight.w600,
                   ),
                 );
               },
@@ -65,23 +66,23 @@ class ProgressBarChart extends StatelessWidget {
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 40.h, // ✅ More space
+                reservedSize: 40.h,
                 getTitlesWidget: (value, meta) {
-                  return _buildBottomTitle(value.toInt());
+                  return _buildBottomTitle(value.toInt(), context);
                 },
               ),
             ),
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                interval: _getLeftInterval(), // ✅ Dynamic interval
+                interval: _getLeftInterval(),
                 reservedSize: 50.w,
                 getTitlesWidget: (value, meta) {
                   return Text(
                     '${value.toInt()}$unit',
-                    style: TextStyles.font10WhiteRegular.copyWith(
-                      color: ColorsManager.secondaryText,
+                    style: TextStyle(
                       fontSize: 10.sp,
+                      color: ColorsManager.getSecondaryText(context),
                     ),
                   );
                 },
@@ -94,7 +95,9 @@ class ProgressBarChart extends StatelessWidget {
             horizontalInterval: _getLeftInterval(),
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: ColorsManager.lightText.withOpacity(0.1),
+                color: ColorsManager.getSecondaryText(
+                  context,
+                ).withValues(alpha: 0.2),
                 strokeWidth: 1,
               );
             },
@@ -111,7 +114,7 @@ class ProgressBarChart extends StatelessWidget {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
-                  width: _getBarWidth(), // ✅ Dynamic bar width
+                  width: _getBarWidth(),
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(4.r),
                   ),
@@ -124,35 +127,24 @@ class ProgressBarChart extends StatelessWidget {
     );
   }
 
-  // ✅ FIXED: Smart bottom title rendering
-  Widget _buildBottomTitle(int index) {
-    if (index < 0 || index >= data.length) {
-      return const SizedBox.shrink();
-    }
+  Widget _buildBottomTitle(int index, BuildContext context) {
+    if (index < 0 || index >= data.length) return const SizedBox.shrink();
 
     final date = data[index].date;
-
-    // Determine which dates to show based on data length
     final showInterval = _getBottomTitleInterval();
 
-    // Only show dates at the calculated interval
     if (index % showInterval != 0 && index != data.length - 1) {
       return const SizedBox.shrink();
     }
 
-    // Format date based on data length
     String dateLabel;
     if (data.length <= 7) {
-      // Show day of week for 7 days
       dateLabel = DateFormat('EEE').format(date);
     } else if (data.length <= 30) {
-      // Show "d" for 30 days
       dateLabel = DateFormat('d').format(date);
     } else if (data.length <= 90) {
-      // Show "MMM d" for 90 days
       dateLabel = DateFormat('MMM d').format(date);
     } else {
-      // Show "MMM" for longer periods
       dateLabel = DateFormat('MMM').format(date);
     }
 
@@ -160,26 +152,24 @@ class ProgressBarChart extends StatelessWidget {
       padding: EdgeInsets.only(top: 8.h),
       child: Text(
         dateLabel,
-        style: TextStyles.font10WhiteRegular.copyWith(
-          color: ColorsManager.secondaryText,
+        style: TextStyle(
           fontSize: 9.sp,
+          color: ColorsManager.getSecondaryText(context),
         ),
         textAlign: TextAlign.center,
       ),
     );
   }
 
-  // ✅ Calculate how many dates to skip
   int _getBottomTitleInterval() {
-    if (data.length <= 7) return 1; // Show all
-    if (data.length <= 14) return 2; // Show every 2nd
-    if (data.length <= 30) return 5; // Show every 5th
-    if (data.length <= 60) return 10; // Show every 10th
-    if (data.length <= 90) return 15; // Show every 15th
-    return 30; // Show every 30th for longer periods
+    if (data.length <= 7) return 1;
+    if (data.length <= 14) return 2;
+    if (data.length <= 30) return 5;
+    if (data.length <= 60) return 10;
+    if (data.length <= 90) return 15;
+    return 30;
   }
 
-  // ✅ Dynamic bar width based on data length
   double _getBarWidth() {
     if (data.length <= 7) return 16.w;
     if (data.length <= 14) return 12.w;
@@ -188,7 +178,6 @@ class ProgressBarChart extends StatelessWidget {
     return 4.w;
   }
 
-  // ✅ Dynamic left axis interval
   double _getLeftInterval() {
     final range = _getMaxY() - _getMinY();
     if (range <= 50) return 10;
@@ -219,9 +208,19 @@ class ProgressBarChart extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.bar_chart, size: 48.sp, color: ColorsManager.lightText),
+          Icon(
+            Icons.bar_chart,
+            size: 48.sp,
+            color: ColorsManager.getSecondaryText(context),
+          ),
           SizedBox(height: 12.h),
-          Text(s.no_data_available, style: TextStyles.bodyMedium),
+          Text(
+            s.no_data_available,
+            style: TextStyle(
+              fontSize: 14,
+              color: ColorsManager.getPrimaryText(context),
+            ),
+          ),
         ],
       ),
     );

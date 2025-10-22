@@ -194,6 +194,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "choose_section_for_exercise": MessageLookupByLibrary.simpleMessage(
       "Choose a Section",
     ),
+    "choose_your_theme": MessageLookupByLibrary.simpleMessage(
+      "Personalize your app appearance",
+    ),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "clear_filters": MessageLookupByLibrary.simpleMessage("Clear Filters"),
     "cm": MessageLookupByLibrary.simpleMessage("cm"),
@@ -296,6 +299,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "custom_exercises": MessageLookupByLibrary.simpleMessage(
       "Custom Exercises",
     ),
+    "dark": MessageLookupByLibrary.simpleMessage("Dark"),
+    "dark_theme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "dark_theme_desc": MessageLookupByLibrary.simpleMessage("Easy on the eyes"),
     "dataSecurity": MessageLookupByLibrary.simpleMessage("Security"),
     "dataSecurityText": MessageLookupByLibrary.simpleMessage(
       "Your data is encrypted",
@@ -613,6 +619,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "legs": MessageLookupByLibrary.simpleMessage("Legs"),
     "legs_description": MessageLookupByLibrary.simpleMessage(
       "Lower body power",
+    ),
+    "light": MessageLookupByLibrary.simpleMessage("Light"),
+    "light_theme": MessageLookupByLibrary.simpleMessage("Light Mode"),
+    "light_theme_desc": MessageLookupByLibrary.simpleMessage(
+      "Bright and clean interface",
     ),
     "line_chart": MessageLookupByLibrary.simpleMessage("Line"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
@@ -949,6 +960,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "section_order_saved": MessageLookupByLibrary.simpleMessage(
       "Section order saved successfully",
     ),
+    "sections": MessageLookupByLibrary.simpleMessage("Sections"),
     "secure_your_account": MessageLookupByLibrary.simpleMessage(
       "Secure your account with a strong password",
     ),
@@ -1038,6 +1050,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Support team ready",
     ),
     "suspension_trainer": MessageLookupByLibrary.simpleMessage("TRX"),
+    "system": MessageLookupByLibrary.simpleMessage("System"),
+    "system_theme": MessageLookupByLibrary.simpleMessage("System Default"),
+    "system_theme_desc": MessageLookupByLibrary.simpleMessage(
+      "Follows device settings",
+    ),
     "take_a_picture": MessageLookupByLibrary.simpleMessage("Camera"),
     "tap_add_to_start": MessageLookupByLibrary.simpleMessage("Tap + to add"),
     "tap_to_add_exercise": MessageLookupByLibrary.simpleMessage("Tap to add"),
@@ -1176,6 +1193,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Workout done!",
     ),
     "workout_date": MessageLookupByLibrary.simpleMessage("Date"),
+    "workout_details": MessageLookupByLibrary.simpleMessage("Workout Details"),
     "workout_history": MessageLookupByLibrary.simpleMessage("History"),
     "workout_not_found": MessageLookupByLibrary.simpleMessage("Not Found"),
     "workout_sections": MessageLookupByLibrary.simpleMessage("Sections"),

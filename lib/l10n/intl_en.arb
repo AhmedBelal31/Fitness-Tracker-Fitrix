@@ -807,6 +807,18 @@
   "backToLogin": "Back to Login",
   "resetPasswordInfo": "We'll send a password reset link to your email",
   "selected": "Selected",
-
+  "workout_details": "Workout Details",
+"sections": "Sections",
+  "theme": "Theme",
+  "choose_your_theme": "Personalize your app appearance",
+  "light_theme": "Light Mode",
+  "light_theme_desc": "Bright and clean interface",
+  "dark_theme": "Dark Mode",
+  "dark_theme_desc": "Easy on the eyes",
+  "system_theme": "System Default",
+  "system_theme_desc": "Follows device settings",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
   "X": "X"
 }

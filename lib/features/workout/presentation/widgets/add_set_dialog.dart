@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/common_ui/widgets/form_fields/app_text_field.dart';
+import '../../../../core/common_ui/widgets/custom_text_field.dart';
 import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/workouts_cubit.dart';
 import '../cubit/workouts_state.dart';
@@ -81,7 +80,6 @@ class _AddSetDialogState extends State<AddSetDialog> {
           : null;
 
       if (widget.isEdit && widget.setId != null) {
-        // Provide all required params from current UI values and widget props
         context.read<WorkoutsCubit>().updateExerciseSet(
           sessionId: widget.sessionId,
           exerciseId: widget.exerciseId,
@@ -91,7 +89,6 @@ class _AddSetDialogState extends State<AddSetDialog> {
           weightKg: weight,
           restTimeSeconds: restTime,
           notes: notes,
-          // Assuming these defaults or add UI for toggling:
           isCompleted: true,
           isPersonalRecord: false,
         );
@@ -112,9 +109,10 @@ class _AddSetDialogState extends State<AddSetDialog> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Dialog(
-      backgroundColor: ColorsManager.cardBackground,
+      backgroundColor: Theme.of(context).cardTheme.color,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
       child: BlocConsumer<WorkoutsCubit, WorkoutsState>(
         listener: (context, state) {
@@ -134,145 +132,168 @@ class _AddSetDialogState extends State<AddSetDialog> {
         builder: (context, state) {
           final isLoading = state is WorkoutsLoading;
 
-          return Padding(
-            padding: EdgeInsets.all(20.w),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        widget.isEdit ? s.edit_set : s.add_set,
-                        style: TextStyles.headline3,
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12.w,
-                          vertical: 6.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: ColorsManager.primaryGreen.withValues(
-                            alpha: 0.1,
-                          ),
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: Text(
-                          '${s.set} ${widget.setNumber}',
-                          style: TextStyles.bodyMedium.copyWith(
-                            color: ColorsManager.primaryGreen,
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(20.w),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          widget.isEdit ? s.edit_set : s.add_set,
+                          style: TextStyle(
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: ColorsManager.getPrimaryText(context),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20.h),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: AppTextField(
-                          controller: _repsController,
-                          label: s.reps,
-                          hintText: '12',
-                          isRequired: true,
-                          enabled: !isLoading,
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return s.please_enter_reps;
-                            }
-                            if (int.tryParse(value) == null) {
-                              return s.please_enter_valid_number;
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(width: 12.w),
-                      Expanded(
-                        child: AppTextField(
-                          controller: _weightController,
-                          label: s.weight_kg,
-                          hintText: '10',
-                          isRequired: true,
-                          enabled: !isLoading,
-                          keyboardType: TextInputType.numberWithOptions(
-                            decimal: true,
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12.w,
+                            vertical: 6.h,
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return s.please_enter_weight;
-                            }
-                            if (double.tryParse(value) == null) {
-                              return s.please_enter_valid_number;
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  AppTextField(
-                    controller: _restTimeController,
-                    label: s.rest_time_seconds,
-                    hintText: '60',
-                    enabled: !isLoading,
-                    keyboardType: TextInputType.number,
-                  ),
-                  SizedBox(height: 16.h),
-                  AppTextField(
-                    controller: _notesController,
-                    label: s.notes,
-                    hintText: s.optional_notes,
-                    enabled: !isLoading,
-                    maxLines: 2,
-                  ),
-                  SizedBox(height: 24.h),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextButton(
-                          onPressed: isLoading
-                              ? null
-                              : () => Navigator.pop(context),
-                          child: Text(s.cancel),
-                        ),
-                      ),
-                      SizedBox(width: 12.w),
-                      Expanded(
-                        flex: 2,
-                        child: ElevatedButton(
-                          onPressed: isLoading ? null : _submitForm,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorsManager.primaryGreen,
-                            padding: EdgeInsets.symmetric(vertical: 14.h),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.r),
+                          decoration: BoxDecoration(
+                            color: ColorsManager.getPrimaryGreen(
+                              context,
+                            ).withValues(alpha: isDark ? 0.15 : 0.1),
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Text(
+                            '${s.set} ${widget.setNumber}',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: ColorsManager.getPrimaryGreen(context),
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          child: isLoading
-                              ? SizedBox(
-                                  height: 20.h,
-                                  width: 20.w,
-                                  child: const CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                    color: Colors.white,
-                                  ),
-                                )
-                              : Text(
-                                  widget.isEdit ? s.update : s.add,
-                                  style: TextStyles.buttonMedium,
-                                ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            controller: _repsController,
+                            label: s.reps,
+                            hint: '12',
+                            isRequired: true,
+                            enabled: !isLoading,
+                            keyboardType: TextInputType.number,
+                            prefixIcon: Icons.repeat,
+                            validator: (value) {
+                              if (value == null || value.isEmpty)
+                                return s.please_enter_reps;
+                              if (int.tryParse(value) == null)
+                                return s.please_enter_valid_number;
+                              return null;
+                            },
+                          ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          child: CustomTextField(
+                            controller: _weightController,
+                            label: s.weight_kg,
+                            hint: '10',
+                            isRequired: true,
+                            enabled: !isLoading,
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
+                            prefixIcon: Icons.fitness_center,
+                            validator: (value) {
+                              if (value == null || value.isEmpty)
+                                return s.please_enter_weight;
+                              if (double.tryParse(value) == null)
+                                return s.please_enter_valid_number;
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 16.h),
+                    CustomTextField(
+                      controller: _restTimeController,
+                      label: s.rest_time_seconds,
+                      hint: '60',
+                      enabled: !isLoading,
+                      keyboardType: TextInputType.number,
+                      prefixIcon: Icons.timer,
+                    ),
+                    SizedBox(height: 16.h),
+                    CustomTextField(
+                      controller: _notesController,
+                      label: s.notes,
+                      hint: s.optional_notes,
+                      enabled: !isLoading,
+                      maxLines: 2,
+                      prefixIcon: Icons.note_outlined,
+                    ),
+                    SizedBox(height: 24.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                            onPressed: isLoading
+                                ? null
+                                : () => Navigator.pop(context),
+                            child: Text(
+                              s.cancel,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: ColorsManager.getPrimaryText(context),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          flex: 2,
+                          child: ElevatedButton(
+                            onPressed: isLoading ? null : _submitForm,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorsManager.getPrimaryGreen(
+                                context,
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 14.h),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                            ),
+                            child: isLoading
+                                ? SizedBox(
+                                    height: 20.h,
+                                    width: 20.w,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                      color: isDark
+                                          ? ColorsManager.darkScaffold
+                                          : Colors.white,
+                                    ),
+                                  )
+                                : Text(
+                                    widget.isEdit ? s.update : s.add,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: isDark
+                                          ? ColorsManager.darkScaffold
+                                          : Colors.white,
+                                    ),
+                                  ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );

@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -327,10 +328,12 @@ class _SectionAppBarState extends State<SectionAppBar>
         widget.isAddingToWorkout
             ? '${s.add_exercise} - ${widget.sectionName}'
             : widget.sectionName,
-        style: TextStyle(
-          fontSize: 18.sp,
+        style: GoogleFonts.aBeeZee(
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
-          color: isDark ? ColorsManager.darkScaffold : Colors.white,
+          color: isDark
+              ? ColorsManager.darkScaffold.withValues(alpha: .7)
+              : Colors.white,
           shadows: [
             Shadow(
               color: Colors.black.withValues(alpha: 0.3),

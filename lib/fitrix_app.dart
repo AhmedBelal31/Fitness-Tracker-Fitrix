@@ -47,7 +47,6 @@ class FitrixApp extends StatelessWidget {
                   theme: AppTheme.getLightTheme(currentLocale),
                   darkTheme: AppTheme.getDarkTheme(currentLocale),
                   themeMode: themeState.themeMode,
-                  // themeMode: ThemeMode.system,
                   locale: currentLocale,
                   localizationsDelegates: const [
                     S.delegate,
