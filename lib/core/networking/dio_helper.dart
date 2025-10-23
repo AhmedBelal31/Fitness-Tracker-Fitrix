@@ -98,6 +98,28 @@ class ApiService {
     );
   }
 
+  Future<Response> postRequestWithUrlEncoded(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+    CancelToken? cancelToken,
+  }) {
+    return _dio.post(
+      endpoint,
+      data: data,
+      options: Options(
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          ...?headers,
+        },
+        followRedirects: false,
+        validateStatus: (status) => status != null && status < 500,
+        contentType: Headers.formUrlEncodedContentType,
+      ),
+      cancelToken: cancelToken,
+    );
+  }
+
   // ========== PUT REQUEST (JSON) ==========
   Future<Response> putRequest(
     String endpoint, {

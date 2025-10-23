@@ -22,9 +22,9 @@ class ProfileRepositoryImpl implements ProfileRepository {
     try {
       dev.log('📤 Sending complete profile request', name: 'ProfileRepository');
 
-      final response = await _apiService.postRequestWithFormData(
+      final response = await _apiService.postRequestWithUrlEncoded(
         ApiEndpoints.completeProfile,
-        params.toFormData(),
+        params.toMap(),
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -134,67 +134,6 @@ class ProfileRepositoryImpl implements ProfileRepository {
     }
   }
 
-  // @override
-  // Future<Either<Failure, LoginProfileModel>> updateProfile(
-  //   UpdateProfileParams params,
-  // ) async {
-  //   try {
-  //     dev.log('📤 Sending update profile request', name: 'ProfileRepository');
-  //
-  //     final response = await _apiService.putRequestWithFormData(
-  //       ApiEndpoints.updateProfile,
-  //       params.toFormData(),
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       dev.log('✅ Profile update successful', name: 'ProfileRepository');
-  //
-  //       final profileData = response.data;
-  //
-  //       if (profileData == null) {
-  //         dev.log('⚠️ No profile data in response', name: 'ProfileRepository');
-  //         return Left(ServerFailure('No profile data received'));
-  //       }
-  //
-  //       try {
-  //         final profileModel = LoginProfileModel.fromJson(profileData);
-  //
-  //         dev.log(
-  //           '✅ Updated profile parsed: ${profileModel.firstName} ${profileModel.lastName}',
-  //           name: 'ProfileRepository',
-  //         );
-  //
-  //         return Right(profileModel);
-  //       } catch (e) {
-  //         dev.log(
-  //           '❌ Failed to parse profile data: $e',
-  //           name: 'ProfileRepository',
-  //         );
-  //         return Left(ServerFailure('Failed to parse profile data: $e'));
-  //       }
-  //     } else {
-  //       dev.log(
-  //         '❌ Profile update failed: ${response.statusCode}',
-  //         name: 'ProfileRepository',
-  //       );
-  //       return Left(
-  //         ServerFailure.fromResponse(response.statusCode, response.data),
-  //       );
-  //     }
-  //   } on DioException catch (e) {
-  //     dev.log(
-  //       '❌ DioException during profile update: ${e.message}',
-  //       name: 'ProfileRepository',
-  //     );
-  //     return Left(ServerFailure.fromDioException(e));
-  //   } catch (e) {
-  //     dev.log(
-  //       '❌ Unexpected error during profile update: $e',
-  //       name: 'ProfileRepository',
-  //     );
-  //     return Left(ServerFailure(e.toString()));
-  //   }
-  // }
   @override
   Future<Either<Failure, LoginProfileModel>> updateProfile(
     UpdateProfileParams params,

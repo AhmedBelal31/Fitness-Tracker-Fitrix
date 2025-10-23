@@ -144,3 +144,8 @@ class UnauthorizedFailure extends Failure {
 class NotFoundFailure extends Failure {
   const NotFoundFailure(super.message);
 }
+
+// Unexpected Failure
+class UnexpectedFailure extends Failure {
+  const UnexpectedFailure(super.message);
+}

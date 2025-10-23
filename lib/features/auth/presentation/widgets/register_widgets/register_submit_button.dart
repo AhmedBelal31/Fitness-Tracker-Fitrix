@@ -38,13 +38,35 @@ class RegisterSubmitButton extends StatelessWidget {
     if (formKey.currentState?.validate() ?? false) {
       final formData = controller.getFormData();
 
+      String phoneNumber = formData['phoneNumber'] as String;
+
+      phoneNumber = _formatPhoneNumber(phoneNumber);
+
       cubit.register(
         userName: formData['userName'] as String,
         email: formData['email'] as String,
         password: formData['password'] as String,
-        phoneNumber: formData['phoneNumber'] as String,
+        phoneNumber: phoneNumber,
         role: formData['role'] as int,
       );
     }
+  }
+
+  String _formatPhoneNumber(String phone) {
+    phone = phone.replaceAll(RegExp(r'[\s\-\(\)]'), '');
+
+    if (phone.startsWith('+20')) {
+      return '0${phone.substring(3)}';
+    }
+
+    if (phone.startsWith('20') && !phone.startsWith('0')) {
+      return '0${phone.substring(2)}';
+    }
+
+    if (!phone.startsWith('0')) {
+      return '0$phone';
+    }
+
+    return phone;
   }
 }

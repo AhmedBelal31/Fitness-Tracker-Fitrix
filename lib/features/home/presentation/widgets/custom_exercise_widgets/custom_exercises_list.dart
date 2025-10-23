@@ -24,7 +24,7 @@ class CustomExercisesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async => onRefresh(),
-      color: ColorsManager.primaryGreen,
+      color: ColorsManager.getPrimaryGreen(context),
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
         itemCount: exercises.length,

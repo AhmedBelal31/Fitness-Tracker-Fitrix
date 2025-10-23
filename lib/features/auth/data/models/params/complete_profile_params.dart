@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
 class CompleteProfileParams extends Equatable {
@@ -6,6 +5,7 @@ class CompleteProfileParams extends Equatable {
   final String lastName;
   final String gender;
   final double? weightKg;
+  // final double? weightGoal;
   final double? bodyFatPercent;
   final double? muscleMassKg;
 
@@ -14,20 +14,22 @@ class CompleteProfileParams extends Equatable {
     required this.lastName,
     required this.gender,
     this.weightKg,
+    // this.weightGoal,
     this.bodyFatPercent,
     this.muscleMassKg,
   });
 
-  FormData toFormData() {
+  Map<String, dynamic> toMap() {
     final map = <String, dynamic>{
       'FirstName': firstName,
       'LastName': lastName,
       'Gender': gender == "Male" ? 1 : 2,
     };
     if (weightKg != null) map['WeightKg'] = weightKg;
+    // if (weightKg != null) map['WeightGoal'] = weightKg;
     if (bodyFatPercent != null) map['BodyFatPercent'] = bodyFatPercent;
     if (muscleMassKg != null) map['MuscleMassKg'] = muscleMassKg;
-    return FormData.fromMap(map);
+    return map;
   }
 
   @override

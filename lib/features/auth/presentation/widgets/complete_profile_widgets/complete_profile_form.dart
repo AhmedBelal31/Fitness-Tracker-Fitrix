@@ -61,8 +61,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 _validators.validateRequired(v, s.firstName, context),
           ),
           const SizedBox(height: 16),
-
-          // 👇 Last Name with hint
           CustomTextField(
             controller: widget.controller.lastNameController,
             label: s.lastName,
@@ -72,7 +70,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 _validators.validateRequired(v, s.lastName, context),
           ),
           const SizedBox(height: 16),
-
           GenderSelector(
             selected: widget.controller.selectedGender,
             onChanged: (gender) {
@@ -100,19 +97,15 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               ),
             ),
           const SizedBox(height: 16),
-
-          // 👇 Weight (Required) with hint
           CustomTextField(
             controller: widget.controller.weightController,
             label: '${s.weightKg} *',
-            hint: s.enterWeight, // 👈 Added hint
+            hint: s.enterWeight,
             prefixIcon: Icons.monitor_weight_outlined,
             keyboardType: TextInputType.number,
             validator: (v) => _validators.validateWeight(v, context),
           ),
           const SizedBox(height: 16),
-
-          // 👇 Body Fat (Optional) with hint
           CustomTextField(
             controller: widget.controller.bodyFatController,
             label: s.bodyFatPercent,
@@ -122,7 +115,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             validator: (v) => _validators.validateBodyFat(v, context),
           ),
           const SizedBox(height: 16),
-
           CustomTextField(
             controller: widget.controller.muscleMassController,
             label: s.muscleMassKg,
@@ -132,8 +124,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             validator: (v) => _validators.validateMuscleMass(v, context),
           ),
           const SizedBox(height: 32),
-
-          // Submit Button
           BlocBuilder<CompleteProfileCubit, CompleteProfileState>(
             builder: (context, state) {
               return CustomButton(
@@ -143,7 +133,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 onPressed: state.isLoading
                     ? null
                     : () {
-                        setState(() {}); // Trigger validation
+                        setState(() {});
                         if (widget.formKey.currentState!.validate() &&
                             _validators.validateGender(
                                   widget.controller.selectedGender,

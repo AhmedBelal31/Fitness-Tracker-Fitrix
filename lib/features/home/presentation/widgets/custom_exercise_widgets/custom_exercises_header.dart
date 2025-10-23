@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/app_colors.dart';
-import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class CustomExercisesHeader extends StatelessWidget {
@@ -33,7 +32,7 @@ class CustomExercisesHeader extends StatelessWidget {
             IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: ColorsManager.primaryText,
+                color: ColorsManager.getPrimaryText(context),
                 size: 20.sp,
               ),
               onPressed: onBackPressed,
@@ -43,12 +42,20 @@ class CustomExercisesHeader extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(s.my_custom_exercises, style: TextStyles.headline3),
+                  Text(
+                    s.my_custom_exercises,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: ColorsManager.getPrimaryText(context),
+                    ),
+                  ),
                   SizedBox(height: 4.h),
                   Text(
                     s.manage_your_exercises,
-                    style: TextStyles.caption.copyWith(
-                      color: ColorsManager.secondaryText,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: ColorsManager.getSecondaryText(context),
                     ),
                   ),
                 ],
