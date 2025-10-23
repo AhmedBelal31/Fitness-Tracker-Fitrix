@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 // class AppTheme {
-//   // ✅ Get font family based on locale
 //   static String getFontFamily(Locale locale) {
 //     if (locale.languageCode == 'ar') {
 //       return GoogleFonts.cairo().fontFamily!;
@@ -12,19 +11,16 @@ import 'app_colors.dart';
 //     }
 //   }
 //
-//   // ✅ Light theme
 //   static ThemeData getLightTheme(Locale locale) {
 //     final fontFamily = getFontFamily(locale);
 //
 //     return ThemeData(
 //       useMaterial3: true,
 //       brightness: Brightness.light,
-//       scaffoldBackgroundColor: ColorsManager.scaffoldBackground,
+//       scaffoldBackgroundColor: ColorsManager.lightScaffoldBackground,
 //       fontFamily: fontFamily,
-//
-//       // AppBar Theme
 //       appBarTheme: AppBarTheme(
-//         backgroundColor: ColorsManager.scaffoldBackground,
+//         backgroundColor: Colors.transparent,
 //         elevation: 0,
 //         centerTitle: true,
 //         scrolledUnderElevation: 0,
@@ -32,176 +28,232 @@ import 'app_colors.dart';
 //           fontFamily: fontFamily,
 //           fontSize: 20,
 //           fontWeight: FontWeight.bold,
-//           color: ColorsManager.primaryText,
+//           color: ColorsManager.lightPrimaryText,
 //         ),
-//         iconTheme: const IconThemeData(color: ColorsManager.primaryText),
+//         iconTheme: const IconThemeData(color: ColorsManager.lightPrimaryText),
 //       ),
-//
-//       // Primary Color
 //       primaryColor: ColorsManager.primaryGreen,
 //       colorScheme: ColorScheme.fromSeed(
 //         seedColor: ColorsManager.primaryGreen,
 //         brightness: Brightness.light,
+//         surface: ColorsManager.lightCardBackground,
 //       ),
-//
-//       // Card Theme
 //       cardTheme: CardThemeData(
-//         color: ColorsManager.cardBackground,
+//         color: ColorsManager.lightCardBackground,
 //         elevation: 2,
-//         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-//       ),
-//
-//       // Input Decoration Theme
-//       inputDecorationTheme: InputDecorationTheme(
-//         filled: true,
-//         fillColor: ColorsManager.inputBackground,
-//         border: OutlineInputBorder(
-//           borderRadius: BorderRadius.circular(12),
-//           borderSide: BorderSide.none,
-//         ),
-//         hintStyle: TextStyle(fontFamily: fontFamily, color: Colors.grey[600]),
-//       ),
-//
-//       // Button Theme
-//       elevatedButtonTheme: ElevatedButtonThemeData(
-//         style: ElevatedButton.styleFrom(
-//           backgroundColor: ColorsManager.primaryGreen,
-//           textStyle: TextStyle(
-//             fontFamily: fontFamily,
-//             fontSize: 16,
-//             fontWeight: FontWeight.w600,
-//           ),
-//         ),
-//       ),
-//
-//       // Text Theme
-//       textTheme: _buildTextTheme(fontFamily, Brightness.light),
-//     );
-//   }
-//
-//   // ✅ DARK THEME - Elegant & Modern
-//   static ThemeData getDarkTheme(Locale locale) {
-//     final fontFamily = getFontFamily(locale);
-//
-//     return ThemeData(
-//       useMaterial3: true,
-//       brightness: Brightness.dark,
-//       scaffoldBackgroundColor: const Color(0xFF0F1419), // Deep dark background
-//       fontFamily: fontFamily,
-//
-//       // AppBar Theme
-//       appBarTheme: AppBarTheme(
-//         backgroundColor: const Color(0xFF0F1419),
-//         elevation: 0,
-//         titleTextStyle: TextStyle(
-//           fontFamily: fontFamily,
-//           fontSize: 20,
-//           fontWeight: FontWeight.bold,
-//           color: const Color(0xFFE8EAED), // Light text
-//         ),
-//         iconTheme: const IconThemeData(color: Color(0xFFE8EAED)),
-//       ),
-//
-//       // Primary Color - Vibrant green for dark mode
-//       primaryColor: const Color(0xFF4ADE80), // Brighter green
-//       colorScheme: ColorScheme.fromSeed(
-//         seedColor: const Color(0xFF4ADE80),
-//         brightness: Brightness.dark,
-//         background: const Color(0xFF0F1419),
-//         surface: const Color(0xFF1A1F26), // Card background
-//         primary: const Color(0xFF4ADE80),
-//         secondary: const Color(0xFF38A169),
-//         error: const Color(0xFFFF6B6B),
-//       ),
-//
-//       // Card Theme - Elevated dark cards
-//       cardTheme: CardThemeData(
-//         color: const Color(0xFF1A1F26),
-//         elevation: 4,
-//         shadowColor: Colors.black.withOpacity(0.3),
+//         shadowColor: Colors.black.withValues(alpha: 0.08),
 //         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
 //       ),
-//
-//       // Input Decoration Theme - Dark inputs
 //       inputDecorationTheme: InputDecorationTheme(
 //         filled: true,
-//         fillColor: const Color(0xFF1A1F26),
+//         fillColor: ColorsManager.lightInputBackground,
 //         hintStyle: TextStyle(
 //           fontFamily: fontFamily,
-//           color: const Color(0xFF6B7280),
+//           color: Colors.grey.shade600,
+//           fontSize: 14,
 //         ),
 //         labelStyle: TextStyle(
 //           fontFamily: fontFamily,
-//           color: const Color(0xFF9CA3AF),
+//           color: ColorsManager.lightSecondaryText,
 //         ),
 //         border: OutlineInputBorder(
-//           borderRadius: BorderRadius.circular(12),
-//           borderSide: const BorderSide(color: Color(0xFF2D3748)),
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: BorderSide(color: ColorsManager.lightBorder),
 //         ),
 //         enabledBorder: OutlineInputBorder(
-//           borderRadius: BorderRadius.circular(12),
-//           borderSide: const BorderSide(color: Color(0xFF2D3748)),
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: BorderSide(color: ColorsManager.lightBorder, width: 1),
 //         ),
 //         focusedBorder: OutlineInputBorder(
-//           borderRadius: BorderRadius.circular(12),
-//           borderSide: const BorderSide(color: Color(0xFF4ADE80), width: 2),
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: const BorderSide(
+//             color: ColorsManager.primaryGreen,
+//             width: 2,
+//           ),
+//         ),
+//         errorBorder: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: const BorderSide(color: ColorsManager.error, width: 1),
+//         ),
+//         focusedErrorBorder: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: const BorderSide(color: ColorsManager.error, width: 2),
 //         ),
 //       ),
-//
-//       // Button Theme - Vibrant green buttons
 //       elevatedButtonTheme: ElevatedButtonThemeData(
 //         style: ElevatedButton.styleFrom(
-//           backgroundColor: const Color(0xFF4ADE80),
-//           foregroundColor: const Color(0xFF0F1419),
+//           backgroundColor: ColorsManager.primaryGreen,
+//           foregroundColor: Colors.white,
 //           textStyle: TextStyle(
 //             fontFamily: fontFamily,
 //             fontSize: 16,
 //             fontWeight: FontWeight.w600,
 //           ),
 //           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(12),
+//             borderRadius: BorderRadius.circular(16),
 //           ),
 //           elevation: 2,
+//           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
 //         ),
 //       ),
-//
-//       // Icon Theme
-//       iconTheme: const IconThemeData(color: Color(0xFFE8EAED)),
-//
-//       // Divider Theme
-//       dividerTheme: const DividerThemeData(
-//         color: Color(0xFF2D3748),
+//       textButtonTheme: TextButtonThemeData(
+//         style: TextButton.styleFrom(
+//           foregroundColor: ColorsManager.primaryGreen,
+//           textStyle: TextStyle(
+//             fontFamily: fontFamily,
+//             fontSize: 16,
+//             fontWeight: FontWeight.w600,
+//           ),
+//         ),
+//       ),
+//       iconTheme: const IconThemeData(color: ColorsManager.lightPrimaryText),
+//       dividerTheme: DividerThemeData(
+//         color: ColorsManager.lightBorder,
 //         thickness: 1,
 //       ),
-//
-//       // Bottom Navigation Bar Theme
 //       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-//         backgroundColor: Color(0xFF1A1F26),
-//         selectedItemColor: Color(0xFF4ADE80),
-//         unselectedItemColor: Color(0xFF6B7280),
+//         backgroundColor: ColorsManager.lightCardBackground,
+//         selectedItemColor: ColorsManager.primaryGreen,
+//         unselectedItemColor: ColorsManager.lightSecondaryText,
+//         elevation: 8,
+//         type: BottomNavigationBarType.fixed,
+//       ),
+//       dialogTheme: DialogThemeData(
+//         backgroundColor: ColorsManager.lightCardBackground,
+//         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
 //         elevation: 8,
 //       ),
+//       textTheme: _buildTextTheme(fontFamily, Brightness.light),
+//     );
+//   }
 //
-//       // Dialog Theme
-//       dialogTheme: DialogThemeData(
-//         backgroundColor: const Color(0xFF1A1F26),
+//   static ThemeData getDarkTheme(Locale locale) {
+//     final fontFamily = getFontFamily(locale);
+//
+//     return ThemeData(
+//       useMaterial3: true,
+//       brightness: Brightness.dark,
+//       scaffoldBackgroundColor: ColorsManager.darkScaffold,
+//       fontFamily: fontFamily,
+//       appBarTheme: AppBarTheme(
+//         backgroundColor: Colors.transparent,
+//         elevation: 0,
+//         centerTitle: true,
+//         scrolledUnderElevation: 0,
+//         titleTextStyle: TextStyle(
+//           fontFamily: fontFamily,
+//           fontSize: 20,
+//           fontWeight: FontWeight.bold,
+//           color: ColorsManager.darkPrimaryText,
+//         ),
+//         iconTheme: const IconThemeData(color: ColorsManager.darkPrimaryText),
+//       ),
+//       primaryColor: ColorsManager.darkPrimaryGreen,
+//       colorScheme: ColorScheme.fromSeed(
+//         seedColor: ColorsManager.darkPrimaryGreen,
+//         brightness: Brightness.dark,
+//         surface: ColorsManager.darkSurface,
+//         primary: ColorsManager.darkPrimaryGreen,
+//         secondary: ColorsManager.darkSecondaryGreen,
+//         error: const Color(0xFFFF6B6B),
+//       ),
+//       cardTheme: CardThemeData(
+//         color: ColorsManager.darkSurface,
+//         elevation: 4,
+//         shadowColor: Colors.black.withValues(alpha: 0.4),
 //         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
 //       ),
-//
-//       // Text Theme
+//       inputDecorationTheme: InputDecorationTheme(
+//         filled: true,
+//         fillColor: ColorsManager.darkInputBackground,
+//         hintStyle: TextStyle(
+//           fontFamily: fontFamily,
+//           color: ColorsManager.darkHintText,
+//           fontSize: 14,
+//         ),
+//         labelStyle: TextStyle(
+//           fontFamily: fontFamily,
+//           color: ColorsManager.darkSecondaryText,
+//         ),
+//         border: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: BorderSide(color: ColorsManager.darkBorder),
+//         ),
+//         enabledBorder: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: BorderSide(color: ColorsManager.darkBorder, width: 1),
+//         ),
+//         focusedBorder: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: const BorderSide(
+//             color: ColorsManager.darkPrimaryGreen,
+//             width: 2,
+//           ),
+//         ),
+//         errorBorder: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: const BorderSide(color: Color(0xFFFF6B6B), width: 1),
+//         ),
+//         focusedErrorBorder: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(16),
+//           borderSide: const BorderSide(color: Color(0xFFFF6B6B), width: 2),
+//         ),
+//       ),
+//       elevatedButtonTheme: ElevatedButtonThemeData(
+//         style: ElevatedButton.styleFrom(
+//           backgroundColor: ColorsManager.darkPrimaryGreen,
+//           foregroundColor: ColorsManager.darkScaffold,
+//           textStyle: TextStyle(
+//             fontFamily: fontFamily,
+//             fontSize: 16,
+//             fontWeight: FontWeight.w600,
+//           ),
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(16),
+//           ),
+//           elevation: 2,
+//           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+//         ),
+//       ),
+//       textButtonTheme: TextButtonThemeData(
+//         style: TextButton.styleFrom(
+//           foregroundColor: ColorsManager.darkPrimaryGreen,
+//           textStyle: TextStyle(
+//             fontFamily: fontFamily,
+//             fontSize: 16,
+//             fontWeight: FontWeight.w600,
+//           ),
+//         ),
+//       ),
+//       iconTheme: const IconThemeData(color: ColorsManager.darkPrimaryText),
+//       dividerTheme: DividerThemeData(
+//         color: ColorsManager.darkBorder,
+//         thickness: 1,
+//       ),
+//       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+//         backgroundColor: ColorsManager.darkSurface,
+//         selectedItemColor: ColorsManager.darkPrimaryGreen,
+//         unselectedItemColor: ColorsManager.darkHintText,
+//         elevation: 8,
+//         type: BottomNavigationBarType.fixed,
+//       ),
+//       dialogTheme: DialogThemeData(
+//         backgroundColor: ColorsManager.darkSurface,
+//         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+//         elevation: 8,
+//       ),
 //       textTheme: _buildTextTheme(fontFamily, Brightness.dark),
 //     );
 //   }
 //
-//   // ✅ Build text theme based on brightness
 //   static TextTheme _buildTextTheme(String fontFamily, Brightness brightness) {
 //     final textColor = brightness == Brightness.light
-//         ? const Color(0xFF2D3748)
-//         : const Color(0xFFE8EAED);
+//         ? ColorsManager.lightPrimaryText
+//         : ColorsManager.darkPrimaryText;
 //
 //     final secondaryColor = brightness == Brightness.light
-//         ? const Color(0xFF4A5568)
-//         : const Color(0xFF9CA3AF);
+//         ? ColorsManager.lightSecondaryText
+//         : ColorsManager.darkSecondaryText;
 //
 //     return TextTheme(
 //       displayLarge: TextStyle(
@@ -209,64 +261,90 @@ import 'app_colors.dart';
 //         fontSize: 32,
 //         fontWeight: FontWeight.bold,
 //         color: textColor,
+//         letterSpacing: 0.5,
 //       ),
 //       displayMedium: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 28,
 //         fontWeight: FontWeight.bold,
 //         color: textColor,
+//         letterSpacing: 0.5,
 //       ),
 //       displaySmall: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 24,
 //         fontWeight: FontWeight.bold,
 //         color: textColor,
+//         letterSpacing: 0.3,
 //       ),
 //       headlineLarge: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 22,
 //         fontWeight: FontWeight.w600,
 //         color: textColor,
+//         letterSpacing: 0.3,
 //       ),
 //       headlineMedium: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 20,
 //         fontWeight: FontWeight.w600,
 //         color: textColor,
+//         letterSpacing: 0.3,
 //       ),
 //       headlineSmall: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 18,
 //         fontWeight: FontWeight.w600,
 //         color: textColor,
+//         letterSpacing: 0.3,
 //       ),
 //       bodyLarge: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 16,
 //         fontWeight: FontWeight.normal,
 //         color: textColor,
+//         height: 1.5,
 //       ),
 //       bodyMedium: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 14,
 //         fontWeight: FontWeight.normal,
 //         color: textColor,
+//         height: 1.5,
 //       ),
 //       bodySmall: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 12,
 //         fontWeight: FontWeight.normal,
 //         color: secondaryColor,
+//         height: 1.4,
 //       ),
 //       labelLarge: TextStyle(
 //         fontFamily: fontFamily,
 //         fontSize: 14,
 //         fontWeight: FontWeight.w600,
 //         color: textColor,
+//         letterSpacing: 0.3,
+//       ),
+//       labelMedium: TextStyle(
+//         fontFamily: fontFamily,
+//         fontSize: 12,
+//         fontWeight: FontWeight.w600,
+//         color: textColor,
+//         letterSpacing: 0.3,
+//       ),
+//       labelSmall: TextStyle(
+//         fontFamily: fontFamily,
+//         fontSize: 11,
+//         fontWeight: FontWeight.w500,
+//         color: secondaryColor,
+//         letterSpacing: 0.5,
 //       ),
 //     );
 //   }
 // }
+
+import 'dark_theme_variant.dart';
 
 class AppTheme {
   static String getFontFamily(Locale locale) {
@@ -303,6 +381,10 @@ class AppTheme {
         seedColor: ColorsManager.primaryGreen,
         brightness: Brightness.light,
         surface: ColorsManager.lightCardBackground,
+        primary: ColorsManager.primaryGreen,
+        secondary: ColorsManager.secondaryGreen,
+        tertiary: ColorsManager.lightGreen,
+        error: ColorsManager.error,
       ),
       cardTheme: CardThemeData(
         color: ColorsManager.lightCardBackground,
@@ -393,13 +475,24 @@ class AppTheme {
     );
   }
 
-  static ThemeData getDarkTheme(Locale locale) {
+  /// Get dark theme with specific variant
+  static ThemeData getDarkTheme(
+    Locale locale, {
+    DarkThemeVariant variant = DarkThemeVariant.classic,
+  }) {
     final fontFamily = getFontFamily(locale);
+
+    // Get colors based on variant
+    final scaffoldColor = _getDarkScaffoldColor(variant);
+    final surfaceColor = _getDarkSurfaceColor(variant);
+    final primaryColor = _getDarkPrimaryColor(variant);
+    final secondaryColor = _getDarkSecondaryColor(variant);
+    final accentColor = _getDarkAccentColor(variant);
 
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: ColorsManager.darkScaffold,
+      scaffoldBackgroundColor: scaffoldColor,
       fontFamily: fontFamily,
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
@@ -414,17 +507,19 @@ class AppTheme {
         ),
         iconTheme: const IconThemeData(color: ColorsManager.darkPrimaryText),
       ),
-      primaryColor: ColorsManager.darkPrimaryGreen,
+      primaryColor: primaryColor,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: ColorsManager.darkPrimaryGreen,
+        seedColor: primaryColor,
         brightness: Brightness.dark,
-        surface: ColorsManager.darkSurface,
-        primary: ColorsManager.darkPrimaryGreen,
-        secondary: ColorsManager.darkSecondaryGreen,
+        surface: surfaceColor,
+        primary: primaryColor,
+        secondary: secondaryColor,
+        tertiary: accentColor,
         error: const Color(0xFFFF6B6B),
+        surfaceContainerHighest: _getDarkSurfaceElevatedColor(variant),
       ),
       cardTheme: CardThemeData(
-        color: ColorsManager.darkSurface,
+        color: surfaceColor,
         elevation: 4,
         shadowColor: Colors.black.withValues(alpha: 0.4),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -451,10 +546,7 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(
-            color: ColorsManager.darkPrimaryGreen,
-            width: 2,
-          ),
+          borderSide: BorderSide(color: primaryColor, width: 2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -467,8 +559,8 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: ColorsManager.darkPrimaryGreen,
-          foregroundColor: ColorsManager.darkScaffold,
+          backgroundColor: primaryColor,
+          foregroundColor: _getButtonTextColor(variant),
           textStyle: TextStyle(
             fontFamily: fontFamily,
             fontSize: 16,
@@ -483,7 +575,7 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: ColorsManager.darkPrimaryGreen,
+          foregroundColor: primaryColor,
           textStyle: TextStyle(
             fontFamily: fontFamily,
             fontSize: 16,
@@ -496,20 +588,120 @@ class AppTheme {
         color: ColorsManager.darkBorder,
         thickness: 1,
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: ColorsManager.darkSurface,
-        selectedItemColor: ColorsManager.darkPrimaryGreen,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: surfaceColor,
+        selectedItemColor: primaryColor,
         unselectedItemColor: ColorsManager.darkHintText,
         elevation: 8,
         type: BottomNavigationBarType.fixed,
       ),
       dialogTheme: DialogThemeData(
-        backgroundColor: ColorsManager.darkSurface,
+        backgroundColor: surfaceColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         elevation: 8,
       ),
       textTheme: _buildTextTheme(fontFamily, Brightness.dark),
     );
+  }
+
+  // Helper methods to get variant-specific colors
+  static Color _getDarkScaffoldColor(DarkThemeVariant variant) {
+    switch (variant) {
+      case DarkThemeVariant.classic:
+        return ColorsManager.classicDarkScaffold;
+      case DarkThemeVariant.midnight:
+        return ColorsManager.midnightDarkScaffold;
+      case DarkThemeVariant.amoled:
+        return ColorsManager.amoledDarkScaffold;
+      case DarkThemeVariant.sunset:
+        return ColorsManager.sunsetDarkScaffold;
+      case DarkThemeVariant.forest:
+        return ColorsManager.forestDarkScaffold;
+    }
+  }
+
+  static Color _getDarkSurfaceColor(DarkThemeVariant variant) {
+    switch (variant) {
+      case DarkThemeVariant.classic:
+        return ColorsManager.classicDarkSurface;
+      case DarkThemeVariant.midnight:
+        return ColorsManager.midnightDarkSurface;
+      case DarkThemeVariant.amoled:
+        return ColorsManager.amoledDarkSurface;
+      case DarkThemeVariant.sunset:
+        return ColorsManager.sunsetDarkSurface;
+      case DarkThemeVariant.forest:
+        return ColorsManager.forestDarkSurface;
+    }
+  }
+
+  static Color _getDarkSurfaceElevatedColor(DarkThemeVariant variant) {
+    switch (variant) {
+      case DarkThemeVariant.classic:
+        return ColorsManager.classicDarkSurfaceElevated;
+      case DarkThemeVariant.midnight:
+        return ColorsManager.midnightDarkSurfaceElevated;
+      case DarkThemeVariant.amoled:
+        return ColorsManager.amoledDarkSurfaceElevated;
+      case DarkThemeVariant.sunset:
+        return ColorsManager.sunsetDarkSurfaceElevated;
+      case DarkThemeVariant.forest:
+        return ColorsManager.forestDarkSurfaceElevated;
+    }
+  }
+
+  static Color _getDarkPrimaryColor(DarkThemeVariant variant) {
+    switch (variant) {
+      case DarkThemeVariant.classic:
+        return ColorsManager.classicDarkPrimaryGreen;
+      case DarkThemeVariant.midnight:
+        return ColorsManager.midnightDarkPrimary;
+      case DarkThemeVariant.amoled:
+        return ColorsManager.amoledDarkPrimary;
+      case DarkThemeVariant.sunset:
+        return ColorsManager.sunsetDarkPrimary;
+      case DarkThemeVariant.forest:
+        return ColorsManager.forestDarkPrimary;
+    }
+  }
+
+  static Color _getDarkSecondaryColor(DarkThemeVariant variant) {
+    switch (variant) {
+      case DarkThemeVariant.classic:
+        return ColorsManager.classicDarkSecondaryGreen;
+      case DarkThemeVariant.midnight:
+        return ColorsManager.midnightDarkSecondary;
+      case DarkThemeVariant.amoled:
+        return ColorsManager.amoledDarkSecondary;
+      case DarkThemeVariant.sunset:
+        return ColorsManager.sunsetDarkSecondary;
+      case DarkThemeVariant.forest:
+        return ColorsManager.forestDarkSecondary;
+    }
+  }
+
+  static Color _getDarkAccentColor(DarkThemeVariant variant) {
+    switch (variant) {
+      case DarkThemeVariant.classic:
+        return ColorsManager.classicDarkAccentGreen;
+      case DarkThemeVariant.midnight:
+        return ColorsManager.midnightDarkAccent;
+      case DarkThemeVariant.amoled:
+        return ColorsManager.amoledDarkAccent;
+      case DarkThemeVariant.sunset:
+        return ColorsManager.sunsetDarkAccent;
+      case DarkThemeVariant.forest:
+        return ColorsManager.forestDarkAccent;
+    }
+  }
+
+  static Color _getButtonTextColor(DarkThemeVariant variant) {
+    // AMOLED and Sunset variants look better with white text on buttons
+    if (variant == DarkThemeVariant.amoled) {
+      return Colors.white;
+    }
+    // For other variants, use dark scaffold color for contrast
+    return _getDarkScaffoldColor(variant);
   }
 
   static TextTheme _buildTextTheme(String fontFamily, Brightness brightness) {

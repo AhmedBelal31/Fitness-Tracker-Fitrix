@@ -820,5 +820,13 @@
   "light": "Light",
   "dark": "Dark",
   "system": "System",
+  "notifications": "Notifications",
+  "mark_all_read": "Mark All Read",
+  "mark_as_read": "Mark as Read",
+  "no_notifications": "No Notifications",
+  "no_notifications_desc": "You're all caught up! Check back later for new updates.",
+  "delete_notification": "Delete Notification",
+  "delete_notification_confirmation": "Are you sure you want to delete this notification?",
+  "additional_info": "Additional Information",
   "X": "X"
 }

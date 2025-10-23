@@ -5969,6 +5969,76 @@ class S {
     return Intl.message('System', name: 'system', desc: '', args: []);
   }
 
+  /// `Mark All Read`
+  String get mark_all_read {
+    return Intl.message(
+      'Mark All Read',
+      name: 'mark_all_read',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mark as Read`
+  String get mark_as_read {
+    return Intl.message(
+      'Mark as Read',
+      name: 'mark_as_read',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Notifications`
+  String get no_notifications {
+    return Intl.message(
+      'No Notifications',
+      name: 'no_notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You're all caught up! Check back later for new updates.`
+  String get no_notifications_desc {
+    return Intl.message(
+      'You\'re all caught up! Check back later for new updates.',
+      name: 'no_notifications_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Notification`
+  String get delete_notification {
+    return Intl.message(
+      'Delete Notification',
+      name: 'delete_notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this notification?`
+  String get delete_notification_confirmation {
+    return Intl.message(
+      'Are you sure you want to delete this notification?',
+      name: 'delete_notification_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional Information`
+  String get additional_info {
+    return Intl.message(
+      'Additional Information',
+      name: 'additional_info',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `X`
   String get X {
     return Intl.message('X', name: 'X', desc: '', args: []);

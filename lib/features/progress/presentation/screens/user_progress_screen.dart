@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/di/get_it.dart';
-import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../cubit/progress_cubit.dart';
 import '../cubit/progress_state.dart';
 import '../widgets/progress_app_bar.dart';

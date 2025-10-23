@@ -1,3 +1,4 @@
+import 'package:fitrix/features/notifications/presentation/cubit/notifications_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +19,57 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<ScaffoldMessengerState> messengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
+// class FitrixApp extends StatelessWidget {
+//   final AppRouter appRouter;
+//
+//   const FitrixApp({super.key, required this.appRouter});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiBlocProvider(
+//       providers: [
+//         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
+//         BlocProvider<LocaleCubit>(create: (context) => LocaleCubit()),
+//         BlocProvider(create: (context) => di.get<WorkoutsCubit>()),
+//       ],
+//       child: BlocBuilder<ThemeCubit, ThemeState>(
+//         builder: (context, themeState) {
+//           return BlocBuilder<LocaleCubit, LocaleState>(
+//             builder: (context, localeState) {
+//               final currentLocale = localeState.locale;
+//
+//               return ScreenUtilInit(
+//                 designSize: const Size(412, 917),
+//                 minTextAdapt: true,
+//                 splitScreenMode: true,
+//                 child: MaterialApp(
+//                   navigatorKey: navigatorKey,
+//                   title: 'FitrixApp',
+//                   theme: AppTheme.getLightTheme(currentLocale),
+//                   darkTheme: AppTheme.getDarkTheme(currentLocale),
+//                   // themeMode: themeState.themeMode,
+//                   themeMode: _getThemeMode(themeState.appThemeMode),
+//                   locale: currentLocale,
+//                   localizationsDelegates: const [
+//                     S.delegate,
+//                     GlobalMaterialLocalizations.delegate,
+//                     GlobalWidgetsLocalizations.delegate,
+//                     GlobalCupertinoLocalizations.delegate,
+//                   ],
+//                   supportedLocales: S.delegate.supportedLocales,
+//                   debugShowCheckedModeBanner: false,
+//                   onGenerateRoute: appRouter.generateRoute,
+//                   initialRoute: Routes.splashScreen,
+//                 ),
+//               );
+//             },
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+
 class FitrixApp extends StatelessWidget {
   final AppRouter appRouter;
 
@@ -30,6 +82,7 @@ class FitrixApp extends StatelessWidget {
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<LocaleCubit>(create: (context) => LocaleCubit()),
         BlocProvider(create: (context) => di.get<WorkoutsCubit>()),
+        BlocProvider(create: (context) => di.get<NotificationsCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, themeState) {
@@ -45,8 +98,11 @@ class FitrixApp extends StatelessWidget {
                   navigatorKey: navigatorKey,
                   title: 'FitrixApp',
                   theme: AppTheme.getLightTheme(currentLocale),
-                  darkTheme: AppTheme.getDarkTheme(currentLocale),
-                  themeMode: themeState.themeMode,
+                  darkTheme: AppTheme.getDarkTheme(
+                    currentLocale,
+                    variant: themeState.darkThemeVariant,
+                  ),
+                  themeMode: _getThemeMode(themeState.appThemeMode),
                   locale: currentLocale,
                   localizationsDelegates: const [
                     S.delegate,
@@ -65,5 +121,17 @@ class FitrixApp extends StatelessWidget {
         },
       ),
     );
+  }
+
+  /// Helper method to convert AppThemeMode to ThemeMode
+  ThemeMode _getThemeMode(AppThemeMode appThemeMode) {
+    switch (appThemeMode) {
+      case AppThemeMode.light:
+        return ThemeMode.light;
+      case AppThemeMode.dark:
+        return ThemeMode.dark;
+      case AppThemeMode.system:
+        return ThemeMode.system;
+    }
   }
 }

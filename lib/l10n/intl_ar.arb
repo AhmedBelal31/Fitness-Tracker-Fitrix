@@ -826,6 +826,14 @@
   "light": "فاتح",
   "dark": "داكن",
   "system": "النظام",
+  "notifications": "الإشعارات",
+  "mark_all_read": "تعليم الكل كمقروء",
+  "mark_as_read": "تعليم كمقروء",
+  "no_notifications": "لا توجد إشعارات",
+  "no_notifications_desc": "أنت على اطلاع! عد لاحقًا للحصول على تحديثات جديدة.",
+  "delete_notification": "حذف الإشعار",
+  "delete_notification_confirmation": "هل أنت متأكد من حذف هذا الإشعار؟",
+  "additional_info": "معلومات إضافية",
   "X": "X"
 
 }

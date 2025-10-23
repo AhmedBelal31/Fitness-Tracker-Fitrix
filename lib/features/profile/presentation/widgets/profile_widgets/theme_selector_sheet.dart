@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/cubit/theme_cubit.dart';
 import '../../../../../core/theming/cubit/theme_state.dart';
+import '../../../../../core/theming/dark_theme_variant.dart';
 import '../../../../../generated/l10n.dart';
 
 // class ThemeSelectorSheet extends StatefulWidget {
@@ -18,7 +19,9 @@ import '../../../../../generated/l10n.dart';
 //   late AnimationController _controller;
 //   late Animation<double> _scaleAnimation;
 //   late Animation<Offset> _slideAnimation;
-//   bool _showCatAnimation = false; // ✅ Track if showing cat
+//   bool _showCatAnimation = false;
+//   String _catGifPath = '';
+//   String _animationText = '';
 //
 //   @override
 //   void initState() {
@@ -32,6 +35,7 @@ import '../../../../../generated/l10n.dart';
 //       parent: _controller,
 //       curve: Curves.easeOutBack,
 //     );
+//
 //     _slideAnimation = Tween<Offset>(
 //       begin: const Offset(0, 0.1),
 //       end: Offset.zero,
@@ -46,12 +50,29 @@ import '../../../../../generated/l10n.dart';
 //     super.dispose();
 //   }
 //
-//   // ✅ Show cat animation and switch theme
 //   void _handleThemeChange(BuildContext context, AppThemeMode themeMode) {
 //     if (themeMode == AppThemeMode.dark) {
-//       setState(() => _showCatAnimation = true);
+//       setState(() {
+//         _showCatAnimation = true;
+//         _catGifPath = 'assets/images/cats_turn_off_light.gif';
+//         _animationText = '🌙 Switching to Dark Mode...';
+//       });
 //
-//       // Wait for GIF to play (2 seconds) then apply theme
+//       Future.delayed(const Duration(seconds: 2), () {
+//         if (mounted) {
+//           context.read<ThemeCubit>().setTheme(themeMode);
+//           Future.delayed(const Duration(milliseconds: 300), () {
+//             if (context.mounted) Navigator.pop(context);
+//           });
+//         }
+//       });
+//     } else if (themeMode == AppThemeMode.light) {
+//       setState(() {
+//         _showCatAnimation = true;
+//         _catGifPath = 'assets/images/cat_turn_on_ligh.gif';
+//         _animationText = '☀️ Switching to Light Mode...';
+//       });
+//
 //       Future.delayed(const Duration(seconds: 2), () {
 //         if (mounted) {
 //           context.read<ThemeCubit>().setTheme(themeMode);
@@ -61,7 +82,7 @@ import '../../../../../generated/l10n.dart';
 //         }
 //       });
 //     } else {
-//       // For light/system, switch immediately
+//       // System mode - no animation
 //       context.read<ThemeCubit>().setTheme(themeMode);
 //       Future.delayed(const Duration(milliseconds: 300), () {
 //         if (context.mounted) Navigator.pop(context);
@@ -230,11 +251,13 @@ import '../../../../../generated/l10n.dart';
 //           ),
 //         ),
 //
-//         // ✅ Cat Animation Overlay
+//         // Cat Animation Overlay
 //         if (_showCatAnimation)
 //           Positioned.fill(
 //             child: Container(
-//               color: Colors.black.withValues(alpha: 0.95),
+//               color: _catGifPath.contains('turn_off')
+//                   ? Colors.black.withValues(alpha: 0.95)
+//                   : Colors.white.withValues(alpha: 0.95),
 //               child: Center(
 //                 child: Column(
 //                   mainAxisAlignment: MainAxisAlignment.center,
@@ -242,7 +265,7 @@ import '../../../../../generated/l10n.dart';
 //                     ClipRRect(
 //                       borderRadius: BorderRadius.circular(20.r),
 //                       child: Image.asset(
-//                         'assets/images/cats_turn_off_light.gif',
+//                         _catGifPath,
 //                         width: 250.w,
 //                         height: 250.h,
 //                         fit: BoxFit.cover,
@@ -250,11 +273,13 @@ import '../../../../../generated/l10n.dart';
 //                     ),
 //                     SizedBox(height: 24.h),
 //                     Text(
-//                       '🌙 Switching to Dark Mode...',
+//                       _animationText,
 //                       style: TextStyle(
 //                         fontSize: 18,
 //                         fontWeight: FontWeight.bold,
-//                         color: Colors.white,
+//                         color: _catGifPath.contains('turn_off')
+//                             ? Colors.white
+//                             : Colors.black,
 //                       ),
 //                     ),
 //                   ],
@@ -288,8 +313,7 @@ import '../../../../../generated/l10n.dart';
 //           child: Opacity(
 //             opacity: value,
 //             child: InkWell(
-//               onTap: () =>
-//                   _handleThemeChange(context, themeMode), // ✅ Use new handler
+//               onTap: () => _handleThemeChange(context, themeMode),
 //               borderRadius: BorderRadius.circular(16.r),
 //               child: AnimatedContainer(
 //                 duration: const Duration(milliseconds: 300),
@@ -408,6 +432,7 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
   late Animation<double> _scaleAnimation;
   late Animation<Offset> _slideAnimation;
   bool _showCatAnimation = false;
+  bool _showDarkVariants = false;
   String _catGifPath = '';
   String _animationText = '';
 
@@ -439,7 +464,19 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
   }
 
   void _handleThemeChange(BuildContext context, AppThemeMode themeMode) {
-    if (themeMode == AppThemeMode.dark) {
+    final themeCubit = context.read<ThemeCubit>();
+    final currentMode = themeCubit.state.appThemeMode;
+
+    // Update state immediately
+    themeCubit.setTheme(themeMode);
+
+    // Show/hide dark variants based on selection
+    setState(() {
+      _showDarkVariants = themeMode == AppThemeMode.dark;
+    });
+
+    // Show cat animation only when switching between light and dark
+    if (themeMode == AppThemeMode.dark && currentMode != AppThemeMode.dark) {
       setState(() {
         _showCatAnimation = true;
         _catGifPath = 'assets/images/cats_turn_off_light.gif';
@@ -448,13 +485,11 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
 
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
-          context.read<ThemeCubit>().setTheme(themeMode);
-          Future.delayed(const Duration(milliseconds: 300), () {
-            if (context.mounted) Navigator.pop(context);
-          });
+          setState(() => _showCatAnimation = false);
         }
       });
-    } else if (themeMode == AppThemeMode.light) {
+    } else if (themeMode == AppThemeMode.light &&
+        currentMode != AppThemeMode.light) {
       setState(() {
         _showCatAnimation = true;
         _catGifPath = 'assets/images/cat_turn_on_ligh.gif';
@@ -463,19 +498,18 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
 
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
-          context.read<ThemeCubit>().setTheme(themeMode);
-          Future.delayed(const Duration(milliseconds: 300), () {
-            if (context.mounted) Navigator.pop(context);
-          });
+          setState(() => _showCatAnimation = false);
         }
       });
-    } else {
-      // System mode - no animation
-      context.read<ThemeCubit>().setTheme(themeMode);
-      Future.delayed(const Duration(milliseconds: 300), () {
-        if (context.mounted) Navigator.pop(context);
-      });
     }
+  }
+
+  void _handleDarkVariantChange(
+    BuildContext context,
+    DarkThemeVariant variant,
+  ) {
+    // Apply immediately
+    context.read<ThemeCubit>().setDarkThemeVariant(variant);
   }
 
   @override
@@ -522,21 +556,12 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
                         Container(
                           padding: EdgeInsets.all(12.w),
                           decoration: BoxDecoration(
-                            gradient: isDark
-                                ? LinearGradient(
-                                    colors: [
-                                      ColorsManager.darkPrimaryGreen,
-                                      ColorsManager.darkSecondaryGreen,
-                                    ],
-                                  )
-                                : ColorsManager.primaryGradient,
+                            gradient: ColorsManager.getButtonGradient(context),
                             borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Icon(
                             Icons.palette_outlined,
-                            color: isDark
-                                ? ColorsManager.darkScaffold
-                                : Colors.white,
+                            color: Colors.white,
                             size: 24.sp,
                           ),
                         ),
@@ -569,70 +594,193 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
                     ),
                   ),
 
-                  // Theme Options
-                  BlocBuilder<ThemeCubit, ThemeState>(
-                    builder: (context, state) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Column(
-                          children: [
-                            _buildThemeOption(
-                              context: context,
-                              icon: Icons.light_mode,
-                              title: s.light_theme,
-                              description: s.light_theme_desc,
-                              themeMode: AppThemeMode.light,
-                              isSelected:
-                                  state.appThemeMode == AppThemeMode.light,
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.orange.shade300,
-                                  Colors.yellow.shade400,
+                  // Scrollable Content
+                  Flexible(
+                    child: SingleChildScrollView(
+                      child: BlocBuilder<ThemeCubit, ThemeState>(
+                        builder: (context, state) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: Column(
+                              children: [
+                                _buildThemeOption(
+                                  context: context,
+                                  icon: Icons.light_mode,
+                                  title: s.light_theme,
+                                  description: s.light_theme_desc,
+                                  themeMode: AppThemeMode.light,
+                                  isSelected:
+                                      state.appThemeMode == AppThemeMode.light,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.orange.shade300,
+                                      Colors.yellow.shade400,
+                                    ],
+                                  ),
+                                  index: 0,
+                                ),
+                                SizedBox(height: 12.h),
+                                _buildThemeOption(
+                                  context: context,
+                                  icon: Icons.dark_mode,
+                                  title: s.dark_theme,
+                                  description: s.dark_theme_desc,
+                                  themeMode: AppThemeMode.dark,
+                                  isSelected:
+                                      state.appThemeMode == AppThemeMode.dark,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.indigo.shade400,
+                                      Colors.purple.shade600,
+                                    ],
+                                  ),
+                                  index: 1,
+                                ),
+                                SizedBox(height: 12.h),
+                                _buildThemeOption(
+                                  context: context,
+                                  icon: Icons.brightness_auto,
+                                  title: s.system_theme,
+                                  description: s.system_theme_desc,
+                                  themeMode: AppThemeMode.system,
+                                  isSelected:
+                                      state.appThemeMode == AppThemeMode.system,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      ColorsManager.primaryGreen,
+                                      ColorsManager.secondaryGreen,
+                                    ],
+                                  ),
+                                  index: 2,
+                                ),
+
+                                // Dark Theme Variants Section
+                                if (_showDarkVariants ||
+                                    state.appThemeMode ==
+                                        AppThemeMode.dark) ...[
+                                  SizedBox(height: 24.h),
+                                  Divider(
+                                    color: ColorsManager.getBorderColor(
+                                      context,
+                                    ),
+                                    thickness: 1,
+                                  ),
+                                  SizedBox(height: 16.h),
+
+                                  // Dark Variants Header
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.color_lens,
+                                        color: ColorsManager.getPrimaryGreen(
+                                          context,
+                                        ),
+                                        size: 20.sp,
+                                      ),
+                                      SizedBox(width: 8.w),
+                                      Text(
+                                        'Dark Theme Style',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: ColorsManager.getPrimaryText(
+                                            context,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 16.h),
+
+                                  // Dark Variant Options
+                                  ...DarkThemeVariant.values.map((variant) {
+                                    final index = DarkThemeVariant.values
+                                        .indexOf(variant);
+                                    return Padding(
+                                      padding: EdgeInsets.only(bottom: 12.h),
+                                      child: _buildDarkVariantOption(
+                                        context: context,
+                                        variant: variant,
+                                        isSelected:
+                                            state.darkThemeVariant == variant,
+                                        index: index,
+                                      ),
+                                    );
+                                  }).toList(),
                                 ],
-                              ),
-                              index: 0,
+
+                                SizedBox(height: 16.h),
+                              ],
                             ),
-                            SizedBox(height: 12.h),
-                            _buildThemeOption(
-                              context: context,
-                              icon: Icons.dark_mode,
-                              title: s.dark_theme,
-                              description: s.dark_theme_desc,
-                              themeMode: AppThemeMode.dark,
-                              isSelected:
-                                  state.appThemeMode == AppThemeMode.dark,
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.indigo.shade400,
-                                  Colors.purple.shade600,
-                                ],
-                              ),
-                              index: 1,
-                            ),
-                            SizedBox(height: 12.h),
-                            _buildThemeOption(
-                              context: context,
-                              icon: Icons.brightness_auto,
-                              title: s.system_theme,
-                              description: s.system_theme_desc,
-                              themeMode: AppThemeMode.system,
-                              isSelected:
-                                  state.appThemeMode == AppThemeMode.system,
-                              gradient: LinearGradient(
-                                colors: [
-                                  ColorsManager.primaryGreen,
-                                  ColorsManager.secondaryGreen,
-                                ],
-                              ),
-                              index: 2,
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                          );
+                        },
+                      ),
+                    ),
                   ),
 
-                  SizedBox(height: 24.h),
+                  // Done Button
+                  Container(
+                    padding: EdgeInsets.all(20.w),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      border: Border(
+                        top: BorderSide(
+                          color: ColorsManager.getBorderColor(context),
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                    child: SafeArea(
+                      top: false,
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: ColorsManager.getButtonGradient(context),
+                            borderRadius: BorderRadius.circular(16.r),
+                            boxShadow: [
+                              BoxShadow(
+                                color: ColorsManager.getPrimaryGreen(
+                                  context,
+                                ).withValues(alpha: 0.3),
+                                blurRadius: 12,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () => Navigator.pop(context),
+                              borderRadius: BorderRadius.circular(16.r),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 16.h),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle,
+                                      color: Colors.white,
+                                      size: 22.sp,
+                                    ),
+                                    SizedBox(width: 8.w),
+                                    Text(
+                                      'Done',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -794,6 +942,110 @@ class _ThemeSelectorSheetState extends State<ThemeSelectorSheet>
                         Icons.check_circle,
                         color: ColorsManager.getPrimaryGreen(context),
                         size: 28.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildDarkVariantOption({
+    required BuildContext context,
+    required DarkThemeVariant variant,
+    required bool isSelected,
+    required int index,
+  }) {
+    // Get current locale
+    final locale = Localizations.localeOf(context);
+    final languageCode = locale.languageCode;
+
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: Duration(milliseconds: 300 + (index * 80)),
+      curve: Curves.easeOut,
+      builder: (context, value, child) {
+        return Transform.translate(
+          offset: Offset(15 * (1 - value), 0),
+          child: Opacity(
+            opacity: value,
+            child: InkWell(
+              onTap: () => _handleDarkVariantChange(context, variant),
+              borderRadius: BorderRadius.circular(12.r),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                padding: EdgeInsets.all(12.w),
+                decoration: BoxDecoration(
+                  color: ColorsManager.getCardBackground(context),
+                  borderRadius: BorderRadius.circular(12.r),
+                  border: Border.all(
+                    color: isSelected
+                        ? ColorsManager.getPrimaryGreen(context)
+                        : ColorsManager.darkBorder,
+                    width: isSelected ? 2 : 1,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    // Variant color preview
+                    Container(
+                      width: 50.w,
+                      height: 50.h,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: variant.gradientColors,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Icon(
+                        variant.icon,
+                        color: Colors.white,
+                        size: 24.sp,
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            variant.getName(languageCode), // Localized name
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: isSelected
+                                  ? ColorsManager.getPrimaryGreen(context)
+                                  : ColorsManager.getPrimaryText(context),
+                            ),
+                          ),
+                          SizedBox(height: 2.h),
+                          Text(
+                            variant.getDescription(
+                              languageCode,
+                            ), // Localized description
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: ColorsManager.getSecondaryText(context),
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                    ),
+                    AnimatedScale(
+                      scale: isSelected ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        Icons.check_circle,
+                        color: ColorsManager.getPrimaryGreen(context),
+                        size: 24.sp,
                       ),
                     ),
                   ],

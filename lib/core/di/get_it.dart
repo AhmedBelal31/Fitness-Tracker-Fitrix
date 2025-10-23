@@ -4,6 +4,7 @@ import 'modules/auth_module.dart';
 import 'modules/core_module.dart';
 import 'modules/exercise_module.dart';
 import 'modules/host_module.dart';
+import 'modules/notifications_module.dart';
 import 'modules/profile_module.dart';
 import 'modules/progress_module.dart';
 import 'modules/setup_home_module.dart';
@@ -21,4 +22,5 @@ Future<void> setupServiceLocator() async {
   setupWorkoutModule();
   setupProgressModule();
   setupAchievementsModule();
+  setupNotificationsModule();
 }

@@ -5,6 +5,7 @@ import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../../exercises/presentation/cubit/sections_cubit.dart';
+import '../../../notifications/presentation/cubit/notifications_cubit.dart';
 import '../widgets/user_widgets/user_home_custom_exercises.dart';
 import '../widgets/user_widgets/user_home_header.dart';
 import '../widgets/user_widgets/user_home_records.dart';
@@ -29,6 +30,7 @@ class _UserHomeScreenBodyState extends State<UserHomeScreenBody>
       vsync: this,
     );
     _refreshController.forward();
+    context.read<NotificationsCubit>().fetchUnreadCount();
   }
 
   @override

@@ -21,6 +21,10 @@ import '../../features/exercises/presentation/screens/exercise_progress_screen.d
 import '../../features/exercises/presentation/screens/section_exercises_screen.dart';
 import '../../features/home/presentation/screens/all_records_screen.dart';
 import '../../features/home/presentation/widgets/custom_exercise_widgets/select_section_screen.dart';
+import '../../features/notifications/data/models/notification_model.dart';
+import '../../features/notifications/presentation/cubit/notifications_cubit.dart';
+import '../../features/notifications/presentation/screens/notification_details_screen.dart';
+import '../../features/notifications/presentation/screens/notifications_screen.dart';
 import '../../features/profile/presentation/screens/about_screen.dart';
 import '../../features/profile/presentation/screens/change_password_screen.dart';
 import '../../features/profile/presentation/screens/contact_support_screen.dart';
@@ -187,6 +191,22 @@ class AppRouter {
         final exercise = settings.arguments as ExerciseModel;
         return MaterialPageRoute(
           builder: (_) => ExerciseProgressScreen(exercise: exercise),
+        );
+      case Routes.notifications:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: di<NotificationsCubit>(),
+            child: const NotificationsScreen(),
+          ),
+        );
+
+      case Routes.notificationDetails:
+        final notification = settings.arguments as NotificationModel;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: di<NotificationsCubit>(),
+            child: NotificationDetailsScreen(notification: notification),
+          ),
         );
 
       default:

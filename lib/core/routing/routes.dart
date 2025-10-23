@@ -35,4 +35,6 @@ class Routes {
   static const String exerciseProgress = '/exercise-progress';
 
   static const String changePassword = '/changePassword';
+  static const String notifications = '/notifications';
+  static const String notificationDetails = '/notification-details';
 }

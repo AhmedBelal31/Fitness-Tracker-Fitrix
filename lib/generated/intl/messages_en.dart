@@ -62,6 +62,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_workout_notes": MessageLookupByLibrary.simpleMessage("Add notes..."),
     "added_to_workout": MessageLookupByLibrary.simpleMessage("Added!"),
     "adding": MessageLookupByLibrary.simpleMessage("Adding..."),
+    "additional_info": MessageLookupByLibrary.simpleMessage(
+      "Additional Information",
+    ),
     "adjust_slider_to_set_height": MessageLookupByLibrary.simpleMessage(
       "Adjust the slider to set your height",
     ),
@@ -322,6 +325,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "delete_exercise_message": MessageLookupByLibrary.simpleMessage(
       "Delete this exercise?",
+    ),
+    "delete_notification": MessageLookupByLibrary.simpleMessage(
+      "Delete Notification",
+    ),
+    "delete_notification_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this notification?",
     ),
     "deleting": MessageLookupByLibrary.simpleMessage("Deleting..."),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
@@ -657,6 +666,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "manage_your_exercises": MessageLookupByLibrary.simpleMessage(
       "Manage your custom exercises",
     ),
+    "mark_all_read": MessageLookupByLibrary.simpleMessage("Mark All Read"),
+    "mark_as_read": MessageLookupByLibrary.simpleMessage("Mark as Read"),
     "max_value": MessageLookupByLibrary.simpleMessage("Max"),
     "measurement_history": MessageLookupByLibrary.simpleMessage(
       "Measurement History",
@@ -728,6 +739,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "No exercises",
     ),
     "no_exercises_found": MessageLookupByLibrary.simpleMessage("No exercises"),
+    "no_notifications": MessageLookupByLibrary.simpleMessage(
+      "No Notifications",
+    ),
+    "no_notifications_desc": MessageLookupByLibrary.simpleMessage(
+      "You\'re all caught up! Check back later for new updates.",
+    ),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "No records yet",
     ),

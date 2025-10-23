@@ -10,7 +10,7 @@ import 'measurements_section.dart';
 import 'section_reorder_bottom_sheet.dart';
 import 'update_profile_form_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
+// import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'profile_tutorial.dart';
 import 'dart:convert';
 import '../../../../../../core/theming/app_colors.dart';
@@ -39,7 +39,7 @@ class _UpdateProfileFormState extends State<UpdateProfileForm> {
   final GlobalKey _bodyFatKey = GlobalKey();
   final GlobalKey _muscleMassKey = GlobalKey();
 
-  TutorialCoachMark? _tutorialCoachMark;
+  // TutorialCoachMark? _tutorialCoachMark;
   final _validators = UpdateProfileValidators();
 
   List<String> _sectionOrder = ['personal', 'measurements'];
@@ -95,18 +95,18 @@ class _UpdateProfileFormState extends State<UpdateProfileForm> {
 
     await Future.delayed(const Duration(milliseconds: 400));
 
-    _tutorialCoachMark = ProfileTutorial.createTutorial(
-      context: context,
-      heightKey: _heightKey,
-      weightKey: _weightKey,
-      bodyFatKey: _bodyFatKey,
-      muscleMassKey: _muscleMassKey,
-      onFinish: () async {
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('has_seen_profile_tutorial', true);
-      },
-    );
-    _tutorialCoachMark?.show(context: context);
+    // _tutorialCoachMark = ProfileTutorial.createTutorial(
+    //   context: context,
+    //   heightKey: _heightKey,
+    //   weightKey: _weightKey,
+    //   bodyFatKey: _bodyFatKey,
+    //   muscleMassKey: _muscleMassKey,
+    //   onFinish: () async {
+    //     final prefs = await SharedPreferences.getInstance();
+    //     await prefs.setBool('has_seen_profile_tutorial', true);
+    //   },
+    // );
+    // _tutorialCoachMark?.show(context: context);
   }
 
   void _showReorderBottomSheet() {
@@ -308,7 +308,7 @@ class _UpdateProfileFormState extends State<UpdateProfileForm> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _tutorialCoachMark?.finish();
+    // _tutorialCoachMark?.finish();
     super.dispose();
   }
 }

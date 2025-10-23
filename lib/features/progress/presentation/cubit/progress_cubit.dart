@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 import '../../../../core/helpers/celebration_prefs.dart';
 import '../../data/models/measurement_chart_models.dart';
 import '../../data/models/progress_models.dart';
-import '../../data/models/statistics_model.dart';
 import '../../domain/progress_repository.dart';
 import 'progress_state.dart';
 import 'package:flutter/foundation.dart';
+import 'dart:developer';
 
 class ProgressCubit extends Cubit<ProgressState> {
   final ProgressRepository _repository;
@@ -22,45 +22,88 @@ class ProgressCubit extends Cubit<ProgressState> {
   Future<void> loadProgress() async {
     emit(ProgressLoading());
 
-    try {
-      final cards = await _repository.getMeasurementCards();
-      final stats = await _loadStatisticsSafely();
+    // Get measurement cards
+    final cardsResult = await _repository.getMeasurementCards();
 
-      emit(
-        ProgressLoaded(
-          measurementCards: cards,
-          selectedCardType: MeasurementCardType.weight,
-          statistics: stats,
-        ),
-      );
+    await cardsResult.fold(
+      // Left - Failure case
+      (failure) async {
+        log('❌ Failed to load measurement cards: ${failure.errorMessage}');
+        emit(ProgressError(failure.errorMessage));
+      },
+      // Right - Success case
+      (cards) async {
+        // Load statistics
+        final statsResult = await _repository.getStatistics();
 
-      // Check for celebration after loading
-      _checkAndCelebrate(cards);
-    } catch (e) {
-      emit(ProgressError('Failed to load progress data: $e'));
-    }
+        statsResult.fold(
+          // Statistics failed - still show cards with null stats
+          (failure) {
+            debugPrint('⚠️ Statistics failed: ${failure.errorMessage}');
+            emit(
+              ProgressLoaded(
+                measurementCards: cards,
+                selectedCardType: MeasurementCardType.weight,
+                statistics: null,
+              ),
+            );
+          },
+          // Both succeeded
+          (stats) {
+            emit(
+              ProgressLoaded(
+                measurementCards: cards,
+                selectedCardType: MeasurementCardType.weight,
+                statistics: stats,
+              ),
+            );
+
+            // Check for celebration after loading
+            _checkAndCelebrate(cards);
+          },
+        );
+      },
+    );
   }
 
   /// Refresh progress data
   Future<void> refreshData() async {
     if (state is! ProgressLoaded) return;
 
-    try {
-      final cards = await _repository.getMeasurementCards();
-      final stats = await _loadStatisticsSafely();
+    final cardsResult = await _repository.getMeasurementCards();
 
-      emit(
-        (state as ProgressLoaded).copyWith(
-          measurementCards: cards,
-          statistics: stats,
-        ),
-      );
+    await cardsResult.fold(
+      (failure) {
+        debugPrint('⚠️ Refresh failed: ${failure.errorMessage}');
+        // Optionally show a snackbar or toast here
+        // Don't emit error state to keep existing data visible
+      },
+      (cards) async {
+        final statsResult = await _repository.getStatistics();
 
-      // Check for celebration after refresh
-      _checkAndCelebrate(cards);
-    } catch (e) {
-      debugPrint('⚠️ Refresh failed: $e');
-    }
+        statsResult.fold(
+          (failure) {
+            debugPrint('⚠️ Statistics refresh failed: ${failure.errorMessage}');
+            emit(
+              (state as ProgressLoaded).copyWith(
+                measurementCards: cards,
+                statistics: null,
+              ),
+            );
+          },
+          (stats) {
+            emit(
+              (state as ProgressLoaded).copyWith(
+                measurementCards: cards,
+                statistics: stats,
+              ),
+            );
+
+            _checkAndCelebrate(cards);
+          },
+        );
+      },
+    );
   }
 
   /// Switch card type in progress screen
@@ -81,21 +124,27 @@ class ProgressCubit extends Cubit<ProgressState> {
 
   /// Load measurement charts for history screen
   Future<void> loadMeasurementCharts({int days = 30}) async {
-    try {
-      emit(ChartLoading());
-      final charts = await _repository.getMeasurementCharts(days: days);
-      emit(
-        ChartLoaded(
-          charts: charts,
-          selectedPeriod: TimePeriod.values.firstWhere(
-            (p) => p.days == days,
-            orElse: () => TimePeriod.month,
+    emit(ChartLoading());
+
+    final result = await _repository.getMeasurementCharts(days: days);
+
+    result.fold(
+      (failure) {
+        log('❌ Failed to load measurement charts: ${failure.errorMessage}');
+        emit(ChartError(failure.errorMessage));
+      },
+      (charts) {
+        emit(
+          ChartLoaded(
+            charts: charts,
+            selectedPeriod: TimePeriod.values.firstWhere(
+              (p) => p.days == days,
+              orElse: () => TimePeriod.month,
+            ),
           ),
-        ),
-      );
-    } catch (e) {
-      emit(ChartError(e.toString()));
-    }
+        );
+      },
+    );
   }
 
   /// Change time period in history screen
@@ -117,7 +166,7 @@ class ProgressCubit extends Cubit<ProgressState> {
     }
   }
 
-  // ========== ✅ EXERCISE PROGRESS METHODS ==========
+  // ========== EXERCISE PROGRESS METHODS ==========
 
   String? _currentExerciseId;
 
@@ -129,21 +178,26 @@ class ProgressCubit extends Cubit<ProgressState> {
     _currentExerciseId = exerciseId;
     emit(ExerciseProgressLoading());
 
-    try {
-      final response = await _repository.getExerciseProgress(
-        exerciseId,
-        days: period.days,
-      );
-      emit(
-        ExerciseProgressLoaded(
-          charts: response,
-          selectedMetric: ExerciseMetricType.weight,
-          selectedPeriod: period,
-        ),
-      );
-    } catch (e) {
-      emit(ExerciseProgressError(e.toString()));
-    }
+    final result = await _repository.getExerciseProgress(
+      exerciseId,
+      days: period.days,
+    );
+
+    result.fold(
+      (failure) {
+        log('❌ Failed to load exercise progress: ${failure.errorMessage}');
+        emit(ExerciseProgressError(failure.errorMessage));
+      },
+      (response) {
+        emit(
+          ExerciseProgressLoaded(
+            charts: response,
+            selectedMetric: ExerciseMetricType.weight,
+            selectedPeriod: period,
+          ),
+        );
+      },
+    );
   }
 
   /// Change exercise metric
@@ -161,18 +215,7 @@ class ProgressCubit extends Cubit<ProgressState> {
     }
   }
 
-  // ========== HELPER METHODS ==========
-
-  /// Load statistics with error handling
-  Future<StatisticsResponse?> _loadStatisticsSafely() async {
-    try {
-      return await _repository.getStatistics();
-    } catch (e) {
-      debugPrint('⚠️ Failed to load statistics: $e');
-      return null;
-    }
-  }
-
+  /// Change exercise chart type
   void changeExerciseChartType(ChartType chartType) {
     if (state is ExerciseProgressLoaded) {
       final currentState = state as ExerciseProgressLoaded;
@@ -180,8 +223,9 @@ class ProgressCubit extends Cubit<ProgressState> {
     }
   }
 
-  // lib/features/progress/domain/cubits/progress_cubit.dart
+  // ========== HELPER METHODS ==========
 
+  /// Check and celebrate progress achievements
   void _checkAndCelebrate(MeasurementCardsResponse cards) async {
     // Check if celebrations are disabled
     final isCelebrationDisabled =
@@ -206,7 +250,7 @@ class ProgressCubit extends Cubit<ProgressState> {
 
         final isGoodDirection = progressPercent > 0;
 
-        // ✅ Get localized message
+        // Get localized message
         final message = _getLocalizedCelebrationMessage(
           weightChange: weightChange,
           isGoodDirection: isGoodDirection,
@@ -227,7 +271,7 @@ class ProgressCubit extends Cubit<ProgressState> {
     }
   }
 
-  // ✅ Helper method to get localized celebration message
+  /// Helper method to get localized celebration message
   String _getLocalizedCelebrationMessage({
     required double weightChange,
     required bool isGoodDirection,
@@ -248,23 +292,6 @@ class ProgressCubit extends Cubit<ProgressState> {
       } else {
         return '📊 Weight Tracked!\n${weightChange.toStringAsFixed(1)}kg change recorded!';
       }
-    }
-  }
-
-  /// Get appropriate message based on progress
-  String _getWeightMessage(double progress) {
-    if (progress >= 100) {
-      return '🏆 Goal Achieved!\nYou reached your target weight!';
-    } else if (progress >= 75) {
-      return '🔥 Almost There!\n${progress.toStringAsFixed(0)}% to your goal!';
-    } else if (progress >= 50) {
-      return '💪 Halfway Point!\nKeep pushing forward!';
-    } else if (progress >= 25) {
-      return '⭐ Great Progress!\nYou\'re on the right track!';
-    } else if (progress >= 10) {
-      return '🎯 Nice Start!\nEvery step counts!';
-    } else {
-      return '🚀 Progress Made!\nYou\'re moving toward your goal!';
     }
   }
 }

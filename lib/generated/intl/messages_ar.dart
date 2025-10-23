@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "added_to_workout": MessageLookupByLibrary.simpleMessage("اتضاف!"),
     "adding": MessageLookupByLibrary.simpleMessage("بيضيف..."),
+    "additional_info": MessageLookupByLibrary.simpleMessage("معلومات إضافية"),
     "adjust_slider_to_set_height": MessageLookupByLibrary.simpleMessage(
       "اضبط المنزلق لتحديد طولك",
     ),
@@ -294,6 +295,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "delete_exercise_message": MessageLookupByLibrary.simpleMessage(
       "متأكد تمسح التمرين؟",
+    ),
+    "delete_notification": MessageLookupByLibrary.simpleMessage("حذف الإشعار"),
+    "delete_notification_confirmation": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من حذف هذا الإشعار؟",
     ),
     "deleting": MessageLookupByLibrary.simpleMessage("جاري المسح..."),
     "description": MessageLookupByLibrary.simpleMessage("الوصف"),
@@ -609,6 +614,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "manage_your_exercises": MessageLookupByLibrary.simpleMessage(
       "إدارة تمارينك المخصصة",
     ),
+    "mark_all_read": MessageLookupByLibrary.simpleMessage("تعليم الكل كمقروء"),
+    "mark_as_read": MessageLookupByLibrary.simpleMessage("تعليم كمقروء"),
     "max_value": MessageLookupByLibrary.simpleMessage("الأعلى"),
     "measurement_history": MessageLookupByLibrary.simpleMessage("سجل القياسات"),
     "measurements": MessageLookupByLibrary.simpleMessage("القياسات"),
@@ -680,6 +687,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "مفيش تمارين",
     ),
     "no_exercises_found": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
+    "no_notifications": MessageLookupByLibrary.simpleMessage("لا توجد إشعارات"),
+    "no_notifications_desc": MessageLookupByLibrary.simpleMessage(
+      "أنت على اطلاع! عد لاحقًا للحصول على تحديثات جديدة.",
+    ),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "مفيش أرقام قياسية",
     ),
