@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fitrix/core/common_ui/widgets/app_logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -95,6 +96,7 @@ class NotificationService {
   }
 
   Future<void> _showNotification(RemoteNotification notification) async {
+    AppLogger.d(notification);
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
         'Achievers Channel',

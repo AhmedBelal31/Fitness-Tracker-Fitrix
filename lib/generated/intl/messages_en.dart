@@ -20,11 +20,26 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(name) => "Welcome ${name}!";
+  static String m0(count) =>
+      "You have ${count} ${Intl.plural(count, one: 'trainee', other: 'trainees')}";
 
-  static String m1(username) => "Welcome ${username}!";
+  static String m1(count) =>
+      "You have ${count} ${Intl.plural(count, one: 'trainer', other: 'trainers')}";
 
-  static String m2(name) => "Welcome back, ${name}!";
+  static String m2(count) =>
+      "${count} pending ${Intl.plural(count, one: 'request', other: 'requests')}";
+
+  static String m3(name) => "Welcome ${name}!";
+
+  static String m4(username) => "Welcome ${username}!";
+
+  static String m5(date) => "Requested on ${date}";
+
+  static String m6(name) => "Sending invitation to ${name}";
+
+  static String m7(name) => "Sending request to ${name}";
+
+  static String m8(name) => "Welcome back, ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -33,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "about": MessageLookupByLibrary.simpleMessage("About"),
     "aboutTitle": MessageLookupByLibrary.simpleMessage("About Fitrix"),
     "abs": MessageLookupByLibrary.simpleMessage("Abs"),
+    "accept": MessageLookupByLibrary.simpleMessage("Accept"),
+    "accept_request": MessageLookupByLibrary.simpleMessage("Accept"),
     "acceptableUse": MessageLookupByLibrary.simpleMessage("Acceptable Use"),
     "acceptableUseText": MessageLookupByLibrary.simpleMessage("Don\'t:"),
     "acceptanceOfTerms": MessageLookupByLibrary.simpleMessage(
@@ -54,6 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_exercise": MessageLookupByLibrary.simpleMessage("Add Exercise"),
     "add_first_trainee": MessageLookupByLibrary.simpleMessage(
       "Add your first trainee",
+    ),
+    "add_message_optional": MessageLookupByLibrary.simpleMessage(
+      "Add a message (optional)",
     ),
     "add_notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "add_set": MessageLookupByLibrary.simpleMessage("Add Set"),
@@ -80,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "all_records": MessageLookupByLibrary.simpleMessage("All Records"),
+    "all_trainees": MessageLookupByLibrary.simpleMessage("All Trainees"),
+    "all_trainers": MessageLookupByLibrary.simpleMessage("All Trainers"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Have account? ",
     ),
@@ -218,6 +240,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "connected": MessageLookupByLibrary.simpleMessage("Connected"),
     "consultProviderItem": MessageLookupByLibrary.simpleMessage(
       "Consult doctor",
     ),
@@ -486,6 +509,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fat": MessageLookupByLibrary.simpleMessage("Fat"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
+    "find_trainers": MessageLookupByLibrary.simpleMessage("Find Trainers"),
     "finish": MessageLookupByLibrary.simpleMessage("Finish"),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
     "firstNameRequired": MessageLookupByLibrary.simpleMessage(
@@ -677,6 +701,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "medium": MessageLookupByLibrary.simpleMessage("Medium"),
     "memberSince": MessageLookupByLibrary.simpleMessage("Member Since"),
     "member_since": MessageLookupByLibrary.simpleMessage("Member Since"),
+    "message": MessageLookupByLibrary.simpleMessage("Message"),
     "min_value": MessageLookupByLibrary.simpleMessage("Min"),
     "minutes": MessageLookupByLibrary.simpleMessage("mins"),
     "minutes_short": MessageLookupByLibrary.simpleMessage("m"),
@@ -721,13 +746,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_custom_exercises": MessageLookupByLibrary.simpleMessage("My Custom"),
     "my_exercises": MessageLookupByLibrary.simpleMessage("My Exercises"),
     "my_progress": MessageLookupByLibrary.simpleMessage("My Progress"),
+    "my_requests": MessageLookupByLibrary.simpleMessage("My Requests"),
     "my_trainees": MessageLookupByLibrary.simpleMessage("My Trainees"),
+    "my_trainees_count": m0,
+    "my_trainers": MessageLookupByLibrary.simpleMessage("My Trainers"),
+    "my_trainers_count": m1,
     "my_workouts": MessageLookupByLibrary.simpleMessage("My Workouts"),
     "name_a_z": MessageLookupByLibrary.simpleMessage("Name (A-Z)"),
     "network_error": MessageLookupByLibrary.simpleMessage("Network error"),
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "no_available_trainers_message": MessageLookupByLibrary.simpleMessage(
+      "All trainers have pending requests",
+    ),
     "no_custom_exercises_yet": MessageLookupByLibrary.simpleMessage(
       "No custom exercises",
     ),
@@ -739,11 +771,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "No exercises",
     ),
     "no_exercises_found": MessageLookupByLibrary.simpleMessage("No exercises"),
+    "no_my_trainees_found": MessageLookupByLibrary.simpleMessage(
+      "No Trainees Yet",
+    ),
+    "no_my_trainees_message": MessageLookupByLibrary.simpleMessage(
+      "You haven\'t connected with any trainees yet",
+    ),
+    "no_my_trainers_found": MessageLookupByLibrary.simpleMessage(
+      "No Trainers Yet",
+    ),
+    "no_my_trainers_message": MessageLookupByLibrary.simpleMessage(
+      "You haven\'t connected with any trainers yet",
+    ),
     "no_notifications": MessageLookupByLibrary.simpleMessage(
       "No Notifications",
     ),
     "no_notifications_desc": MessageLookupByLibrary.simpleMessage(
       "You\'re all caught up! Check back later for new updates.",
+    ),
+    "no_pending_requests": MessageLookupByLibrary.simpleMessage(
+      "No pending requests",
     ),
     "no_personal_records_yet": MessageLookupByLibrary.simpleMessage(
       "No records yet",
@@ -754,8 +801,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_recent_workouts": MessageLookupByLibrary.simpleMessage(
       "No recent workouts",
     ),
+    "no_requests_found": MessageLookupByLibrary.simpleMessage(
+      "No Requests Found",
+    ),
     "no_sets_yet": MessageLookupByLibrary.simpleMessage("No sets"),
+    "no_trainee_requests_message": MessageLookupByLibrary.simpleMessage(
+      "No trainee requests at the moment",
+    ),
+    "no_trainees_found": MessageLookupByLibrary.simpleMessage(
+      "No Trainees Found",
+    ),
+    "no_trainees_message": MessageLookupByLibrary.simpleMessage(
+      "No trainees available in the system",
+    ),
     "no_trainees_yet": MessageLookupByLibrary.simpleMessage("No trainees yet"),
+    "no_trainer_requests_message": MessageLookupByLibrary.simpleMessage(
+      "No trainer requests at the moment",
+    ),
+    "no_trainers_found": MessageLookupByLibrary.simpleMessage(
+      "No Trainers Found",
+    ),
+    "no_trainers_message": MessageLookupByLibrary.simpleMessage(
+      "No trainers available in the system",
+    ),
     "no_workout_sessions": MessageLookupByLibrary.simpleMessage("No Sessions"),
     "no_workouts_found": MessageLookupByLibrary.simpleMessage(
       "No workouts found",
@@ -819,6 +887,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwords_match": MessageLookupByLibrary.simpleMessage("Passwords match"),
     "peak": MessageLookupByLibrary.simpleMessage("Peak"),
     "pec_deck_machine": MessageLookupByLibrary.simpleMessage("Pec Deck"),
+    "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+    "pending_requests_count": m2,
     "per_week": MessageLookupByLibrary.simpleMessage("Per Week"),
     "period_1_year": MessageLookupByLibrary.simpleMessage("1 Year"),
     "period_30_days": MessageLookupByLibrary.simpleMessage("30 Days"),
@@ -896,7 +966,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "privacy_policy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
-    "profileCompletedWelcome": m0,
+    "profileCompletedWelcome": m3,
     "profileInformationItem": MessageLookupByLibrary.simpleMessage(
       "Profile data",
     ),
@@ -930,7 +1000,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "records": MessageLookupByLibrary.simpleMessage("Records"),
     "reduce_fat": MessageLookupByLibrary.simpleMessage("Reduce Fat"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
-    "registrationSuccess": m1,
+    "registrationSuccess": m4,
+    "reject": MessageLookupByLibrary.simpleMessage("Reject"),
+    "reject_request": MessageLookupByLibrary.simpleMessage("Reject"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
     "reorder_sections": MessageLookupByLibrary.simpleMessage(
@@ -938,6 +1010,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "reps": MessageLookupByLibrary.simpleMessage("Reps"),
     "reps_progress": MessageLookupByLibrary.simpleMessage("Reps Progress"),
+    "request_accepted": MessageLookupByLibrary.simpleMessage(
+      "Request accepted successfully",
+    ),
+    "request_message": MessageLookupByLibrary.simpleMessage("Message"),
+    "request_rejected": MessageLookupByLibrary.simpleMessage(
+      "Request rejected successfully",
+    ),
+    "requested_on": m5,
+    "requests": MessageLookupByLibrary.simpleMessage("Requests"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "reset": MessageLookupByLibrary.simpleMessage("Reset"),
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
@@ -971,6 +1052,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_by_date": MessageLookupByLibrary.simpleMessage("Search date..."),
     "search_exercises": MessageLookupByLibrary.simpleMessage("Search..."),
     "search_results": MessageLookupByLibrary.simpleMessage("Results"),
+    "search_trainees": MessageLookupByLibrary.simpleMessage(
+      "Search for trainees...",
+    ),
+    "search_trainer": MessageLookupByLibrary.simpleMessage(
+      "Search for a trainer...",
+    ),
+    "search_trainers": MessageLookupByLibrary.simpleMessage(
+      "Search for trainers...",
+    ),
     "searching_for": MessageLookupByLibrary.simpleMessage("Searching"),
     "seated_row_machine": MessageLookupByLibrary.simpleMessage("Seated Row"),
     "section": MessageLookupByLibrary.simpleMessage("Section"),
@@ -998,12 +1088,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "select_workout": MessageLookupByLibrary.simpleMessage("Select Session"),
     "select_workout_date": MessageLookupByLibrary.simpleMessage("Select Date"),
     "selected": MessageLookupByLibrary.simpleMessage("Selected"),
+    "send": MessageLookupByLibrary.simpleMessage("Send"),
     "sendEmail": MessageLookupByLibrary.simpleMessage("Email"),
     "sendMessage": MessageLookupByLibrary.simpleMessage("Message"),
     "sendNotificationsItem": MessageLookupByLibrary.simpleMessage(
       "Send updates",
     ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Link"),
+    "send_invitation": MessageLookupByLibrary.simpleMessage("Send Invitation"),
+    "send_request": MessageLookupByLibrary.simpleMessage("Send Request"),
+    "sending_invitation_to": m6,
+    "sending_request_to": m7,
     "session_created": MessageLookupByLibrary.simpleMessage("Session created!"),
     "sessions": MessageLookupByLibrary.simpleMessage("Sessions"),
     "set": MessageLookupByLibrary.simpleMessage("Set"),
@@ -1112,9 +1207,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "total_sets": MessageLookupByLibrary.simpleMessage("Total Sets"),
     "total_workouts": MessageLookupByLibrary.simpleMessage("Total Workouts"),
     "trackProgressItem": MessageLookupByLibrary.simpleMessage("Track progress"),
+    "trainee_requests": MessageLookupByLibrary.simpleMessage(
+      "Trainee Requests",
+    ),
+    "trainee_requests_will_appear": MessageLookupByLibrary.simpleMessage(
+      "Trainee requests will appear here",
+    ),
     "trainees": MessageLookupByLibrary.simpleMessage("Trainees"),
     "trainer": MessageLookupByLibrary.simpleMessage("Trainer"),
     "trainerDesc": MessageLookupByLibrary.simpleMessage("Manage plans"),
+    "trainer_id": MessageLookupByLibrary.simpleMessage("Trainer ID"),
+    "trainer_profile": MessageLookupByLibrary.simpleMessage("Trainer Profile"),
+    "trainer_requests": MessageLookupByLibrary.simpleMessage(
+      "Trainer Requests",
+    ),
     "transformYourLife": MessageLookupByLibrary.simpleMessage(
       "Transform Your Body, Transform Your Life",
     ),
@@ -1152,6 +1258,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userAccountText": MessageLookupByLibrary.simpleMessage(
       "You\'re responsible for:",
     ),
+    "user_requests": MessageLookupByLibrary.simpleMessage("User Requests"),
     "username": MessageLookupByLibrary.simpleMessage("Username"),
     "usernameMinLength": MessageLookupByLibrary.simpleMessage("Min 3 chars"),
     "usernameRequired": MessageLookupByLibrary.simpleMessage(
@@ -1174,6 +1281,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "view_details": MessageLookupByLibrary.simpleMessage("View Details"),
     "view_progress": MessageLookupByLibrary.simpleMessage("View Progress"),
+    "view_requests": MessageLookupByLibrary.simpleMessage("View Requests"),
     "violateLawsItem": MessageLookupByLibrary.simpleMessage("Break laws"),
     "visitWebsite": MessageLookupByLibrary.simpleMessage("Visit"),
     "volume": MessageLookupByLibrary.simpleMessage("Volume"),
@@ -1201,7 +1309,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "weight_tracking": MessageLookupByLibrary.simpleMessage("Weight Tracking"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back!"),
-    "welcomeBackUser": m2,
+    "welcomeBackUser": m8,
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "welcome_trainer": MessageLookupByLibrary.simpleMessage("Welcome Trainer!"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("WhatsApp"),

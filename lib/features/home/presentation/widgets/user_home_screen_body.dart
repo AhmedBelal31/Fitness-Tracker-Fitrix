@@ -10,6 +10,7 @@ import '../widgets/user_widgets/user_home_custom_exercises.dart';
 import '../widgets/user_widgets/user_home_header.dart';
 import '../widgets/user_widgets/user_home_records.dart';
 import '../widgets/user_widgets/user_home_sections.dart';
+import 'user_widgets/quick_actions_card.dart';
 
 class UserHomeScreenBody extends StatefulWidget {
   const UserHomeScreenBody({super.key});
@@ -66,11 +67,21 @@ class _UserHomeScreenBodyState extends State<UserHomeScreenBody>
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 20.w,
-                    vertical: 24.h,
+                    vertical: 12.h,
                   ),
-                  child: _buildMotivationalBanner(),
+                  child: const QuickActionsCard(),
                 ),
               ),
+
+              // SliverToBoxAdapter(
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 20.w,
+              //       vertical: 24.h,
+              //     ),
+              //     child: _buildMotivationalBanner(),
+              //   ),
+              // ),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),

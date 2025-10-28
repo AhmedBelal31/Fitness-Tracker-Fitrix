@@ -828,5 +828,121 @@
   "delete_notification": "Delete Notification",
   "delete_notification_confirmation": "Are you sure you want to delete this notification?",
   "additional_info": "Additional Information",
+  "user_requests": "User Requests",
+  "trainer_requests": "Trainer Requests",
+  "search_trainer": "Search for a trainer...",
+  "no_requests_found": "No trainer requests found",
+  "requested_on": "Requested on {date}",
+  "@requested_on": {
+    "description": "Shows when the trainer request was created",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "12/10/2025"
+      }
+    }
+  },
+  "requests": "Requests",
+  "trainer_requests": "Trainer Requests",
+  "search_trainer": "Search for a trainer...",
+  "no_requests_found": "No trainer requests found",
+  "requested_on": "Requested on {date}",
+  "view_requests": "View Requests",
+  "trainer_profile": "Trainer Profile",
+  "accept_request": "Accept",
+  "reject_request": "Reject",
+  "trainer_id": "Trainer ID",
+  "request_message": "Message",
+  "trainee_requests": "Trainee Requests",
+  "no_pending_requests": "No pending requests",
+  "trainee_requests_will_appear": "Trainee requests will appear here",
+  "accept": "Accept",
+  "reject": "Reject",
+  "request_accepted": "Request accepted successfully",
+  "request_rejected": "Request rejected successfully",
+  "trainer_requests": "Trainer Requests",
+  "my_requests": "My Requests",
+  "find_trainers": "Find Trainers",
+  "all_trainers": "All Trainers",
+  "search_trainers": "Search for trainers...",
+  "no_requests_found": "No Requests Found",
+  "no_trainer_requests_message": "No trainer requests at the moment",
+  "no_trainers_found": "No Trainers Found",
+  "no_available_trainers_message": "All trainers have pending requests",
+  "no_trainers_message": "No trainers available in the system",
+  "pending_requests_count": "{count} pending {count, plural, =1{request} other{requests}}",
+  "@pending_requests_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "send_request": "Send Request",
+  "sending_request_to": "Sending request to {name}",
+  "@sending_request_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "add_message_optional": "Add a message (optional)",
+  "cancel": "Cancel",
+  "send": "Send",
+  "pending": "Pending",
+  "trainer_requests": "Trainer Requests",
+  "my_requests": "My Requests",
+  "my_trainers": "My Trainers",
+  "all_trainers": "All Trainers",
+  "search_trainers": "Search for trainers...",
+  "no_trainers_found": "No Trainers Found",
+  "no_trainers_message": "No trainers available in the system",
+  "no_my_trainers_found": "No Trainers Yet",
+  "no_my_trainers_message": "You haven't connected with any trainers yet",
+  "my_trainers_count": "You have {count} {count, plural, =1{trainer} other{trainers}}",
+  "send_request": "Send Request",
+  "sending_request_to": "Sending request to {name}",
+  "@sending_request_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "add_message_optional": "Add a message (optional)",
+  "cancel": "Cancel",
+  "send": "Send",
+  "pending": "Pending",
+  "connected": "Connected",
+  "message": "Message",
+  "trainee_requests": "Trainee Requests",
+  "my_trainees": "My Trainees",
+  "all_trainees": "All Trainees",
+  "search_trainees": "Search for trainees...",
+  "no_trainee_requests_message": "No trainee requests at the moment",
+  "no_my_trainees_found": "No Trainees Yet",
+  "no_my_trainees_message": "You haven't connected with any trainees yet",
+  "my_trainees_count": "You have {count} {count, plural, =1{trainee} other{trainees}}",
+  "@my_trainees_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "no_trainees_found": "No Trainees Found",
+  "no_trainees_message": "No trainees available in the system",
+  "connected": "Connected",
+  "send_invitation": "Send Invitation",
+  "sending_invitation_to": "Sending invitation to {name}",
+  "@sending_invitation_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "X": "X"
 }

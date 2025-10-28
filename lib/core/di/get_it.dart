@@ -8,6 +8,8 @@ import 'modules/notifications_module.dart';
 import 'modules/profile_module.dart';
 import 'modules/progress_module.dart';
 import 'modules/setup_home_module.dart';
+import 'modules/trainer_requests_module.dart';
+import 'modules/user_requests_module.dart';
 import 'modules/workout_module.dart';
 
 final di = GetIt.instance;
@@ -23,4 +25,6 @@ Future<void> setupServiceLocator() async {
   setupProgressModule();
   setupAchievementsModule();
   setupNotificationsModule();
+  setupUserRequestsModule();
+  setupTrainerRequestsModule();
 }

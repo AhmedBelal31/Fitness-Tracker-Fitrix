@@ -37,4 +37,7 @@ class Routes {
   static const String changePassword = '/changePassword';
   static const String notifications = '/notifications';
   static const String notificationDetails = '/notification-details';
+
+  static const String userRequests = '/user-requests';
+  static const String trainerRequests = '/trainer-requests';
 }

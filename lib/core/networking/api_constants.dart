@@ -71,4 +71,27 @@ class ApiEndpoints {
   static String exerciseProgressCharts(String exerciseId) =>
       '/Progress/charts/exercise/$exerciseId';
   static const String recordsAchievements = '/Records/achievements';
+
+  // ✅ User Requests Endpoints (Complete)
+  static const String sendUserRequest = '/UserRequest/send';
+  static const String sentUserRequests = '/UserRequest/sent';
+  static const String receivedUserRequests = '/UserRequest/received';
+  static const String allTrainers = '/UserRequest/all-trainers';
+
+  static String cancelUserRequest(String requestId) =>
+      '/UserRequest/cancel/$requestId';
+  static String acceptUserRequest(String requestId) =>
+      'UserRequest/accept/$requestId';
+  static String rejectUserRequest(String requestId) =>
+      '/UserRequest/reject/$requestId';
+  static String getUserRequestById(String requestId) =>
+      '/UserRequest/$requestId';
+
+  // Trainer Request endpoints
+  static const String receivedTrainerRequests = '/TrainerRequest/received';
+  static String acceptTrainerRequest(String id) => '/TrainerRequest/accept/$id';
+  static String rejectTrainerRequest(String id) => '/TrainerRequest/reject/$id';
+  static const String allUsers = '/TrainerRequest/all-users';
+
+  static const String sendTrainerRequest = '/TrainerRequest/send';
 }

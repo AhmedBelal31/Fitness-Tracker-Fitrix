@@ -6039,6 +6039,431 @@ class S {
     );
   }
 
+  /// `User Requests`
+  String get user_requests {
+    return Intl.message(
+      'User Requests',
+      name: 'user_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trainer Requests`
+  String get trainer_requests {
+    return Intl.message(
+      'Trainer Requests',
+      name: 'trainer_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for a trainer...`
+  String get search_trainer {
+    return Intl.message(
+      'Search for a trainer...',
+      name: 'search_trainer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Requests Found`
+  String get no_requests_found {
+    return Intl.message(
+      'No Requests Found',
+      name: 'no_requests_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Requested on {date}`
+  String requested_on(String date) {
+    return Intl.message(
+      'Requested on $date',
+      name: 'requested_on',
+      desc: 'Shows when the trainer request was created',
+      args: [date],
+    );
+  }
+
+  /// `Requests`
+  String get requests {
+    return Intl.message('Requests', name: 'requests', desc: '', args: []);
+  }
+
+  /// `View Requests`
+  String get view_requests {
+    return Intl.message(
+      'View Requests',
+      name: 'view_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trainer Profile`
+  String get trainer_profile {
+    return Intl.message(
+      'Trainer Profile',
+      name: 'trainer_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept_request {
+    return Intl.message('Accept', name: 'accept_request', desc: '', args: []);
+  }
+
+  /// `Reject`
+  String get reject_request {
+    return Intl.message('Reject', name: 'reject_request', desc: '', args: []);
+  }
+
+  /// `Trainer ID`
+  String get trainer_id {
+    return Intl.message('Trainer ID', name: 'trainer_id', desc: '', args: []);
+  }
+
+  /// `Message`
+  String get request_message {
+    return Intl.message('Message', name: 'request_message', desc: '', args: []);
+  }
+
+  /// `Trainee Requests`
+  String get trainee_requests {
+    return Intl.message(
+      'Trainee Requests',
+      name: 'trainee_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No pending requests`
+  String get no_pending_requests {
+    return Intl.message(
+      'No pending requests',
+      name: 'no_pending_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trainee requests will appear here`
+  String get trainee_requests_will_appear {
+    return Intl.message(
+      'Trainee requests will appear here',
+      name: 'trainee_requests_will_appear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message('Accept', name: 'accept', desc: '', args: []);
+  }
+
+  /// `Reject`
+  String get reject {
+    return Intl.message('Reject', name: 'reject', desc: '', args: []);
+  }
+
+  /// `Request accepted successfully`
+  String get request_accepted {
+    return Intl.message(
+      'Request accepted successfully',
+      name: 'request_accepted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request rejected successfully`
+  String get request_rejected {
+    return Intl.message(
+      'Request rejected successfully',
+      name: 'request_rejected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Requests`
+  String get my_requests {
+    return Intl.message('My Requests', name: 'my_requests', desc: '', args: []);
+  }
+
+  /// `Find Trainers`
+  String get find_trainers {
+    return Intl.message(
+      'Find Trainers',
+      name: 'find_trainers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Trainers`
+  String get all_trainers {
+    return Intl.message(
+      'All Trainers',
+      name: 'all_trainers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for trainers...`
+  String get search_trainers {
+    return Intl.message(
+      'Search for trainers...',
+      name: 'search_trainers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No trainer requests at the moment`
+  String get no_trainer_requests_message {
+    return Intl.message(
+      'No trainer requests at the moment',
+      name: 'no_trainer_requests_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Trainers Found`
+  String get no_trainers_found {
+    return Intl.message(
+      'No Trainers Found',
+      name: 'no_trainers_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All trainers have pending requests`
+  String get no_available_trainers_message {
+    return Intl.message(
+      'All trainers have pending requests',
+      name: 'no_available_trainers_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No trainers available in the system`
+  String get no_trainers_message {
+    return Intl.message(
+      'No trainers available in the system',
+      name: 'no_trainers_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count} pending {count, plural, =1{request} other{requests}}`
+  String pending_requests_count(int count) {
+    return Intl.message(
+      '$count pending ${Intl.plural(count, one: 'request', other: 'requests')}',
+      name: 'pending_requests_count',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Send Request`
+  String get send_request {
+    return Intl.message(
+      'Send Request',
+      name: 'send_request',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sending request to {name}`
+  String sending_request_to(String name) {
+    return Intl.message(
+      'Sending request to $name',
+      name: 'sending_request_to',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Add a message (optional)`
+  String get add_message_optional {
+    return Intl.message(
+      'Add a message (optional)',
+      name: 'add_message_optional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message('Send', name: 'send', desc: '', args: []);
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message('Pending', name: 'pending', desc: '', args: []);
+  }
+
+  /// `My Trainers`
+  String get my_trainers {
+    return Intl.message('My Trainers', name: 'my_trainers', desc: '', args: []);
+  }
+
+  /// `No Trainers Yet`
+  String get no_my_trainers_found {
+    return Intl.message(
+      'No Trainers Yet',
+      name: 'no_my_trainers_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't connected with any trainers yet`
+  String get no_my_trainers_message {
+    return Intl.message(
+      'You haven\'t connected with any trainers yet',
+      name: 'no_my_trainers_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have {count} {count, plural, =1{trainer} other{trainers}}`
+  String my_trainers_count(num count) {
+    return Intl.message(
+      'You have $count ${Intl.plural(count, one: 'trainer', other: 'trainers')}',
+      name: 'my_trainers_count',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Connected`
+  String get connected {
+    return Intl.message('Connected', name: 'connected', desc: '', args: []);
+  }
+
+  /// `Message`
+  String get message {
+    return Intl.message('Message', name: 'message', desc: '', args: []);
+  }
+
+  /// `All Trainees`
+  String get all_trainees {
+    return Intl.message(
+      'All Trainees',
+      name: 'all_trainees',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for trainees...`
+  String get search_trainees {
+    return Intl.message(
+      'Search for trainees...',
+      name: 'search_trainees',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No trainee requests at the moment`
+  String get no_trainee_requests_message {
+    return Intl.message(
+      'No trainee requests at the moment',
+      name: 'no_trainee_requests_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Trainees Yet`
+  String get no_my_trainees_found {
+    return Intl.message(
+      'No Trainees Yet',
+      name: 'no_my_trainees_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You haven't connected with any trainees yet`
+  String get no_my_trainees_message {
+    return Intl.message(
+      'You haven\'t connected with any trainees yet',
+      name: 'no_my_trainees_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have {count} {count, plural, =1{trainee} other{trainees}}`
+  String my_trainees_count(int count) {
+    return Intl.message(
+      'You have $count ${Intl.plural(count, one: 'trainee', other: 'trainees')}',
+      name: 'my_trainees_count',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `No Trainees Found`
+  String get no_trainees_found {
+    return Intl.message(
+      'No Trainees Found',
+      name: 'no_trainees_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No trainees available in the system`
+  String get no_trainees_message {
+    return Intl.message(
+      'No trainees available in the system',
+      name: 'no_trainees_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Invitation`
+  String get send_invitation {
+    return Intl.message(
+      'Send Invitation',
+      name: 'send_invitation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sending invitation to {name}`
+  String sending_invitation_to(String name) {
+    return Intl.message(
+      'Sending invitation to $name',
+      name: 'sending_invitation_to',
+      desc: '',
+      args: [name],
+    );
+  }
+
   /// `X`
   String get X {
     return Intl.message('X', name: 'X', desc: '', args: []);

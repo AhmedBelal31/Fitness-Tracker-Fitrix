@@ -32,6 +32,8 @@ import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
 import '../../features/profile/presentation/screens/terms_conditions_screen.dart'
     hide PrivacyPolicyScreen;
 import '../../features/profile/presentation/screens/update_profile.dart';
+import '../../features/trainer_requests/presentation/screens/trainer_requests_screen.dart';
+import '../../features/user_requests/presentation/user_requests_screen.dart';
 import '../../features/workout/presentation/cubit/workouts_cubit.dart';
 import '../../features/workout/presentation/screens/workout_details_screen.dart';
 import 'export_routes.dart';
@@ -208,6 +210,12 @@ class AppRouter {
             child: NotificationDetailsScreen(notification: notification),
           ),
         );
+
+      case Routes.userRequests:
+        return MaterialPageRoute(builder: (_) => const UserRequestsScreen());
+
+      case Routes.trainerRequests:
+        return MaterialPageRoute(builder: (_) => const TrainerRequestsScreen());
 
       default:
         screen = const ErrorScreen();

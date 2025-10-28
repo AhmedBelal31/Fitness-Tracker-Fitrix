@@ -5,7 +5,7 @@ class CompleteProfileParams extends Equatable {
   final String lastName;
   final String gender;
   final double? weightKg;
-  // final double? weightGoal;
+  final double? weightGoal;
   final double? bodyFatPercent;
   final double? muscleMassKg;
 
@@ -14,7 +14,7 @@ class CompleteProfileParams extends Equatable {
     required this.lastName,
     required this.gender,
     this.weightKg,
-    // this.weightGoal,
+    this.weightGoal,
     this.bodyFatPercent,
     this.muscleMassKg,
   });
@@ -26,7 +26,7 @@ class CompleteProfileParams extends Equatable {
       'Gender': gender == "Male" ? 1 : 2,
     };
     if (weightKg != null) map['WeightKg'] = weightKg;
-    // if (weightKg != null) map['WeightGoal'] = weightKg;
+    if (weightKg != null) map['WeightGoal'] = weightKg;
     if (bodyFatPercent != null) map['BodyFatPercent'] = bodyFatPercent;
     if (muscleMassKg != null) map['MuscleMassKg'] = muscleMassKg;
     return map;

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 enum DarkThemeVariant {
   classic, // Your current dark theme (green neon)
   midnight, // Deep blue dark theme

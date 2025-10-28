@@ -138,9 +138,11 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen>
           SliverToBoxAdapter(child: SizedBox(height: 100.h)),
         ],
       ),
-      floatingActionButton: !widget.exercise.isCustomExercise
-          ? _buildFloatingProgressButton(s)
-          : null,
+
+      // floatingActionButton: !widget.exercise.isCustomExercise
+      //     ? _buildFloatingProgressButton(s)
+      //     : null,
+      floatingActionButton: _buildFloatingProgressButton(s),
     );
   }
 
@@ -179,28 +181,44 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen>
       pinned: true,
       backgroundColor: ColorsManager.getPrimaryGreen(context),
       leading: _buildBackButton(),
-      actions: !widget.exercise.isCustomExercise
-          ? [
-              IconButton(
-                onPressed: () => _navigateToProgress(context),
-                icon: Container(
-                  width: 36.w,
-                  height: 36.h,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.4),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.show_chart,
-                    color: Colors.white,
-                    size: 20.sp,
-                  ),
-                ),
-                tooltip: s.view_progress,
-              ),
-            ]
-          : null,
+      // actions: !widget.exercise.isCustomExercise
+      //     ? [
+      //         IconButton(
+      //           onPressed: () => _navigateToProgress(context),
+      //           icon: Container(
+      //             width: 36.w,
+      //             height: 36.h,
+      //             alignment: Alignment.center,
+      //             decoration: BoxDecoration(
+      //               color: Colors.black.withValues(alpha: 0.4),
+      //               shape: BoxShape.circle,
+      //             ),
+      //             child: Icon(
+      //               Icons.show_chart,
+      //               color: Colors.white,
+      //               size: 20.sp,
+      //             ),
+      //           ),
+      //           tooltip: s.view_progress,
+      //         ),
+      //       ]
+      //     : null,
+      actions: [
+        IconButton(
+          onPressed: () => _navigateToProgress(context),
+          icon: Container(
+            width: 36.w,
+            height: 36.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.black.withValues(alpha: 0.4),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(Icons.show_chart, color: Colors.white, size: 20.sp),
+          ),
+          tooltip: s.view_progress,
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           fit: StackFit.expand,
