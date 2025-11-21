@@ -51,4 +51,17 @@ abstract class WorkoutRepository {
     bool? isCompleted,
     bool? isPersonalRecord,
   });
+
+  Future<Either<Failure, String>> createSessionForTrainee({
+    required String traineeId,
+    required DateTime date,
+    String? notes,
+  });
+
+  Future<Either<Failure, List<WorkoutSessionModel>>>
+  getWorkoutHistoryForTrainee({
+    required String traineeId,
+    int pageSize = 20,
+    int pageNumber = 1,
+  });
 }

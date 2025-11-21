@@ -62,7 +62,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "achievements": MessageLookupByLibrary.simpleMessage("الإنجازات"),
     "active": MessageLookupByLibrary.simpleMessage("نشط"),
     "active_trainees": MessageLookupByLibrary.simpleMessage("متدربين نشطين"),
+    "active_workouts": MessageLookupByLibrary.simpleMessage("تمارين نشطة"),
     "add": MessageLookupByLibrary.simpleMessage("إضافة"),
+    "add_client": MessageLookupByLibrary.simpleMessage("إضافة عميل"),
+    "add_client_description": MessageLookupByLibrary.simpleMessage(
+      "ابحث وأرسل طلبات للعملاء المحتملين",
+    ),
+    "add_clients_to_chat": MessageLookupByLibrary.simpleMessage(
+      "أضف عملاء لبدء الدردشة",
+    ),
     "add_exercise": MessageLookupByLibrary.simpleMessage("إضافة تمرين"),
     "add_first_trainee": MessageLookupByLibrary.simpleMessage("ضيّف أول متدرب"),
     "add_message_optional": MessageLookupByLibrary.simpleMessage(
@@ -73,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_to_workout": MessageLookupByLibrary.simpleMessage("ضيّف للتمرين"),
     "add_trainee": MessageLookupByLibrary.simpleMessage("أضف متدرب"),
     "add_workout_notes": MessageLookupByLibrary.simpleMessage(
-      "ضيّف ملاحظات...",
+      "أضف ملاحظات حول هذا التمرين...",
     ),
     "added_to_workout": MessageLookupByLibrary.simpleMessage("اتضاف!"),
     "adding": MessageLookupByLibrary.simpleMessage("بيضيف..."),
@@ -89,7 +97,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "adjustable_bench": MessageLookupByLibrary.simpleMessage("بنش متحرك"),
     "advanced": MessageLookupByLibrary.simpleMessage("متقدم"),
+    "age": MessageLookupByLibrary.simpleMessage("العمر"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
+    "all_clients": MessageLookupByLibrary.simpleMessage("جميع العملاء"),
     "all_records": MessageLookupByLibrary.simpleMessage(
       "جميع الأرقام القياسية",
     ),
@@ -112,6 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "area_chart": MessageLookupByLibrary.simpleMessage("مساحي"),
     "arms": MessageLookupByLibrary.simpleMessage("الذراعين"),
     "arms_description": MessageLookupByLibrary.simpleMessage("باي وتراي"),
+    "assign": MessageLookupByLibrary.simpleMessage("تعيين"),
+    "assign_workout": MessageLookupByLibrary.simpleMessage("تعيين تمرين"),
     "at_least_6_characters": MessageLookupByLibrary.simpleMessage(
       "6 أحرف على الأقل",
     ),
@@ -168,6 +180,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cannot_add_to_completed_session": MessageLookupByLibrary.simpleMessage(
       "الجلسة مكتملة",
     ),
+    "cannot_start_chat": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن بدء المحادثة",
+    ),
     "change": MessageLookupByLibrary.simpleMessage("التغيير"),
     "changeYourPassword": MessageLookupByLibrary.simpleMessage("غيّر الباسورد"),
     "change_password": MessageLookupByLibrary.simpleMessage(
@@ -207,6 +222,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "clear": MessageLookupByLibrary.simpleMessage("مسح"),
     "clear_filters": MessageLookupByLibrary.simpleMessage("مسح الفلاتر"),
+    "client": MessageLookupByLibrary.simpleMessage("عميل"),
+    "client_workouts": MessageLookupByLibrary.simpleMessage("تمارين العملاء"),
+    "clients": MessageLookupByLibrary.simpleMessage("العملاء"),
     "cm": MessageLookupByLibrary.simpleMessage("سم"),
     "commercialUseItem": MessageLookupByLibrary.simpleMessage("استخدام تجاري"),
     "complete": MessageLookupByLibrary.simpleMessage("مكتمل"),
@@ -260,20 +278,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "تمرين مخصص",
     ),
+    "create_first_workout_for_client": MessageLookupByLibrary.simpleMessage(
+      "أنشئ أول تمرين لهذا العميل",
+    ),
     "create_new_session_to_start": MessageLookupByLibrary.simpleMessage(
       "اعمل جلسة الأول",
     ),
     "create_new_workout": MessageLookupByLibrary.simpleMessage("تمرين جديد؟"),
     "create_session": MessageLookupByLibrary.simpleMessage("إنشاء"),
-    "create_workout": MessageLookupByLibrary.simpleMessage("تمرين جديد"),
+    "create_workout": MessageLookupByLibrary.simpleMessage(
+      "إنشاء برنامج تمرين",
+    ),
     "create_workout_confirmation": MessageLookupByLibrary.simpleMessage(
       "اعمل جلسة؟",
+    ),
+    "create_workout_for_client": MessageLookupByLibrary.simpleMessage(
+      "إنشاء تمرين للعميل",
     ),
     "create_your_first_exercise": MessageLookupByLibrary.simpleMessage(
       "اعمل أول تمرين",
     ),
     "create_your_own_exercises": MessageLookupByLibrary.simpleMessage(
       "عرض وإدارة تمارينك المخصصة",
+    ),
+    "creating_workout_for": MessageLookupByLibrary.simpleMessage(
+      "جاري إنشاء تمرين لـ",
     ),
     "crunches": MessageLookupByLibrary.simpleMessage("كرنش"),
     "crunches_description": MessageLookupByLibrary.simpleMessage("تمرين بطن"),
@@ -288,9 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "current_password": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الحالية",
     ),
-    "current_weight": MessageLookupByLibrary.simpleMessage(
-      "الوزن الحالي (كجم)",
-    ),
+    "current_weight": MessageLookupByLibrary.simpleMessage("الوزن الحالي"),
     "custom": MessageLookupByLibrary.simpleMessage("مخصص"),
     "custom_equipment": MessageLookupByLibrary.simpleMessage("معدات مخصصة"),
     "custom_exercises": MessageLookupByLibrary.simpleMessage(
@@ -299,6 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "dark_theme": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
     "dark_theme_desc": MessageLookupByLibrary.simpleMessage("مريح للعين"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "dataSecurity": MessageLookupByLibrary.simpleMessage("الأمان"),
     "dataSecurityText": MessageLookupByLibrary.simpleMessage("بياناتك مشفرة"),
     "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
@@ -383,6 +411,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enter_new_password": MessageLookupByLibrary.simpleMessage("باسورد جديد"),
     "enter_weight_goal": MessageLookupByLibrary.simpleMessage("الوزن المستهدف"),
+    "enter_workout_name": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسم التمرين",
+    ),
     "enter_your_email_to_receive_reset_code":
         MessageLookupByLibrary.simpleMessage("اكتب إيميلك عشان نبعتلك الكود"),
     "enter_your_equipment_name": MessageLookupByLibrary.simpleMessage(
@@ -462,6 +493,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fat": MessageLookupByLibrary.simpleMessage("دهون"),
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "filter": MessageLookupByLibrary.simpleMessage("فلتر"),
+    "find_clients": MessageLookupByLibrary.simpleMessage("البحث عن عملاء"),
     "find_trainers": MessageLookupByLibrary.simpleMessage("البحث عن مدربين"),
     "finish": MessageLookupByLibrary.simpleMessage("خلّص"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -632,6 +664,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("إدارة المتدربين"),
+    "manage_trainer_requests": MessageLookupByLibrary.simpleMessage(
+      "إدارة طلبات المدرب",
+    ),
     "manage_your_exercises": MessageLookupByLibrary.simpleMessage(
       "إدارة تمارينك المخصصة",
     ),
@@ -645,6 +680,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "memberSince": MessageLookupByLibrary.simpleMessage("عضو من"),
     "member_since": MessageLookupByLibrary.simpleMessage("عضو من"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
+    "messages": MessageLookupByLibrary.simpleMessage("الرسائل"),
     "min_value": MessageLookupByLibrary.simpleMessage("الأدنى"),
     "minutes": MessageLookupByLibrary.simpleMessage("دقيقة"),
     "minutes_short": MessageLookupByLibrary.simpleMessage("د"),
@@ -686,6 +722,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "muscle_mass_progress": MessageLookupByLibrary.simpleMessage(
       "تقدم الكتلة العضلية",
     ),
+    "my_clients": MessageLookupByLibrary.simpleMessage("عملائي"),
     "my_custom_exercises": MessageLookupByLibrary.simpleMessage(
       "تماريني المخصصة",
     ),
@@ -696,7 +733,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_trainees_count": m0,
     "my_trainers": MessageLookupByLibrary.simpleMessage("مدربيني"),
     "my_trainers_count": m1,
-    "my_workouts": MessageLookupByLibrary.simpleMessage("تمارينى"),
+    "my_training": MessageLookupByLibrary.simpleMessage("تدريبي"),
+    "my_workouts": MessageLookupByLibrary.simpleMessage("تماريني"),
     "name_a_z": MessageLookupByLibrary.simpleMessage("الاسم (أ-ي)"),
     "network_error": MessageLookupByLibrary.simpleMessage("خطأ شبكة"),
     "new_password": MessageLookupByLibrary.simpleMessage("باسورد جديد"),
@@ -705,6 +743,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_available_trainers_message": MessageLookupByLibrary.simpleMessage(
       "جميع المدربين لديهم طلبات معلقة",
     ),
+    "no_clients": MessageLookupByLibrary.simpleMessage("لا يوجد عملاء"),
+    "no_clients_to_create_workout": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد عملاء لإنشاء تمارين لهم",
+    ),
+    "no_clients_yet": MessageLookupByLibrary.simpleMessage("لا يوجد عملاء بعد"),
+    "no_conversations": MessageLookupByLibrary.simpleMessage("لا توجد محادثات"),
     "no_custom_exercises_yet": MessageLookupByLibrary.simpleMessage(
       "مفيش تمارين مخصصة",
     ),
@@ -716,6 +760,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "مفيش تمارين",
     ),
     "no_exercises_found": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
+    "no_messages_yet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد رسائل بعد",
+    ),
     "no_my_trainees_found": MessageLookupByLibrary.simpleMessage(
       "لا يوجد متدربون بعد",
     ),
@@ -741,6 +788,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_progress_data": MessageLookupByLibrary.simpleMessage("مفيش بيانات"),
     "no_recent_workouts": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
     "no_requests_found": MessageLookupByLibrary.simpleMessage("لا توجد طلبات"),
+    "no_results_found": MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
     "no_sets_yet": MessageLookupByLibrary.simpleMessage("مفيش مجموعات"),
     "no_trainee_requests_message": MessageLookupByLibrary.simpleMessage(
       "لا توجد طلبات متدربين في الوقت الحالي",
@@ -755,11 +803,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_trainer_requests_message": MessageLookupByLibrary.simpleMessage(
       "لا توجد طلبات مدرب في الوقت الحالي",
     ),
+    "no_trainers": MessageLookupByLibrary.simpleMessage("لا يوجد مدربون"),
+    "no_trainers_available": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد مدربون متاحون في الوقت الحالي",
+    ),
     "no_trainers_found": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على مدربين",
     ),
     "no_trainers_message": MessageLookupByLibrary.simpleMessage(
       "لا يوجد مدربون متاحون في النظام",
+    ),
+    "no_users_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على مستخدمين",
     ),
     "no_workout_sessions": MessageLookupByLibrary.simpleMessage("مفيش جلسات"),
     "no_workouts_found": MessageLookupByLibrary.simpleMessage("مفيش تمارين"),
@@ -779,8 +834,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "not_started": MessageLookupByLibrary.simpleMessage("ما بدأش"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
+    "notes_optional": MessageLookupByLibrary.simpleMessage("ملاحظات (اختياري)"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "obliques": MessageLookupByLibrary.simpleMessage("جوانب"),
+    "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
     "optOutItem": MessageLookupByLibrary.simpleMessage("ترفض"),
     "optional_notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
@@ -794,6 +851,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "overhead_tricep_extension_description":
         MessageLookupByLibrary.simpleMessage("عزل تراي"),
+    "overview": MessageLookupByLibrary.simpleMessage("نظرة عامة"),
     "parallettes": MessageLookupByLibrary.simpleMessage("متوازي"),
     "password": MessageLookupByLibrary.simpleMessage("الباسورد"),
     "passwordComplexity": MessageLookupByLibrary.simpleMessage("باسورد ضعيف"),
@@ -825,6 +883,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "peak": MessageLookupByLibrary.simpleMessage("الذروة"),
     "pec_deck_machine": MessageLookupByLibrary.simpleMessage("بيك ديك"),
     "pending": MessageLookupByLibrary.simpleMessage("معلق"),
+    "pending_requests": MessageLookupByLibrary.simpleMessage("طلبات معلّقة"),
     "pending_requests_count": m2,
     "per_week": MessageLookupByLibrary.simpleMessage("في الأسبوع"),
     "period_1_year": MessageLookupByLibrary.simpleMessage("سنة واحدة"),
@@ -845,7 +904,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "personal_information": MessageLookupByLibrary.simpleMessage(
       "معلومات شخصية",
     ),
-    "personal_records": MessageLookupByLibrary.simpleMessage("أرقامك القياسية"),
+    "personal_records": MessageLookupByLibrary.simpleMessage(
+      "الأرقام القياسية الشخصية",
+    ),
     "personalizeExperienceItem": MessageLookupByLibrary.simpleMessage("تخصيص"),
     "phoneExactLength": MessageLookupByLibrary.simpleMessage("١١ رقم"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("التليفون"),
@@ -885,6 +946,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "رقم غلط",
     ),
     "please_enter_weight": MessageLookupByLibrary.simpleMessage("الوزن مطلوب"),
+    "please_enter_workout_name": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال اسم التمرين",
+    ),
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "اكتب الباسورد",
     ),
@@ -922,6 +986,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "rate": MessageLookupByLibrary.simpleMessage("المعدل"),
     "rateApp": MessageLookupByLibrary.simpleMessage("قيّم التطبيق"),
     "rate_app": MessageLookupByLibrary.simpleMessage("قيّم التطبيق"),
+    "recent_chats": MessageLookupByLibrary.simpleMessage("المحادثات الأخيرة"),
+    "recent_clients": MessageLookupByLibrary.simpleMessage("العملاء الجدد"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("تمارين حديثة"),
     "record_details": MessageLookupByLibrary.simpleMessage(
       "تفاصيل الرقم القياسي",
@@ -934,6 +1000,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "reject_request": MessageLookupByLibrary.simpleMessage("رفض"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("فاكرني"),
     "remember_me": MessageLookupByLibrary.simpleMessage("فاكرني"),
+    "remove": MessageLookupByLibrary.simpleMessage("إزالة"),
+    "remove_client": MessageLookupByLibrary.simpleMessage("إزالة العميل"),
     "reorder_sections": MessageLookupByLibrary.simpleMessage(
       "إعادة ترتيب الأقسام",
     ),
@@ -945,6 +1013,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "request_message": MessageLookupByLibrary.simpleMessage("الرسالة"),
     "request_rejected": MessageLookupByLibrary.simpleMessage(
       "تم رفض الطلب بنجاح",
+    ),
+    "request_sent": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال الطلب بنجاح",
     ),
     "requested_on": m5,
     "requests": MessageLookupByLibrary.simpleMessage("الطلبات"),
@@ -977,6 +1048,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "schedule_session": MessageLookupByLibrary.simpleMessage("جدولة جلسة"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "search_by_date": MessageLookupByLibrary.simpleMessage("دوّر بالتاريخ..."),
+    "search_by_name_or_email": MessageLookupByLibrary.simpleMessage(
+      "ابحث بالاسم أو البريد الإلكتروني",
+    ),
+    "search_clients": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن العملاء...",
+    ),
+    "search_conversations": MessageLookupByLibrary.simpleMessage(
+      "ابحث في المحادثات...",
+    ),
     "search_exercises": MessageLookupByLibrary.simpleMessage("دوّر..."),
     "search_results": MessageLookupByLibrary.simpleMessage("النتائج"),
     "search_trainees": MessageLookupByLibrary.simpleMessage(
@@ -1004,6 +1084,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "select_category_for_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "اختر الفئة التي ينتمي إليها تمرينك المخصص",
+    ),
+    "select_client_to_create_workout": MessageLookupByLibrary.simpleMessage(
+      "اختر عميلًا لإنشاء تمرين",
     ),
     "select_difficulty": MessageLookupByLibrary.simpleMessage("الصعوبة"),
     "select_equipment": MessageLookupByLibrary.simpleMessage("المعدات"),
@@ -1069,6 +1152,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "stability_ball": MessageLookupByLibrary.simpleMessage("كرة توازن"),
     "stair_climber": MessageLookupByLibrary.simpleMessage("درج"),
     "start": MessageLookupByLibrary.simpleMessage("البداية"),
+    "start_chatting_with_clients": MessageLookupByLibrary.simpleMessage(
+      "ابدأ الدردشة مع عملائك",
+    ),
+    "start_chatting_with_clients_tab": MessageLookupByLibrary.simpleMessage(
+      "انتقل إلى تبويب جميع العملاء لبدء الدردشة",
+    ),
+    "start_conversation": MessageLookupByLibrary.simpleMessage("ابدأ المحادثة"),
+    "start_searching_clients": MessageLookupByLibrary.simpleMessage(
+      "ابدأ البحث عن العملاء",
+    ),
     "start_tracking": MessageLookupByLibrary.simpleMessage("ابدأ التتبع"),
     "start_workout": MessageLookupByLibrary.simpleMessage("ابدأ تمرين"),
     "start_your_fitness_journey": MessageLookupByLibrary.simpleMessage(
@@ -1123,10 +1216,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "this_week": MessageLookupByLibrary.simpleMessage("الأسبوع ده"),
     "to_gain": MessageLookupByLibrary.simpleMessage("للاكتساب"),
     "to_lose": MessageLookupByLibrary.simpleMessage("للفقدان"),
-    "today": MessageLookupByLibrary.simpleMessage("النهاردة"),
+    "today": MessageLookupByLibrary.simpleMessage("اليوم"),
     "today_stats": MessageLookupByLibrary.simpleMessage("إحصائيات اليوم"),
     "tomorrow": MessageLookupByLibrary.simpleMessage("بكرة"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "total_clients": MessageLookupByLibrary.simpleMessage("إجمالي العملاء"),
     "total_sets": MessageLookupByLibrary.simpleMessage("إجمالي المجموعات"),
     "total_workouts": MessageLookupByLibrary.simpleMessage("إجمالي التمارين"),
     "trackProgressItem": MessageLookupByLibrary.simpleMessage("تتبع تقدم"),
@@ -1137,7 +1231,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "trainees": MessageLookupByLibrary.simpleMessage("المتدربين"),
     "trainer": MessageLookupByLibrary.simpleMessage("مدرّب"),
     "trainerDesc": MessageLookupByLibrary.simpleMessage("إدارة خطط"),
+    "trainer_dashboard_title": MessageLookupByLibrary.simpleMessage(
+      "لوحة المدرب",
+    ),
     "trainer_id": MessageLookupByLibrary.simpleMessage("معرف المدرب"),
+    "trainer_mode": MessageLookupByLibrary.simpleMessage("وضع المدرب"),
     "trainer_profile": MessageLookupByLibrary.simpleMessage("ملف المدرب"),
     "trainer_requests": MessageLookupByLibrary.simpleMessage("طلبات المدرب"),
     "transformYourLife": MessageLookupByLibrary.simpleMessage(
@@ -1154,6 +1252,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "try_different_filters": MessageLookupByLibrary.simpleMessage(
       "حاول تعديل الفلاتر أو كلمات البحث",
     ),
+    "try_different_search": MessageLookupByLibrary.simpleMessage(
+      "جرّب مصطلح بحث آخر",
+    ),
+    "type_message": MessageLookupByLibrary.simpleMessage("اكتب رسالة..."),
     "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage("اختراق"),
     "undo": MessageLookupByLibrary.simpleMessage("تراجع"),
     "unknown_exercise": MessageLookupByLibrary.simpleMessage("تمرين غير معروف"),
@@ -1184,15 +1286,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "very_weak": MessageLookupByLibrary.simpleMessage("ضعيفة جداً"),
     "view": MessageLookupByLibrary.simpleMessage("شوف"),
     "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+    "view_all_clients": MessageLookupByLibrary.simpleMessage(
+      "عرض جميع العملاء",
+    ),
     "view_all_custom": MessageLookupByLibrary.simpleMessage(
       "عرض جميع تمارينك المخصصة",
     ),
     "view_all_trainees": MessageLookupByLibrary.simpleMessage("شوف الكل"),
+    "view_all_trainers": MessageLookupByLibrary.simpleMessage(
+      "عرض جميع المدربين",
+    ),
     "view_all_workouts": MessageLookupByLibrary.simpleMessage("شوف الكل"),
     "view_charts_analytics": MessageLookupByLibrary.simpleMessage(
       "عرض الرسوم البيانية والتحليلات التفصيلية",
     ),
     "view_details": MessageLookupByLibrary.simpleMessage("شوف التفاصيل"),
+    "view_pending_requests": MessageLookupByLibrary.simpleMessage(
+      "اضغط لعرض وإدارة الطلبات",
+    ),
     "view_progress": MessageLookupByLibrary.simpleMessage("عرض التقدم"),
     "view_requests": MessageLookupByLibrary.simpleMessage("عرض الطلبات"),
     "violateLawsItem": MessageLookupByLibrary.simpleMessage("كسر القوانين"),
@@ -1226,13 +1337,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_back": MessageLookupByLibrary.simpleMessage("أهلاً بعودتك"),
     "welcome_trainer": MessageLookupByLibrary.simpleMessage("أهلاً يا كابتن!"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
+    "workout_assigned_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم تعيين التمرين بنجاح",
+    ),
     "workout_completed": MessageLookupByLibrary.simpleMessage("اكتمل!"),
     "workout_completed_success": MessageLookupByLibrary.simpleMessage(
       "التمرين خلص!",
     ),
+    "workout_created_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم إنشاء التمرين بنجاح",
+    ),
     "workout_date": MessageLookupByLibrary.simpleMessage("التاريخ"),
     "workout_details": MessageLookupByLibrary.simpleMessage("تفاصيل التمرين"),
     "workout_history": MessageLookupByLibrary.simpleMessage("السجل"),
+    "workout_name": MessageLookupByLibrary.simpleMessage("اسم التمرين"),
     "workout_not_found": MessageLookupByLibrary.simpleMessage("مش موجود"),
     "workout_sections": MessageLookupByLibrary.simpleMessage("الأقسام"),
     "workout_session": MessageLookupByLibrary.simpleMessage("جلسة التمرين"),
@@ -1241,7 +1359,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "workout_started": MessageLookupByLibrary.simpleMessage("بدأ!"),
     "workouts": MessageLookupByLibrary.simpleMessage("التدريبات"),
+    "workouts_completed": MessageLookupByLibrary.simpleMessage("تمارين مكتملة"),
     "yes": MessageLookupByLibrary.simpleMessage("أيوه"),
+    "yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
     "yourRights": MessageLookupByLibrary.simpleMessage("حقوقك"),
     "yourRightsText": MessageLookupByLibrary.simpleMessage("تقدر:"),
   };

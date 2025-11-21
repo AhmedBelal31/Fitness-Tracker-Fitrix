@@ -116,7 +116,9 @@ class _UserHostScreenBodyState extends State<UserHostScreenBody>
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: IndexedStack(index: _currentIndex, children: _screens),
+
+      // body: IndexedStack(index: _currentIndex, children: _screens),
+      body: _screens[_currentIndex],
       bottomNavigationBar: Container(
         color: Colors.transparent,
         child: Padding(

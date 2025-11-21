@@ -94,4 +94,26 @@ class ApiEndpoints {
   static const String allUsers = '/TrainerRequest/all-users';
 
   static const String sendTrainerRequest = '/TrainerRequest/send';
+
+  ///Works
+  ///Works
+  ///Works
+  ///
+  ///
+  // Trainer Request endpoints
+  static const String trainerRequestReceived = '/api/TrainerRequest/received';
+  static const String trainerRequestSent = '/api/TrainerRequest/sent';
+  static const String trainerRequestAllUsers = '/api/TrainerRequest/all-users';
+
+  static String acceptRequest(String requestId) =>
+      '/api/TrainerRequest/accept/$requestId';
+  static String rejectRequest(String requestId) =>
+      '/api/TrainerRequest/reject/$requestId';
+  static String cancelRequest(String requestId) =>
+      '/api/TrainerRequest/cancel/$requestId';
+
+  static const String createWorkoutForTrainee = '/Trainer/trainees';
+
+  static const String chatConversations = '/Chat/conversations';
+  static const String chatUnreadCount = '/Chat/unread-count';
 }

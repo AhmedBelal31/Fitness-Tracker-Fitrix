@@ -2,46 +2,6 @@ import 'package:equatable/equatable.dart';
 import '../../data/trainer.dart';
 import '../../data/user_request.dart';
 
-// abstract class UserRequestsState extends Equatable {
-//   @override
-//   List<Object?> get props => [];
-// }
-//
-// class UserRequestsInitial extends UserRequestsState {}
-//
-// class UserRequestsData extends UserRequestsState {
-//   final List<UserRequest>? requests;
-//   final List<Trainer>? trainers;
-//   final bool isRequestsLoading;
-//   final bool isTrainersLoading;
-//   final String? error;
-//
-//   UserRequestsData({
-//     this.requests,
-//     this.trainers,
-//     this.isRequestsLoading = false,
-//     this.isTrainersLoading = false,
-//     this.error,
-//   });
-//
-//   UserRequestsData copyWith({
-//     List<UserRequest>? requests,
-//     List<Trainer>? trainers,
-//     bool? isRequestsLoading,
-//     bool? isTrainersLoading,
-//     String? error,
-//   }) {
-//     return UserRequestsData(
-//       requests: requests ?? this.requests,
-//       trainers: trainers ?? this.trainers,
-//       isRequestsLoading: isRequestsLoading ?? this.isRequestsLoading,
-//       isTrainersLoading: isTrainersLoading ?? this.isTrainersLoading,
-//       error: error,
-//     );
-//   }
-// }
-// user_requests_state.dart
-
 abstract class UserRequestsState {}
 
 class UserRequestsInitial extends UserRequestsState {}

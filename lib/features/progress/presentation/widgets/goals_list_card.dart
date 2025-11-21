@@ -60,9 +60,6 @@ class _GoalsListCardState extends State<GoalsListCard>
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // ✅ Add debug print
-    print('🎯 GoalsListCard build() called');
-
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(

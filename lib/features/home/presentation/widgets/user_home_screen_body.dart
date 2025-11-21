@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/di/get_it.dart';
+import '../../../../core/networking/token_manager.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
+import '../../../chat/presentation/cubits/chat_cubit.dart';
 import '../../../exercises/presentation/cubit/sections_cubit.dart';
 import '../../../notifications/presentation/cubit/notifications_cubit.dart';
 import '../widgets/user_widgets/user_home_custom_exercises.dart';
 import '../widgets/user_widgets/user_home_header.dart';
 import '../widgets/user_widgets/user_home_records.dart';
 import '../widgets/user_widgets/user_home_sections.dart';
+import 'animated_chat_fab.dart';
 import 'user_widgets/quick_actions_card.dart';
 
 class UserHomeScreenBody extends StatefulWidget {
@@ -103,6 +107,15 @@ class _UserHomeScreenBodyState extends State<UserHomeScreenBody>
               SliverToBoxAdapter(child: SizedBox(height: 50.h)),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: BlocProvider(
+        create: (_) => di.get<ChatCubit>()..getUnreadCount(),
+        child: BlocBuilder<ChatCubit, ChatState>(
+          builder: (context, state) {
+            final unreadCount = state is UnreadCountLoaded ? state.count : null;
+            return AnimatedChatFAB(unreadCount: unreadCount);
+          },
         ),
       ),
     );

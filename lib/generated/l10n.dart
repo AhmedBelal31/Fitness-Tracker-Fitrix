@@ -704,10 +704,10 @@ class S {
     return Intl.message('Rate', name: 'rate', desc: '', args: []);
   }
 
-  /// `Current Weight (kg)`
+  /// `Current Weight`
   String get current_weight {
     return Intl.message(
-      'Current Weight (kg)',
+      'Current Weight',
       name: 'current_weight',
       desc: '',
       args: [],
@@ -4669,10 +4669,10 @@ class S {
     return Intl.message('Notes', name: 'add_notes', desc: '', args: []);
   }
 
-  /// `Add notes...`
+  /// `Add notes about this workout...`
   String get add_workout_notes {
     return Intl.message(
-      'Add notes...',
+      'Add notes about this workout...',
       name: 'add_workout_notes',
       desc: '',
       args: [],
@@ -6461,6 +6461,576 @@ class S {
       name: 'sending_invitation_to',
       desc: '',
       args: [name],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message('Dashboard', name: 'dashboard', desc: '', args: []);
+  }
+
+  /// `Clients`
+  String get clients {
+    return Intl.message('Clients', name: 'clients', desc: '', args: []);
+  }
+
+  /// `Trainer Dashboard`
+  String get trainer_dashboard_title {
+    return Intl.message(
+      'Trainer Dashboard',
+      name: 'trainer_dashboard_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Clients`
+  String get total_clients {
+    return Intl.message(
+      'Total Clients',
+      name: 'total_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Clients`
+  String get recent_clients {
+    return Intl.message(
+      'Recent Clients',
+      name: 'recent_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No clients yet`
+  String get no_clients_yet {
+    return Intl.message(
+      'No clients yet',
+      name: 'no_clients_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending Requests`
+  String get pending_requests {
+    return Intl.message(
+      'Pending Requests',
+      name: 'pending_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to view and manage requests`
+  String get view_pending_requests {
+    return Intl.message(
+      'Tap to view and manage requests',
+      name: 'view_pending_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find Clients`
+  String get find_clients {
+    return Intl.message(
+      'Find Clients',
+      name: 'find_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Clients`
+  String get my_clients {
+    return Intl.message('My Clients', name: 'my_clients', desc: '', args: []);
+  }
+
+  /// `Search clients...`
+  String get search_clients {
+    return Intl.message(
+      'Search clients...',
+      name: 'search_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Client`
+  String get add_client {
+    return Intl.message('Add Client', name: 'add_client', desc: '', args: []);
+  }
+
+  /// `Search and send requests to potential clients`
+  String get add_client_description {
+    return Intl.message(
+      'Search and send requests to potential clients',
+      name: 'add_client_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Morning`
+  String get good_morning {
+    return Intl.message(
+      'Good Morning',
+      name: 'good_morning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Afternoon`
+  String get good_afternoon {
+    return Intl.message(
+      'Good Afternoon',
+      name: 'good_afternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Evening`
+  String get good_evening {
+    return Intl.message(
+      'Good Evening',
+      name: 'good_evening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove Client`
+  String get remove_client {
+    return Intl.message(
+      'Remove Client',
+      name: 'remove_client',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get remove {
+    return Intl.message('Remove', name: 'remove', desc: '', args: []);
+  }
+
+  /// `Search by name or email`
+  String get search_by_name_or_email {
+    return Intl.message(
+      'Search by name or email',
+      name: 'search_by_name_or_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start searching for clients`
+  String get start_searching_clients {
+    return Intl.message(
+      'Start searching for clients',
+      name: 'start_searching_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No users found`
+  String get no_users_found {
+    return Intl.message(
+      'No users found',
+      name: 'no_users_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client`
+  String get client {
+    return Intl.message('Client', name: 'client', desc: '', args: []);
+  }
+
+  /// `Request sent successfully`
+  String get request_sent {
+    return Intl.message(
+      'Request sent successfully',
+      name: 'request_sent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign Workout`
+  String get assign_workout {
+    return Intl.message(
+      'Assign Workout',
+      name: 'assign_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes (Optional)`
+  String get notes_optional {
+    return Intl.message(
+      'Notes (Optional)',
+      name: 'notes_optional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout assigned successfully`
+  String get workout_assigned_successfully {
+    return Intl.message(
+      'Workout assigned successfully',
+      name: 'workout_assigned_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assign`
+  String get assign {
+    return Intl.message('Assign', name: 'assign', desc: '', args: []);
+  }
+
+  /// `workouts completed`
+  String get workouts_completed {
+    return Intl.message(
+      'workouts completed',
+      name: 'workouts_completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active Workouts`
+  String get active_workouts {
+    return Intl.message(
+      'Active Workouts',
+      name: 'active_workouts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overview`
+  String get overview {
+    return Intl.message('Overview', name: 'overview', desc: '', args: []);
+  }
+
+  /// `Age`
+  String get age {
+    return Intl.message('Age', name: 'age', desc: '', args: []);
+  }
+
+  /// `Client Workouts`
+  String get client_workouts {
+    return Intl.message(
+      'Client Workouts',
+      name: 'client_workouts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a client to create workout`
+  String get select_client_to_create_workout {
+    return Intl.message(
+      'Select a client to create workout',
+      name: 'select_client_to_create_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No clients available to create workouts`
+  String get no_clients_to_create_workout {
+    return Intl.message(
+      'No clients available to create workouts',
+      name: 'no_clients_to_create_workout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Workout for Client`
+  String get create_workout_for_client {
+    return Intl.message(
+      'Create Workout for Client',
+      name: 'create_workout_for_client',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creating workout for`
+  String get creating_workout_for {
+    return Intl.message(
+      'Creating workout for',
+      name: 'creating_workout_for',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout Name`
+  String get workout_name {
+    return Intl.message(
+      'Workout Name',
+      name: 'workout_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter workout name`
+  String get enter_workout_name {
+    return Intl.message(
+      'Enter workout name',
+      name: 'enter_workout_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a workout name`
+  String get please_enter_workout_name {
+    return Intl.message(
+      'Please enter a workout name',
+      name: 'please_enter_workout_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout created successfully`
+  String get workout_created_successfully {
+    return Intl.message(
+      'Workout created successfully',
+      name: 'workout_created_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create the first workout for this client`
+  String get create_first_workout_for_client {
+    return Intl.message(
+      'Create the first workout for this client',
+      name: 'create_first_workout_for_client',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trainer Mode`
+  String get trainer_mode {
+    return Intl.message(
+      'Trainer Mode',
+      name: 'trainer_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Training`
+  String get my_training {
+    return Intl.message('My Training', name: 'my_training', desc: '', args: []);
+  }
+
+  /// `Manage Trainer Requests`
+  String get manage_trainer_requests {
+    return Intl.message(
+      'Manage Trainer Requests',
+      name: 'manage_trainer_requests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Messages`
+  String get messages {
+    return Intl.message('Messages', name: 'messages', desc: '', args: []);
+  }
+
+  /// `No Conversations`
+  String get no_conversations {
+    return Intl.message(
+      'No Conversations',
+      name: 'no_conversations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start chatting with your clients`
+  String get start_chatting_with_clients {
+    return Intl.message(
+      'Start chatting with your clients',
+      name: 'start_chatting_with_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No messages yet`
+  String get no_messages_yet {
+    return Intl.message(
+      'No messages yet',
+      name: 'no_messages_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start the conversation`
+  String get start_conversation {
+    return Intl.message(
+      'Start the conversation',
+      name: 'start_conversation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type a message...`
+  String get type_message {
+    return Intl.message(
+      'Type a message...',
+      name: 'type_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yesterday`
+  String get yesterday {
+    return Intl.message('Yesterday', name: 'yesterday', desc: '', args: []);
+  }
+
+  /// `Search conversations...`
+  String get search_conversations {
+    return Intl.message(
+      'Search conversations...',
+      name: 'search_conversations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Chats`
+  String get recent_chats {
+    return Intl.message(
+      'Recent Chats',
+      name: 'recent_chats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Clients`
+  String get all_clients {
+    return Intl.message('All Clients', name: 'all_clients', desc: '', args: []);
+  }
+
+  /// `No results found`
+  String get no_results_found {
+    return Intl.message(
+      'No results found',
+      name: 'no_results_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try a different search term`
+  String get try_different_search {
+    return Intl.message(
+      'Try a different search term',
+      name: 'try_different_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Switch to All Clients tab to start chatting`
+  String get start_chatting_with_clients_tab {
+    return Intl.message(
+      'Switch to All Clients tab to start chatting',
+      name: 'start_chatting_with_clients_tab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View All Clients`
+  String get view_all_clients {
+    return Intl.message(
+      'View All Clients',
+      name: 'view_all_clients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Clients`
+  String get no_clients {
+    return Intl.message('No Clients', name: 'no_clients', desc: '', args: []);
+  }
+
+  /// `Add clients to start chatting`
+  String get add_clients_to_chat {
+    return Intl.message(
+      'Add clients to start chatting',
+      name: 'add_clients_to_chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannot Start Chat`
+  String get cannot_start_chat {
+    return Intl.message(
+      'Cannot Start Chat',
+      name: 'cannot_start_chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message('Ok', name: 'ok', desc: '', args: []);
+  }
+
+  /// `View All Trainers`
+  String get view_all_trainers {
+    return Intl.message(
+      'View All Trainers',
+      name: 'view_all_trainers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Trainers`
+  String get no_trainers {
+    return Intl.message('No Trainers', name: 'no_trainers', desc: '', args: []);
+  }
+
+  /// `No trainers are available at the moment`
+  String get no_trainers_available {
+    return Intl.message(
+      'No trainers are available at the moment',
+      name: 'no_trainers_available',
+      desc: '',
+      args: [],
     );
   }
 

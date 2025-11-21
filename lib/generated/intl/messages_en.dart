@@ -67,7 +67,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "achievements": MessageLookupByLibrary.simpleMessage("Achievements"),
     "active": MessageLookupByLibrary.simpleMessage("Active"),
     "active_trainees": MessageLookupByLibrary.simpleMessage("Active Trainees"),
+    "active_workouts": MessageLookupByLibrary.simpleMessage("Active Workouts"),
     "add": MessageLookupByLibrary.simpleMessage("Add"),
+    "add_client": MessageLookupByLibrary.simpleMessage("Add Client"),
+    "add_client_description": MessageLookupByLibrary.simpleMessage(
+      "Search and send requests to potential clients",
+    ),
+    "add_clients_to_chat": MessageLookupByLibrary.simpleMessage(
+      "Add clients to start chatting",
+    ),
     "add_exercise": MessageLookupByLibrary.simpleMessage("Add Exercise"),
     "add_first_trainee": MessageLookupByLibrary.simpleMessage(
       "Add your first trainee",
@@ -79,7 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_set": MessageLookupByLibrary.simpleMessage("Add Set"),
     "add_to_workout": MessageLookupByLibrary.simpleMessage("Add to Workout"),
     "add_trainee": MessageLookupByLibrary.simpleMessage("Add Trainee"),
-    "add_workout_notes": MessageLookupByLibrary.simpleMessage("Add notes..."),
+    "add_workout_notes": MessageLookupByLibrary.simpleMessage(
+      "Add notes about this workout...",
+    ),
     "added_to_workout": MessageLookupByLibrary.simpleMessage("Added!"),
     "adding": MessageLookupByLibrary.simpleMessage("Adding..."),
     "additional_info": MessageLookupByLibrary.simpleMessage(
@@ -98,7 +108,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Adjustable Bench",
     ),
     "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
+    "age": MessageLookupByLibrary.simpleMessage("Age"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
+    "all_clients": MessageLookupByLibrary.simpleMessage("All Clients"),
     "all_records": MessageLookupByLibrary.simpleMessage("All Records"),
     "all_trainees": MessageLookupByLibrary.simpleMessage("All Trainees"),
     "all_trainers": MessageLookupByLibrary.simpleMessage("All Trainers"),
@@ -123,6 +135,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "arms_description": MessageLookupByLibrary.simpleMessage(
       "Biceps & triceps",
     ),
+    "assign": MessageLookupByLibrary.simpleMessage("Assign"),
+    "assign_workout": MessageLookupByLibrary.simpleMessage("Assign Workout"),
     "at_least_6_characters": MessageLookupByLibrary.simpleMessage(
       "At least 6 characters",
     ),
@@ -185,6 +199,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cannot_add_to_completed_session": MessageLookupByLibrary.simpleMessage(
       "Session completed",
     ),
+    "cannot_start_chat": MessageLookupByLibrary.simpleMessage(
+      "Cannot Start Chat",
+    ),
     "change": MessageLookupByLibrary.simpleMessage("Change"),
     "changeYourPassword": MessageLookupByLibrary.simpleMessage(
       "Change Password",
@@ -224,6 +241,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "clear_filters": MessageLookupByLibrary.simpleMessage("Clear Filters"),
+    "client": MessageLookupByLibrary.simpleMessage("Client"),
+    "client_workouts": MessageLookupByLibrary.simpleMessage("Client Workouts"),
+    "clients": MessageLookupByLibrary.simpleMessage("Clients"),
     "cm": MessageLookupByLibrary.simpleMessage("cm"),
     "commercialUseItem": MessageLookupByLibrary.simpleMessage("Commercial use"),
     "complete": MessageLookupByLibrary.simpleMessage("Complete"),
@@ -287,6 +307,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "Create Custom",
     ),
+    "create_first_workout_for_client": MessageLookupByLibrary.simpleMessage(
+      "Create the first workout for this client",
+    ),
     "create_new_session_to_start": MessageLookupByLibrary.simpleMessage(
       "Create session",
     ),
@@ -296,11 +319,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_workout_confirmation": MessageLookupByLibrary.simpleMessage(
       "Create session?",
     ),
+    "create_workout_for_client": MessageLookupByLibrary.simpleMessage(
+      "Create Workout for Client",
+    ),
     "create_your_first_exercise": MessageLookupByLibrary.simpleMessage(
       "Create First",
     ),
     "create_your_own_exercises": MessageLookupByLibrary.simpleMessage(
       "Create your own",
+    ),
+    "creating_workout_for": MessageLookupByLibrary.simpleMessage(
+      "Creating workout for",
     ),
     "crunches": MessageLookupByLibrary.simpleMessage("Crunches"),
     "crunches_description": MessageLookupByLibrary.simpleMessage("Ab exercise"),
@@ -315,9 +344,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "current_password": MessageLookupByLibrary.simpleMessage(
       "Current Password",
     ),
-    "current_weight": MessageLookupByLibrary.simpleMessage(
-      "Current Weight (kg)",
-    ),
+    "current_weight": MessageLookupByLibrary.simpleMessage("Current Weight"),
     "custom": MessageLookupByLibrary.simpleMessage("Custom"),
     "custom_equipment": MessageLookupByLibrary.simpleMessage(
       "Custom Equipment",
@@ -328,6 +355,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "dark_theme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dark_theme_desc": MessageLookupByLibrary.simpleMessage("Easy on the eyes"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "dataSecurity": MessageLookupByLibrary.simpleMessage("Security"),
     "dataSecurityText": MessageLookupByLibrary.simpleMessage(
       "Your data is encrypted",
@@ -426,6 +454,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enter_new_password": MessageLookupByLibrary.simpleMessage("New password"),
     "enter_weight_goal": MessageLookupByLibrary.simpleMessage("Target weight"),
+    "enter_workout_name": MessageLookupByLibrary.simpleMessage(
+      "Enter workout name",
+    ),
     "enter_your_email_to_receive_reset_code":
         MessageLookupByLibrary.simpleMessage("Enter email for reset code"),
     "enter_your_equipment_name": MessageLookupByLibrary.simpleMessage(
@@ -509,6 +540,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fat": MessageLookupByLibrary.simpleMessage("Fat"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
+    "find_clients": MessageLookupByLibrary.simpleMessage("Find Clients"),
     "find_trainers": MessageLookupByLibrary.simpleMessage("Find Trainers"),
     "finish": MessageLookupByLibrary.simpleMessage("Finish"),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
@@ -548,6 +580,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "goal_weight": MessageLookupByLibrary.simpleMessage("Goal Weight (kg)"),
     "goals": MessageLookupByLibrary.simpleMessage("Goals"),
+    "good_afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
+    "good_evening": MessageLookupByLibrary.simpleMessage("Good Evening"),
+    "good_morning": MessageLookupByLibrary.simpleMessage("Good Morning"),
     "gymnastic_rings": MessageLookupByLibrary.simpleMessage("Rings"),
     "hack_squat_machine": MessageLookupByLibrary.simpleMessage("Hack Squat"),
     "hammer_curls": MessageLookupByLibrary.simpleMessage("Hammer Curls"),
@@ -687,6 +722,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manage_trainees": MessageLookupByLibrary.simpleMessage("Manage Trainees"),
+    "manage_trainer_requests": MessageLookupByLibrary.simpleMessage(
+      "Manage Trainer Requests",
+    ),
     "manage_your_exercises": MessageLookupByLibrary.simpleMessage(
       "Manage your custom exercises",
     ),
@@ -702,6 +740,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "memberSince": MessageLookupByLibrary.simpleMessage("Member Since"),
     "member_since": MessageLookupByLibrary.simpleMessage("Member Since"),
     "message": MessageLookupByLibrary.simpleMessage("Message"),
+    "messages": MessageLookupByLibrary.simpleMessage("Messages"),
     "min_value": MessageLookupByLibrary.simpleMessage("Min"),
     "minutes": MessageLookupByLibrary.simpleMessage("mins"),
     "minutes_short": MessageLookupByLibrary.simpleMessage("m"),
@@ -743,6 +782,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "muscle_mass_progress": MessageLookupByLibrary.simpleMessage(
       "Muscle Mass Progress",
     ),
+    "my_clients": MessageLookupByLibrary.simpleMessage("My Clients"),
     "my_custom_exercises": MessageLookupByLibrary.simpleMessage("My Custom"),
     "my_exercises": MessageLookupByLibrary.simpleMessage("My Exercises"),
     "my_progress": MessageLookupByLibrary.simpleMessage("My Progress"),
@@ -751,6 +791,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_trainees_count": m0,
     "my_trainers": MessageLookupByLibrary.simpleMessage("My Trainers"),
     "my_trainers_count": m1,
+    "my_training": MessageLookupByLibrary.simpleMessage("My Training"),
     "my_workouts": MessageLookupByLibrary.simpleMessage("My Workouts"),
     "name_a_z": MessageLookupByLibrary.simpleMessage("Name (A-Z)"),
     "network_error": MessageLookupByLibrary.simpleMessage("Network error"),
@@ -759,6 +800,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "no": MessageLookupByLibrary.simpleMessage("No"),
     "no_available_trainers_message": MessageLookupByLibrary.simpleMessage(
       "All trainers have pending requests",
+    ),
+    "no_clients": MessageLookupByLibrary.simpleMessage("No Clients"),
+    "no_clients_to_create_workout": MessageLookupByLibrary.simpleMessage(
+      "No clients available to create workouts",
+    ),
+    "no_clients_yet": MessageLookupByLibrary.simpleMessage("No clients yet"),
+    "no_conversations": MessageLookupByLibrary.simpleMessage(
+      "No Conversations",
     ),
     "no_custom_exercises_yet": MessageLookupByLibrary.simpleMessage(
       "No custom exercises",
@@ -771,6 +820,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No exercises",
     ),
     "no_exercises_found": MessageLookupByLibrary.simpleMessage("No exercises"),
+    "no_messages_yet": MessageLookupByLibrary.simpleMessage("No messages yet"),
     "no_my_trainees_found": MessageLookupByLibrary.simpleMessage(
       "No Trainees Yet",
     ),
@@ -804,6 +854,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_requests_found": MessageLookupByLibrary.simpleMessage(
       "No Requests Found",
     ),
+    "no_results_found": MessageLookupByLibrary.simpleMessage(
+      "No results found",
+    ),
     "no_sets_yet": MessageLookupByLibrary.simpleMessage("No sets"),
     "no_trainee_requests_message": MessageLookupByLibrary.simpleMessage(
       "No trainee requests at the moment",
@@ -818,12 +871,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_trainer_requests_message": MessageLookupByLibrary.simpleMessage(
       "No trainer requests at the moment",
     ),
+    "no_trainers": MessageLookupByLibrary.simpleMessage("No Trainers"),
+    "no_trainers_available": MessageLookupByLibrary.simpleMessage(
+      "No trainers are available at the moment",
+    ),
     "no_trainers_found": MessageLookupByLibrary.simpleMessage(
       "No Trainers Found",
     ),
     "no_trainers_message": MessageLookupByLibrary.simpleMessage(
       "No trainers available in the system",
     ),
+    "no_users_found": MessageLookupByLibrary.simpleMessage("No users found"),
     "no_workout_sessions": MessageLookupByLibrary.simpleMessage("No Sessions"),
     "no_workouts_found": MessageLookupByLibrary.simpleMessage(
       "No workouts found",
@@ -844,8 +902,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "not_started": MessageLookupByLibrary.simpleMessage("Not started"),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
+    "notes_optional": MessageLookupByLibrary.simpleMessage("Notes (Optional)"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "obliques": MessageLookupByLibrary.simpleMessage("Obliques"),
+    "ok": MessageLookupByLibrary.simpleMessage("Ok"),
     "optOutItem": MessageLookupByLibrary.simpleMessage("Opt-out"),
     "optional_notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "or": MessageLookupByLibrary.simpleMessage("OR"),
@@ -859,6 +919,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "overhead_tricep_extension_description":
         MessageLookupByLibrary.simpleMessage("Tricep isolation"),
+    "overview": MessageLookupByLibrary.simpleMessage("Overview"),
     "parallettes": MessageLookupByLibrary.simpleMessage("Parallettes"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordComplexity": MessageLookupByLibrary.simpleMessage("Weak password"),
@@ -888,6 +949,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "peak": MessageLookupByLibrary.simpleMessage("Peak"),
     "pec_deck_machine": MessageLookupByLibrary.simpleMessage("Pec Deck"),
     "pending": MessageLookupByLibrary.simpleMessage("Pending"),
+    "pending_requests": MessageLookupByLibrary.simpleMessage(
+      "Pending Requests",
+    ),
     "pending_requests_count": m2,
     "per_week": MessageLookupByLibrary.simpleMessage("Per Week"),
     "period_1_year": MessageLookupByLibrary.simpleMessage("1 Year"),
@@ -954,6 +1018,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_weight": MessageLookupByLibrary.simpleMessage(
       "Weight required",
     ),
+    "please_enter_workout_name": MessageLookupByLibrary.simpleMessage(
+      "Please enter a workout name",
+    ),
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "Enter password",
     ),
@@ -995,6 +1062,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "rate": MessageLookupByLibrary.simpleMessage("Rate"),
     "rateApp": MessageLookupByLibrary.simpleMessage("Rate App"),
     "rate_app": MessageLookupByLibrary.simpleMessage("Rate App"),
+    "recent_chats": MessageLookupByLibrary.simpleMessage("Recent Chats"),
+    "recent_clients": MessageLookupByLibrary.simpleMessage("Recent Clients"),
     "recent_workouts": MessageLookupByLibrary.simpleMessage("Recent Workouts"),
     "record_details": MessageLookupByLibrary.simpleMessage("Record Details"),
     "records": MessageLookupByLibrary.simpleMessage("Records"),
@@ -1005,6 +1074,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "reject_request": MessageLookupByLibrary.simpleMessage("Reject"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "remove": MessageLookupByLibrary.simpleMessage("Remove"),
+    "remove_client": MessageLookupByLibrary.simpleMessage("Remove Client"),
     "reorder_sections": MessageLookupByLibrary.simpleMessage(
       "Reorder Sections",
     ),
@@ -1016,6 +1087,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "request_message": MessageLookupByLibrary.simpleMessage("Message"),
     "request_rejected": MessageLookupByLibrary.simpleMessage(
       "Request rejected successfully",
+    ),
+    "request_sent": MessageLookupByLibrary.simpleMessage(
+      "Request sent successfully",
     ),
     "requested_on": m5,
     "requests": MessageLookupByLibrary.simpleMessage("Requests"),
@@ -1050,6 +1124,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "search_by_date": MessageLookupByLibrary.simpleMessage("Search date..."),
+    "search_by_name_or_email": MessageLookupByLibrary.simpleMessage(
+      "Search by name or email",
+    ),
+    "search_clients": MessageLookupByLibrary.simpleMessage("Search clients..."),
+    "search_conversations": MessageLookupByLibrary.simpleMessage(
+      "Search conversations...",
+    ),
     "search_exercises": MessageLookupByLibrary.simpleMessage("Search..."),
     "search_results": MessageLookupByLibrary.simpleMessage("Results"),
     "search_trainees": MessageLookupByLibrary.simpleMessage(
@@ -1081,6 +1162,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "select_category_for_custom_exercise": MessageLookupByLibrary.simpleMessage(
       "Select which category your custom exercise belongs to",
+    ),
+    "select_client_to_create_workout": MessageLookupByLibrary.simpleMessage(
+      "Select a client to create workout",
     ),
     "select_difficulty": MessageLookupByLibrary.simpleMessage("Difficulty"),
     "select_equipment": MessageLookupByLibrary.simpleMessage("Equipment"),
@@ -1148,6 +1232,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "stability_ball": MessageLookupByLibrary.simpleMessage("Stability Ball"),
     "stair_climber": MessageLookupByLibrary.simpleMessage("Stair Climber"),
     "start": MessageLookupByLibrary.simpleMessage("Start"),
+    "start_chatting_with_clients": MessageLookupByLibrary.simpleMessage(
+      "Start chatting with your clients",
+    ),
+    "start_chatting_with_clients_tab": MessageLookupByLibrary.simpleMessage(
+      "Switch to All Clients tab to start chatting",
+    ),
+    "start_conversation": MessageLookupByLibrary.simpleMessage(
+      "Start the conversation",
+    ),
+    "start_searching_clients": MessageLookupByLibrary.simpleMessage(
+      "Start searching for clients",
+    ),
     "start_tracking": MessageLookupByLibrary.simpleMessage("Start tracking"),
     "start_workout": MessageLookupByLibrary.simpleMessage("Start Workout"),
     "start_your_fitness_journey": MessageLookupByLibrary.simpleMessage(
@@ -1204,6 +1300,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "today_stats": MessageLookupByLibrary.simpleMessage("Today\'s Stats"),
     "tomorrow": MessageLookupByLibrary.simpleMessage("Tomorrow"),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "total_clients": MessageLookupByLibrary.simpleMessage("Total Clients"),
     "total_sets": MessageLookupByLibrary.simpleMessage("Total Sets"),
     "total_workouts": MessageLookupByLibrary.simpleMessage("Total Workouts"),
     "trackProgressItem": MessageLookupByLibrary.simpleMessage("Track progress"),
@@ -1216,7 +1313,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "trainees": MessageLookupByLibrary.simpleMessage("Trainees"),
     "trainer": MessageLookupByLibrary.simpleMessage("Trainer"),
     "trainerDesc": MessageLookupByLibrary.simpleMessage("Manage plans"),
+    "trainer_dashboard_title": MessageLookupByLibrary.simpleMessage(
+      "Trainer Dashboard",
+    ),
     "trainer_id": MessageLookupByLibrary.simpleMessage("Trainer ID"),
+    "trainer_mode": MessageLookupByLibrary.simpleMessage("Trainer Mode"),
     "trainer_profile": MessageLookupByLibrary.simpleMessage("Trainer Profile"),
     "trainer_requests": MessageLookupByLibrary.simpleMessage(
       "Trainer Requests",
@@ -1239,6 +1340,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "try_different_filters": MessageLookupByLibrary.simpleMessage(
       "Try adjusting your filters or search terms",
     ),
+    "try_different_search": MessageLookupByLibrary.simpleMessage(
+      "Try a different search term",
+    ),
+    "type_message": MessageLookupByLibrary.simpleMessage("Type a message..."),
     "unauthorizedAccessItem": MessageLookupByLibrary.simpleMessage("Hack"),
     "undo": MessageLookupByLibrary.simpleMessage("Undo"),
     "unknown_exercise": MessageLookupByLibrary.simpleMessage(
@@ -1271,15 +1376,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "very_weak": MessageLookupByLibrary.simpleMessage("Very Weak"),
     "view": MessageLookupByLibrary.simpleMessage("View"),
     "view_all": MessageLookupByLibrary.simpleMessage("View All"),
+    "view_all_clients": MessageLookupByLibrary.simpleMessage(
+      "View All Clients",
+    ),
     "view_all_custom": MessageLookupByLibrary.simpleMessage(
       "View all your custom exercises",
     ),
     "view_all_trainees": MessageLookupByLibrary.simpleMessage("View All"),
+    "view_all_trainers": MessageLookupByLibrary.simpleMessage(
+      "View All Trainers",
+    ),
     "view_all_workouts": MessageLookupByLibrary.simpleMessage("View All"),
     "view_charts_analytics": MessageLookupByLibrary.simpleMessage(
       "View detailed charts & analytics",
     ),
     "view_details": MessageLookupByLibrary.simpleMessage("View Details"),
+    "view_pending_requests": MessageLookupByLibrary.simpleMessage(
+      "Tap to view and manage requests",
+    ),
     "view_progress": MessageLookupByLibrary.simpleMessage("View Progress"),
     "view_requests": MessageLookupByLibrary.simpleMessage("View Requests"),
     "violateLawsItem": MessageLookupByLibrary.simpleMessage("Break laws"),
@@ -1313,13 +1427,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "welcome_trainer": MessageLookupByLibrary.simpleMessage("Welcome Trainer!"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("WhatsApp"),
+    "workout_assigned_successfully": MessageLookupByLibrary.simpleMessage(
+      "Workout assigned successfully",
+    ),
     "workout_completed": MessageLookupByLibrary.simpleMessage("Completed!"),
     "workout_completed_success": MessageLookupByLibrary.simpleMessage(
       "Workout done!",
     ),
+    "workout_created_successfully": MessageLookupByLibrary.simpleMessage(
+      "Workout created successfully",
+    ),
     "workout_date": MessageLookupByLibrary.simpleMessage("Date"),
     "workout_details": MessageLookupByLibrary.simpleMessage("Workout Details"),
     "workout_history": MessageLookupByLibrary.simpleMessage("History"),
+    "workout_name": MessageLookupByLibrary.simpleMessage("Workout Name"),
     "workout_not_found": MessageLookupByLibrary.simpleMessage("Not Found"),
     "workout_sections": MessageLookupByLibrary.simpleMessage("Sections"),
     "workout_session": MessageLookupByLibrary.simpleMessage("Workout Session"),
@@ -1328,7 +1449,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "workout_started": MessageLookupByLibrary.simpleMessage("Started!"),
     "workouts": MessageLookupByLibrary.simpleMessage("Workouts"),
+    "workouts_completed": MessageLookupByLibrary.simpleMessage(
+      "workouts completed",
+    ),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+    "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
     "yourRights": MessageLookupByLibrary.simpleMessage("Your Rights"),
     "yourRightsText": MessageLookupByLibrary.simpleMessage("You can:"),
   };

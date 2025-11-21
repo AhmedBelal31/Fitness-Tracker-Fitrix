@@ -5,460 +5,247 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/di/get_it.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
+import '../../../chat/presentation/cubits/chat_cubit.dart';
+import '../../../exercises/presentation/cubit/sections_cubit.dart';
 import '../../../host/presentation/widgets/trainee_card.dart';
-import '../../data/mock_data.dart';
-import '../cubit/home_cubit.dart';
-import '../cubit/home_state.dart';
-
-// class TrainerHomeScreen extends StatelessWidget {
-//   const TrainerHomeScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) => di.get<HomeCubit>(),
-//       child: TrainerHomeScreenBody(),
-//     );
-//   }
-// }
-//
-// class TrainerHomeScreenBody extends StatefulWidget {
-//   const TrainerHomeScreenBody({super.key});
-//
-//   @override
-//   State<TrainerHomeScreenBody> createState() => _TrainerHomeScreenBodyState();
-// }
-//
-// class _TrainerHomeScreenBodyState extends State<TrainerHomeScreenBody> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     context.read<HomeCubit>().loadTrainees();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final s = S.of(context);
-//
-//     return Scaffold(
-//       body: SafeArea(
-//         child: BlocBuilder<HomeCubit, HomeState>(
-//           builder: (context, state) {
-//             if (state is HomeLoading) {
-//               return Center(
-//                 child: Column(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   children: [
-//                     const CircularProgressIndicator(
-//                       color: ColorsManager.primaryGreen,
-//                     ),
-//                     SizedBox(height: 16.h),
-//                     Text(s.loading, style: TextStyles.bodyMedium),
-//                   ],
-//                 ),
-//               );
-//             }
-//
-//             if (state is HomeError) {
-//               return Center(
-//                 child: Column(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   children: [
-//                     Icon(
-//                       Icons.error_outline,
-//                       size: 64.sp,
-//                       color: ColorsManager.error,
-//                     ),
-//                     SizedBox(height: 16.h),
-//                     Text(state.message, style: TextStyles.bodyLarge),
-//                     SizedBox(height: 16.h),
-//                     ElevatedButton(
-//                       onPressed: () {
-//                         context.read<HomeCubit>().loadTrainees();
-//                       },
-//                       child: Text(s.retry),
-//                     ),
-//                   ],
-//                 ),
-//               );
-//             }
-//
-//             if (state is TraineesLoaded) {
-//               final trainees = state.trainees;
-//               return RefreshIndicator(
-//                 onRefresh: () async {
-//                   context.read<HomeCubit>().loadTrainees();
-//                 },
-//                 color: ColorsManager.primaryGreen,
-//                 child: SingleChildScrollView(
-//                   physics: const AlwaysScrollableScrollPhysics(),
-//                   padding: EdgeInsets.all(20.w),
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       // Header
-//                       Text(s.welcome_trainer, style: TextStyles.bodyMedium),
-//                       SizedBox(height: 4.h),
-//                       Text(s.my_trainees, style: TextStyles.headline2),
-//                       SizedBox(height: 24.h),
-//
-//                       // Quick Actions
-//                       _buildQuickActions(context, s),
-//                       SizedBox(height: 32.h),
-//
-//                       // Trainees List
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                         children: [
-//                           Text(s.active_trainees, style: TextStyles.subtitle1),
-//                           TextButton(
-//                             onPressed: () {
-//                               // Navigate to all trainees screen
-//                             },
-//                             child: Text(
-//                               s.view_all,
-//                               style: TextStyles.font14PrimaryGreenSemiBold,
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                       SizedBox(height: 16.h),
-//
-//                       if (trainees.isNotEmpty)
-//                         ...trainees
-//                             .map(
-//                               (trainee) => Padding(
-//                                 padding: EdgeInsets.only(bottom: 12.h),
-//                                 child: TraineeCard(trainee: trainee),
-//                               ),
-//                             )
-//                             .toList()
-//                       else
-//                         _buildEmptyState(s),
-//                     ],
-//                   ),
-//                 ),
-//               );
-//             }
-//
-//             return const SizedBox.shrink();
-//           },
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton.extended(
-//         heroTag: 'add_trainee_fab', // Add unique tag
-//         onPressed: () {
-//           ScaffoldMessenger.of(context).showSnackBar(
-//             SnackBar(
-//               content: Text(s.add_trainee),
-//               backgroundColor: ColorsManager.success,
-//             ),
-//           );
-//         },
-//         backgroundColor: ColorsManager.primaryGreen,
-//         foregroundColor: ColorsManager.whiteText,
-//         icon: const Icon(Icons.person_add),
-//         label: Text(s.add_trainee, style: TextStyles.buttonMedium),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildQuickActions(BuildContext context, S s) {
-//     return Row(
-//       children: [
-//         Expanded(
-//           child: _buildActionCard(
-//             context,
-//             icon: Icons.group,
-//             title: s.manage_trainees,
-//             onTap: () {},
-//           ),
-//         ),
-//         SizedBox(width: 12.w),
-//         Expanded(
-//           child: _buildActionCard(
-//             context,
-//             icon: Icons.calendar_today,
-//             title: s.schedule_session,
-//             onTap: () {},
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-//
-//   Widget _buildActionCard(
-//     BuildContext context, {
-//     required IconData icon,
-//     required String title,
-//     required VoidCallback onTap,
-//   }) {
-//     return InkWell(
-//       onTap: onTap,
-//       borderRadius: BorderRadius.circular(16.r),
-//       child: Container(
-//         padding: EdgeInsets.all(16.w),
-//         decoration: BoxDecoration(
-//           color: ColorsManager.cardBackground,
-//           borderRadius: BorderRadius.circular(16.r),
-//           boxShadow: ColorsManager.cardShadow,
-//         ),
-//         child: Column(
-//           children: [
-//             Container(
-//               padding: EdgeInsets.all(12.w),
-//               decoration: BoxDecoration(
-//                 gradient: ColorsManager.primaryGradient,
-//                 borderRadius: BorderRadius.circular(12.r),
-//               ),
-//               child: Icon(icon, color: ColorsManager.whiteText, size: 32.sp),
-//             ),
-//             SizedBox(height: 8.h),
-//             Text(
-//               title,
-//               style: TextStyles.bodyMedium,
-//               textAlign: TextAlign.center,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildEmptyState(S s) {
-//     return Container(
-//       padding: EdgeInsets.all(32.w),
-//       decoration: BoxDecoration(
-//         color: ColorsManager.cardBackground,
-//         borderRadius: BorderRadius.circular(16.r),
-//         boxShadow: ColorsManager.softShadow,
-//       ),
-//       child: Center(
-//         child: Column(
-//           children: [
-//             Icon(
-//               Icons.people_outline,
-//               size: 64.sp,
-//               color: ColorsManager.lightText,
-//             ),
-//             SizedBox(height: 16.h),
-//             Text(s.no_trainees_yet, style: TextStyles.headline3),
-//             SizedBox(height: 8.h),
-//             Text(
-//               s.add_first_trainee,
-//               style: TextStyles.bodyMedium,
-//               textAlign: TextAlign.center,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+import '../../../notifications/presentation/cubit/notifications_cubit.dart';
+import '../../../trainer/presentation/cubits/trainer_dashboard_cubit.dart';
+import '../../../trainer/presentation/widgets/active_trainees_section.dart';
+import '../../../trainer/presentation/widgets/pending_requests_section.dart';
+import '../../../trainer/presentation/widgets/trainer_home_header.dart';
+import '../../../trainer/presentation/widgets/trainer_quick_actions.dart';
+import '../../../trainer/presentation/widgets/trainer_stats_card.dart';
+import '../widgets/animated_chat_fab.dart';
+import '../widgets/user_widgets/quick_actions_card.dart';
+import '../widgets/user_widgets/user_home_custom_exercises.dart';
+import '../widgets/user_widgets/user_home_header.dart';
+import '../widgets/user_widgets/user_home_records.dart';
+import '../widgets/user_widgets/user_home_sections.dart';
 
 class TrainerHomeScreen extends StatelessWidget {
   const TrainerHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Using mock data instead of Cubit
-    final trainees = MockData.getMockTrainees();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => di.get<TrainerDashboardCubit>()..loadDashboard(),
+        ),
+        BlocProvider(create: (_) => di.get<SectionsCubit>()..loadSections()),
+        BlocProvider(
+          create: (_) => di.get<NotificationsCubit>()..fetchUnreadCount(),
+        ),
+      ],
+      child: const TrainerHomeScreenBody(),
+    );
+  }
+}
+
+class TrainerHomeScreenBody extends StatefulWidget {
+  const TrainerHomeScreenBody({super.key});
+
+  @override
+  State<TrainerHomeScreenBody> createState() => _TrainerHomeScreenBodyState();
+}
+
+class _TrainerHomeScreenBodyState extends State<TrainerHomeScreenBody>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _onRefresh() async {
+    await Future.wait([
+      context.read<TrainerDashboardCubit>().loadDashboard(),
+      context.read<SectionsCubit>().loadSections(),
+      context.read<NotificationsCubit>().fetchUnreadCount(),
+    ]);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final s = S.of(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () async {
-            // Simulate refresh delay
-            await Future.delayed(const Duration(seconds: 1));
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      floatingActionButton: BlocProvider(
+        create: (_) => di.get<ChatCubit>()..getUnreadCount(),
+        child: BlocBuilder<ChatCubit, ChatState>(
+          builder: (context, state) {
+            final unreadCount = state is UnreadCountLoaded ? state.count : null;
+            return AnimatedChatFAB(unreadCount: unreadCount);
           },
-          color: ColorsManager.primaryGreen,
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: EdgeInsets.all(20.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Text(s.welcome_trainer, style: TextStyles.bodyMedium),
-                SizedBox(height: 4.h),
-                Text(s.my_trainees, style: TextStyles.headline2),
-                SizedBox(height: 24.h),
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Header
+            Padding(
+              padding: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 0),
+              child: const UserHomeHeader(), // Same header for both
+            ),
 
-                // Quick Actions
-                _buildQuickActions(context, s),
-                SizedBox(height: 32.h),
-
-                // Trainees List
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(s.active_trainees, style: TextStyles.subtitle1),
-                    TextButton(
-                      onPressed: () {
-                        // Navigate to all trainees screen
-                      },
-                      child: Text(
-                        s.view_all,
-                        style: TextStyles.font14PrimaryGreenSemiBold,
+            // Tab Bar
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardTheme.color,
+                  borderRadius: BorderRadius.circular(12.r),
+                  border: Border.all(
+                    color: ColorsManager.getPrimaryGreen(
+                      context,
+                    ).withValues(alpha: 0.2),
+                  ),
+                ),
+                child: TabBar(
+                  controller: _tabController,
+                  indicator: BoxDecoration(
+                    color: ColorsManager.getSecondaryGreen(
+                      context,
+                    ).withValues(alpha: .8),
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  dividerColor: Colors.transparent,
+                  labelColor: Colors.white,
+                  unselectedLabelColor: ColorsManager.getSecondaryText(context),
+                  labelStyle: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  unselectedLabelStyle: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  tabs: [
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.person, size: 18.sp),
+                          SizedBox(width: 8.w),
+                          Text(s.my_training),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.dashboard, size: 18.sp),
+                          SizedBox(width: 8.w),
+                          Text(s.trainer_mode),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 16.h),
+              ),
+            ),
 
-                if (trainees.isNotEmpty)
-                  ...trainees
-                      .asMap()
-                      .entries
-                      .map(
-                        (entry) => Padding(
-                          padding: EdgeInsets.only(bottom: 12.h),
-                          child: TraineeCard(
-                            trainee: entry.value,
-                            index: entry.key, // Pass index for animation
-                            onTap: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Opening ${entry.value.fullName} profile',
-                                  ),
-                                  backgroundColor: ColorsManager.success,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      )
-                      .toList()
-                else
-                  _buildEmptyState(s),
-              ],
+            // Tab Views
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: _onRefresh,
+                color: ColorsManager.getPrimaryGreen(context),
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [_buildMyTrainingTab(), _buildTrainerModeTab()],
+                ),
+              ),
             ),
-          ),
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        heroTag: 'add_trainee_fab',
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(s.add_trainee),
-              backgroundColor: ColorsManager.success,
-            ),
-          );
-        },
-        backgroundColor: ColorsManager.primaryGreen,
-        foregroundColor: ColorsManager.whiteText,
-        icon: const Icon(Icons.person_add),
-        label: Text(s.add_trainee, style: TextStyles.buttonMedium),
       ),
     );
   }
 
-  Widget _buildQuickActions(BuildContext context, S s) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildActionCard(
-            context,
-            icon: Icons.group,
-            title: s.manage_trainees,
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(s.manage_trainees),
-                  backgroundColor: ColorsManager.info,
-                ),
-              );
-            },
+  // Trainer Mode Tab (Dashboard for managing clients)
+  Widget _buildTrainerModeTab() {
+    return CustomScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      slivers: [
+        // Dashboard Stats
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+            child: const TrainerStatsCard(),
           ),
         ),
-        SizedBox(width: 12.w),
-        Expanded(
-          child: _buildActionCard(
-            context,
-            icon: Icons.calendar_today,
-            title: s.schedule_session,
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(s.schedule_session),
-                  backgroundColor: ColorsManager.info,
-                ),
-              );
-            },
+
+        // Pending Requests
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+            child: const PendingRequestsSection(),
           ),
         ),
+
+        // Active Trainees
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: const ActiveTraineesSection(),
+          ),
+        ),
+
+        SliverToBoxAdapter(child: SizedBox(height: 50.h)),
       ],
     );
   }
 
-  Widget _buildActionCard(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16.r),
-      child: Container(
-        padding: EdgeInsets.all(16.w),
-        decoration: BoxDecoration(
-          color: ColorsManager.cardBackground,
-          borderRadius: BorderRadius.circular(16.r),
-          boxShadow: ColorsManager.cardShadow,
+  // My Training Tab (Personal workout tracking)
+  Widget _buildMyTrainingTab() {
+    return CustomScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      slivers: [
+        // Quick Actions Card
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+            child: const QuickActionsCard(),
+          ),
         ),
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(12.w),
-              decoration: BoxDecoration(
-                gradient: ColorsManager.primaryGradient,
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              child: Icon(icon, color: ColorsManager.whiteText, size: 32.sp),
-            ),
-            SizedBox(height: 8.h),
-            Text(
-              title,
-              style: TextStyles.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _buildEmptyState(S s) {
-    return Container(
-      padding: EdgeInsets.all(32.w),
-      decoration: BoxDecoration(
-        color: ColorsManager.cardBackground,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: ColorsManager.softShadow,
-      ),
-      child: Center(
-        child: Column(
-          children: [
-            Icon(
-              Icons.people_outline,
-              size: 64.sp,
-              color: ColorsManager.lightText,
-            ),
-            SizedBox(height: 16.h),
-            Text(s.no_trainees_yet, style: TextStyles.headline3),
-            SizedBox(height: 8.h),
-            Text(
-              s.add_first_trainee,
-              style: TextStyles.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-          ],
+        // Personal Records
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
+            child: const UserHomeRecords(),
+          ),
         ),
-      ),
+
+        // Exercise Sections
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: const UserHomeSections(),
+          ),
+        ),
+
+        // Custom Exercises
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(20.w),
+            child: const UserHomeCustomExercises(),
+          ),
+        ),
+
+        SliverToBoxAdapter(child: SizedBox(height: 50.h)),
+      ],
     );
   }
 }

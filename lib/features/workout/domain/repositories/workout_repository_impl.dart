@@ -509,4 +509,100 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       return Left(ServerFailure('Error updating exercise set: $e'));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> createSessionForTrainee({
+    required String traineeId,
+    required DateTime date,
+    String? notes,
+  }) async {
+    try {
+      dev.log(
+        '📤 Creating workout session for trainee: $traineeId',
+        name: 'WorkoutRepository',
+      );
+
+      final response = await apiService.postRequest(
+        '/Trainer/trainees/$traineeId/sessions',
+        queryParameters: {
+          'date': date.toIso8601String(),
+          if (notes != null && notes.isNotEmpty) 'notes': notes,
+        },
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final session = WorkoutSessionModel.fromJson(response.data);
+        dev.log(
+          '✅ Workout session created for trainee: ${session.id}',
+          name: 'WorkoutRepository',
+        );
+        return Right(session.id);
+      } else {
+        dev.log(
+          '❌ Failed to create session: ${response.statusCode}',
+          name: 'WorkoutRepository',
+        );
+        return Left(
+          ServerFailure.fromResponse(response.statusCode, response.data),
+        );
+      }
+    } on DioException catch (e) {
+      dev.log(
+        '❌ DioException during session creation: ${e.message}',
+        name: 'WorkoutRepository',
+      );
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      dev.log(
+        '❌ Unexpected error during session creation: $e',
+        name: 'WorkoutRepository',
+      );
+      return Left(
+        ServerFailure('Failed to create workout session for trainee: $e'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<WorkoutSessionModel>>>
+  getWorkoutHistoryForTrainee({
+    required String traineeId,
+    int pageSize = 20,
+    int pageNumber = 1,
+  }) async {
+    try {
+      dev.log(
+        '📤 Getting workout history for trainee: $traineeId',
+        name: 'WorkoutRepository',
+      );
+
+      final response = await apiService.get(
+        '/Trainer/trainees/$traineeId/sessions',
+        queryParameters: {'pageSize': pageSize, 'pageNumber': pageNumber},
+      );
+
+      final sessions = (response.data as List)
+          .map((json) => WorkoutSessionModel.fromJson(json))
+          .toList();
+
+      dev.log(
+        '✅ Loaded ${sessions.length} workouts for trainee',
+        name: 'WorkoutRepository',
+      );
+
+      return Right(sessions);
+    } on DioException catch (e) {
+      dev.log(
+        '❌ DioException loading trainee workouts: ${e.message}',
+        name: 'WorkoutRepository',
+      );
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      dev.log(
+        '❌ Error loading trainee workouts: $e',
+        name: 'WorkoutRepository',
+      );
+      return Left(ServerFailure('Failed to load trainee workout history: $e'));
+    }
+  }
 }

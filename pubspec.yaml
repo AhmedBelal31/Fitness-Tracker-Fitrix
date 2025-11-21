@@ -77,6 +77,10 @@ dependencies:
   flutter_slidable: ^4.0.3
   timeago: ^3.7.1
   searchable_listview: ^2.19.3
+  signalr_netcore: ^1.4.4
+  jwt_decode: ^0.3.1
+
+
 
 
 

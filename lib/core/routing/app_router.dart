@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
+import '../../features/chat/presentation/screens/chat_screen.dart';
+import '../../features/chat/presentation/screens/conversations_screen.dart';
 import '../../features/exercises/data/models/exercise_model.dart';
 import '../../features/exercises/data/models/section_model.dart';
 import '../../features/exercises/presentation/cubit/custom_exercises_cubit.dart';
@@ -32,6 +34,10 @@ import '../../features/profile/presentation/screens/privacy_policy_screen.dart';
 import '../../features/profile/presentation/screens/terms_conditions_screen.dart'
     hide PrivacyPolicyScreen;
 import '../../features/profile/presentation/screens/update_profile.dart';
+import '../../features/trainer/data/models/trainee_data.dart';
+import '../../features/trainer/presentation/screens/create_workout_for_client_screen.dart';
+import '../../features/trainer/presentation/screens/trainee_details_screen.dart';
+import '../../features/trainer/presentation/screens/trainer_clients_screen.dart';
 import '../../features/trainer_requests/presentation/screens/trainer_requests_screen.dart';
 import '../../features/user_requests/presentation/user_requests_screen.dart';
 import '../../features/workout/presentation/cubit/workouts_cubit.dart';
@@ -216,6 +222,34 @@ class AppRouter {
 
       case Routes.trainerRequests:
         return MaterialPageRoute(builder: (_) => const TrainerRequestsScreen());
+
+      case Routes.trainerClients:
+        return MaterialPageRoute(builder: (_) => const TrainerClientsScreen());
+
+      case Routes.traineeDetails:
+        final trainee =
+            settings.arguments as TraineeData; // Change to TraineeData object
+        return MaterialPageRoute(
+          builder: (_) => TraineeDetailsScreen(trainee: trainee),
+        );
+
+      case Routes.createWorkoutForClient:
+        final trainee = settings.arguments as TraineeData;
+        return MaterialPageRoute(
+          builder: (_) => CreateWorkoutForClientScreen(trainee: trainee),
+        );
+      case Routes.conversations:
+        return MaterialPageRoute(builder: (_) => const ConversationsScreen());
+
+      case Routes.chat:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder: (_) => ChatScreen(
+            conversationId: args['conversationId'],
+            otherUserId: args['otherUserId'],
+            otherUserName: args['otherUserName'],
+          ),
+        );
 
       default:
         screen = const ErrorScreen();

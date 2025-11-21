@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:logger/logger.dart';
 import 'package:ntp/ntp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -197,6 +201,29 @@ class TokenManager {
   Future<String?> getUserId() async {
     await init();
     return _prefs?.getString(Constants.userIdKey);
+  }
+
+  Future<String?> getUserIdFromToken() async {
+    try {
+      final token = await getAccessToken();
+      if (token == null) return null;
+
+      // Parse JWT token
+      final parts = token.split('.');
+      if (parts.length != 3) return null;
+
+      // Decode payload (middle part)
+      final payload = parts[1];
+      final normalized = base64Url.normalize(payload);
+      final decoded = utf8.decode(base64Url.decode(normalized));
+      final payloadMap = json.decode(decoded);
+
+      // JWT 'sub' claim is the user ID
+      return payloadMap['sub'] as String?;
+    } catch (e) {
+      log('❌ Error extracting user ID from token: $e', name: 'TokenManager');
+      return null;
+    }
   }
 
   Future<bool> get hasToken async {

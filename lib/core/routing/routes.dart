@@ -40,4 +40,13 @@ class Routes {
 
   static const String userRequests = '/user-requests';
   static const String trainerRequests = '/trainer-requests';
+
+  // Trainer routes
+  static const String trainerClients = '/trainer-clients';
+  static const String traineeDetails = '/trainee-details';
+
+  static const String createWorkoutForClient = '/create-workout-for-client';
+
+  static const String conversations = '/conversations';
+  static const String chat = '/chat';
 }
