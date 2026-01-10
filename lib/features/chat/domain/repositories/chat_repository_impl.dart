@@ -160,7 +160,8 @@ class ChatRepositoryImpl implements ChatRepository {
           '❌ Expected list but got: ${response.data.runtimeType}',
           name: 'ChatRepository',
         );
-        return Left(ServerFailure('Invalid response format'));
+        return Right(<ChatMessage>[]);
+        // return Left(ServerFailure('Invalid response format'));
       }
 
       final messages = (response.data as List)

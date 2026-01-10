@@ -113,7 +113,6 @@ class ApiEndpoints {
       '/api/TrainerRequest/cancel/$requestId';
 
   static const String createWorkoutForTrainee = '/Trainer/trainees';
-
-  static const String chatConversations = '/Chat/conversations';
-  static const String chatUnreadCount = '/Chat/unread-count';
+  static const String chatConversations = '/ChatV2/conversations';
+  static const String chatUnreadCount = '/ChatV2/unread-count';
 }
