@@ -79,15 +79,15 @@ class _TrainerHomeScreenBodyState extends State<TrainerHomeScreenBody>
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      floatingActionButton: BlocProvider(
-        create: (_) => di.get<ChatCubit>()..getUnreadCount(),
-        child: BlocBuilder<ChatCubit, ChatState>(
-          builder: (context, state) {
-            final unreadCount = state is UnreadCountLoaded ? state.count : null;
-            return AnimatedChatFAB(unreadCount: unreadCount);
-          },
-        ),
-      ),
+      // floatingActionButton: BlocProvider(
+      //   create: (_) => di.get<ChatCubit>()..getUnreadCount(),
+      //   child: BlocBuilder<ChatCubit, ChatState>(
+      //     builder: (context, state) {
+      //       final unreadCount = state is UnreadCountLoaded ? state.count : null;
+      //       return AnimatedChatFAB(unreadCount: unreadCount);
+      //     },
+      //   ),
+      // ),
       body: SafeArea(
         child: Column(
           children: [
