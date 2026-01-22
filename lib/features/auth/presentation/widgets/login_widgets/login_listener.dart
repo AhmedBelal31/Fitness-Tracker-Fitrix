@@ -27,7 +27,7 @@ class LoginListener {
   ) {
     final userProfile = state.userProfile;
 
-wwww    // Clear any existing snackbars before navigating
+    // Clear any existing snackbars before navigating
     ScaffoldMessenger.of(context).clearSnackBars();
 
     Future.delayed(const Duration(milliseconds: 500), () {

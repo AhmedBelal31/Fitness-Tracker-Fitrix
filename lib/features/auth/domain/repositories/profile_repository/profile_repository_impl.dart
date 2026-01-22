@@ -140,14 +140,14 @@ class ProfileRepositoryImpl implements ProfileRepository {
   ) async {
     try {
       dev.log(
-        '📤 Sending update profile request (PATCH with URL encoded data)',
+        '📤 Sending update profile request (PATCH with multipart/form-data)',
         name: 'ProfileRepository',
       );
 
-      // ✅ Use patchRequest with URL encoded data
-      final response = await _apiService.patchRequestWithUrlEncoded(
+      // ✅ Use patchRequest with multipart/form-data (as required by API)
+      final response = await _apiService.patchRequestWithFormData(
         ApiEndpoints.updateProfile,
-        data: params.toMap(), // ✅ Send as Map, not FormData
+        params.toFormData(), // ✅ Send as FormData for multipart/form-data
       );
 
       if (response.statusCode == 200) {
