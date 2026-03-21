@@ -11,7 +11,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   geolocator_windows
   pdfx
   permission_handler_windows
-  rive_common
   share_plus
   url_launcher_windows
 )

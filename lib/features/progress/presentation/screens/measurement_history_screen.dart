@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -184,11 +183,11 @@ Widget _buildChartView(BuildContext context, ChartLoaded state, S s) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
-                      child: AutoSizeText(
+                      child: Text(
                         _getMetricTitle(state.selectedMetric, s),
                         maxLines: 1,
-                        minFontSize: 14,
-                        maxFontSize: 18,
+                        // minFontSize: 14,
+                        // maxFontSize: 18,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
