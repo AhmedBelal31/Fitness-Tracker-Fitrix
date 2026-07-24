@@ -3,7 +3,7 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import 'register_role_option.dart';
 
-import 'package:flutter/material.dart';
+import '../../../../../core/theming/app_colors.dart';
 
 class RegisterRoleSelector extends StatefulWidget {
   final int selectedRole;
@@ -46,8 +46,10 @@ class _RegisterRoleSelectorState extends State<RegisterRoleSelector> {
           padding: const EdgeInsets.only(left: 4, bottom: 12),
           child: Text(
             s.selectYourRole,
-            style: TextStyles.font16LightTextRegular.copyWith(
+            style: TextStyle(
+              fontSize: 16,
               fontWeight: FontWeight.w600,
+              color: ColorsManager.getPrimaryText(context),
             ),
           ),
         ),

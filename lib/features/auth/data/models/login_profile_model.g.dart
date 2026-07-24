@@ -26,13 +26,17 @@ class LoginProfileModelAdapter extends TypeAdapter<LoginProfileModel> {
       lastWeightKg: fields[6] as double?,
       lastMuscleMassKg: fields[7] as double?,
       lastBodyFatPercent: fields[8] as double?,
+      phoneNumber: fields[9] as String?,
+      weightGoal: fields[10] as double?,
+      bodyFatGoal: fields[11] as double?,
+      muscleMassGoal: fields[12] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, LoginProfileModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.firstName)
       ..writeByte(1)
@@ -50,7 +54,15 @@ class LoginProfileModelAdapter extends TypeAdapter<LoginProfileModel> {
       ..writeByte(7)
       ..write(obj.lastMuscleMassKg)
       ..writeByte(8)
-      ..write(obj.lastBodyFatPercent);
+      ..write(obj.lastBodyFatPercent)
+      ..writeByte(9)
+      ..write(obj.phoneNumber)
+      ..writeByte(10)
+      ..write(obj.weightGoal)
+      ..writeByte(11)
+      ..write(obj.bodyFatGoal)
+      ..writeByte(12)
+      ..write(obj.muscleMassGoal);
   }
 
   @override

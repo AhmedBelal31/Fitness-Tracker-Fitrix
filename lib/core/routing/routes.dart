@@ -17,6 +17,36 @@ class Routes {
   static const String settingsScreen = 'settingsScreen';
   static const String forgotPasswordScreen = 'ForgotPasswordScreen';
 
-  static const String sectionExercises = 'sectionExercises';
-  static const String customExercises = 'customExercises';
+  static const String privacyPolicyScreen = '/privacy-policy';
+  static const String termsConditionsScreen = '/terms-conditions';
+  static const String contactSupportScreen = '/contact-support';
+  static const String aboutScreen = '/about';
+  static const String updateProfileScreen = '/update-profile';
+
+  // Exercise Routes
+  static const String sectionExercises = '/section-exercises';
+  static const String exerciseDetails = '/exercise-details';
+  static const String customExercises = '/custom-exercises';
+  static const String createCustomExercise = '/create-custom-exercise';
+  static const String selectSection = '/select-section';
+
+  static const String workoutDetails = '/workout-details';
+  static const String allRecords = '/all-records';
+  static const String exerciseProgress = '/exercise-progress';
+
+  static const String changePassword = '/changePassword';
+  static const String notifications = '/notifications';
+  static const String notificationDetails = '/notification-details';
+
+  static const String userRequests = '/user-requests';
+  static const String trainerRequests = '/trainer-requests';
+
+  // Trainer routes
+  static const String trainerClients = '/trainer-clients';
+  static const String traineeDetails = '/trainee-details';
+
+  static const String createWorkoutForClient = '/create-workout-for-client';
+
+  static const String conversations = '/conversations';
+  static const String chat = '/chat';
 }

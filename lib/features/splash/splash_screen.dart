@@ -45,6 +45,24 @@ class _SplashScreenState extends State<SplashScreen>
     _initializeAnimations();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _updateSystemUI();
+  }
+
+  void _updateSystemUI() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+        statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+      ),
+    );
+  }
+
   void _initializeAnimations() {
     _logoController = AnimationController(
       duration: const Duration(milliseconds: 1200),
@@ -96,13 +114,6 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _startAnimationSequence() async {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
-
     _backgroundController.forward();
     await Future.delayed(const Duration(milliseconds: 300));
     _logoController.forward();
@@ -206,7 +217,7 @@ class _SplashScreenState extends State<SplashScreen>
           }
         },
         child: Scaffold(
-          backgroundColor: ColorsManager.scaffoldBackground,
+          backgroundColor: ColorsManager.getScaffoldBackground(context),
           body: SplashScreenBody(
             backgroundController: _backgroundController,
             logoController: _logoController,

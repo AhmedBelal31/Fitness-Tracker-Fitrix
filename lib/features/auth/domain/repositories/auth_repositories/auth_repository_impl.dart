@@ -143,6 +143,10 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       dev.log('🚀 Starting login request', name: 'AuthRepository');
       dev.log('📦 Request data: ${params.toJson()}', name: 'AuthRepository');
+      dev.log(
+        '📱 FCM Token included: ${params.fcmToken != null}',
+        name: 'AuthRepository',
+      );
 
       final response = await _apiService.postRequest(
         ApiEndpoints.login,
@@ -159,7 +163,6 @@ class AuthRepositoryImpl implements AuthRepository {
           response.data as Map<String, dynamic>,
         );
 
-        // Save tokens
         await _tokenManager.saveTokens(
           accessToken: loginResponse.token.accessToken,
           refreshToken: loginResponse.token.refreshToken,
@@ -168,14 +171,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
         dev.log('✅ Login successful, tokens saved', name: 'AuthRepository');
         return Right(loginResponse);
-      } else if (response.statusCode == 404) {
-        // 404 on login means invalid credentials
-        dev.log('❌ Invalid credentials (404)', name: 'AuthRepository');
-        return Left(
-          ServerFailure('Invalid email or password. Please try again.'),
-        );
-      } else if (response.statusCode == 401) {
-        // 401 means unauthorized
+      } else if (response.statusCode == 404 || response.statusCode == 401) {
         return Left(
           ServerFailure('Invalid email or password. Please try again.'),
         );
@@ -188,12 +184,7 @@ class AuthRepositoryImpl implements AuthRepository {
         name: 'AuthRepository',
       );
 
-      // Handle 404 specifically
-      if (e.response?.statusCode == 404) {
-        return Left(
-          ServerFailure('Invalid email or password. Please try again.'),
-        );
-      } else if (e.response?.statusCode == 401) {
+      if (e.response?.statusCode == 404 || e.response?.statusCode == 401) {
         return Left(
           ServerFailure('Invalid email or password. Please try again.'),
         );

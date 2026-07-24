@@ -78,15 +78,41 @@ class _LoginScreenBodyState extends State<LoginScreenBody>
 
   @override
   Widget build(BuildContext context) {
+    // 🎨 Detect theme
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: ColorsManager.scaffoldBackground,
+      // 🎨 Adaptive background color
+      backgroundColor: ColorsManager.getScaffoldBackground(context),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: ColorsManager.appBackgroundGradient,
+        decoration: BoxDecoration(
+          // 🎨 Adaptive gradient background
+          gradient: ColorsManager.getBackgroundGradient(context),
         ),
         child: SafeArea(
           child: Stack(
             children: [
+              // 🌟 Optional: Decorative glow effect for dark mode
+              if (isDark)
+                Positioned(
+                  top: -100,
+                  right: -100,
+                  child: Container(
+                    width: 300,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: RadialGradient(
+                        colors: [
+                          ColorsManager.darkPrimaryGreen.withOpacity(0.06),
+                          ColorsManager.darkSecondaryGreen.withOpacity(0.03),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
               // Main Login Content
               LoginAnimationWrapper(
                 fadeAnimation: _fadeAnimation,
@@ -120,10 +146,11 @@ class _LoginScreenBodyState extends State<LoginScreenBody>
                 ),
               ),
 
-              Positioned(
+              // Language toggle button
+              const Positioned(
                 top: 16,
                 right: 16,
-                child: const LanguageToggleButton(),
+                child: LanguageToggleButton(),
               ),
             ],
           ),

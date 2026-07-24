@@ -1,326 +1,241 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
-import '../../data/models/mock_exercises_data.dart';
-import '../widgets/exercise_card.dart';
+import '../../../home/presentation/widgets/custom_exercise_widgets/custom_exercises_filter_chips.dart';
+import '../../../home/presentation/widgets/custom_exercise_widgets/custom_exercises_header.dart';
+import '../../../home/presentation/widgets/custom_exercise_widgets/custom_exercises_list.dart';
+import '../../../home/presentation/widgets/custom_exercise_widgets/custom_exercises_search_bar.dart';
+import '../../../home/presentation/widgets/custom_exercise_widgets/deleting_overlay.dart';
+import '../../data/models/exercise_model.dart';
+import '../widgets/custom_exercise_widgets/empty_exercises_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/custom_exercises_cubit.dart';
+import '../cubit/custom_exercises_state.dart';
 
-class CustomExercisesScreen extends StatelessWidget {
+class CustomExercisesScreen extends StatefulWidget {
   const CustomExercisesScreen({super.key});
+
+  @override
+  State<CustomExercisesScreen> createState() => _CustomExercisesScreenState();
+}
+
+class _CustomExercisesScreenState extends State<CustomExercisesScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  final TextEditingController _searchController = TextEditingController();
+  String _searchQuery = '';
+  String? _selectedDifficulty;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _animationController.forward();
+    _loadCustomExercises();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _loadCustomExercises() {
+    context.read<CustomExercisesCubit>().loadCustomExercises(
+      difficulty: _selectedDifficulty,
+    );
+  }
+
+  void _handleSearch(String query) {
+    setState(() {
+      _searchQuery = query.toLowerCase();
+    });
+  }
+
+  void _handleFilterChange(String? difficulty) {
+    setState(() {
+      _selectedDifficulty = difficulty;
+    });
+    _loadCustomExercises();
+  }
+
+  void _clearFilters() {
+    setState(() {
+      _searchQuery = '';
+      _selectedDifficulty = null;
+      _searchController.clear();
+    });
+    _loadCustomExercises();
+  }
+
+  void _handleDelete(String exerciseId) {
+    context.read<CustomExercisesCubit>().deleteCustomExercise(exerciseId);
+  }
+
+  void _navigateToExerciseDetails(ExerciseModel exercise) {
+    Navigator.pushNamed(context, Routes.exerciseDetails, arguments: exercise);
+  }
+
+  Future<void> _navigateToSelectSection() async {
+    final result = await Navigator.pushNamed(context, Routes.selectSection);
+    if (result == true && mounted) {
+      _loadCustomExercises();
+    }
+  }
+
+  List<ExerciseModel> _filterExercises(List<ExerciseModel> exercises) {
+    if (_searchQuery.isEmpty) return exercises;
+
+    return exercises.where((exercise) {
+      final nameMatch = exercise.name.toLowerCase().contains(_searchQuery);
+      final sectionMatch = exercise.sectionName.toLowerCase().contains(
+        _searchQuery,
+      );
+      return nameMatch || sectionMatch;
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    final customExercises = MockExercisesData.getMockCustomExercises();
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark; // ✅ Theme detection
 
     return Scaffold(
-      backgroundColor: ColorsManager.scaffoldBackground,
-      appBar: AppBar(
-        title: Text(s.my_custom_exercises, style: TextStyles.headline2),
-        backgroundColor: ColorsManager.scaffoldBackground,
-        elevation: 0,
+      backgroundColor: Theme.of(
+        context,
+      ).scaffoldBackgroundColor, // ✅ Theme-aware
+      body: SafeArea(
+        child: BlocConsumer<CustomExercisesCubit, CustomExercisesState>(
+          listener: _handleStateChanges,
+          builder: (context, state) => _buildBody(context, state, s),
+        ),
       ),
-      body: customExercises.isNotEmpty
-          ? ListView.builder(
-              padding: EdgeInsets.all(20.w),
-              itemCount: customExercises.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.only(bottom: 12.h),
-                  child: ExerciseCard(
-                    exercise: customExercises[index],
-                    onTap: () {
-                      _showExerciseOptions(context, customExercises[index], s);
-                    },
-                  ),
-                );
-              },
-            )
-          : _buildEmptyState(context, s),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          _showCreateExerciseDialog(context, s);
-        },
-        backgroundColor: ColorsManager.primaryGreen,
-        icon: const Icon(Icons.add),
-        label: Text(s.create_custom_exercise, style: TextStyles.buttonMedium),
-      ),
+      floatingActionButton: _buildFAB(s, isDark), // ✅ Pass theme
     );
   }
 
-  Widget _buildEmptyState(BuildContext context, S s) {
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.all(40.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+  void _handleStateChanges(BuildContext context, CustomExercisesState state) {
+    if (state is CustomExercisesError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(state.message),
+          backgroundColor: ColorsManager.error,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          duration: const Duration(seconds: 4),
+        ),
+      );
+    }
+  }
+
+  Widget _buildBody(BuildContext context, CustomExercisesState state, S s) {
+    List<ExerciseModel>? exercises;
+    bool isDeleting = false;
+    bool isLoading = false;
+
+    if (state is CustomExercisesLoading) {
+      isLoading = true;
+    } else if (state is CustomExercisesLoaded) {
+      exercises = state.exercises;
+    } else if (state is CustomExercisesDeleting) {
+      exercises = state.exercises;
+      isDeleting = true;
+    } else if (state is CustomExercisesError) {
+      exercises = state.exercises;
+    }
+
+    final filteredExercises = exercises != null
+        ? _filterExercises(exercises)
+        : null;
+
+    return Stack(
+      children: [
+        Column(
           children: [
-            Icon(
-              Icons.fitness_center_outlined,
-              size: 100.sp,
-              color: ColorsManager.lightText,
+            CustomExercisesHeader(onBackPressed: () => Navigator.pop(context)),
+            CustomExercisesSearchBar(
+              controller: _searchController,
+              onSearch: _handleSearch,
             ),
-            SizedBox(height: 24.h),
-            Text(
-              s.no_custom_exercises_yet,
-              style: TextStyles.headline3,
-              textAlign: TextAlign.center,
+            CustomExercisesFilterChips(
+              selectedDifficulty: _selectedDifficulty,
+              onFilterChanged: _handleFilterChange,
             ),
-            SizedBox(height: 12.h),
-            Text(
-              s.create_your_own_exercises,
-              style: TextStyles.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 32.h),
-            ElevatedButton.icon(
-              onPressed: () {
-                _showCreateExerciseDialog(context, s);
-              },
-              icon: const Icon(Icons.add),
-              label: Text(s.create_your_first_exercise),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorsManager.primaryGreen,
-                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
-              ),
-            ),
+            Expanded(child: _buildContent(filteredExercises, isLoading, s)),
           ],
         ),
-      ),
+        if (isDeleting) const DeletingOverlay(),
+      ],
     );
   }
 
-  void _showExerciseOptions(BuildContext context, exercise, S s) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: ColorsManager.cardBackground,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
-      ),
-      builder: (context) {
-        return Padding(
-          padding: EdgeInsets.all(20.w),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(exercise.name, style: TextStyles.headline3),
-              SizedBox(height: 20.h),
-              ListTile(
-                leading: const Icon(
-                  Icons.edit,
-                  color: ColorsManager.primaryGreen,
-                ),
-                title: Text(s.edit_exercise),
-                onTap: () {
-                  Navigator.pop(context);
-                  _showEditExerciseDialog(context, exercise, s);
-                },
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.add_circle,
-                  color: ColorsManager.info,
-                ),
-                title: Text(s.add_to_workout),
-                onTap: () {
-                  Navigator.pop(context);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(s.added_to_workout),
-                      backgroundColor: ColorsManager.success,
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.delete, color: ColorsManager.error),
-                title: Text(s.delete_exercise),
-                onTap: () {
-                  Navigator.pop(context);
-                  _showDeleteConfirmation(context, exercise, s);
-                },
-              ),
-            ],
-          ),
-        );
-      },
+  Widget _buildContent(List<ExerciseModel>? exercises, bool isLoading, S s) {
+    if (isLoading) {
+      return Center(
+        child: CircularProgressIndicator(
+          color: ColorsManager.getPrimaryGreen(context), // ✅ Theme-aware
+        ),
+      );
+    }
+
+    if (exercises == null || exercises.isEmpty) {
+      final hasFilters = _searchQuery.isNotEmpty || _selectedDifficulty != null;
+      return EmptyExercisesState(
+        onCreateTap: _navigateToSelectSection,
+        hasFilters: hasFilters,
+        onClearFilters: _clearFilters,
+      );
+    }
+
+    return CustomExercisesList(
+      exercises: exercises,
+      onExerciseTap: _navigateToExerciseDetails,
+      onExerciseDelete: _handleDelete,
+      onRefresh: _loadCustomExercises,
+      animationController: _animationController,
     );
   }
 
-  void _showCreateExerciseDialog(BuildContext context, S s) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(s.create_custom_exercise, style: TextStyles.headline3),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  labelText: s.exercise_name,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-              ),
-              SizedBox(height: 16.h),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: s.description,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                maxLines: 3,
-              ),
-              SizedBox(height: 16.h),
-              DropdownButtonFormField<String>(
-                decoration: InputDecoration(
-                  labelText: s.section,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                items: [
-                  DropdownMenuItem(value: 'Chest', child: Text(s.chest)),
-                  DropdownMenuItem(value: 'Back', child: Text(s.back)),
-                  DropdownMenuItem(value: 'Legs', child: Text(s.legs)),
-                  DropdownMenuItem(
-                    value: 'Shoulders',
-                    child: Text(s.shoulders),
-                  ),
-                  DropdownMenuItem(value: 'Arms', child: Text(s.arms)),
-                  DropdownMenuItem(value: 'Core', child: Text(s.core)),
-                ],
-                onChanged: (value) {},
-              ),
-              SizedBox(height: 16.h),
-              DropdownButtonFormField<String>(
-                decoration: InputDecoration(
-                  labelText: s.equipment,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                items: [
-                  DropdownMenuItem(value: 'Barbell', child: Text(s.barbell)),
-                  DropdownMenuItem(
-                    value: 'Dumbbells',
-                    child: Text(s.dumbbells),
-                  ),
-                  DropdownMenuItem(
-                    value: 'Cable Machine',
-                    child: Text(s.cable_machine),
-                  ),
-                  DropdownMenuItem(
-                    value: 'Bodyweight',
-                    child: Text(s.bodyweight),
-                  ),
-                  DropdownMenuItem(value: 'Machine', child: Text(s.machine)),
-                ],
-                onChanged: (value) {},
-              ),
-              SizedBox(height: 16.h),
-              DropdownButtonFormField<String>(
-                decoration: InputDecoration(
-                  labelText: s.difficulty,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                items: [
-                  DropdownMenuItem(value: 'Beginner', child: Text(s.beginner)),
-                  DropdownMenuItem(
-                    value: 'Intermediate',
-                    child: Text(s.intermediate),
-                  ),
-                  DropdownMenuItem(value: 'Advanced', child: Text(s.advanced)),
-                ],
-                onChanged: (value) {},
-              ),
-            ],
+  Widget _buildFAB(S s, bool isDark) {
+    return ScaleTransition(
+      scale: CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.elasticOut,
+      ),
+      child: FloatingActionButton.extended(
+        onPressed: _navigateToSelectSection,
+        backgroundColor: ColorsManager.getPrimaryGreen(
+          context,
+        ), // ✅ Theme-aware
+        foregroundColor: isDark
+            ? ColorsManager.darkScaffold
+            : Colors.white, // ✅ Theme-aware text
+        elevation: 4,
+        icon: Icon(
+          Icons.add,
+          color: isDark
+              ? ColorsManager.darkScaffold
+              : Colors.white, // ✅ Theme-aware icon
+        ),
+        label: Text(
+          s.create_custom_exercise,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: isDark
+                ? ColorsManager.darkScaffold
+                : Colors.white, // ✅ Theme-aware
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(s.cancel),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(s.exercise_created_successfully),
-                  backgroundColor: ColorsManager.success,
-                ),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: ColorsManager.primaryGreen,
-            ),
-            child: Text(s.create),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showEditExerciseDialog(BuildContext context, exercise, S s) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(s.edit_exercise, style: TextStyles.headline3),
-        content: Text(
-          'Edit functionality will be implemented',
-          style: TextStyles.bodyMedium,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(s.cancel),
-          ),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(s.save),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showDeleteConfirmation(BuildContext context, exercise, S s) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          s.delete_exercise_confirmation,
-          style: TextStyles.headline3,
-        ),
-        content: Text(s.delete_exercise_message, style: TextStyles.bodyMedium),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(s.cancel),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(s.exercise_deleted),
-                  backgroundColor: ColorsManager.error,
-                ),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: ColorsManager.error,
-            ),
-            child: Text(s.delete),
-          ),
-        ],
       ),
     );
   }

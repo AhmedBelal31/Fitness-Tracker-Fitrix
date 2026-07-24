@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fitrix/core/common_ui/widgets/app_logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -34,14 +35,14 @@ class NotificationService {
       if (Platform.isIOS) {
         if (apnsToken != null) {
           await FirebaseMessaging.instance
-              .subscribeToTopic('all_users')
+              .subscribeToTopic('all')
               .timeout(
                 const Duration(seconds: 3),
                 onTimeout: () {
-                  log("⚠️ Timeout while subscribing to topic 'all_users'");
+                  log("⚠️ Timeout while subscribing to topic 'all'");
                 },
               );
-          log("✅ Subscribed to topic 'all_users'");
+          log("✅ Subscribed to topic 'all'");
         } else {
           log("❌ APNs token not ready yet, will retry onTokenRefresh");
 
@@ -49,20 +50,20 @@ class NotificationService {
             final refreshedApnsToken = await _firebaseMessaging.getAPNSToken();
             if (refreshedApnsToken != null) {
               await FirebaseMessaging.instance
-                  .subscribeToTopic('all_users')
+                  .subscribeToTopic('all')
                   .timeout(
                     const Duration(seconds: 3),
                     onTimeout: () {
-                      log("⚠️ Timeout while subscribing to topic 'all_users'");
+                      log("⚠️ Timeout while subscribing to topic 'all'");
                     },
                   );
               ;
-              log("✅ Subscribed to topic 'all_users' after token refresh");
+              log("✅ Subscribed to topic 'all' after token refresh");
             }
           });
         }
       } else {
-        await FirebaseMessaging.instance.subscribeToTopic('all_users');
+        await FirebaseMessaging.instance.subscribeToTopic('all');
       }
     } else {
       log('❌ User denied notification permissions');
@@ -95,6 +96,7 @@ class NotificationService {
   }
 
   Future<void> _showNotification(RemoteNotification notification) async {
+    AppLogger.d(notification);
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
         'Achievers Channel',
@@ -115,14 +117,14 @@ class NotificationService {
 
   Future<void> enableNotifications() async {
     await Prefs.setData(key: 'notifications_enabled', value: true);
-    await _firebaseMessaging.subscribeToTopic("all_users");
+    await _firebaseMessaging.subscribeToTopic("all");
     log("✅ Notifications enabled");
   }
 
   Future<void> disableNotifications() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('notifications_enabled', false);
-    await _firebaseMessaging.unsubscribeFromTopic("all_users");
+    await _firebaseMessaging.unsubscribeFromTopic("all");
     log("✅ Notifications disabled");
   }
 
@@ -290,5 +292,10 @@ class FirebaseTokenService {
       debugPrint("❌ Error retrieving token: $e");
     }
     return null;
+  }
+
+  Future<bool> isNotificationsEnabled() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('notifications_enabled') ?? true;
   }
 }

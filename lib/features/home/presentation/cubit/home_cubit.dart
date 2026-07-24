@@ -18,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
     ) {
       if (dashboard.recentWorkouts == null ||
           dashboard.recentWorkouts!.isEmpty) {
-        // Dashboard loaded but no workouts
+        // Dashboard loaded but no workout
         emit(HomeLoaded(dashboard));
       } else {
         emit(HomeLoaded(dashboard));

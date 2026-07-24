@@ -1,0 +1,26 @@
+# Fastlane configuration for Android
+# Documentation: https://docs.fastlane.tools
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Build Release APK and distribute to Firebase App Distribution"
+
+  lane :firebase_distribution do
+
+    sh("flutter build apk --release")
+
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_ID"],
+      firebase_cli_token: ENV["FIREBASE_TOKEN"],
+      android_artifact_type: "APK",
+      android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
+      release_notes: "Automated build from GitHub Actions",
+      testers: "ahmedbelal312001@gmail.com,abdoshady550@gmail.com"
+    )
+
+    puts "✅ APK uploaded successfully to Firebase App Distribution."
+  end
+
+end

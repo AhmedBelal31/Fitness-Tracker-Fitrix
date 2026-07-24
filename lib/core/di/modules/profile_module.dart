@@ -2,6 +2,11 @@ import 'package:fitrix/core/networking/dio_helper.dart';
 import '../../../features/auth/domain/repositories/profile_repository/profile_repository.dart';
 import '../../../features/auth/domain/repositories/profile_repository/profile_repository_impl.dart';
 import '../../../features/auth/presentation/cubits/profile_cubit/complete_profile_cubit.dart';
+import '../../../features/profile/presentation/cubits/notifications_cubit/notifications_cubit.dart';
+import '../../../features/profile/presentation/cubits/sound_cubit/sound_cubit.dart';
+import '../../../features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
+import '../../helpers/notification_service.dart';
+import '../../services/sound_service.dart';
 import '../get_it.dart';
 
 void setupProfileModule() {
@@ -11,4 +16,13 @@ void setupProfileModule() {
   di.registerFactory<CompleteProfileCubit>(
     () => CompleteProfileCubit(di<ProfileRepository>()),
   );
+
+  di.registerFactory(() => UpdateProfileCubit(di()));
+
+  di.registerLazySingleton<NotificationsCubit>(
+    () => NotificationsCubit(di<NotificationService>()),
+  );
+
+  // Sound Cubit
+  di.registerFactory<SoundCubit>(() => SoundCubit(di<SoundService>()));
 }

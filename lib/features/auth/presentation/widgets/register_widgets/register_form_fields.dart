@@ -4,7 +4,6 @@ import '../../../../../generated/l10n.dart';
 import 'register_form_controller.dart';
 import 'register_validators.dart';
 import 'register_role_selector.dart';
-import 'package:flutter/material.dart';
 
 class RegisterFormFields extends StatefulWidget {
   final GlobalKey<FormState> formKey;

@@ -1,6 +1,7 @@
 import 'dart:developer' as dev;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../../../../../core/helpers/notification_service.dart';
 import '../../../../../core/networking/token_manager.dart';
 import '../../../../../core/services/hive_service.dart';
 import '../../../data/models/params/login_params.dart';
@@ -13,6 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   final AuthRepository _authRepository;
   final TokenManager _tokenManager = TokenManager.instance;
   final HiveService _hiveService = HiveService();
+  final FirebaseTokenService _firebaseTokenService = FirebaseTokenService();
 
   LoginCubit(this._authRepository) : super(const LoginState()) {
     _loadSavedPreferences();
@@ -25,13 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> _loadSavedPreferences() async {
     final email = await _tokenManager.getSavedEmail();
 
-    // 👇 Always start with Remember Me = true (default)
-    emit(
-      state.copyWith(
-        rememberMe: true, // Always default to checked
-        savedEmail: email,
-      ),
-    );
+    emit(state.copyWith(rememberMe: true, savedEmail: email));
 
     dev.log(
       '💾 Remember Me defaulted to true, Email loaded: ${email ?? "none"}',
@@ -65,8 +61,6 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  /// 🚀 Login logic
-
   Future<void> login({required String email, required String password}) async {
     dev.log('🚀 Starting login process', name: 'LoginCubit');
 
@@ -80,7 +74,14 @@ class LoginCubit extends Cubit<LoginState> {
       ),
     );
 
-    final params = LoginParams(email: email, password: password);
+    String? fcmToken = await _firebaseTokenService.handleToken();
+    dev.log('📱 FCM Token: ${fcmToken ?? "Not available"}', name: 'LoginCubit');
+
+    final params = LoginParams(
+      email: email,
+      password: password,
+      fcmToken: fcmToken,
+    );
 
     if (state.rememberMe) {
       await _tokenManager.saveEmail(email);
@@ -195,7 +196,6 @@ class LoginCubit extends Cubit<LoginState> {
     dev.log('🚪 Logging out user', name: 'LoginCubit');
 
     await _hiveService.clearProfile();
-
     await _tokenManager.clearTokens();
 
     dev.log('💾 Email preserved for next session', name: 'LoginCubit');
