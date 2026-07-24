@@ -47,6 +47,10 @@ jobs:
       - name: Run Tests
         run: flutter test
 
+      # Make gradlew executable
+      - name: Make gradlew executable
+        run: chmod +x android/gradlew
+
       # Build & Deploy to Firebase App Distribution via Fastlane
       - name: Run Fastlane Firebase Distribution
         env:
