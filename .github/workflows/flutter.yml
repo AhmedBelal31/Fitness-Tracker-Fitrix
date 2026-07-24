@@ -66,4 +66,6 @@ jobs:
         if: always()
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: |
+            build/app/outputs/flutter-apk/*.apk
+            android/app/build/outputs/apk/release/*.apk
