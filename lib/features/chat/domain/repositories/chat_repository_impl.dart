@@ -100,9 +100,6 @@ class ChatRepositoryImpl implements ChatRepository {
     }
   }
 
-  // REMOVE or comment out the getOrCreateConversation method
-  // It's not supported by the API
-
   @override
   Future<Either<Failure, ChatMessage>> sendMessage({
     required String conversationId,
@@ -182,8 +179,6 @@ class ChatRepositoryImpl implements ChatRepository {
       return Left(ServerFailure('Failed to load messages: $e'));
     }
   }
-
-  // lib/features/chat/data/repositories/chat_repository_impl.dart
 
   @override
   Future<Either<Failure, int>> getUnreadCount({String? conversationId}) async {

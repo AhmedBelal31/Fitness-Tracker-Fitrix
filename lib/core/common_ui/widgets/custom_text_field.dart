@@ -127,7 +127,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             keyboardType: widget.keyboardType,
             validator: widget.validator,
             enabled: widget.enabled,
-            maxLines: widget.maxLines, // ✅ Added
+            maxLines: widget.maxLines,
             style: TextStyle(
               fontSize: 16,
               color: ColorsManager.getPrimaryText(context),
