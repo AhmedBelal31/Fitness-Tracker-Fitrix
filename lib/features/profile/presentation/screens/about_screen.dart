@@ -93,11 +93,11 @@ class _AboutScreenState extends State<AboutScreen>
               child: _buildInfoCard(s, isDark),
             ),
             SizedBox(height: 24.h),
-            _AnimatedItem(
-              controller: _controller,
-              index: 4,
-              child: _buildSocialLinks(s, isDark),
-            ),
+            // _AnimatedItem(
+            //   controller: _controller,
+            //   index: 4,
+            //   child: _buildSocialLinks(s, isDark),
+            // ),
             SizedBox(height: 24.h),
             _AnimatedItem(
               controller: _controller,

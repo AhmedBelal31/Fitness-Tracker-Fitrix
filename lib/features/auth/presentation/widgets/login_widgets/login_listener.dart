@@ -27,14 +27,8 @@ class LoginListener {
   ) {
     final userProfile = state.userProfile;
 
-    // ScaffoldMessenger.of(context).showSnackBar(
-    //   SnackBar(
-    //     content: Text(l10n.welcomeBackUser(userProfile?.firstName ?? 'User')),
-    //     backgroundColor: ColorsManager.primaryGreen,
-    //     behavior: SnackBarBehavior.floating,
-    //     duration: const Duration(seconds: 2),
-    //   ),
-    // );
+    // Clear any existing snackbars before navigating
+    ScaffoldMessenger.of(context).clearSnackBars();
 
     Future.delayed(const Duration(milliseconds: 500), () {
       if (context.mounted) {
@@ -66,7 +60,11 @@ class LoginListener {
   }
 
   static void _handleError(BuildContext context, LoginState state) {
-    ScaffoldMessenger.of(context).showSnackBar(
+    // Store reference to ScaffoldMessenger before showing snackbar
+    // to avoid accessing deactivated context when dismissing
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+    scaffoldMessenger.showSnackBar(
       SnackBar(
         content: Row(
           children: [
@@ -87,7 +85,7 @@ class LoginListener {
           label: 'Dismiss',
           textColor: Colors.white,
           onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            scaffoldMessenger.hideCurrentSnackBar();
           },
         ),
       ),

@@ -109,15 +109,15 @@ class _UserHomeScreenBodyState extends State<UserHomeScreenBody>
           ),
         ),
       ),
-      floatingActionButton: BlocProvider(
-        create: (_) => di.get<ChatCubit>()..getUnreadCount(),
-        child: BlocBuilder<ChatCubit, ChatState>(
-          builder: (context, state) {
-            final unreadCount = state is UnreadCountLoaded ? state.count : null;
-            return AnimatedChatFAB(unreadCount: unreadCount);
-          },
-        ),
-      ),
+      // floatingActionButton: BlocProvider(
+      //   create: (_) => di.get<ChatCubit>()..getUnreadCount(),
+      //   child: BlocBuilder<ChatCubit, ChatState>(
+      //     builder: (context, state) {
+      //       final unreadCount = state is UnreadCountLoaded ? state.count : null;
+      //       return AnimatedChatFAB(unreadCount: unreadCount);
+      //     },
+      //   ),
+      // ),
     );
   }
 

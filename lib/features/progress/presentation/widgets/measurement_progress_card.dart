@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fitrix/core/theming/styles.dart';
@@ -64,8 +63,7 @@ class MeasurementProgressCard extends StatelessWidget {
           child: Icon(cardData.icon, color: Colors.white, size: 14.sp),
         ),
         SizedBox(width: 4.w),
-        AutoSizeText(
-          maxLines: 1,
+        Text(
           cardData.title,
           style: TextStyles.font16WhiteSemiBold.copyWith(
             shadows: [
