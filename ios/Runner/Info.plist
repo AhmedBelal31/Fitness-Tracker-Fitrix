@@ -79,8 +79,6 @@
 	<string>Fitrix needs access to your camera to take exercise and profile pictures.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Fitrix needs access to the microphone for recording audio/video.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Fitrix needs access to location while tracking outdoor activities.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 </dict>
