@@ -20,7 +20,7 @@ platform :android do
       testers: "ahmedbelal312001@gmail.com,abdoshady550@gmail.com"
     )
 
-    puts "✅ APK uploaded successfully to Firebase App Distribution."
+    puts "✅ APK uploaded successfully to Firebase App Distribution ."
   end
 
 end
