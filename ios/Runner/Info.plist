@@ -49,6 +49,11 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -68,5 +73,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fitrix needs access to your photo library to select exercise and profile images.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Fitrix needs access to your camera to take exercise and profile pictures.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Fitrix needs access to the microphone for recording audio/video.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Fitrix needs access to location while tracking outdoor activities.</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
