@@ -370,6 +370,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteDataItem": MessageLookupByLibrary.simpleMessage("Delete data"),
     "delete_account": MessageLookupByLibrary.simpleMessage("Delete Account"),
+    "delete_account_confirm_message": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to permanently delete your account? All your personal data, workouts, and progress will be deleted immediately and this action cannot be undone.",
+    ),
+    "delete_account_success": MessageLookupByLibrary.simpleMessage(
+      "Account deleted successfully",
+    ),
     "delete_exercise": MessageLookupByLibrary.simpleMessage("Delete"),
     "delete_exercise_confirmation": MessageLookupByLibrary.simpleMessage(
       "Delete Exercise?",

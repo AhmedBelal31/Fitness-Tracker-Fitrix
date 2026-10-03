@@ -180,6 +180,8 @@
   "terms_conditions": "Terms & Conditions",
   "contact_support": "Contact Support",
   "delete_account": "Delete Account",
+  "delete_account_confirm_message": "Are you sure you want to permanently delete your account? All your personal data, workouts, and progress will be deleted immediately and this action cannot be undone.",
+  "delete_account_success": "Account deleted successfully",
 
   "workout_sections": "Sections",
   "custom": "Custom",

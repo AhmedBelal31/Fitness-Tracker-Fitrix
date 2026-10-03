@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1364,6 +1365,26 @@ class S {
     return Intl.message(
       'Delete Account',
       name: 'delete_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to permanently delete your account? All your personal data, workouts, and progress will be deleted immediately and this action cannot be undone.`
+  String get delete_account_confirm_message {
+    return Intl.message(
+      'Are you sure you want to permanently delete your account? All your personal data, workouts, and progress will be deleted immediately and this action cannot be undone.',
+      name: 'delete_account_confirm_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account deleted successfully`
+  String get delete_account_success {
+    return Intl.message(
+      'Account deleted successfully',
+      name: 'delete_account_success',
       desc: '',
       args: [],
     );

@@ -336,7 +336,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "decline_bench": MessageLookupByLibrary.simpleMessage("بنش منخفض"),
     "delete": MessageLookupByLibrary.simpleMessage("مسح"),
     "deleteDataItem": MessageLookupByLibrary.simpleMessage("تمسح البيانات"),
-    "delete_account": MessageLookupByLibrary.simpleMessage("مسح الحساب"),
+    "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+    "delete_account_confirm_message": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد حذف حسابك نهائياً؟ سيتم مسح جميع بياناتك وتمارينك وسجل تقدمك بالكامل ولا يمكن التراجع عن هذا الإجراء.",
+    ),
+    "delete_account_success": MessageLookupByLibrary.simpleMessage(
+      "تم حذف الحساب بنجاح",
+    ),
     "delete_exercise": MessageLookupByLibrary.simpleMessage("امسح"),
     "delete_exercise_confirmation": MessageLookupByLibrary.simpleMessage(
       "مسح التمرين؟",
