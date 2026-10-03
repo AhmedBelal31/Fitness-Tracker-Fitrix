@@ -179,7 +179,9 @@
   "privacy_policy": "سياسة الخصوصية",
   "terms_conditions": "الشروط",
   "contact_support": "تواصل معنا",
-  "delete_account": "مسح الحساب",
+  "delete_account": "حذف الحساب",
+  "delete_account_confirm_message": "هل أنت متأكد أنك تريد حذف حسابك نهائياً؟ سيتم مسح جميع بياناتك وتمارينك وسجل تقدمك بالكامل ولا يمكن التراجع عن هذا الإجراء.",
+  "delete_account_success": "تم حذف الحساب بنجاح",
 
   "workout_sections": "الأقسام",
   "custom": "مخصص",

@@ -14,6 +14,7 @@ class ApiEndpoints {
   // Profile
   static const String getProfile = "Users/get-profile";
   static const String updateProfile = 'Users/update-profile';
+  static const String deleteAccount = 'Users/delete-account';
 
   // Home/Dashboard
   static const String dashboard = '/api/dashboard';

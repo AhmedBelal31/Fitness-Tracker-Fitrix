@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/profile_widgets/app_settings_section.dart';
+import '../widgets/profile_widgets/delete_account_button.dart';
 import '../widgets/profile_widgets/help_support_section.dart';
 import '../widgets/profile_widgets/logout_button.dart';
 import '../widgets/profile_widgets/personal_info_section.dart';
 import '../widgets/profile_widgets/user_profile_header.dart';
-import '../widgets/profile_widgets/version_text.dart' hide VersionText;
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -79,6 +79,8 @@ class UserProfileScreen extends StatelessWidget {
             const HelpSupportSection(),
             SizedBox(height: 24.h),
             const LogoutButton(),
+            SizedBox(height: 8.h),
+            const DeleteAccountButton(),
             SizedBox(height: 12.h),
             const VersionText(),
             SizedBox(height: 20.h),

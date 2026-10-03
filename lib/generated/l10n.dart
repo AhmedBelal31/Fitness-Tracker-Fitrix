@@ -1370,6 +1370,26 @@ class S {
     );
   }
 
+  /// `Are you sure you want to permanently delete your account? All your personal data, workouts, and progress will be deleted immediately and this action cannot be undone.`
+  String get delete_account_confirm_message {
+    return Intl.message(
+      'Are you sure you want to permanently delete your account? All your personal data, workouts, and progress will be deleted immediately and this action cannot be undone.',
+      name: 'delete_account_confirm_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account deleted successfully`
+  String get delete_account_success {
+    return Intl.message(
+      'Account deleted successfully',
+      name: 'delete_account_success',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sections`
   String get workout_sections {
     return Intl.message(

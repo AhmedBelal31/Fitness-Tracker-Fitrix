@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
+import '../widgets/profile_widgets/delete_account_button.dart';
 
 class TrainerProfileScreen extends StatelessWidget {
   const TrainerProfileScreen({super.key});
@@ -72,6 +73,10 @@ class TrainerProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 8.h),
+
+            // Delete Account Button
+            const DeleteAccountButton(),
             SizedBox(height: 12.h),
 
             // Version
@@ -138,7 +143,7 @@ class TrainerProfileScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
             decoration: BoxDecoration(
-              color: ColorsManager.whiteText.withOpacity(0.2),
+              color: ColorsManager.whiteText.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Text(

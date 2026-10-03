@@ -238,4 +238,40 @@ class ProfileRepositoryImpl implements ProfileRepository {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteAccount() async {
+    try {
+      dev.log('📤 Sending delete account request', name: 'ProfileRepository');
+
+      final response = await _apiService.deleteRequest(
+        ApiEndpoints.deleteAccount,
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        dev.log('✅ Account deleted successfully', name: 'ProfileRepository');
+        return const Right(null);
+      } else {
+        dev.log(
+          '❌ Account deletion failed: ${response.statusCode}',
+          name: 'ProfileRepository',
+        );
+        return Left(
+          ServerFailure.fromResponse(response.statusCode, response.data),
+        );
+      }
+    } on DioException catch (e) {
+      dev.log(
+        '❌ DioException during account deletion: ${e.message}',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      dev.log(
+        '❌ Unexpected error during account deletion: $e',
+        name: 'ProfileRepository',
+      );
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

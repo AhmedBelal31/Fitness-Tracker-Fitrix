@@ -16,4 +16,5 @@ abstract class ProfileRepository {
     UpdateProfileParams params,
   );
   Future<Either<Failure, void>> changePassword(ChangePasswordRequest request);
+  Future<Either<Failure, void>> deleteAccount();
 }
